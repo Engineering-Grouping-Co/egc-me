@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Inter:wght@300;400;500;600;700&display=swap');
 
+
+
 /* ── TOKENS ── */
 :root {
   --blue:       #2563EB;
@@ -15,7 +17,7 @@
   --font-display: 'DM Sans', sans-serif;
   --font-body:    'Inter', sans-serif;
   --container:  1160px;
-  --section-pad: 88px;
+  --section-pad: 72px;
   --radius:     8px;
   --radius-lg:  12px;
   --transition: 0.2s ease;
@@ -27,7 +29,7 @@ body {
   margin: 0; padding: 0;
   font-family: var(--font-body);
   color: var(--dark);
-  background: var(--white);
+  background: #EFF6FF;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 }
@@ -41,8 +43,9 @@ input, select, textarea { font-family: inherit; }
 /* ── LAYOUT ── */
 .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 .section { padding: var(--section-pad) 0; }
+/* section-gray = white panels against the blue-tinted body */
 .section-gray {
-  background: var(--gray-bg);
+  background: #ffffff;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -175,9 +178,10 @@ input, select, textarea { font-family: inherit; }
 
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
-  padding: 72px 0 56px;
-  background: linear-gradient(180deg, var(--blue-light) 0%, var(--white) 100%);
+  padding: 64px 0 48px;
+  background: linear-gradient(180deg, #DBEAFE 0%, #EFF6FF 100%);
   border-bottom: 1px solid var(--blue-mid);
+  margin-bottom: 0;
 }
 .breadcrumb {
   display: flex; align-items: center; gap: 8px;
@@ -215,7 +219,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ── CTA BANNER ── */
 .cta-banner {
-  background: var(--gray-bg); border: 1.5px solid var(--border);
+  background: #ffffff; border: 1.5px solid var(--border);
   border-radius: var(--radius-lg); padding: 56px 48px; text-align: center;
 }
 

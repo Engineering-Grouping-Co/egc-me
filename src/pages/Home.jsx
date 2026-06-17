@@ -217,7 +217,7 @@ export default function Home() {
         /* Hero */
         .home-hero {
           padding: 116px 0 88px;
-          background: linear-gradient(175deg, #EFF6FF 0%, #ffffff 60%);
+          background: linear-gradient(175deg, #DBEAFE 0%, #EFF6FF 65%);
           border-bottom: 1px solid var(--blue-mid);
           text-align: center;
         }
@@ -259,7 +259,7 @@ export default function Home() {
 
         /* Careers banner */
         .careers-banner {
-          background: var(--white); border: 1.5px solid var(--border);
+          background: #ffffff; border: 1.5px solid var(--border);
           border-radius: var(--radius-lg); padding: 40px 48px;
           display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
         }
