@@ -216,9 +216,9 @@ export default function Home() {
       <style>{`
         /* Hero */
         .home-hero {
-          padding: 116px 0 88px;
-          background: linear-gradient(175deg, #DBEAFE 0%, #EFF6FF 65%);
-          border-bottom: 1px solid var(--blue-mid);
+          padding: 110px 0 88px;
+          background: linear-gradient(160deg, #EFF6FF 0%, #F8FAFF 50%, #ffffff 100%);
+          border-bottom: 1px solid #E0EAFF;
           text-align: center;
         }
         .hero-inner { display: flex; flex-direction: column; align-items: center; }

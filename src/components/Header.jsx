@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X, Phone, Mail, ArrowUpRight } from 'lucide-react';
-import { NAV_LINKS, SITE } from '../data';
+import { Menu, X } from 'lucide-react';
+import { NAV_LINKS } from '../data';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -9,40 +9,12 @@ export default function Header() {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', fn);
+    window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMobileOpen(false); }, []);
-
   return (
     <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
-      {/* Top utility bar */}
-      <div className="top-bar">
-        <div className="top-bar-inner">
-          <div className="top-bar-left">
-            <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="top-bar-link">
-              <Phone size={12} strokeWidth={2.5} /> {SITE.phone}
-            </a>
-            <a href={`mailto:${SITE.email}`} className="top-bar-link">
-              <Mail size={12} strokeWidth={2.5} /> {SITE.email}
-            </a>
-          </div>
-          <div className="top-bar-right">
-            <a
-              href={SITE.supplierPortal}
-              target="_blank"
-              rel="noreferrer"
-              className="top-bar-portal"
-            >
-              Supplier Portal <ArrowUpRight size={11} />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main nav */}
       <nav className="main-nav">
         <div className="nav-inner">
           <Link to="/" className="nav-logo">
@@ -57,11 +29,7 @@ export default function Header() {
                   to={l.href}
                   end={l.href === '/'}
                   className={({ isActive }) =>
-                    l.cta
-                      ? 'nav-cta'
-                      : isActive
-                      ? 'nav-link active'
-                      : 'nav-link'
+                    l.cta ? 'nav-cta' : isActive ? 'nav-link active' : 'nav-link'
                   }
                 >
                   {l.label}
@@ -80,7 +48,6 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile panel */}
       {mobileOpen && (
         <div className="nav-mobile">
           {NAV_LINKS.map((l) => (
@@ -96,136 +63,95 @@ export default function Header() {
               {l.label}
             </NavLink>
           ))}
-          <a
-            href={SITE.supplierPortal}
-            target="_blank"
-            rel="noreferrer"
-            className="nav-mobile-link nav-mobile-portal"
-            onClick={() => setMobileOpen(false)}
-          >
-            Supplier Portal <ArrowUpRight size={13} />
-          </a>
         </div>
       )}
 
       <style>{`
         .site-header {
           position: sticky; top: 0; z-index: 100;
-          background: var(--white);
+          background: #ffffff;
           transition: box-shadow 0.25s;
         }
-        .site-header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.09); }
-
-        /* Top bar */
-        .top-bar {
-          background: var(--blue-light);
-          border-bottom: 1px solid var(--blue-mid);
-          padding: 7px 0;
-          font-size: 0.77rem;
+        .site-header.scrolled {
+          box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
-        .top-bar-inner {
-          max-width: var(--container);
-          margin: 0 auto; padding: 0 24px;
-          display: flex; justify-content: space-between; align-items: center; gap: 16px;
-        }
-        .top-bar-left { display: flex; align-items: center; gap: 20px; }
-        .top-bar-right { display: flex; align-items: center; gap: 16px; }
-        .top-bar-link {
-          display: inline-flex; align-items: center; gap: 5px;
-          color: #1E3A8A; font-weight: 500; transition: color 0.15s;
-        }
-        .top-bar-link:hover { color: var(--blue); }
-        .top-bar-portal {
-          display: inline-flex; align-items: center; gap: 4px;
-          font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em;
-          color: var(--blue); text-transform: uppercase;
-          padding: 3px 10px; border: 1px solid var(--blue-mid);
-          border-radius: 999px; transition: background 0.15s;
-        }
-        .top-bar-portal:hover { background: var(--blue-light); }
-
-        /* Main nav */
         .main-nav {
           border-bottom: 1px solid var(--border);
-          background: var(--white);
+          background: #ffffff;
         }
         .nav-inner {
           max-width: var(--container);
-          margin: 0 auto; padding: 16px 24px;
+          margin: 0 auto; padding: 0 28px;
+          height: 68px;
           display: flex; align-items: center;
           justify-content: space-between; gap: 24px;
         }
-        .nav-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+        .nav-logo {
+          display: flex; flex-direction: column; gap: 2px;
+          text-decoration: none; flex-shrink: 0;
+        }
         .logo-egc {
           font-family: var(--font-display);
-          font-size: 1.7rem; font-weight: 800;
-          color: var(--blue); letter-spacing: 0.04em;
-          line-height: 1;
+          font-size: 1.65rem; font-weight: 800;
+          color: var(--blue); letter-spacing: 0.04em; line-height: 1;
         }
         .logo-tagline {
           font-family: var(--font-body);
-          font-size: 0.48rem; font-weight: 700;
-          letter-spacing: 0.14em; color: var(--muted);
+          font-size: 0.46rem; font-weight: 700;
+          letter-spacing: 0.15em; color: var(--muted);
           text-transform: uppercase; line-height: 1;
         }
-
-        /* Nav links */
         .nav-links {
-          display: flex; align-items: center; gap: 30px;
+          display: flex; align-items: center; gap: 4px;
           list-style: none; margin: 0; padding: 0;
         }
         .nav-link {
+          display: block; padding: 6px 12px;
           font-size: 0.9rem; font-weight: 500;
           color: var(--body); transition: color 0.15s;
-          position: relative; padding-bottom: 2px;
-          text-decoration: none;
+          position: relative; text-decoration: none;
+          border-radius: 6px;
         }
         .nav-link::after {
-          content: ''; position: absolute; bottom: -2px; left: 0;
-          width: 0; height: 2px; background: var(--blue);
-          border-radius: 2px; transition: width 0.2s;
+          content: ''; position: absolute;
+          bottom: -1px; left: 12px; right: 12px;
+          height: 2px; background: var(--blue);
+          border-radius: 2px;
+          transform: scaleX(0); transition: transform 0.2s;
         }
-        .nav-link:hover, .nav-link.active { color: var(--blue); }
-        .nav-link.active::after, .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: var(--blue); background: var(--blue-light); }
+        .nav-link.active { color: var(--blue); }
+        .nav-link.active::after { transform: scaleX(1); }
         .nav-cta {
-          background: var(--blue); color: var(--white) !important;
-          padding: 9px 18px; border-radius: 6px; font-size: 0.88rem;
+          background: var(--blue); color: #fff;
+          padding: 9px 20px; border-radius: 6px; font-size: 0.88rem;
           font-weight: 600; transition: background 0.2s, transform 0.15s;
           text-decoration: none;
         }
-        .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
-
-        /* Toggle */
+        .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); color: #fff; }
         .nav-toggle {
           display: none; color: var(--dark);
-          padding: 6px; border-radius: 6px;
+          padding: 7px; border-radius: 6px;
         }
         .nav-toggle:hover { background: var(--gray-bg); }
-
-        /* Mobile nav */
         .nav-mobile {
           display: flex; flex-direction: column;
           border-bottom: 1px solid var(--border);
-          background: var(--white);
-          padding: 8px 24px 20px;
+          background: #ffffff;
+          padding: 6px 20px 16px;
         }
         .nav-mobile-link {
-          padding: 13px 0; font-weight: 500; font-size: 0.95rem;
+          padding: 13px 4px; font-weight: 500; font-size: 0.95rem;
           border-bottom: 1px solid var(--border); color: var(--dark);
-          display: flex; align-items: center; gap: 6px;
+          display: flex; align-items: center;
           text-decoration: none; transition: color 0.15s;
         }
         .nav-mobile-link:last-child { border-bottom: none; }
-        .nav-mobile-link.active { color: var(--blue); font-weight: 600; }
+        .nav-mobile-link.active, .nav-mobile-link:hover { color: var(--blue); }
         .nav-mobile-cta { color: var(--blue); font-weight: 700; }
-        .nav-mobile-portal { color: var(--blue); font-weight: 700; }
-
         @media (max-width: 900px) {
           .nav-links { display: none; }
           .nav-toggle { display: flex; }
-        }
-        @media (max-width: 560px) {
-          .top-bar-left { display: none; }
         }
       `}</style>
     </header>
