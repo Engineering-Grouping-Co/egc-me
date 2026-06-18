@@ -93,7 +93,7 @@ export default function Header() {
         .nav-inner {
           max-width: var(--container);
           margin: 0 auto; padding: 0 28px;
-          height: 68px;
+          height: 52px;
           display: flex; align-items: center;
           justify-content: space-between; gap: 24px;
         }
@@ -102,16 +102,16 @@ export default function Header() {
           text-decoration: none; flex-shrink: 0;
         }
         .logo-img {
-          height: 38px; width: auto; object-fit: contain;
+          height: 28px; width: auto; object-fit: contain;
         }
         .logo-egc {
           font-family: var(--font-display);
-          font-size: 1.65rem; font-weight: 800;
+          font-size: 1.35rem; font-weight: 800;
           color: var(--blue); letter-spacing: 0.04em; line-height: 1;
         }
         .logo-tagline {
           font-family: var(--font-body);
-          font-size: 0.46rem; font-weight: 700;
+          font-size: 0.38rem; font-weight: 700;
           letter-spacing: 0.15em; color: var(--muted);
           text-transform: uppercase; line-height: 1;
         }
@@ -138,7 +138,7 @@ export default function Header() {
         .nav-link.active::after { transform: scaleX(1); }
         .nav-cta {
           background: var(--blue); color: #fff;
-          padding: 9px 20px; border-radius: 6px; font-size: 0.88rem;
+          padding: 7px 16px; border-radius: 6px; font-size: 0.88rem;
           font-weight: 600; transition: background 0.2s, transform 0.15s;
           text-decoration: none;
         }

@@ -6,7 +6,7 @@
   --blue-dark:   #1D4ED8;
   --blue-light:  #EFF6FF;
   --blue-mid:    #BFDBFE;
-  --dark:        #0F172A;
+  --dark:        #111111;
   --body:        #374151;
   --muted:       #6B7280;
   --border:      #E5E7EB;
@@ -15,9 +15,9 @@
   --font-display: 'DM Sans', sans-serif;
   --font-body:    'Inter', sans-serif;
   --container:   1160px;
-  --section-pad: 80px;
+  --section-pad: 88px;
   --radius:      8px;
-  --radius-lg:   14px;
+  --radius-lg:   10px;
   --transition:  0.2s ease;
 }
 
@@ -52,9 +52,32 @@ p { margin: 0; }
 }
 
 /* ── TYPOGRAPHY ── */
+.headline-large {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+}
+.headline-medium {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+}
+.headline-small {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--dark);
+}
 .headline-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 800; line-height: 1.06;
   letter-spacing: -0.03em; color: var(--dark);
 }
@@ -75,14 +98,26 @@ p { margin: 0; }
   font-size: 1.05rem; font-weight: 700;
   line-height: 1.3; color: var(--dark);
 }
+.label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
 .overline {
   font-size: 0.68rem; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--blue); display: block; margin-bottom: 10px;
 }
+.body-text { color: var(--body); font-size: 1rem; line-height: 1.7; margin-bottom: 18px; }
 .body-lg  { font-size: 1.05rem; line-height: 1.78; color: var(--body); }
 .body-md  { font-size: 0.95rem; line-height: 1.72; color: var(--body); }
 .body-sm  { font-size: 0.85rem; line-height: 1.65; color: var(--muted); }
+.tag-mono { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--blue); text-transform: uppercase; margin: 6px 0 12px; font-weight: 600; }
 .text-muted  { color: var(--muted); }
 .text-white  { color: #fff; }
 .text-center { text-align: center; }
