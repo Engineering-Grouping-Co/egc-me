@@ -145,15 +145,15 @@ export default function Contact() {
                   <h3 className="headline-sm" style={{ marginBottom: 8 }}>{c.title}</h3>
                   <p className="body-sm" style={{ marginBottom: 18 }}>{c.desc}</p>
                   {c.external ? (
-                    <a href={c.link} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm">
+                    <a href={c.link} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
                       {c.linkLabel} <ArrowUpRight size={13} />
                     </a>
                   ) : c.link.startsWith('/') ? (
-                    <Link to={c.link} className="btn btn-secondary btn-sm">
+                    <Link to={c.link} className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
                       {c.linkLabel} <ArrowRight size={13} />
                     </Link>
                   ) : (
-                    <a href={c.link} className="btn btn-secondary btn-sm">
+                    <a href={c.link} className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
                       {c.linkLabel} <ArrowRight size={13} />
                     </a>
                   )}
@@ -167,7 +167,7 @@ export default function Contact() {
       <style>{`
         .contact-layout { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: 36px; align-items: start; }
 
-        .contact-form-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 40px; }
+        .contact-form-card { background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 40px; }
         .form-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--dark); margin: 0 0 28px; }
         .c-form { display: flex; flex-direction: column; gap: 18px; }
         .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -200,7 +200,7 @@ export default function Contact() {
         .office-li-link { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--blue); }
         .office-li-link:hover { text-decoration: underline; }
 
-        .alt-card { display: flex; flex-direction: column; }
+        .alt-card { display: flex; flex-direction: column; height: 100%; }
 
         @media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } .form-row-2 { grid-template-columns: 1fr; } }
         @media (max-width: 500px) { .contact-form-card { padding: 28px 20px; } }

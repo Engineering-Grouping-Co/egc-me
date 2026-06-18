@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck, ArrowRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import { TEAM, VALUES, CERTIFICATIONS } from '../data';
 
@@ -88,7 +88,7 @@ export default function About() {
                 <div className="card val-card">
                   <div className="val-icon">{VALUE_ICONS[i]}</div>
                   <h3 className="headline-sm" style={{ margin: '14px 0 8px' }}>{v.title}</h3>
-                  <p className="body-sm">{v.desc}</p>
+                  <p className="body-sm" style={{ margin: 0 }}>{v.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -104,37 +104,41 @@ export default function About() {
             <h2 className="headline-lg">Government and private sector.</h2>
           </FadeIn>
           <div className="grid-2">
-            <FadeIn delay={1} className="sector-card">
-              <div className="sector-badge">01</div>
-              <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Government &amp; Semi-Government</h3>
-              <p className="body-md" style={{ marginBottom: 18 }}>
-                EGC has a long-standing record of delivery on public infrastructure, government
-                buildings, and semi-government facilities — where programme certainty and
-                compliance documentation matter most.
-              </p>
-              <ul className="sector-list">
-                <li>Government administrative and security facilities</li>
-                <li>Municipal and utility infrastructure</li>
-                <li>Defence-related facilities</li>
-                <li>Giga-project and Vision 2030 packages</li>
-                <li>Public-sector industrial city works</li>
-              </ul>
+            <FadeIn delay={1}>
+              <div className="card sector-card">
+                <div className="sector-badge">01</div>
+                <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Government &amp; Semi-Government</h3>
+                <p className="body-md" style={{ marginBottom: 18 }}>
+                  EGC has a long-standing record of delivery on public infrastructure, government
+                  buildings, and semi-government facilities — where programme certainty and
+                  compliance documentation matter most.
+                </p>
+                <ul className="sector-list">
+                  <li>Government administrative and security facilities</li>
+                  <li>Municipal and utility infrastructure</li>
+                  <li>Defence-related facilities</li>
+                  <li>Giga-project and Vision 2030 packages</li>
+                  <li>Public-sector industrial city works</li>
+                </ul>
+              </div>
             </FadeIn>
-            <FadeIn delay={2} className="sector-card">
-              <div className="sector-badge">02</div>
-              <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Private Sector &amp; Commercial</h3>
-              <p className="body-md" style={{ marginBottom: 18 }}>
-                Developers, EPC contractors, and industrial operators choose EGC for our
-                in-house capacity, schedule reliability, and ability to manage complex
-                multi-discipline packages under a single contract.
-              </p>
-              <ul className="sector-list">
-                <li>Mixed-use and commercial developments</li>
-                <li>Hospitality, hotel, and resort fit-outs</li>
-                <li>Industrial warehouses and storage facilities</li>
-                <li>Retail and F&amp;B fit-out packages</li>
-                <li>EPC subcontract packages</li>
-              </ul>
+            <FadeIn delay={2}>
+              <div className="card sector-card">
+                <div className="sector-badge">02</div>
+                <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Private Sector &amp; Commercial</h3>
+                <p className="body-md" style={{ marginBottom: 18 }}>
+                  Developers, EPC contractors, and industrial operators choose EGC for our
+                  in-house capacity, schedule reliability, and ability to manage complex
+                  multi-discipline packages under a single contract.
+                </p>
+                <ul className="sector-list">
+                  <li>Mixed-use and commercial developments</li>
+                  <li>Hospitality, hotel, and resort fit-outs</li>
+                  <li>Industrial warehouses and storage facilities</li>
+                  <li>Retail and F&amp;B fit-out packages</li>
+                  <li>EPC subcontract packages</li>
+                </ul>
+              </div>
             </FadeIn>
           </div>
         </div>
@@ -157,7 +161,7 @@ export default function About() {
                 <div className="card cert-card">
                   <div className="cert-code">{c.code}</div>
                   <h3 className="headline-sm" style={{ margin: '10px 0 8px' }}>{c.name}</h3>
-                  <p className="body-sm">{c.desc}</p>
+                  <p className="body-sm" style={{ margin: 0 }}>{c.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -180,7 +184,7 @@ export default function About() {
               const initials = m.name.split(' ').map(p => p[0]).join('').slice(0, 2);
               return (
                 <FadeIn delay={(i % 4) + 1} key={m.id}>
-                  <div className="team-card">
+                  <div className="card team-card">
                     <div className="team-card-top">
                       <span className="team-badge">{m.badge}</span>
                       <ShieldCheck size={13} className="team-verified" />
@@ -201,7 +205,7 @@ export default function About() {
         .about-quick-facts {
           display: grid; grid-template-columns: repeat(4, 1fr);
           border: 1.5px solid var(--border); border-radius: var(--radius-lg);
-          overflow: hidden;
+          overflow: hidden; background: #fff;
         }
         .qf-item {
           display: flex; flex-direction: column; align-items: center;
@@ -215,17 +219,16 @@ export default function About() {
         .val-card { text-align: center; padding: 32px 24px; }
         .val-icon { width: 52px; height: 52px; margin: 0 auto; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
 
-        .sector-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px 32px; }
+        .sector-card { padding: 36px 32px; }
         .sector-badge { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--blue-mid); line-height: 1; }
-        .sector-list { display: flex; flex-direction: column; gap: 8px; }
+        .sector-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
         .sector-list li { font-size: 0.9rem; color: var(--body); padding-left: 16px; position: relative; }
         .sector-list li::before { content: '—'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
 
         .cert-card { text-align: center; padding: 36px 24px; }
         .cert-code { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--blue); }
 
-        .team-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 22px 18px; text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
-        .team-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.08); }
+        .team-card { padding: 22px 18px; text-align: center; }
         .team-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
         .team-badge { font-size: 0.62rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
         .team-verified { color: var(--blue); }

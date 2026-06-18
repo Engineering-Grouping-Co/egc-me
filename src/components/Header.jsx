@@ -18,8 +18,19 @@ export default function Header() {
       <nav className="main-nav">
         <div className="nav-inner">
           <Link to="/" className="nav-logo">
-            <span className="logo-egc">EGC</span>
-            <span className="logo-tagline">ENGINEERING GROUPING CO.</span>
+            <img 
+              src="/logo.png" 
+              alt="EGC Logo" 
+              className="logo-img" 
+              onError={(e) => { 
+                e.target.style.display = 'none'; 
+                e.target.nextSibling.style.display = 'flex'; 
+              }} 
+            />
+            <div className="logo-text-fallback" style={{ display: 'none', flexDirection: 'column', gap: '2px' }}>
+              <span className="logo-egc">EGC</span>
+              <span className="logo-tagline">ENGINEERING GROUPING CO.</span>
+            </div>
           </Link>
 
           <ul className="nav-links">
@@ -89,6 +100,9 @@ export default function Header() {
         .nav-logo {
           display: flex; flex-direction: column; gap: 2px;
           text-decoration: none; flex-shrink: 0;
+        }
+        .logo-img {
+          height: 38px; width: auto; object-fit: contain;
         }
         .logo-egc {
           font-family: var(--font-display);

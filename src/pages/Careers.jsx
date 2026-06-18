@@ -57,7 +57,7 @@ export default function Careers() {
                 <div className="card cult-card">
                   <div className="cult-num">0{i + 1}</div>
                   <h3 className="headline-sm" style={{ margin: '12px 0 8px' }}>{c.title}</h3>
-                  <p className="body-sm">{c.desc}</p>
+                  <p className="body-sm" style={{ margin: 0 }}>{c.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -104,7 +104,7 @@ export default function Careers() {
               </div>
             ))}
             {filtered.length === 0 && (
-              <p style={{ color: 'var(--muted)', padding: '32px 0', textAlign: 'center' }}>
+              <p style={{ color: 'var(--muted)', padding: '32px 0', textAlign: 'center', margin: 0 }}>
                 No open positions in this category right now — check back soon.
               </p>
             )}
@@ -121,7 +121,7 @@ export default function Careers() {
               <h2 className="headline-md" style={{ marginBottom: 8 }}>
                 Don't see the right role?
               </h2>
-              <p className="body-md" style={{ color: 'var(--muted)', maxWidth: 520, marginBottom: 0 }}>
+              <p className="body-md" style={{ color: 'var(--muted)', maxWidth: 520, margin: 0 }}>
                 We review open applications and keep strong CVs on file for future openings.
                 Send your CV and a brief note about the role you're looking for.
               </p>
@@ -137,10 +137,10 @@ export default function Careers() {
       </section>
 
       <style>{`
-        .cult-card { padding: 28px 22px; }
+        .cult-card { padding: 28px 22px; text-align: left; }
         .cult-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--blue-mid); line-height: 1; }
 
-        .jobs-list { border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .jobs-list { border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: #fff; }
         .job-row {
           display: flex; justify-content: space-between; align-items: center;
           padding: 18px 24px; gap: 24px; flex-wrap: wrap;
@@ -157,7 +157,7 @@ export default function Careers() {
         .job-type { font-size: 0.72rem; font-weight: 700; background: var(--gray-bg); color: var(--muted); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border); white-space: nowrap; }
 
         .open-app-banner {
-          background: var(--white); border: 1.5px solid var(--border);
+          background: #fff; border: 1.5px solid var(--border);
           border-radius: var(--radius-lg); padding: 40px 48px;
           display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;
         }

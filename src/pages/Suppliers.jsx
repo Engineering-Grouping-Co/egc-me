@@ -188,21 +188,21 @@ export default function Suppliers() {
       <style>{`
         .src-card { padding: 28px 24px; }
         .src-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--blue-mid); line-height: 1; }
-        .src-list { display: flex; flex-direction: column; gap: 8px; }
+        .src-list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
         .src-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.86rem; color: var(--body); line-height: 1.5; }
         .src-icon { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
 
         .sup-reg-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
 
-        .steps-ol { display: flex; flex-direction: column; gap: 0; position: relative; padding: 0; }
+        .steps-ol { display: flex; flex-direction: column; gap: 0; position: relative; padding: 0; margin: 0; }
         .step-li { display: flex; gap: 18px; position: relative; padding-bottom: 28px; }
         .step-li:last-child { padding-bottom: 0; }
-        .step-circle { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); color: var(--blue); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-body); }
+        .step-circle { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); color: var(--blue); font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-body); z-index: 2; }
         .step-circle-accent { background: var(--blue); color: var(--white); border-color: var(--blue); }
         .step-body { padding-top: 8px; flex: 1; }
         .step-body strong { display: block; font-weight: 700; color: var(--dark); margin-bottom: 4px; font-size: 0.97rem; }
         .step-body p { font-size: 0.88rem; color: var(--muted); margin: 0; line-height: 1.6; }
-        .step-connector { position: absolute; left: 21px; top: 44px; width: 2px; bottom: 0; background: var(--border); }
+        .step-connector { position: absolute; left: 21px; top: 44px; width: 2px; bottom: 0; background: var(--border); z-index: 1; }
 
         .portal-card-wrap { }
         .portal-card { background: #1E3A8A; border-radius: var(--radius-lg); padding: 36px 30px; display: flex; flex-direction: column; gap: 16px; border-bottom: 4px solid var(--blue); box-shadow: 0 20px 48px rgba(30,58,138,0.2); }
@@ -211,12 +211,12 @@ export default function Suppliers() {
         .portal-signin:hover { text-decoration: underline; }
         .portal-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 48px; }
-        .req-list { display: flex; flex-direction: column; gap: 14px; }
+        .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 48px; }
+        .req-list { display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 0; }
         .req-item { display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem; color: var(--body); line-height: 1.5; }
         .req-icon { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
 
-        .faq-list { display: flex; flex-direction: column; border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .faq-list { display: flex; flex-direction: column; border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: #fff; }
         .faq-item { border-bottom: 1px solid var(--border); }
         .faq-item:last-child { border-bottom: none; }
         .faq-item.open { background: var(--blue-light); }
