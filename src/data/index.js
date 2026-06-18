@@ -1,9 +1,9 @@
 export const SITE = {
   name: 'Engineering Grouping Co.',
   shortName: 'EGC',
-  phone: '+966 11 000 0000',
+  phone: '+966 50 434 1861',
   email: 'info@egc-me.com',
-  address: '[Street], [District], Riyadh, Kingdom of Saudi Arabia',
+  address: 'JDJA8188, Almanar District, Jeddah, Kingdom of Saudi Arabia',
   cr: '[XXXXXXXXXX]',
   founded: '[YEAR]',
   supplierPortal: 'https://erp.egc-me.com',

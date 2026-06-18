@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-import { STATS, DIVISIONS, PROJECTS } from '../data';
+import { STATS, DIVISIONS, PROJECTS, SITE } from '../data';
 
 const TRUST = [
   'ISO 9001 Certified',
@@ -199,7 +199,7 @@ export default function Home() {
             </p>
             <div className="h-cta-btns">
               <Link to="/contact" className="btn btn-primary btn-lg">Contact Us</Link>
-              <a href={`tel:${'+966110000000'}`} className="btn btn-secondary btn-lg">+966 11 000 0000</a>
+              <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="btn btn-secondary btn-lg">{SITE.phone}</a>
             </div>
           </FadeIn>
         </div>

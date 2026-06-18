@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import FadeIn from '../components/FadeIn';
+import { SITE } from '../data';
 
 export default function PrivacyPolicy() {
   return (
@@ -54,9 +55,9 @@ export default function PrivacyPolicy() {
         <p>If you have questions or concerns about this Privacy Policy or how we handle your personal information, please contact us:</p>
         <p>
           Engineering Grouping Co. (EGC)<br />
-          [Street], [District], Riyadh, Kingdom of Saudi Arabia<br />
-          Email: info@egc-me.com<br />
-          Phone: +966 11 000 0000
+          {SITE.address}<br />
+          Email: {SITE.email}<br />
+          Phone: {SITE.phone}
         </p>
       </div>
     </>

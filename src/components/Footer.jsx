@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="logo-egc">EGC</span>
               <span className="logo-sub logo-sub-light">ENGINEERING GROUPING CO.</span>
             </Link>
-            <p className="footer-tagline">[Street], [District]<br />Riyadh, Kingdom of Saudi Arabia</p>
+            <p className="footer-tagline">JDJA8188, Almanar District<br />Jeddah, Kingdom of Saudi Arabia</p>
           </div>
           <div className="footer-col">
             <h5>Company</h5>
@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <h5>Contact</h5>
-            <a href="tel:+966110000000">+966 11 000 0000</a>
+            <a href="tel:+966504341861">+966 50 434 1861</a>
             <a href="mailto:info@egc-me.com">info@egc-me.com</a>
             <a href={SUPPLIER_PORTAL_URL} target="_blank" rel="noreferrer" className="footer-linkedin-link">
               Supplier Portal Login

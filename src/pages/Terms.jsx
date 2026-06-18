@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import FadeIn from '../components/FadeIn';
+import { SITE } from '../data';
 
 export default function Terms() {
   return (
@@ -55,9 +56,9 @@ export default function Terms() {
         <p>If you have any questions about these Terms and Conditions, please contact us:</p>
         <p>
           Engineering Grouping Co. (EGC)<br />
-          [Street], [District], Riyadh, Kingdom of Saudi Arabia<br />
-          Email: info@egc-me.com<br />
-          Phone: +966 11 000 0000
+          {SITE.address}<br />
+          Email: {SITE.email}<br />
+          Phone: {SITE.phone}
         </p>
       </div>
     </>
