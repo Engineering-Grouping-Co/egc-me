@@ -24,7 +24,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         .nav-inner {
           max-width: var(--container);
           margin: 0 auto; padding: 0 28px;
-          height: 68px;
+          height: 52px;
           display: flex; align-items: center;
           justify-content: space-between; gap: 24px;
         }
@@ -33,16 +33,16 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           text-decoration: none; flex-shrink: 0;
         }
         .logo-img {
-          height: 38px; width: auto; object-fit: contain;
+          height: 28px; width: auto; object-fit: contain;
         }
         .logo-egc {
           font-family: var(--font-display);
-          font-size: 1.65rem; font-weight: 800;
+          font-size: 1.35rem; font-weight: 800;
           color: var(--blue); letter-spacing: 0.04em; line-height: 1;
         }
         .logo-tagline {
           font-family: var(--font-body);
-          font-size: 0.46rem; font-weight: 700;
+          font-size: 0.38rem; font-weight: 700;
           letter-spacing: 0.15em; color: var(--muted);
           text-transform: uppercase; line-height: 1;
         }
@@ -69,7 +69,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         .nav-link.active::after { transform: scaleX(1); }
         .nav-cta {
           background: var(--blue); color: #fff;
-          padding: 9px 20px; border-radius: 6px; font-size: 0.88rem;
+          padding: 7px 16px; border-radius: 6px; font-size: 0.88rem;
           font-weight: 600; transition: background 0.2s, transform 0.15s;
           text-decoration: none;
         }
@@ -98,175 +98,88 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           .nav-links { display: none; }
           .nav-toggle { display: flex; }
         }
-      `})]})}var Ir=A.supplierPortal;function Lr(){let e=new Date().getFullYear();return(0,j.jsxs)(`footer`,{className:`footer`,children:[(0,j.jsxs)(`div`,{className:`footer-container`,children:[(0,j.jsxs)(`div`,{className:`footer-grid`,children:[(0,j.jsxs)(`div`,{className:`footer-brand`,children:[(0,j.jsxs)(k,{to:`/`,className:`footer-logo`,children:[(0,j.jsx)(`img`,{src:`/logo.png`,alt:`EGC Logo`,className:`footer-logo-img`,onError:e=>{e.target.style.display=`none`,e.target.nextSibling.style.display=`flex`}}),(0,j.jsxs)(`div`,{className:`footer-logo-fallback`,style:{display:`none`,flexDirection:`column`,gap:`3px`},children:[(0,j.jsx)(`span`,{className:`footer-logo-egc`,children:`EGC`}),(0,j.jsx)(`span`,{className:`footer-logo-sub`,children:`ENGINEERING GROUPING CO.`})]})]}),(0,j.jsxs)(`p`,{className:`footer-tagline`,children:[`[Street], [District]`,(0,j.jsx)(`br`,{}),`Riyadh, Kingdom of Saudi Arabia`]})]}),(0,j.jsxs)(`div`,{className:`footer-col`,children:[(0,j.jsx)(`h5`,{children:`Company`}),(0,j.jsx)(k,{to:`/about`,children:`About Us`}),(0,j.jsx)(k,{to:`/divisions`,children:`Divisions`}),(0,j.jsx)(k,{to:`/projects`,children:`Projects`}),(0,j.jsx)(k,{to:`/about`,children:`Team`})]}),(0,j.jsxs)(`div`,{className:`footer-col`,children:[(0,j.jsx)(`h5`,{children:`Work With Us`}),(0,j.jsx)(k,{to:`/careers`,children:`Careers`}),(0,j.jsx)(k,{to:`/suppliers`,children:`Suppliers`}),(0,j.jsx)(k,{to:`/contact`,children:`Contact Us`})]}),(0,j.jsxs)(`div`,{className:`footer-col`,children:[(0,j.jsx)(`h5`,{children:`Contact`}),(0,j.jsx)(`a`,{href:`tel:+966110000000`,children:A.phone}),(0,j.jsx)(`a`,{href:`mailto:${A.email}`,children:A.email}),(0,j.jsx)(`a`,{href:Ir,target:`_blank`,rel:`noreferrer`,className:`footer-linkedin-link`,children:`Supplier Portal Login`}),(0,j.jsx)(`a`,{href:A.linkedin,target:`_blank`,rel:`noreferrer`,className:`footer-linkedin`,"aria-label":`EGC on LinkedIn`,children:(0,j.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,"aria-hidden":`true`,children:(0,j.jsx)(`path`,{d:`M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.91 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z`})})})]})]}),(0,j.jsxs)(`div`,{className:`footer-bottom`,children:[(0,j.jsxs)(`p`,{children:[`© `,e,` Engineering Grouping Co. (EGC). All rights reserved. \xA0·\xA0`,(0,j.jsx)(k,{to:`/privacy-policy`,children:`Privacy Policy`}),`\xA0·\xA0`,(0,j.jsx)(k,{to:`/terms`,children:`Terms & Conditions`})]}),(0,j.jsxs)(`p`,{children:[`CR No. `,A.cr]})]})]}),(0,j.jsx)(`style`,{children:`
-        .footer {
-          background: #0F172A;
-          color: rgba(255,255,255,0.55);
-          padding-top: 72px;
-          font-family: 'Inter', sans-serif;
-        }
-        .footer-container {
-          max-width: 1160px;
-          margin: 0 auto;
-          padding: 0 28px;
-        }
-        .footer-grid {
-          display: grid;
-          grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr;
-          gap: 48px;
-          padding-bottom: 56px;
-        }
-        .footer-brand {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-        .footer-logo {
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
-          width: fit-content;
-          text-decoration: none;
-        }
-        .footer-logo-img {
-          height: 48px; width: auto; object-fit: contain;
-        }
-        .footer-logo-egc {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 2rem;
-          font-weight: 800;
-          color: #ffffff;
-          letter-spacing: 0.04em;
-          line-height: 1;
-        }
-        .footer-logo-sub {
-          font-size: 0.46rem;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          color: rgba(255,255,255,0.35);
-          text-transform: uppercase;
-          line-height: 1;
-        }
-        .footer-tagline {
-          font-size: 0.86rem;
-          color: rgba(255,255,255,0.4);
-          line-height: 1.6;
-          margin: 0;
-        }
-        .footer-col {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          padding-top: 4px;
-        }
-        .footer-col h5 {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.9);
-          margin-bottom: 4px;
-        }
-        .footer-col a {
-          font-size: 0.88rem;
-          color: rgba(255,255,255,0.5);
-          transition: color 0.15s;
-          text-decoration: none;
-        }
-        .footer-col a:hover { color: rgba(255,255,255,0.9); }
+      `})]})}var Ir=`https://erp.egc-me.com`;function Lr(){return(0,j.jsxs)(`footer`,{className:`footer`,children:[(0,j.jsxs)(`div`,{className:`container`,children:[(0,j.jsxs)(`div`,{className:`footer-grid`,children:[(0,j.jsxs)(`div`,{className:`footer-brand`,children:[(0,j.jsxs)(k,{to:`/`,className:`footer-logo`,children:[(0,j.jsx)(`span`,{className:`logo-egc`,children:`EGC`}),(0,j.jsx)(`span`,{className:`logo-sub logo-sub-light`,children:`ENGINEERING GROUPING CO.`})]}),(0,j.jsxs)(`p`,{className:`footer-tagline`,children:[`[Street], [District]`,(0,j.jsx)(`br`,{}),`Riyadh, Kingdom of Saudi Arabia`]})]}),(0,j.jsxs)(`div`,{className:`footer-col`,children:[(0,j.jsx)(`h5`,{children:`Company`}),(0,j.jsx)(k,{to:`/about`,children:`About Us`}),(0,j.jsx)(k,{to:`/divisions`,children:`Divisions`}),(0,j.jsx)(k,{to:`/projects`,children:`Projects`}),(0,j.jsx)(k,{to:`/about`,children:`Team`})]}),(0,j.jsxs)(`div`,{className:`footer-col`,children:[(0,j.jsx)(`h5`,{children:`Work With Us`}),(0,j.jsx)(k,{to:`/careers`,children:`Careers`}),(0,j.jsx)(k,{to:`/suppliers`,children:`Suppliers`}),(0,j.jsx)(k,{to:`/contact`,children:`Contact Us`})]}),(0,j.jsxs)(`div`,{className:`footer-col`,children:[(0,j.jsx)(`h5`,{children:`Contact`}),(0,j.jsx)(`a`,{href:`tel:+966110000000`,children:`+966 11 000 0000`}),(0,j.jsx)(`a`,{href:`mailto:info@egc-me.com`,children:`info@egc-me.com`}),(0,j.jsx)(`a`,{href:Ir,target:`_blank`,rel:`noreferrer`,className:`footer-linkedin-link`,children:`Supplier Portal Login`}),(0,j.jsx)(`a`,{href:`https://www.linkedin.com/company/egc-me/`,target:`_blank`,rel:`noreferrer`,className:`footer-linkedin`,"aria-label":`LinkedIn`,children:(0,j.jsx)(`svg`,{viewBox:`0 0 24 24`,fill:`currentColor`,"aria-hidden":`true`,children:(0,j.jsx)(`path`,{d:`M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.91 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z`})})})]})]}),(0,j.jsxs)(`div`,{className:`footer-bottom`,children:[(0,j.jsxs)(`p`,{children:[`© 2026 Engineering Grouping Co. (EGC). All rights reserved. \xA0|\xA0`,(0,j.jsx)(k,{to:`/privacy-policy`,children:`Privacy Policy`}),`\xA0|\xA0`,(0,j.jsx)(k,{to:`/terms`,children:`Terms & Conditions`})]}),(0,j.jsx)(`p`,{children:`CR No. [XXXXXXXXXX]`})]})]}),(0,j.jsx)(`style`,{children:`
+        .footer { background: var(--dark); color: rgba(255,255,255,0.65); padding-top: 72px; }
+        .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 0.8fr); gap: 48px; padding-bottom: 56px; }
+        .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .footer-logo .logo-egc { color: var(--white); font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1; }
+        .footer-logo .logo-sub { font-family: var(--font-body); font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; }
+        .footer-logo .logo-sub-light { color: rgba(255,255,255,0.6); }
+        .footer-tagline { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+        .footer-col { display: flex; flex-direction: column; gap: 10px; }
+        .footer-col h5 { font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 6px; }
+        .footer-col a { font-size: 0.88rem; transition: color 0.15s; text-decoration: none; color: rgba(255,255,255,0.65); }
+        .footer-col a:hover { color: var(--white); }
         .footer-linkedin {
-          display: inline-flex;
-          width: 34px;
-          height: 34px;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 8px;
-          color: rgba(255,255,255,0.55);
-          transition: background 0.2s, border-color 0.2s, color 0.2s;
+          display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center;
+          background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+          color: rgba(255,255,255,0.65); transition: background 0.2s, color 0.2s;
           margin-top: 4px;
         }
-        .footer-linkedin svg { width: 15px; height: 15px; }
-        .footer-linkedin:hover {
-          background: #2563EB;
-          border-color: #2563EB;
-          color: #ffffff;
-        }
+        .footer-linkedin svg { width: 16px; height: 16px; }
+        .footer-linkedin:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+        .footer-linkedin-link { font-size: 0.88rem; text-decoration: none; color: rgba(255,255,255,0.65); }
+        
         .footer-bottom {
-          border-top: 1px solid rgba(255,255,255,0.08);
+          border-top: 1px solid rgba(255,255,255,0.1);
           padding: 22px 0 32px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 16px;
-          flex-wrap: wrap;
-          font-size: 0.78rem;
-          color: rgba(255,255,255,0.28);
+          display: flex; justify-content: space-between; align-items: center; gap: 16px;
+          flex-wrap: wrap; font-size: 0.78rem; color: rgba(255,255,255,0.38);
         }
-        .footer-bottom p { margin: 0; }
-        .footer-bottom a {
-          color: rgba(255,255,255,0.45);
-          text-decoration: underline;
-          transition: color 0.15s;
-        }
-        .footer-bottom a:hover { color: rgba(255,255,255,0.85); }
-
+        .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: underline; transition: color 0.15s; }
+        .footer-bottom a:hover { color: var(--white); }
+        
         @media (max-width: 860px) {
-          .footer-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 36px;
-            padding-bottom: 44px;
-          }
+          .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 44px; }
           .footer-brand { grid-column: span 2; }
         }
-        @media (max-width: 520px) {
+        @media (max-width: 500px) {
           .footer-grid { grid-template-columns: 1fr; }
           .footer-brand { grid-column: span 1; }
-          .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+          .footer-bottom { flex-direction: column; text-align: center; }
         }
       `})]})}function Rr({children:e}){let{pathname:t}=O();return(0,_.useEffect)(()=>{window.scrollTo(0,0)},[t]),(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(Fr,{}),(0,j.jsx)(`main`,{id:`main-content`,className:`page-fade`,children:e}),(0,j.jsx)(Lr,{})]})}function M({children:e,className:t=``,delay:n=0,tag:r=`div`}){let i=(0,_.useRef)(null);return(0,_.useEffect)(()=>{let e=i.current;if(!e)return;let t=new IntersectionObserver(([n])=>{n.isIntersecting&&(e.classList.add(`visible`),t.unobserve(e))},{threshold:.07,rootMargin:`0px 0px -36px 0px`});return t.observe(e),()=>t.disconnect()},[]),(0,j.jsx)(r,{ref:i,className:`fade-in${n?` fade-in-delay-${n}`:``}${t?` ${t}`:``}`,children:e})}var zr=[`ISO 9001 Certified`,`18+ Years in KSA`,`3 Active Divisions`],Br={steel:(0,j.jsx)(`svg`,{width:`40`,height:`40`,viewBox:`0 0 40 40`,fill:`none`,children:(0,j.jsx)(`path`,{d:`M6 6H34V14H22V26H34V34H6V26H18V14H6V6Z`,stroke:`#2563EB`,strokeWidth:`2`,strokeLinejoin:`round`})}),wood:(0,j.jsxs)(`svg`,{width:`40`,height:`40`,viewBox:`0 0 40 40`,fill:`none`,children:[(0,j.jsx)(`rect`,{x:`4`,y:`16`,width:`32`,height:`9`,rx:`1`,stroke:`#2563EB`,strokeWidth:`2`}),(0,j.jsx)(`path`,{d:`M8 20c2-1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1 5 .5`,stroke:`#2563EB`,strokeWidth:`1.4`,strokeLinecap:`round`}),(0,j.jsx)(`rect`,{x:`4`,y:`27`,width:`32`,height:`9`,rx:`1`,stroke:`#2563EB`,strokeWidth:`2`})]}),leadsheet:(0,j.jsxs)(`svg`,{width:`40`,height:`40`,viewBox:`0 0 40 40`,fill:`none`,children:[(0,j.jsx)(`rect`,{x:`4`,y:`24`,width:`32`,height:`5`,rx:`1`,stroke:`#2563EB`,strokeWidth:`2`}),(0,j.jsx)(`rect`,{x:`4`,y:`17`,width:`32`,height:`5`,rx:`1`,stroke:`#2563EB`,strokeWidth:`2`}),(0,j.jsx)(`rect`,{x:`4`,y:`10`,width:`32`,height:`5`,rx:`1`,stroke:`#2563EB`,strokeWidth:`2`})]})};function Vr(){return(0,j.jsxs)(j.Fragment,{children:[(0,j.jsx)(`section`,{className:`h-hero`,children:(0,j.jsx)(`div`,{className:`container`,children:(0,j.jsxs)(M,{className:`h-hero-inner`,children:[(0,j.jsx)(`p`,{className:`h-label`,children:`Since [YEAR] · Riyadh, Kingdom of Saudi Arabia`}),(0,j.jsxs)(`h1`,{className:`h-headline`,children:[`Steel, Wood & Lead Sheet —`,(0,j.jsx)(`br`,{}),`Designed, Fabricated, Delivered.`]}),(0,j.jsx)(`p`,{className:`h-sub`,children:`EGC designs, fabricates, and installs structural steel, timber joinery, and lead sheet works for government and private sector projects across the Kingdom — from first drawing to final handover.`}),(0,j.jsxs)(`div`,{className:`h-btn-group`,children:[(0,j.jsxs)(k,{to:`/divisions`,className:`btn btn-primary btn-lg`,children:[`Explore Divisions `,(0,j.jsx)(lr,{size:16})]}),(0,j.jsx)(k,{to:`/about`,className:`btn btn-secondary btn-lg`,children:`About EGC`})]}),(0,j.jsx)(`div`,{className:`h-trust`,children:zr.map(e=>(0,j.jsxs)(`span`,{className:`h-trust-item`,children:[(0,j.jsx)(pr,{size:13}),` `,e]},e))})]})})}),(0,j.jsx)(`section`,{className:`h-stats`,children:(0,j.jsx)(`div`,{className:`container`,children:(0,j.jsx)(`div`,{className:`h-stats-grid`,children:wr.map(e=>(0,j.jsxs)(`div`,{className:`h-stat`,children:[(0,j.jsx)(`div`,{className:`h-stat-num`,children:e.n}),(0,j.jsx)(`div`,{className:`h-stat-lbl`,children:e.l})]},e.l))})})}),(0,j.jsx)(`section`,{className:`section`,children:(0,j.jsx)(`div`,{className:`container`,children:(0,j.jsxs)(`div`,{className:`h-feature-grid`,children:[(0,j.jsxs)(M,{children:[(0,j.jsx)(`p`,{className:`label`,children:`About EGC`}),(0,j.jsx)(`h2`,{className:`headline-medium`,children:`Built for the Kingdom's most demanding projects.`}),(0,j.jsx)(`p`,{className:`body-text`,children:`Engineering Grouping Co. (EGC) is a Riyadh-based specialty contracting and manufacturing company. We run our own fabrication shops for steel, timber, and lead sheet — every project moves from design to site under one roof, one schedule, and one quality standard.`}),(0,j.jsx)(`p`,{className:`body-text`,children:`From government infrastructure and industrial facilities to hospitality fit-outs and giga-project packages, EGC is the contractor that builds what others only draw.`}),(0,j.jsxs)(k,{to:`/about`,className:`btn btn-secondary`,children:[`Our story `,(0,j.jsx)(lr,{size:14})]})]}),(0,j.jsx)(M,{delay:2,children:(0,j.jsx)(`div`,{className:`h-photo-placeholder`,children:`Company / site photo`})})]})})}),(0,j.jsx)(`section`,{className:`section section-gray`,children:(0,j.jsxs)(`div`,{className:`container`,children:[(0,j.jsxs)(M,{className:`h-section-head`,children:[(0,j.jsx)(`p`,{className:`label`,children:`Our Expertise`}),(0,j.jsx)(`h2`,{className:`headline-medium`,children:`Three materials. One standard.`}),(0,j.jsx)(`p`,{className:`section-sub`,children:`EGC runs its own fabrication shops — every project moves from design to site under one roof, one schedule, and one quality standard.`})]}),(0,j.jsx)(`div`,{className:`h-div-grid`,children:Tr.map((e,t)=>(0,j.jsx)(M,{delay:t+1,children:(0,j.jsxs)(`div`,{className:`h-div-card`,children:[(0,j.jsxs)(`div`,{className:`h-div-card-top`,children:[(0,j.jsxs)(`span`,{className:`h-div-num`,children:[`Division `,e.num]}),e.badge&&(0,j.jsx)(`span`,{className:`h-div-badge`,children:e.badge})]}),Br[e.id],(0,j.jsx)(`h3`,{className:`headline-small`,style:{margin:`12px 0 4px`},children:e.label}),(0,j.jsx)(`p`,{className:`tag-mono`,children:e.tag}),(0,j.jsx)(`p`,{className:`body-text`,style:{fontSize:`0.9rem`,marginTop:6,marginBottom:18},children:e.summary}),(0,j.jsxs)(k,{to:`/divisions`,className:`btn btn-secondary btn-sm`,children:[`Learn more `,(0,j.jsx)(lr,{size:13})]})]})},e.id))})]})}),(0,j.jsx)(`section`,{className:`section`,children:(0,j.jsxs)(`div`,{className:`container`,children:[(0,j.jsxs)(M,{className:`h-row-head`,children:[(0,j.jsxs)(`div`,{children:[(0,j.jsx)(`p`,{className:`label`,children:`Selected Projects`}),(0,j.jsx)(`h2`,{className:`headline-medium`,style:{marginBottom:0},children:`Where we build.`})]}),(0,j.jsxs)(k,{to:`/projects`,className:`btn btn-secondary btn-sm`,children:[`All projects `,(0,j.jsx)(lr,{size:13})]})]}),(0,j.jsx)(`div`,{className:`h-proj-grid`,children:Er.slice(0,3).map((e,t)=>(0,j.jsx)(M,{delay:t+1,children:(0,j.jsxs)(`div`,{className:`h-proj-card`,children:[(0,j.jsxs)(`div`,{className:`h-proj-card-top`,children:[(0,j.jsx)(`span`,{className:`h-proj-city`,children:e.city}),(0,j.jsx)(`span`,{className:`status-pill status-${e.status.toLowerCase()}`,children:e.status})]}),(0,j.jsx)(`h3`,{className:`h-proj-name`,children:e.name}),(0,j.jsxs)(`div`,{className:`h-proj-meta`,children:[(0,j.jsx)(`span`,{children:e.sector}),(0,j.jsx)(`span`,{children:`·`}),(0,j.jsx)(`span`,{children:Tr.find(t=>t.id===e.division)?.label}),(0,j.jsx)(`span`,{children:`·`}),(0,j.jsx)(`span`,{children:e.year})]}),(0,j.jsx)(`p`,{className:`h-proj-blurb`,children:e.blurb})]})},e.id))})]})}),(0,j.jsx)(`section`,{className:`section section-gray`,children:(0,j.jsx)(`div`,{className:`container`,children:(0,j.jsxs)(M,{className:`h-careers-strip`,children:[(0,j.jsxs)(`div`,{children:[(0,j.jsx)(`p`,{className:`label`,children:`Work With Us`}),(0,j.jsx)(`h2`,{className:`headline-medium`,style:{marginBottom:8},children:`We're building our team.`}),(0,j.jsx)(`p`,{className:`section-sub`,style:{marginTop:0},children:`EGC is growing across all three divisions. Fabricators, site supervisors, engineers, and support professionals across Riyadh and on sites Kingdom-wide.`})]}),(0,j.jsxs)(k,{to:`/careers`,className:`btn btn-primary`,children:[`View open positions `,(0,j.jsx)(lr,{size:15})]})]})})}),(0,j.jsx)(`section`,{className:`section`,children:(0,j.jsx)(`div`,{className:`container`,children:(0,j.jsxs)(M,{className:`h-cta-banner`,children:[(0,j.jsx)(`p`,{className:`label`,children:`Get In Touch`}),(0,j.jsx)(`h2`,{className:`headline-medium`,style:{marginBottom:10},children:`Ready to start your project?`}),(0,j.jsx)(`p`,{className:`section-sub`,style:{margin:`0 auto 28px`,textAlign:`center`},children:`Consult with our team for solutions tailored to your scope, timeline, and budget.`}),(0,j.jsxs)(`div`,{className:`h-cta-btns`,children:[(0,j.jsx)(k,{to:`/contact`,className:`btn btn-primary btn-lg`,children:`Contact Us`}),(0,j.jsx)(`a`,{href:`tel:+966110000000`,className:`btn btn-secondary btn-lg`,children:`+966 11 000 0000`})]})]})})}),(0,j.jsx)(`style`,{children:`
         /* ── HERO ── */
         .h-hero {
           padding: 100px 0 80px;
-          background: linear-gradient(180deg, #EFF6FF 0%, #ffffff 100%);
-          border-bottom: 1px solid #BFDBFE;
+          background: linear-gradient(180deg, var(--blue-light) 0%, var(--white) 100%);
+          border-bottom: 1px solid var(--blue-mid);
           text-align: center;
         }
         .h-hero-inner { display: flex; flex-direction: column; align-items: center; }
-        .h-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #2563EB; margin-bottom: 18px; }
+        .h-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; }
         .h-headline {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-display);
           font-size: clamp(2.2rem, 5vw, 3.8rem);
           font-weight: 800; line-height: 1.07;
-          color: #0F172A; letter-spacing: -0.02em;
+          color: var(--dark); letter-spacing: -0.02em;
           max-width: 820px; margin: 0 auto 20px;
         }
         .h-sub {
-          font-size: 1.08rem; color: #6B7280;
+          font-size: 1.08rem; color: var(--muted);
           max-width: 600px; margin: 0 auto; line-height: 1.72;
         }
         .h-btn-group { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
         .h-trust { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
-        .h-trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 500; color: #6B7280; }
-        .h-trust-item svg { color: #2563EB; }
+        .h-trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 500; color: var(--muted); }
+        .h-trust-item svg { color: var(--blue); }
 
         /* ── STATS ── */
-        .h-stats { background: #2563EB; }
+        .h-stats { background: var(--blue); }
         .h-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
         .h-stat { padding: 40px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
         .h-stat:last-child { border-right: none; }
-        .h-stat-num { font-family: 'DM Sans', sans-serif; font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; }
+        .h-stat-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
         .h-stat-lbl { font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; }
 
         /* ── FEATURE GRID ── */
         .h-feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
         .h-photo-placeholder {
           width: 100%; aspect-ratio: 16/10;
-          background: #F9FAFB; border: 1.5px solid #E5E7EB;
-          border-radius: 12px; display: flex; align-items: center;
-          justify-content: center; color: #9CA3AF; font-size: 0.85rem; font-weight: 500;
+          background: var(--gray-bg); border: 1.5px solid var(--border);
+          border-radius: var(--radius-lg); display: flex; align-items: center;
+          justify-content: center; color: var(--muted); font-size: 0.85rem; font-weight: 500;
         }
 
         /* ── SECTION HEAD ── */
@@ -280,40 +193,40 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         /* ── DIVISIONS ── */
         .h-div-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .h-div-card {
-          background: #fff; border: 1.5px solid #E5E7EB;
-          border-top: 3px solid #2563EB;
-          border-radius: 12px; padding: 28px 24px;
+          background: var(--white); border: 1.5px solid var(--border);
+          border-top: 3px solid var(--blue);
+          border-radius: var(--radius-lg); padding: 28px 24px;
           display: flex; flex-direction: column;
           transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
         .h-div-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,99,235,0.1); }
         .h-div-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .h-div-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; }
-        .h-div-badge { font-size: 0.6rem; font-weight: 800; background: #2563EB; color: #fff; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.06em; }
+        .h-div-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+        .h-div-badge { font-size: 0.6rem; font-weight: 800; background: var(--blue); color: var(--white); padding: 3px 8px; border-radius: 4px; letter-spacing: 0.06em; }
 
         /* ── PROJECT CARDS ── */
         .h-proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
         .h-proj-card {
-          background: #fff; border: 1.5px solid #E5E7EB; border-radius: 12px; padding: 22px;
+          background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 22px;
           transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
-        .h-proj-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.08); border-color: #BFDBFE; }
+        .h-proj-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.08); border-color: var(--blue-mid); }
         .h-proj-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .h-proj-city { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #2563EB; }
-        .h-proj-name { font-family: 'DM Sans', sans-serif; font-size: 1.02rem; font-weight: 700; color: #0F172A; margin-bottom: 8px; line-height: 1.3; }
-        .h-proj-meta { display: flex; gap: 6px; font-size: 0.76rem; color: #9CA3AF; margin-bottom: 10px; flex-wrap: wrap; }
-        .h-proj-blurb { font-size: 0.875rem; color: #6B7280; line-height: 1.6; margin: 0; }
+        .h-proj-city { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+        .h-proj-name { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.3; }
+        .h-proj-meta { display: flex; gap: 6px; font-size: 0.76rem; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; }
+        .h-proj-blurb { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin: 0; }
 
         /* ── CAREERS STRIP ── */
         .h-careers-strip {
-          background: #fff; border: 1.5px solid #E5E7EB; border-radius: 12px; padding: 40px 48px;
+          background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 40px 48px;
           display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;
         }
 
         /* ── CTA ── */
         .h-cta-banner {
-          background: #F9FAFB; border: 1.5px solid #E5E7EB;
-          border-radius: 12px; padding: 60px 48px; text-align: center;
+          background: var(--gray-bg); border: 1.5px solid var(--border);
+          border-radius: var(--radius-lg); padding: 60px 48px; text-align: center;
         }
         .h-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
