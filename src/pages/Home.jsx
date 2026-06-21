@@ -5,7 +5,7 @@ import { STATS, DIVISIONS, PROJECTS, SITE } from '../data';
 
 const TRUST = [
   'ISO 9001 Certified',
-  '18+ Years in KSA',
+  '18+ Years of Operation',
   '3 Active Divisions',
 ];
 
@@ -38,7 +38,7 @@ export default function Home() {
       <section className="h-hero">
         <div className="container">
           <FadeIn className="h-hero-inner">
-            <p className="h-label">Since [YEAR] · Riyadh, Kingdom of Saudi Arabia</p>
+            <p className="h-label">Jeddah, Kingdom of Saudi Arabia</p>
             <h1 className="h-headline">
               Steel, Wood &amp; Lead Sheet —<br />
               Designed, Fabricated, Delivered.
@@ -85,7 +85,7 @@ export default function Home() {
               <p className="label">About EGC</p>
               <h2 className="headline-medium">Built for the Kingdom's most demanding projects.</h2>
               <p className="body-text">
-                Engineering Grouping Co. (EGC) is a Riyadh-based specialty contracting
+                Engineering Grouping Co. (EGC) is a Jeddah-based specialty contracting
                 and manufacturing company. We run our own fabrication shops for steel,
                 timber, and lead sheet — every project moves from design to site under
                 one roof, one schedule, and one quality standard.

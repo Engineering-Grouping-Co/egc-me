@@ -23,7 +23,7 @@ export default function About() {
             <p className="overline">About EGC</p>
             <h1 className="headline-lg" style={{ marginBottom: 14 }}>About Engineering Grouping Co.</h1>
             <p className="section-sub">
-              A Riyadh-based specialty contracting and manufacturing company — designing,
+              A Jeddah-based specialty contracting and manufacturing company — designing,
               fabricating, and installing structural steel, architectural joinery, and lead
               sheet works across the Kingdom of Saudi Arabia.
             </p>
@@ -39,7 +39,7 @@ export default function About() {
               <p className="overline">Our Story</p>
               <h2 className="headline-lg" style={{ marginBottom: 18 }}>Building the Kingdom, one material at a time.</h2>
               <p className="body-lg" style={{ marginBottom: 14 }}>
-                Engineering Grouping Co. was founded in [YEAR] with a straightforward conviction:
+                Engineering Grouping Co. was established with a straightforward conviction:
                 that the best way to deliver a fabrication project is to control it from first
                 drawing to final handover. We started with structural steel and built our own
                 shop rather than subcontracting — because control over quality and programme
@@ -53,7 +53,7 @@ export default function About() {
                 clients across the Kingdom.
               </p>
               <p className="body-md" style={{ color: 'var(--muted)' }}>
-                In 2026 we are launching our third division, Lead Sheet Works, to serve the
+                Our third division, Lead Sheet Works, is now active, to serve the
                 waterproofing and roofing requirements of giga-projects and premium
                 developments. EGC now covers three materials, three disciplines, and one
                 consistent standard of delivery.
@@ -62,7 +62,7 @@ export default function About() {
             <FadeIn delay={2}>
               <div className="photo-placeholder aspect-16-10" style={{ marginBottom: 16 }}>Company / site photo</div>
               <div className="about-quick-facts">
-                <div className="qf-item"><span className="qf-num">[YEAR]</span><span className="qf-lbl">Founded</span></div>
+                <div className="qf-item"><span className="qf-num">Est.</span><span className="qf-lbl">Year Founded</span></div>
                 <div className="qf-item"><span className="qf-num">150+</span><span className="qf-lbl">Projects</span></div>
                 <div className="qf-item"><span className="qf-num">3</span><span className="qf-lbl">Divisions</span></div>
                 <div className="qf-item"><span className="qf-num">9</span><span className="qf-lbl">Regions</span></div>
@@ -179,24 +179,10 @@ export default function About() {
               Leadership and division heads driving EGC's projects from tender to handover.
             </p>
           </FadeIn>
-          <div className="grid-4">
-            {TEAM.map((m, i) => {
-              const initials = m.name.split(' ').map(p => p[0]).join('').slice(0, 2);
-              return (
-                <FadeIn delay={(i % 4) + 1} key={m.id}>
-                  <div className="card team-card">
-                    <div className="team-card-top">
-                      <span className="team-badge">{m.badge}</span>
-                      <ShieldCheck size={13} className="team-verified" />
-                    </div>
-                    <div className="team-avatar">{initials}</div>
-                    <h4 className="team-name">{m.name}</h4>
-                    <p className="team-role">{m.role}</p>
-                    <span className="team-dept">{m.dept}</span>
-                  </div>
-                </FadeIn>
-              );
-            })}
+          <div className="team-placeholder">
+            <p className="body-md" style={{ color: 'var(--muted)', textAlign: 'center', padding: '48px 24px', margin: 0 }}>
+              Leadership team profiles coming soon.
+            </p>
           </div>
         </div>
       </section>
@@ -236,6 +222,7 @@ export default function About() {
         .team-name { font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
         .team-role { font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; line-height: 1.4; }
         .team-dept { font-size: 0.68rem; font-weight: 600; background: var(--gray-bg); color: var(--blue); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--border); }
+        .team-placeholder { border: 1.5px solid var(--border); border-radius: var(--radius-lg); background: var(--gray-bg); }
 
         @media (max-width: 860px) { .about-quick-facts { grid-template-columns: repeat(2, 1fr); } .qf-item:nth-child(2) { border-right: none; } .qf-item:nth-child(1), .qf-item:nth-child(2) { border-bottom: 1px solid var(--border); } }
         @media (max-width: 600px) { .sector-card { padding: 28px 22px; } }

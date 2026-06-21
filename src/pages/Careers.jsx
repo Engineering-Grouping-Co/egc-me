@@ -19,7 +19,8 @@ function matchesFilter(career, f) {
   if (f === 'Steel')      return dept.includes('steel');
   if (f === 'Wood')       return dept.includes('wood');
   if (f === 'Lead Sheet') return dept.includes('lead');
-  return !dept.includes('manufacturing');
+  if (f === 'Corporate')  return !dept.includes('manufacturing') && !dept.includes('steel') && !dept.includes('wood') && !dept.includes('lead');
+  return false;
 }
 
 export default function Careers() {
@@ -38,7 +39,7 @@ export default function Careers() {
             <p className="section-sub">
               We're looking for skilled fabricators, site supervisors, engineers, and
               support professionals to join our growing team across all three divisions
-              in Riyadh and on sites across the Kingdom.
+              in Jeddah and across the Kingdom.
             </p>
           </FadeIn>
         </div>
@@ -72,7 +73,7 @@ export default function Careers() {
             <p className="overline">Open Positions</p>
             <h2 className="headline-lg">Current openings.</h2>
             <p className="section-sub">
-              All positions are based in Riyadh unless otherwise noted. Site roles require
+              Positions are based in Jeddah or on-site unless otherwise noted. Site roles require
               travel and may be located across multiple regions.
             </p>
           </FadeIn>
