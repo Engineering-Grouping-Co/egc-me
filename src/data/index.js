@@ -144,19 +144,20 @@ export const CERTIFICATIONS = [
 ];
 
 export const CAREERS = [
-  { title: 'Senior Steel Fabricator',        dept: 'Manufacturing — Steel',      location: 'Riyadh',       type: 'Full-time' },
-  { title: 'Steel Erection Foreman',         dept: 'Manufacturing — Steel',      location: 'Riyadh / Site',type: 'Full-time' },
-  { title: 'CNC Machine Operator',           dept: 'Manufacturing — Steel',      location: 'Riyadh',       type: 'Full-time' },
+  { title: 'Senior Steel Fabricator',        dept: 'Manufacturing — Steel',      location: 'Jeddah',       type: 'Full-time' },
+  { title: 'Steel Erection Foreman',         dept: 'Manufacturing — Steel',      location: 'Jeddah / Site',type: 'Full-time' },
+  { title: 'CNC Machine Operator',           dept: 'Manufacturing — Steel',      location: 'Jeddah',       type: 'Full-time' },
   { title: 'Site Supervisor — Joinery',      dept: 'Manufacturing — Wood',       location: 'Jeddah',       type: 'Full-time' },
-  { title: 'Joinery Shop Manager',           dept: 'Manufacturing — Wood',       location: 'Riyadh',       type: 'Full-time' },
+  { title: 'Joinery Shop Manager',           dept: 'Manufacturing — Wood',       location: 'Jeddah',       type: 'Full-time' },
   { title: 'Lead Sheet Technician',          dept: 'Manufacturing — Lead Sheet', location: 'NEOM',         type: 'Full-time' },
-  { title: 'HSE Officer',                    dept: 'Health & Safety',            location: 'Riyadh',       type: 'Full-time' },
-  { title: 'Procurement Specialist',         dept: 'Procurement',                location: 'Riyadh',       type: 'Full-time' },
-  { title: 'Business Development Executive', dept: 'Commercial',                 location: 'Riyadh',       type: 'Full-time' },
-  { title: 'Project Engineer',               dept: 'Projects',                   location: 'Riyadh / Site',type: 'Full-time' },
-  { title: 'QA/QC Inspector',               dept: 'Quality',                    location: 'Riyadh / Site',type: 'Full-time' },
-  { title: 'Finance & Admin Officer',        dept: 'Corporate',                  location: 'Riyadh',       type: 'Full-time' },
+  { title: 'HSE Officer',                    dept: 'Health & Safety',            location: 'Jeddah',       type: 'Full-time' },
+  { title: 'Procurement Specialist',         dept: 'Procurement',                location: 'Jeddah',       type: 'Full-time' },
+  { title: 'Business Development Executive', dept: 'Commercial',                 location: 'Jeddah',       type: 'Full-time' },
+  { title: 'Project Engineer',               dept: 'Projects',                   location: 'Jeddah / Site',type: 'Full-time' },
+  { title: 'QA/QC Inspector',               dept: 'Quality',                    location: 'Jeddah / Site',type: 'Full-time' },
+  { title: 'Finance & Admin Officer',        dept: 'Corporate',                  location: 'Jeddah',       type: 'Full-time' },
 ];
+
 
 export const SUPPLIER_STEPS = [
   { n: '01', title: 'Register',                desc: 'Create a vendor account on the EGC ERP Supplier Portal at erp.egc-me.com.' },
