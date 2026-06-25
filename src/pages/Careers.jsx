@@ -1,165 +1,127 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ArrowRight, Wrench, Building2, TrendingUp, ShieldCheck, Briefcase, Calendar, Mail } from 'lucide-react';
+import { MapPin, ArrowRight, Wrench, Building2, TrendingUp, ShieldCheck, Briefcase, Mail } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import { CAREERS, SITE } from '../data';
 
+/* ── Culture perks ── */
 const CULTURE = [
-  { 
-    title: 'In-House Shop Floor', 
-    desc: 'Work directly in our Jeddah workshops. Learn and collaborate with master fabricators and carpenters using advanced CNC machinery.',
+  {
+    title: 'In-House Shop Floor',
+    desc: 'Work directly in our Jeddah workshops with master fabricators and carpenters using advanced CNC machinery.',
     icon: Wrench,
     color: '#2563EB',
-    bg: '#EFF6FF'
+    bg: '#EFF6FF',
   },
-  { 
-    title: 'Giga-Project Scale', 
-    desc: 'Contribute to Saudi Arabia\'s landmark Vision 2030 projects. EGC is on the ground fabricating structural frames and premium interiors.',
+  {
+    title: 'Giga-Project Scale',
+    desc: "Contribute to Saudi Arabia's landmark Vision 2030 projects. EGC is on the ground fabricating structural frames and premium interiors.",
     icon: Building2,
     color: '#D97706',
-    bg: '#FFFBEB'
+    bg: '#FFFBEB',
   },
-  { 
-    title: 'Career Advancement', 
-    desc: 'We support internal growth. Clear training paths from apprentice to team leader, and project coordinators to division heads.',
+  {
+    title: 'Career Advancement',
+    desc: 'Clear training paths from apprentice to team leader, and project coordinators to division heads.',
     icon: TrendingUp,
     color: '#10B981',
-    bg: '#ECFDF5'
+    bg: '#ECFDF5',
   },
-  { 
-    title: 'Safety First Culture', 
-    desc: 'Strict HSE standards across all sites and workshops. We prioritize safety through regular training, clean lines, and quality gear.',
+  {
+    title: 'Safety First Culture',
+    desc: 'Strict HSE standards across all sites and workshops through regular training, clean lines, and quality gear.',
     icon: ShieldCheck,
     color: '#475569',
-    bg: '#F1F5F9'
+    bg: '#F1F5F9',
   },
 ];
 
-const DIV_ACCENTS = {
-  steel:     { border: '#2563EB', light: '#EFF6FF', mid: '#BFDBFE', text: '#1E40AF', label: 'Steel' },
-  wood:      { border: '#D97706', light: '#FFFBEB', mid: '#FDE68A', text: '#92400E', label: 'Wood' },
-  leadsheet: { border: '#475569', light: '#F1F5F9', mid: '#CBD5E1', text: '#1E293B', label: 'Lead Sheet' },
-  default:   { border: '#3B82F6', light: '#EFF6FF', mid: '#BFDBFE', text: '#1D4ED8', label: 'Corporate' }
+/* ── Division colour maps ── */
+const DIV_ACCENT = {
+  steel:     { border: '#2563EB', light: '#EFF6FF', text: '#1E40AF', badge: '#DBEAFE', label: 'Steel' },
+  wood:      { border: '#D97706', light: '#FFFBEB', text: '#92400E', badge: '#FDE68A', label: 'Wood' },
+  leadsheet: { border: '#475569', light: '#F1F5F9', text: '#1E293B', badge: '#CBD5E1', label: 'Lead Sheet' },
+  corporate: { border: '#2563EB', light: '#EFF6FF', text: '#1D4ED8', badge: '#DBEAFE', label: 'Corporate' },
 };
 
+/* ── Per-role descriptions ── */
 const JOB_DESCS = {
-  'Senior Steel Fabricator': 'Read engineering drawings, supervise assembly processes, and perform heavy-duty fabrication and welding in our Jeddah workshop.',
-  'Steel Erection Foreman': 'Manage on-site steel erection teams, enforce safety protocols, and coordinate crane operations and structural alignment.',
-  'CNC Machine Operator': 'Operate and program CNC plasma cutters, hydraulic drills, and band saws. Maintain precise tolerances for structural steel.',
-  'Site Supervisor — Joinery': 'Oversee the installation of premium architectural joinery and casework on commercial and hospitality fit-out sites.',
-  'Joinery Shop Manager': 'Direct operations at our wood workshop. Allocate materials, schedule craftsman labor, and maintain finishing quality.',
-  'Lead Sheet Technician': 'Install code-compliant lead sheet roofing, step flashings, and architectural cladding for luxury residential and heritage builds.',
-  'HSE Officer': 'Monitor workshop and site compliance, run daily toolbox talks, audit equipment safety, and report incidents to management.',
-  'Procurement Specialist': 'Liaise with approved suppliers, evaluate material bids, negotiate terms, and secure logistical delivery to our Jeddah facility.',
-  'Business Development Executive': 'Identify bid opportunities, establish relationships with Tier-1 main contractors, and coordinate pre-qualification files.',
-  'Project Engineer': 'Manage structural or joinery engineering packages, coordinate shop drawings, and verify structural calculations.',
-  'QA/QC Inspector': 'Perform visual and non-destructive welds testing, verify joinery tolerances, and document compliance for client handovers.',
-  'Finance & Admin Officer': 'Handle local commercial administration, invoicing reconciliations, supplier records, and standard payroll tasks.'
+  'Senior Steel Fabricator':        'Read engineering drawings, supervise assembly, and perform heavy-duty fabrication and welding in our Jeddah workshop.',
+  'Steel Erection Foreman':         'Lead on-site steel erection teams, enforce safety protocols, and coordinate crane operations and structural alignment.',
+  'CNC Machine Operator':           'Operate and program CNC plasma cutters, hydraulic drills, and band saws for precise structural steel cutting.',
+  'Site Supervisor — Joinery':      'Oversee installation of premium architectural joinery and casework on commercial and hospitality fit-out sites.',
+  'Joinery Shop Manager':           'Direct operations at our wood workshop — allocate materials, schedule craftsmen, and maintain finishing quality.',
+  'Lead Sheet Technician':          'Install code-compliant lead sheet roofing, step flashings, and architectural cladding for luxury and heritage builds.',
+  'HSE Officer':                    'Monitor workshop and site compliance, run daily toolbox talks, audit equipment, and report incidents to management.',
+  'Procurement Specialist':         'Liaise with approved suppliers, evaluate bids, negotiate terms, and secure delivery to our Jeddah facility.',
+  'Business Development Executive': 'Identify bid opportunities, build Tier-1 contractor relationships, and coordinate pre-qualification submissions.',
+  'Project Engineer':               'Manage structural or joinery engineering packages, coordinate shop drawings, and verify design calculations.',
+  'QA/QC Inspector':                'Perform visual and NDT weld inspections, verify joinery tolerances, and document compliance for client handovers.',
+  'Finance & Admin Officer':        'Handle commercial administration, invoicing, supplier records, and general payroll tasks from the Jeddah office.',
 };
 
-const DIV_FILTERS = ['All', 'Steel', 'Wood', 'Lead Sheet', 'Corporate & Support'];
+const FILTERS = ['All', 'Steel', 'Wood', 'Lead Sheet', 'Corporate & Support'];
 
-function getDivisionKey(dept) {
+function getDivKey(dept) {
   const d = dept.toLowerCase();
   if (d.includes('steel')) return 'steel';
-  if (d.includes('wood')) return 'wood';
-  if (d.includes('lead')) return 'leadsheet';
-  return 'default';
+  if (d.includes('wood'))  return 'wood';
+  if (d.includes('lead'))  return 'leadsheet';
+  return 'corporate';
 }
 
-function matchesFilter(career, filter) {
+function matchFilter(career, filter) {
   if (filter === 'All') return true;
-  const dept = career.dept.toLowerCase();
-  if (filter === 'Steel') return dept.includes('steel');
-  if (filter === 'Wood') return dept.includes('wood');
-  if (filter === 'Lead Sheet') return dept.includes('lead');
-  if (filter === 'Corporate & Support') {
-    return !dept.includes('manufacturing') && !dept.includes('steel') && !dept.includes('wood') && !dept.includes('lead');
-  }
+  const d = career.dept.toLowerCase();
+  if (filter === 'Steel')              return d.includes('steel');
+  if (filter === 'Wood')               return d.includes('wood');
+  if (filter === 'Lead Sheet')         return d.includes('lead');
+  if (filter === 'Corporate & Support')
+    return !d.includes('manufacturing') && !d.includes('steel') && !d.includes('wood') && !d.includes('lead');
   return false;
 }
 
 export default function Careers() {
   const [activeFilter, setActiveFilter] = useState('All');
-  const filtered = CAREERS.filter(c => matchesFilter(c, activeFilter));
-
-  const handleScrollToJobs = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('openings');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const filtered = CAREERS.filter(c => matchFilter(c, activeFilter));
 
   return (
     <>
-      {/* ── BREADCRUMB ── */}
-      <div style={{ background: 'var(--blue-light)', paddingTop: 20 }}>
+      {/* ── PAGE HERO ── matches all other pages exactly ── */}
+      <section className="page-hero">
         <div className="container">
           <nav className="breadcrumb">
             <Link to="/">Home</Link><span>/</span><span>Careers</span>
           </nav>
-        </div>
-      </div>
-
-      {/* ── STUNNING HERO SECTION ── */}
-      <section className="careers-hero">
-        <div className="container">
-          <div className="careers-hero-grid">
-            <FadeIn className="careers-hero-content">
-              <p className="overline">Work with EGC</p>
-              <h1 className="headline-large" style={{ marginBottom: 16 }}>
-                Build your future with the craftsmanship leader.
-              </h1>
-              <p className="body-lg text-muted" style={{ marginBottom: 28 }}>
-                Join an elite engineering and specialty contracting team. EGC offers fully in-house 
-                fabrication and field operations across structural steel, custom joinery, and lead sheet works. 
-                Shape your career on the Kingdom's most ambitious Vision 2030 projects.
-              </p>
-              <div className="btn-group" style={{ marginTop: 0 }}>
-                <a href="#openings" onClick={handleScrollToJobs} className="btn btn-primary btn-lg">
-                  Explore Openings <ArrowRight size={16} />
-                </a>
-                <Link to="/about" className="btn btn-secondary btn-lg">
-                  Our Values
-                </Link>
-              </div>
-            </FadeIn>
-            <FadeIn delay={2} className="careers-hero-img-col">
-              <div className="careers-hero-image-wrap">
-                <img 
-                  src="/careers_hero.png" 
-                  alt="EGC Specialty Contracting Divisions: Steel Fabrication, Wood Joinery, Lead Sheet Roofing" 
-                  className="careers-hero-image"
-                />
-              </div>
-            </FadeIn>
-          </div>
+          <FadeIn>
+            <p className="overline">Work With Us</p>
+            <h1 className="headline-lg" style={{ marginBottom: 14 }}>Build your career at EGC.</h1>
+            <p className="section-sub">
+              We're looking for skilled fabricators, site supervisors, engineers, and support professionals
+              to join our team in Jeddah and across the Kingdom.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ── CULTURE / BENEFITS ── */}
+      {/* ── CULTURE / WHY EGC ── */}
       <section className="section section-gray">
         <div className="container">
           <FadeIn className="section-header center">
             <p className="overline">Why EGC</p>
-            <h2 className="headline-medium">The EGC workplace experience.</h2>
-            <p className="section-sub">
-              We invest in our people, maintain advanced in-house facilities, and provide a direct path 
-              to mastering specialized industrial trades.
-            </p>
+            <h2 className="headline-lg">Working here.</h2>
           </FadeIn>
           <div className="grid-4">
             {CULTURE.map((c, i) => {
               const Icon = c.icon;
               return (
                 <FadeIn delay={i + 1} key={c.title}>
-                  <div className="card perk-card">
-                    <div className="perk-icon-wrap" style={{ background: c.bg, color: c.color }}>
-                      <Icon size={22} />
+                  <div className="card cr-perk-card">
+                    <div className="cr-perk-icon" style={{ background: c.bg, color: c.color }}>
+                      <Icon size={20} />
                     </div>
-                    <h3 className="headline-sm" style={{ marginBottom: 8 }}>{c.title}</h3>
-                    <p className="body-sm" style={{ margin: 0, lineHeight: 1.6 }}>{c.desc}</p>
+                    <h3 className="headline-sm" style={{ margin: '14px 0 8px' }}>{c.title}</h3>
+                    <p className="body-sm" style={{ margin: 0 }}>{c.desc}</p>
                   </div>
                 </FadeIn>
               );
@@ -169,19 +131,19 @@ export default function Careers() {
       </section>
 
       {/* ── OPEN POSITIONS ── */}
-      <section id="openings" className="section" style={{ paddingBottom: 80 }}>
+      <section id="openings" className="section">
         <div className="container">
           <FadeIn className="section-header">
             <p className="overline">Open Positions</p>
-            <h2 className="headline-medium">Find your next role.</h2>
+            <h2 className="headline-lg">Current openings.</h2>
             <p className="section-sub">
-              All roles are based in Jeddah or on-site unless specified. Site positions support active 
-              contracts across multiple regions including Riyadh, NEOM, and Western Province.
+              Roles are based in Jeddah or on-site unless noted. Site positions may require travel across
+              multiple regions including Riyadh, NEOM, and Western Province.
             </p>
           </FadeIn>
 
-          <FadeIn className="chip-row" style={{ marginBottom: 36 }}>
-            {DIV_FILTERS.map(f => (
+          <FadeIn className="chip-row" style={{ marginBottom: 32 }}>
+            {FILTERS.map(f => (
               <button
                 key={f}
                 className={`chip${activeFilter === f ? ' active' : ''}`}
@@ -192,36 +154,34 @@ export default function Careers() {
             ))}
           </FadeIn>
 
-          <div className="jobs-cards-grid">
+          <div className="cr-jobs-grid">
             {filtered.map((c, i) => {
-              const divKey = getDivisionKey(c.dept);
-              const accent = DIV_ACCENTS[divKey];
-              const desc = JOB_DESCS[c.title] || 'Join EGC and work on custom contracting packages. Assist with drawings, material handling, or site coordinates depending on expertise.';
-              
+              const key  = getDivKey(c.dept);
+              const acc  = DIV_ACCENT[key];
+              const desc = JOB_DESCS[c.title] ?? 'Join EGC and contribute to world-class specialty contracting packages across the Kingdom.';
               return (
                 <FadeIn delay={(i % 3) + 1} key={c.title}>
-                  <div className="job-card" style={{ '--jc-accent': accent.border, '--jc-light': accent.light, '--jc-text': accent.text }}>
-                    <div className="job-card-bar" />
-                    <div className="job-card-body">
-                      <span className="job-card-dept">{accent.label}</span>
-                      <h3 className="job-card-title">{c.title}</h3>
-                      <p className="job-card-desc">{desc}</p>
-                      
-                      <div className="job-card-meta">
-                        <div className="job-card-meta-item">
-                          <MapPin size={13} style={{ color: 'var(--muted)' }} />
-                          <span>{c.location}</span>
-                        </div>
-                        <div className="job-card-meta-item">
-                          <Briefcase size={13} style={{ color: 'var(--muted)' }} />
-                          <span>{c.type}</span>
-                        </div>
+                  <div className="cr-job-card" style={{ '--jc-accent': acc.border, '--jc-light': acc.light, '--jc-text': acc.text }}>
+                    <div className="cr-job-bar" />
+                    <div className="cr-job-body">
+                      <span className="cr-job-division" style={{ background: acc.badge, color: acc.text }}>{acc.label}</span>
+                      <h3 className="cr-job-title">{c.title}</h3>
+                      <p className="cr-job-desc">{desc}</p>
+                      <div className="cr-job-meta">
+                        <span className="cr-job-meta-item">
+                          <MapPin size={12} />
+                          {c.location}
+                        </span>
+                        <span className="cr-job-meta-item">
+                          <Briefcase size={12} />
+                          {c.type}
+                        </span>
                       </div>
                     </div>
-                    <div className="job-card-footer">
-                      <a 
-                        href={`mailto:${SITE.email}?subject=Application for ${c.title} — EGC Careers&body=Dear EGC Recruitment Team,%0D%0A%0D%0AI am writing to express my interest in the ${c.title} position at Engineering Grouping Co.%0D%0A%0D%0APlease find attached my CV for your review.%0D%0A%0D%0AThank you.`} 
-                        className="btn btn-primary btn-block btn-sm"
+                    <div className="cr-job-footer">
+                      <a
+                        href={`mailto:${SITE.email}?subject=Application — ${c.title}&body=Dear EGC Recruitment Team,%0D%0A%0D%0AI am writing to apply for the ${c.title} position.%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0AThank you.`}
+                        className="btn btn-primary btn-sm btn-block"
                       >
                         Apply Now <ArrowRight size={13} />
                       </a>
@@ -233,279 +193,95 @@ export default function Careers() {
           </div>
 
           {filtered.length === 0 && (
-            <FadeIn className="jobs-empty-state">
-              <p>No active openings in this department at the moment. You can submit an open application below.</p>
-            </FadeIn>
+            <p style={{ textAlign: 'center', padding: '48px 0', color: 'var(--muted)' }}>
+              No open positions in this category right now — check back soon.
+            </p>
           )}
         </div>
       </section>
 
-      {/* ── OPEN APPLICATION BANNER ── */}
-      <section className="section section-gray" style={{ borderBottom: 'none' }}>
+      {/* ── OPEN APPLICATION ── */}
+      <section className="section section-gray">
         <div className="container">
-          <FadeIn className="open-app-banner">
-            <div className="open-app-left">
-              <div className="open-app-badge">
-                <Mail size={16} />
-                <span>General Submissions</span>
-              </div>
-              <h2 className="headline-medium" style={{ margin: '12px 0' }}>
-                Don't see a matching position?
-              </h2>
-              <p className="body-md text-muted" style={{ maxWidth: 580 }}>
-                We are always seeking exceptional welders, joiners, draftsmen, estimators, and project managers. 
-                Submit an open application, and we will contact you as soon as a suitable opening emerges.
+          <FadeIn className="cr-open-banner">
+            <div>
+              <p className="overline">Open Applications</p>
+              <h2 className="headline-md" style={{ marginBottom: 8 }}>Don't see the right role?</h2>
+              <p className="body-md" style={{ color: 'var(--muted)', maxWidth: 520, margin: 0 }}>
+                We review open applications and keep strong CVs on file for future openings. Send your CV
+                and a brief note about the kind of role you're looking for.
               </p>
             </div>
-            <div className="open-app-right">
-              <a 
-                href={`mailto:${SITE.email}?subject=Open Application — General Candidate Submission&body=Dear EGC Recruitment Team,%0D%0A%0D%0AI would like to submit an open application for future opportunities at Engineering Grouping Co.%0D%0A%0D%0AMy field of expertise is:%0D%0APreferred Location (Jeddah / NEOM / Site):%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0AThank you.`} 
-                className="btn btn-primary btn-lg btn-block"
-                style={{ justifyContent: 'center' }}
+            <div className="cr-open-actions">
+              <a
+                href={`mailto:${SITE.email}?subject=Open Application — EGC&body=Dear EGC Recruitment Team,%0D%0A%0D%0AI would like to submit an open application.%0D%0A%0D%0AMy area of expertise:%0D%0APreferred location (Jeddah / Site / NEOM):%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0AThank you.`}
+                className="btn btn-primary"
               >
-                Send Open Application <Mail size={15} style={{ marginLeft: 6 }} />
+                <Mail size={15} /> Send open application
               </a>
-              <span className="open-app-email-label">
-                Or email directly: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-              </span>
+              <a href={`mailto:${SITE.email}`} className="cr-email-link">{SITE.email}</a>
             </div>
           </FadeIn>
         </div>
       </section>
 
       <style>{`
-        /* Hero Styles */
-        .careers-hero {
-          padding: 60px 0 80px;
-          background: linear-gradient(180deg, var(--blue-light) 0%, #ffffff 100%);
-          overflow: hidden;
-        }
-        .careers-hero-grid {
-          display: grid;
-          grid-template-columns: 1.15fr 1fr;
-          gap: 56px;
-          align-items: center;
-        }
-        .careers-hero-content {
-          max-width: 580px;
-        }
-        .careers-hero-image-wrap {
-          border-radius: 14px;
-          overflow: hidden;
-          box-shadow: 0 20px 48px rgba(37, 99, 235, 0.12);
-          border: 1.5px solid var(--blue-mid);
-          background: #fff;
-          padding: 10px;
-        }
-        .careers-hero-image {
-          width: 100%;
-          height: auto;
-          display: block;
-          border-radius: 8px;
-          transition: transform 0.4s ease;
-        }
-        .careers-hero-image-wrap:hover .careers-hero-image {
-          transform: scale(1.015);
+        /* ── Perk cards ── */
+        .cr-perk-card { padding: 24px 22px; }
+        .cr-perk-icon {
+          width: 46px; height: 46px; border-radius: 10px;
+          display: flex; align-items: center; justify-content: center;
+          margin-bottom: 0;
         }
 
-        /* Perks / Culture Section */
-        .perk-card {
-          height: 100%;
-          padding: 24px;
-          background: #fff;
-        }
-        .perk-icon-wrap {
-          width: 48px;
-          height: 48px;
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 18px;
-        }
-
-        /* Jobs Grid & Cards */
-        .jobs-cards-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-        .job-card {
-          display: flex;
-          flex-direction: column;
-          background: #fff;
-          border: 1.5px solid var(--border);
-          border-radius: 12px;
-          overflow: hidden;
+        /* ── Job card grid ── */
+        .cr-jobs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .cr-job-card {
+          display: flex; flex-direction: column;
+          background: #fff; border: 1.5px solid var(--border);
+          border-radius: var(--radius-lg); overflow: hidden;
           height: 100%;
           transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
         }
-        .job-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-          border-color: var(--jc-accent);
+        .cr-job-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.07); border-color: var(--jc-accent); }
+        .cr-job-bar { height: 4px; background: var(--jc-accent); flex-shrink: 0; }
+        .cr-job-body { padding: 22px 22px 14px; display: flex; flex-direction: column; flex: 1; }
+        .cr-job-division {
+          display: inline-block; width: fit-content;
+          font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+          padding: 3px 9px; border-radius: 4px; margin-bottom: 12px;
         }
-        .job-card-bar {
-          height: 4px;
-          background: var(--jc-accent);
-          width: 100%;
+        .cr-job-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 0 0 10px; line-height: 1.3; }
+        .cr-job-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.65; margin: 0 0 18px; flex: 1; }
+        .cr-job-meta {
+          display: flex; gap: 16px; flex-wrap: wrap;
+          border-top: 1px solid var(--border); padding-top: 14px; margin-top: auto;
         }
-        .job-card-body {
-          padding: 24px 24px 16px;
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
+        .cr-job-meta-item {
+          display: flex; align-items: center; gap: 5px;
+          font-size: 0.75rem; color: var(--muted); font-weight: 500;
         }
-        .job-card-dept {
-          display: inline-block;
-          font-size: 0.65rem;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--jc-text);
-          background: var(--jc-light);
-          padding: 3px 8px;
-          border-radius: 4px;
-          margin-bottom: 12px;
-          width: fit-content;
-        }
-        .job-card-title {
-          font-family: var(--font-display);
-          font-size: 1.1rem;
-          font-weight: 700;
-          color: var(--dark);
-          margin: 0 0 10px;
-          line-height: 1.35;
-        }
-        .job-card-desc {
-          font-size: 0.84rem;
-          color: var(--muted);
-          line-height: 1.6;
-          margin: 0 0 18px;
-          flex-grow: 1;
-        }
-        .job-card-meta {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          border-top: 1px solid var(--border);
-          padding-top: 14px;
-          margin-top: auto;
-        }
-        .job-card-meta-item {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-size: 0.76rem;
-          color: var(--muted);
-          font-weight: 500;
-        }
-        .job-card-footer {
-          padding: 0 24px 24px;
-        }
+        .cr-job-footer { padding: 0 22px 22px; }
 
-        .jobs-empty-state {
-          text-align: center;
-          padding: 48px 20px;
-          border: 1.5px dashed var(--border);
-          border-radius: var(--radius-lg);
-          color: var(--muted);
-          font-size: 0.95rem;
+        /* ── Open application banner ── */
+        .cr-open-banner {
+          background: #fff; border: 1.5px solid var(--border);
+          border-radius: var(--radius-lg); padding: 40px 48px;
+          display: flex; justify-content: space-between; align-items: center;
+          gap: 32px; flex-wrap: wrap;
         }
+        .cr-open-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; flex-shrink: 0; }
+        .cr-email-link { font-size: 0.84rem; color: var(--blue); font-weight: 600; }
+        .cr-email-link:hover { text-decoration: underline; }
 
-        /* Open Application Banner */
-        .open-app-banner {
-          background: #fff;
-          border: 1.5px solid var(--border);
-          border-radius: 12px;
-          padding: 44px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 40px;
-        }
-        .open-app-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: var(--blue-light);
-          color: var(--blue);
-          font-size: 0.68rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          padding: 4px 10px;
-          border-radius: 999px;
-        }
-        .open-app-right {
-          flex-shrink: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          align-items: center;
-          max-width: 320px;
-          width: 100%;
-        }
-        .open-app-email-label {
-          font-size: 0.78rem;
-          color: var(--muted);
-        }
-        .open-app-email-label a {
-          color: var(--blue);
-          font-weight: 600;
-        }
-        .open-app-email-label a:hover {
-          text-decoration: underline;
-        }
-
-        /* Responsive Layouts */
-        @media (max-width: 1024px) {
-          .jobs-cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .careers-hero-grid {
-            gap: 36px;
-          }
-        }
-
+        /* ── Responsive ── */
+        @media (max-width: 1024px) { .cr-jobs-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 860px) {
-          .careers-hero-grid {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 44px;
-          }
-          .careers-hero-content {
-            max-width: 100%;
-          }
-          .careers-hero-img-col {
-            max-width: 500px;
-            margin: 0 auto;
-          }
-          .btn-group {
-            justify-content: center;
-          }
-          .open-app-banner {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 32px;
-            gap: 28px;
-          }
-          .open-app-right {
-            max-width: 100%;
-            align-items: flex-start;
-          }
+          .cr-open-banner { padding: 32px 28px; flex-direction: column; align-items: flex-start; }
         }
-
         @media (max-width: 600px) {
-          .jobs-cards-grid {
-            grid-template-columns: 1fr;
-          }
-          .open-app-banner {
-            padding: 24px;
-          }
-          .careers-hero {
-            padding: 40px 0 60px;
-          }
+          .cr-jobs-grid { grid-template-columns: 1fr; }
+          .cr-open-banner { padding: 24px; }
         }
       `}</style>
     </>

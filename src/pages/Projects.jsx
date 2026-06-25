@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { X, MapPin, ArrowRight, Building2, Calendar, Briefcase } from 'lucide-react';
+import { X, MapPin, ArrowRight, Building2, Calendar, Briefcase, ChevronRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import { PROJECTS, PROJECT_FILTERS, KSA_PATH, DIVISIONS } from '../data';
 
@@ -20,13 +20,12 @@ const STATUS_CLASS = {
 /* ── Group projects by city ── */
 const CITIES = Array.from(
   PROJECTS.reduce((m, p) => {
-    if (!m.has(p.city)) m.set(p.city, { city: p.city, code: p.code, x: p.x, y: p.y, projects: [] });
+    if (!m.has(p.city)) m.set(p.city, { city: p.city, x: p.x, y: p.y, projects: [] });
     m.get(p.city).projects.push(p);
     return m;
   }, new Map()).values()
 );
 
-/* ── Determine dominant division colour for a city ── */
 function cityColour(cityData) {
   const counts = {};
   cityData.projects.forEach(p => { counts[p.division] = (counts[p.division] || 0) + 1; });
@@ -34,60 +33,14 @@ function cityColour(cityData) {
   return DIV_ACCENT[dom]?.border ?? '#2563EB';
 }
 
-/* ── Summary stats ── */
-const ACTIVE_COUNT  = PROJECTS.filter(p => p.status !== 'Completed').length;
-const CITY_COUNT    = CITIES.length;
+const ACTIVE_COUNT = PROJECTS.filter(p => p.status !== 'Completed').length;
+const CITY_COUNT   = CITIES.length;
 
-/* ══════════════════════════════════════════════════════
-   PROJECT CARD COMPONENT
-══════════════════════════════════════════════════════ */
-function ProjectCard({ p, delay = 1 }) {
-  const c = DIV_ACCENT[p.division] ?? DIV_ACCENT.steel;
-  const divLabel = DIVISIONS.find(d => d.id === p.division)?.label ?? p.division;
-  return (
-    <FadeIn delay={delay}>
-      <div className="pj-card" style={{ '--pj-accent': c.border, '--pj-badge': c.badgeBg, '--pj-text': c.text }}>
-        <div className="pj-card-bar" />
-        <div className="pj-card-inner">
-          {/* Top row */}
-          <div className="pj-card-top">
-            <span className="pj-card-city-label" style={{ color: c.border }}>{p.city.toUpperCase()}</span>
-            <span className={`status-pill ${STATUS_CLASS[p.status] ?? 'status-completed'}`}>{p.status}</span>
-          </div>
-          {/* Graphic placeholder */}
-          <div className="pj-card-graphic" style={{ background: c.light, borderColor: c.mid }}>
-            <ProjectGraphic division={p.division} />
-            <span className="pj-card-graphic-label" style={{ color: c.text }}>{divLabel} Division</span>
-          </div>
-          {/* Name */}
-          <h3 className="pj-card-name">{p.name}</h3>
-          {/* Meta */}
-          <div className="pj-card-meta">
-            <span className="pj-card-badge" style={{ background: c.badgeBg, color: c.text }}>{divLabel}</span>
-            <span className="pj-meta-sep">·</span>
-            <Briefcase size={11} style={{ color: 'var(--muted)', flexShrink: 0 }} />
-            <span className="pj-meta-txt">{p.sector}</span>
-            <span className="pj-meta-sep">·</span>
-            <Calendar size={11} style={{ color: 'var(--muted)', flexShrink: 0 }} />
-            <span className="pj-meta-txt">{p.year}</span>
-          </div>
-          {/* Client */}
-          <div className="pj-card-client">
-            <Building2 size={11} style={{ color: 'var(--muted)', flexShrink: 0 }} />
-            <span>{p.client}</span>
-          </div>
-          {/* Blurb */}
-          <p className="pj-card-blurb">{p.blurb}</p>
-        </div>
-      </div>
-    </FadeIn>
-  );
-}
-
-/* ── Small SVG icons per division for the card graphic area ── */
-function ProjectGraphic({ division }) {
+/* ── Division SVG icons ── */
+function DivisionGraphic({ division, size = 40 }) {
+  const s = size;
   if (division === 'steel') return (
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+    <svg width={s} height={s} viewBox="0 0 52 52" fill="none" aria-hidden="true">
       <rect x="8" y="10" width="36" height="8" rx="1.5" fill="#BFDBFE" stroke="#2563EB" strokeWidth="1.5"/>
       <rect x="22" y="18" width="8" height="16" fill="#DBEAFE" stroke="#2563EB" strokeWidth="1.5"/>
       <rect x="8" y="34" width="36" height="8" rx="1.5" fill="#BFDBFE" stroke="#2563EB" strokeWidth="1.5"/>
@@ -96,7 +49,7 @@ function ProjectGraphic({ division }) {
     </svg>
   );
   if (division === 'wood') return (
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+    <svg width={s} height={s} viewBox="0 0 52 52" fill="none" aria-hidden="true">
       <rect x="6" y="18" width="40" height="16" rx="2" fill="#FEF3C7" stroke="#D97706" strokeWidth="1.5"/>
       <ellipse cx="26" cy="26" rx="12" ry="7" stroke="#F59E0B" strokeWidth="1" fill="none" opacity="0.7"/>
       <ellipse cx="26" cy="26" rx="7" ry="4" stroke="#F59E0B" strokeWidth="1" fill="none" opacity="0.5"/>
@@ -106,7 +59,7 @@ function ProjectGraphic({ division }) {
     </svg>
   );
   return (
-    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+    <svg width={s} height={s} viewBox="0 0 52 52" fill="none" aria-hidden="true">
       <rect x="6" y="12" width="40" height="7" rx="1" fill="#475569" stroke="#334155" strokeWidth="1.5"/>
       <rect x="6" y="22" width="40" height="7" rx="1" fill="#64748B" stroke="#64748B" strokeWidth="1.5"/>
       <rect x="6" y="32" width="40" height="7" rx="1" fill="#94A3B8" stroke="#94A3B8" strokeWidth="1.5"/>
@@ -117,8 +70,48 @@ function ProjectGraphic({ division }) {
   );
 }
 
+/* ── Project card in the bottom grid ── */
+function ProjectCard({ p, delay = 1 }) {
+  const c = DIV_ACCENT[p.division] ?? DIV_ACCENT.steel;
+  const divLabel = DIVISIONS.find(d => d.id === p.division)?.label ?? p.division;
+  return (
+    <FadeIn delay={delay}>
+      <div className="pj-card" style={{ '--pj-accent': c.border, '--pj-badge': c.badgeBg, '--pj-text': c.text }}>
+        {/* graphic area */}
+        <div className="pj-card-graphic" style={{ background: c.light, borderColor: c.mid }}>
+          <DivisionGraphic division={p.division} size={44} />
+          <span className="pj-card-graphic-label" style={{ color: c.text }}>{divLabel} Division</span>
+          <span className={`status-pill ${STATUS_CLASS[p.status] ?? 'status-completed'} pj-card-status`}>{p.status}</span>
+        </div>
+        <div className="pj-card-body">
+          <div className="pj-card-top">
+            <span className="pj-card-city-lbl" style={{ color: c.border }}>
+              <MapPin size={10} style={{ display: 'inline', marginRight: 3 }} />
+              {p.city}
+            </span>
+            <span className="pj-card-badge" style={{ background: c.badgeBg, color: c.text }}>{divLabel}</span>
+          </div>
+          <h3 className="pj-card-name">{p.name}</h3>
+          <div className="pj-card-meta">
+            <Briefcase size={11} style={{ color: 'var(--muted)', flexShrink: 0 }} />
+            <span>{p.sector}</span>
+            <span className="pj-meta-sep">·</span>
+            <Calendar size={11} style={{ color: 'var(--muted)', flexShrink: 0 }} />
+            <span>{p.year}</span>
+          </div>
+          <div className="pj-card-client">
+            <Building2 size={11} style={{ color: 'var(--muted)', flexShrink: 0 }} />
+            <span>{p.client}</span>
+          </div>
+          <p className="pj-card-blurb">{p.blurb}</p>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+
 /* ══════════════════════════════════════════════════════
-   CITY PANEL (right-side drawer when pin is clicked)
+   RIGHT PANEL — project list for selected city
 ══════════════════════════════════════════════════════ */
 function CityPanel({ cityData, divFilter, onClose }) {
   const filtered = divFilter === 'all'
@@ -131,63 +124,70 @@ function CityPanel({ cityData, divFilter, onClose }) {
   }, {});
 
   return (
-    <div className="city-panel">
-      {/* Panel header */}
-      <div className="city-panel-head">
-        <div>
-          <div className="city-panel-loc">
-            <MapPin size={14} style={{ color: 'var(--blue)' }} />
-            <span>{cityData.city}</span>
+    <div className="cp-root">
+      {/* sticky header */}
+      <div className="cp-head">
+        <div className="cp-head-left">
+          <div className="cp-city-row">
+            <MapPin size={13} style={{ color: 'var(--blue)', flexShrink: 0 }} />
+            <span className="cp-city-name">{cityData.city}</span>
           </div>
-          <h2 className="city-panel-title">
-            {cityData.projects.length} Project{cityData.projects.length !== 1 ? 's' : ''}
-          </h2>
-          {/* Division breakdown pills */}
-          <div className="city-panel-divs">
+          <p className="cp-project-count">{cityData.projects.length} project{cityData.projects.length !== 1 ? 's' : ''} in this city</p>
+          <div className="cp-div-pills">
             {Object.entries(divCounts).map(([div, n]) => {
               const c = DIV_ACCENT[div];
+              if (!c) return null;
               return (
-                <span key={div} className="city-div-pill" style={{ background: c.badgeBg, color: c.text }}>
+                <span key={div} className="cp-div-pill" style={{ background: c.badgeBg, color: c.text }}>
                   {c.label} × {n}
                 </span>
               );
             })}
           </div>
         </div>
-        <button className="city-panel-close" onClick={onClose} aria-label="Close panel">
-          <X size={18} />
+        <button className="cp-close-btn" onClick={onClose} aria-label="Close panel">
+          <X size={16} />
         </button>
       </div>
 
-      {/* Projects list */}
-      <div className="city-panel-list">
-        {filtered.map(p => {
-          const c = DIV_ACCENT[p.division];
+      {/* project rows */}
+      <div className="cp-list">
+        {filtered.length === 0 ? (
+          <p className="cp-empty">No projects match this filter for {cityData.city}.</p>
+        ) : filtered.map(p => {
+          const c = DIV_ACCENT[p.division] ?? DIV_ACCENT.steel;
           const divLabel = DIVISIONS.find(d => d.id === p.division)?.label ?? p.division;
           return (
-            <div key={p.id} className="city-proj-row" style={{ '--cp-accent': c.border, '--cp-badge': c.badgeBg, '--cp-text': c.text }}>
-              <div className="city-proj-bar" />
-              <div className="city-proj-content">
-                <div className="city-proj-top">
-                  <span className="city-proj-badge" style={{ background: c.badgeBg, color: c.text }}>{divLabel}</span>
-                  <span className={`status-pill ${STATUS_CLASS[p.status] ?? 'status-completed'}`} style={{ fontSize: '0.6rem' }}>{p.status}</span>
+            <div
+              key={p.id}
+              className="cp-row"
+              style={{ '--cpr-accent': c.border, '--cpr-light': c.light, '--cpr-badge': c.badgeBg, '--cpr-text': c.text }}
+            >
+              {/* division graphic */}
+              <div className="cp-row-graphic" style={{ background: c.light, borderColor: c.mid }}>
+                <DivisionGraphic division={p.division} size={32} />
+              </div>
+              {/* content */}
+              <div className="cp-row-content">
+                <div className="cp-row-top">
+                  <span className="cp-row-badge" style={{ background: c.badgeBg, color: c.text }}>{divLabel}</span>
+                  <span className={`status-pill ${STATUS_CLASS[p.status] ?? 'status-completed'}`} style={{ fontSize: '0.58rem' }}>{p.status}</span>
                 </div>
-                <h4 className="city-proj-name">{p.name}</h4>
-                <div className="city-proj-meta">
+                <h4 className="cp-row-name">{p.name}</h4>
+                <div className="cp-row-meta">
                   <span>{p.sector}</span>
                   <span className="pj-meta-sep">·</span>
                   <span>{p.year}</span>
                   <span className="pj-meta-sep">·</span>
                   <span>{p.client}</span>
                 </div>
-                <p className="city-proj-blurb">{p.blurb}</p>
+                <p className="cp-row-blurb">{p.blurb}</p>
               </div>
+              {/* colour accent bar */}
+              <div className="cp-row-bar" />
             </div>
           );
         })}
-        {filtered.length === 0 && (
-          <p className="city-panel-empty">No projects match this filter for {cityData.city}.</p>
-        )}
       </div>
     </div>
   );
@@ -198,24 +198,21 @@ function CityPanel({ cityData, divFilter, onClose }) {
 ══════════════════════════════════════════════════════ */
 export default function Projects() {
   const [divFilter, setDivFilter] = useState('all');
-  const [activeCity, setActiveCity] = useState(null); // city name string
+  const [activeCity, setActiveCity] = useState(null);
   const panelRef = useRef(null);
 
   const activeCityData = activeCity ? CITIES.find(c => c.city === activeCity) : null;
 
-  // visible project cards = pinned city (if any) + division filter
   const visibleCards = PROJECTS.filter(p => {
     const divOk = divFilter === 'all' || p.division === divFilter;
     const cityOk = !activeCity || p.city === activeCity;
     return divOk && cityOk;
   });
 
-  // Scroll panel top when city changes
   useEffect(() => {
     if (panelRef.current) panelRef.current.scrollTop = 0;
   }, [activeCity]);
 
-  // Visible pins = those matching division filter
   const visibleCities = CITIES.filter(cd =>
     divFilter === 'all' || cd.projects.some(p => p.division === divFilter)
   );
@@ -232,16 +229,15 @@ export default function Projects() {
             <p className="overline">Our Track Record</p>
             <h1 className="headline-lg" style={{ marginBottom: 14 }}>Projects across the Kingdom.</h1>
             <p className="section-sub">
-              Government infrastructure, industrial facilities, hospitality fit-outs, and
-              giga-project packages — delivered by EGC's own fabrication and site crews.
-              Click any city pin to explore that location's projects.
+              Government infrastructure, industrial facilities, hospitality fit-outs, and giga-project
+              packages — delivered by EGC's own fabrication and site crews. Click any city pin to explore.
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* ── SUMMARY STATS ── */}
-      <section className="pj-stats-bar">
+      {/* ── STATS BAR ── */}
+      <div className="pj-stats-bar">
         <div className="container">
           <div className="pj-stats-inner">
             <div className="pj-stat">
@@ -256,7 +252,7 @@ export default function Projects() {
             <div className="pj-stat-divider" />
             <div className="pj-stat">
               <span className="pj-stat-n">{CITY_COUNT}</span>
-              <span className="pj-stat-l">Cities &amp; Regions</span>
+              <span className="pj-stat-l">Cities & Regions</span>
             </div>
             <div className="pj-stat-divider" />
             <div className="pj-stat">
@@ -265,13 +261,13 @@ export default function Projects() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ── MAP + PANEL ── */}
-      <section className="section" style={{ paddingBottom: 0 }}>
+      <section className="section" style={{ background: 'var(--gray-bg)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
 
-          {/* Division filter */}
+          {/* Filter chips + legend */}
           <FadeIn className="pj-filter-row">
             {PROJECT_FILTERS.map(f => (
               <button
@@ -282,7 +278,6 @@ export default function Projects() {
                 {f.label}
               </button>
             ))}
-            {/* Legend */}
             <span className="pj-filter-sep" />
             {Object.entries(DIV_ACCENT).map(([id, c]) => (
               <span key={id} className="pj-legend-item">
@@ -292,32 +287,32 @@ export default function Projects() {
             ))}
           </FadeIn>
 
-          {/* Map + side panel layout */}
-          <FadeIn className={`pj-map-layout${activeCityData ? ' pj-map-layout--open' : ''}`}>
-            {/* KSA MAP */}
-            <div className="pj-map-wrap">
+          {/* ── MAP WORKSPACE: always flex-row ── */}
+          <FadeIn className="pj-workspace">
+
+            {/* LEFT: KSA map — always visible, fixed width */}
+            <div className="pj-map-col">
               <svg
                 viewBox="0 0 680 562"
                 className="pj-ksa-svg"
                 aria-label="Map of Saudi Arabia — click a city pin to explore projects"
-                role="img"
               >
                 <defs>
                   <pattern id="map-dots" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
-                    <circle cx="1" cy="1" r="0.9" fill="#CBD5E1" opacity="0.5" />
+                    <circle cx="1" cy="1" r="0.9" fill="#CBD5E1" opacity="0.45" />
                   </pattern>
                   <filter id="pin-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#111" floodOpacity="0.2"/>
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#111" floodOpacity="0.22"/>
                   </filter>
                 </defs>
 
-                {/* Dot background */}
+                {/* dot background */}
                 <rect width="680" height="562" fill="url(#map-dots)" />
 
                 {/* KSA outline */}
                 <path
                   d={KSA_PATH}
-                  fill="#F0F4FF"
+                  fill="#EEF3FF"
                   stroke="#2563EB"
                   strokeWidth="1.5"
                   strokeLinejoin="round"
@@ -328,7 +323,7 @@ export default function Projects() {
                   const isActive = activeCity === cd.city;
                   const col = cityColour(cd);
                   const n = cd.projects.filter(p => divFilter === 'all' || p.division === divFilter).length;
-                  const r = 8 + Math.min(n - 1, 3) * 3; // larger pin for more projects
+                  const r = 9 + Math.min(n - 1, 3) * 3;
 
                   return (
                     <g
@@ -341,28 +336,28 @@ export default function Projects() {
                       aria-label={`${cd.city} — ${n} project${n !== 1 ? 's' : ''}`}
                       style={{ cursor: 'pointer', outline: 'none' }}
                     >
-                      {/* Pulse ring when active */}
+                      {/* pulse ring */}
                       {isActive && (
                         <circle
                           r={r + 10}
                           fill="none"
                           stroke={col}
                           strokeWidth="2"
-                          opacity="0.35"
-                          className="pj-pin-ring"
+                          opacity="0.3"
+                          className="pj-pin-pulse"
                         />
                       )}
-                      {/* Shadow */}
-                      <circle r={r} fill={col} opacity="0.18" transform="translate(0,3)" />
-                      {/* Main pin */}
+                      {/* shadow drop */}
+                      <circle r={r} fill={col} opacity="0.15" transform="translate(0,3)" />
+                      {/* main pin */}
                       <circle
                         r={r}
-                        fill={isActive ? col : '#fff'}
+                        fill={isActive ? col : '#ffffff'}
                         stroke={col}
                         strokeWidth="2.5"
                         filter={isActive ? 'url(#pin-shadow)' : undefined}
                       />
-                      {/* Project count */}
+                      {/* count */}
                       <text
                         textAnchor="middle"
                         dominantBaseline="central"
@@ -373,10 +368,10 @@ export default function Projects() {
                       >
                         {n}
                       </text>
-                      {/* City label */}
+                      {/* city label */}
                       <text
                         x="0"
-                        y={-(r + 7)}
+                        y={-(r + 8)}
                         textAnchor="middle"
                         fontSize="9"
                         fontFamily="Inter,sans-serif"
@@ -395,51 +390,50 @@ export default function Projects() {
               <p className="pj-map-caption">KINGDOM OF SAUDI ARABIA — EGC PROJECT FOOTPRINT</p>
             </div>
 
-            {/* CITY PANEL */}
-            {activeCityData && (
-              <div className="city-panel-wrap" ref={panelRef}>
+            {/* RIGHT: panel — hint when nothing selected, projects when a city is active */}
+            <div className="pj-panel-col" ref={panelRef}>
+              {activeCityData ? (
                 <CityPanel
                   cityData={activeCityData}
                   divFilter={divFilter}
                   onClose={() => setActiveCity(null)}
                 />
-              </div>
-            )}
-
-            {/* Empty map state hint */}
-            {!activeCityData && (
-              <div className="pj-map-hint">
-                <div className="pj-map-hint-inner">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-                    <circle cx="18" cy="18" r="17" stroke="#2563EB" strokeWidth="1.5" fill="#EFF6FF"/>
-                    <path d="M18 10v8l4 4" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round"/>
-                  </svg>
-                  <p className="pj-map-hint-title">Select a city</p>
-                  <p className="pj-map-hint-sub">Click any numbered pin on the map to explore projects in that city or region.</p>
-                  <div className="pj-map-hint-legend">
+              ) : (
+                /* default hint */
+                <div className="pj-hint">
+                  <div className="pj-hint-icon">
+                    <MapPin size={24} style={{ color: 'var(--blue)' }} />
+                  </div>
+                  <p className="pj-hint-title">Select a city</p>
+                  <p className="pj-hint-sub">
+                    Click any numbered pin on the map to explore projects delivered in that city or region.
+                  </p>
+                  <div className="pj-hint-dividers">
                     {Object.entries(DIV_ACCENT).map(([id, c]) => (
-                      <span key={id} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', color: 'var(--muted)', fontWeight: 500 }}>
-                        <span style={{ width: 10, height: 10, borderRadius: 2, background: c.border, display: 'inline-block' }} />
-                        {c.label}
-                      </span>
+                      <div key={id} className="pj-hint-div-row">
+                        <span className="pj-hint-div-swatch" style={{ background: c.border }} />
+                        <span>{c.label} Division</span>
+                      </div>
                     ))}
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </FadeIn>
 
         </div>
       </section>
 
       {/* ── ALL PROJECTS GRID ── */}
-      <section className="section section-gray">
+      <section className="section">
         <div className="container">
-          <FadeIn className="pj-all-head">
+          <FadeIn className="pj-grid-head">
             <div>
               <p className="overline">All Projects</p>
               <h2 className="headline-md" style={{ marginBottom: 0 }}>
-                {activeCity ? `${visibleCards.length} project${visibleCards.length !== 1 ? 's' : ''} in ${activeCity}` : `${visibleCards.length} project${visibleCards.length !== 1 ? 's' : ''} shown`}
+                {activeCity
+                  ? `${visibleCards.length} project${visibleCards.length !== 1 ? 's' : ''} in ${activeCity}`
+                  : `${visibleCards.length} project${visibleCards.length !== 1 ? 's' : ''} shown`}
               </h2>
             </div>
             {activeCity && (
@@ -456,20 +450,20 @@ export default function Projects() {
           </div>
 
           {visibleCards.length === 0 && (
-            <p className="pj-empty">No projects match the current filters — try selecting a different division.</p>
+            <p className="pj-empty">No projects match the current filters.</p>
           )}
         </div>
       </section>
 
       {/* ── CTA ── */}
-      <section className="section">
+      <section className="section section-gray">
         <div className="container">
           <FadeIn className="cta-banner">
             <p className="overline">Your Project</p>
             <h2 className="headline-lg" style={{ marginBottom: 12 }}>Discuss your scope with our team.</h2>
             <p className="section-sub" style={{ margin: '0 auto 28px' }}>
-              Whether you have tender documents or just a concept, we're ready to discuss
-              how EGC can deliver — steel, timber, or lead sheet.
+              Whether you have tender documents or just a concept, we're ready to discuss how EGC can deliver —
+              steel, timber, or lead sheet.
             </p>
             <div className="btn-group" style={{ justifyContent: 'center' }}>
               <Link to="/contact" className="btn btn-primary btn-lg">Contact Us</Link>
@@ -481,121 +475,167 @@ export default function Projects() {
 
       <style>{`
         /* ── Stats bar ── */
-        .pj-stats-bar { background: var(--dark); padding: 0; }
+        .pj-stats-bar { background: var(--dark); }
         .pj-stats-inner { display: flex; align-items: stretch; }
-        .pj-stat { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 20px; text-align: center; }
-        .pj-stat-divider { width: 1px; background: rgba(255,255,255,0.1); margin: 20px 0; flex-shrink: 0; }
-        .pj-stat-n { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; display: block; }
-        .pj-stat-l { font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.07em; text-transform: uppercase; }
+        .pj-stat {
+          flex: 1; display: flex; flex-direction: column;
+          align-items: center; justify-content: center;
+          padding: 32px 20px; text-align: center;
+        }
+        .pj-stat-divider { width: 1px; background: rgba(255,255,255,0.1); margin: 16px 0; flex-shrink: 0; }
+        .pj-stat-n { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; display: block; }
+        .pj-stat-l { font-size: 0.7rem; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.07em; text-transform: uppercase; }
 
         /* ── Filter row ── */
         .pj-filter-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
-        .pj-filter-sep { width: 1px; height: 20px; background: var(--border); margin: 0 4px; }
+        .pj-filter-sep { width: 1px; height: 20px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
         .pj-legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--muted); font-weight: 500; }
         .pj-legend-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
 
-        /* ── Map layout ── */
-        .pj-map-layout {
-          display: grid;
-          grid-template-columns: 1fr;
+        /* ══════════════════════════════════════════════════════
+           MAP WORKSPACE — flex row, map NEVER shrinks
+        ══════════════════════════════════════════════════════ */
+        .pj-workspace {
+          display: flex;
           gap: 0;
           border: 1.5px solid var(--border);
           border-radius: var(--radius-lg);
           overflow: hidden;
           background: #fff;
-          transition: grid-template-columns 0.3s ease;
+          min-height: 480px;
         }
-        .pj-map-layout--open {
-          grid-template-columns: 1fr 360px;
-        }
-        .pj-map-wrap {
-          background: linear-gradient(135deg, #F0F4FF 0%, #F8FAFC 100%);
-          padding: 16px;
+
+        /* Map column: fixed min-width so it NEVER collapses */
+        .pj-map-col {
+          flex: 0 0 56%;     /* always 56% of the workspace */
+          min-width: 360px;
+          background: linear-gradient(145deg, #EEF3FF 0%, #F7F9FF 100%);
+          padding: 20px 16px 12px;
           border-right: 1.5px solid var(--border);
+          display: flex;
+          flex-direction: column;
         }
-        .pj-ksa-svg { width: 100%; height: auto; max-height: 480px; display: block; }
-        .pj-map-caption { text-align: center; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-top: 10px; }
+        .pj-ksa-svg {
+          width: 100%;
+          flex: 1;
+          display: block;
+          height: auto;
+        }
+        .pj-map-caption {
+          text-align: center;
+          font-size: 0.6rem;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          color: var(--muted);
+          text-transform: uppercase;
+          margin-top: 8px;
+          flex-shrink: 0;
+        }
 
-        /* Pin animations */
-        .pj-pin-ring { animation: pinPulse 2s ease-out infinite; }
-        @keyframes pinPulse { 0% { r: 18; opacity: 0.5; } 100% { r: 32; opacity: 0; } }
+        /* Pin pulse animation */
+        .pj-pin-pulse { animation: pinPulse 1.8s ease-out infinite; }
+        @keyframes pinPulse {
+          0%   { r: 20; opacity: 0.4; }
+          100% { r: 36; opacity: 0; }
+        }
 
-        /* ── Map hint panel ── */
-        .city-panel-wrap {
+        /* Panel column: fills remaining space, scrollable */
+        .pj-panel-col {
+          flex: 1 1 0;
+          min-width: 0;
           overflow-y: auto;
           max-height: 520px;
-          background: #fff;
-        }
-        .pj-map-hint {
           display: flex;
+          flex-direction: column;
+        }
+
+        /* ── Default hint panel ── */
+        .pj-hint {
+          display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
-          background: var(--gray-bg);
-          border-left: 1.5px solid var(--border);
-        }
-        .pj-map-hint-inner {
           text-align: center;
-          padding: 40px 28px;
-          max-width: 220px;
+          padding: 48px 32px;
+          height: 100%;
+          gap: 0;
+          background: var(--gray-bg);
         }
-        .pj-map-hint-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--dark); margin: 12px 0 6px; }
-        .pj-map-hint-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin: 0 0 20px; }
-        .pj-map-hint-legend { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+        .pj-hint-icon {
+          width: 56px; height: 56px;
+          background: var(--blue-light);
+          border: 1.5px solid var(--blue-mid);
+          border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          margin-bottom: 16px;
+        }
+        .pj-hint-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--dark); margin: 0 0 8px; }
+        .pj-hint-sub { font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin: 0 0 24px; max-width: 220px; }
+        .pj-hint-dividers { display: flex; flex-direction: column; gap: 8px; text-align: left; width: 100%; max-width: 160px; }
+        .pj-hint-div-row { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+        .pj-hint-div-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
 
         /* ── City panel ── */
-        .city-panel { height: 100%; display: flex; flex-direction: column; }
-        .city-panel-head {
-          padding: 20px 20px 16px;
+        .cp-root { display: flex; flex-direction: column; height: 100%; }
+        .cp-head {
+          display: flex; justify-content: space-between; align-items: flex-start;
+          gap: 12px; padding: 20px 20px 16px;
           border-bottom: 1.5px solid var(--border);
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 12px;
-          position: sticky;
-          top: 0;
-          background: #fff;
-          z-index: 1;
+          position: sticky; top: 0; background: #fff; z-index: 2;
+          flex-shrink: 0;
         }
-        .city-panel-loc { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-        .city-panel-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--dark); margin: 0 0 10px; line-height: 1.1; }
-        .city-panel-divs { display: flex; flex-wrap: wrap; gap: 6px; }
-        .city-div-pill { font-size: 0.65rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
-        .city-panel-close {
+        .cp-head-left { min-width: 0; }
+        .cp-city-row { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; }
+        .cp-city-name { font-size: 0.7rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; }
+        .cp-project-count { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: var(--dark); margin: 0 0 10px; line-height: 1.15; }
+        .cp-div-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+        .cp-div-pill { font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+        .cp-close-btn {
           width: 32px; height: 32px; border-radius: 8px; background: var(--gray-bg); border: 1.5px solid var(--border);
-          display: flex; align-items: center; justify-content: center; color: var(--muted); cursor: pointer;
-          flex-shrink: 0; transition: background var(--transition), color var(--transition);
+          display: flex; align-items: center; justify-content: center; color: var(--muted);
+          flex-shrink: 0; cursor: pointer;
+          transition: background var(--transition), color var(--transition), border-color var(--transition);
         }
-        .city-panel-close:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
-        .city-panel-list { flex: 1; overflow-y: auto; padding: 12px 0; }
-        .city-panel-empty { color: var(--muted); font-size: 0.9rem; padding: 24px 20px; text-align: center; margin: 0; }
+        .cp-close-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
 
-        /* City panel project row */
-        .city-proj-row {
-          display: flex;
-          gap: 0;
-          margin: 0 16px 10px;
+        /* project rows in the panel */
+        .cp-list { flex: 1; overflow-y: auto; padding: 12px 0 16px; }
+        .cp-empty { color: var(--muted); font-size: 0.88rem; padding: 24px; text-align: center; margin: 0; }
+        .cp-row {
+          display: flex; gap: 12px;
+          margin: 0 14px 10px;
+          padding: 14px;
           border: 1.5px solid var(--border);
           border-radius: 10px;
+          position: relative;
           overflow: hidden;
-          transition: box-shadow var(--transition), border-color var(--transition);
+          transition: box-shadow 0.2s ease, border-color 0.2s ease;
+          background: #fff;
         }
-        .city-proj-row:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-color: var(--cp-accent); }
-        .city-proj-bar { width: 3px; background: var(--cp-accent); flex-shrink: 0; }
-        .city-proj-content { padding: 14px 14px 14px; flex: 1; min-width: 0; }
-        .city-proj-top { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
-        .city-proj-badge { font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
-        .city-proj-name { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--dark); margin: 0 0 5px; line-height: 1.3; }
-        .city-proj-meta { font-size: 0.72rem; color: var(--muted); display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
-        .city-proj-blurb { font-size: 0.78rem; color: var(--muted); line-height: 1.55; margin: 0; }
+        .cp-row:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-color: var(--cpr-accent); }
+        .cp-row-bar {
+          position: absolute; top: 0; left: 0; bottom: 0;
+          width: 3px; background: var(--cpr-accent);
+        }
+        .cp-row-graphic {
+          flex-shrink: 0;
+          width: 52px; height: 52px;
+          border-radius: 8px;
+          border: 1.5px solid;
+          display: flex; align-items: center; justify-content: center;
+          margin-left: 3px; /* account for bar */
+        }
+        .cp-row-content { flex: 1; min-width: 0; }
+        .cp-row-top { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; flex-wrap: wrap; }
+        .cp-row-badge { font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+        .cp-row-name { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--dark); margin: 0 0 5px; line-height: 1.3; }
+        .cp-row-meta { font-size: 0.7rem; color: var(--muted); display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 5px; align-items: center; }
+        .cp-row-blurb { font-size: 0.78rem; color: var(--muted); line-height: 1.55; margin: 0; }
 
-        /* ── All projects head ── */
-        .pj-all-head {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 16px;
-          flex-wrap: wrap;
-          margin-bottom: 28px;
+        /* ── Grid head ── */
+        .pj-grid-head {
+          display: flex; justify-content: space-between; align-items: center;
+          gap: 16px; flex-wrap: wrap; margin-bottom: 28px;
         }
         .pj-clear-btn {
           display: flex; align-items: center; gap: 6px;
@@ -611,44 +651,44 @@ export default function Projects() {
 
         /* ── Project card ── */
         .pj-card {
-          display: flex;
           background: #fff;
           border: 1.5px solid var(--border);
           border-radius: var(--radius-lg);
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
           transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+          height: 100%;
         }
         .pj-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,0.08); border-color: var(--pj-accent); }
-        .pj-card-bar { width: 4px; background: var(--pj-accent); flex-shrink: 0; }
-        .pj-card-inner { padding: 18px 18px 20px; flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0; }
-        .pj-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; margin-bottom: 10px; }
-        .pj-card-city-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; }
         .pj-card-graphic {
-          width: 100%; aspect-ratio: 16/8; border-radius: 8px;
-          border: 1.5px solid; margin-bottom: 14px;
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center; gap: 6px;
+          width: 100%; aspect-ratio: 16/7; border-bottom: 1.5px solid;
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+          position: relative; flex-shrink: 0;
         }
-        .pj-card-graphic-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-        .pj-card-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.3; margin: 0 0 10px; }
-        .pj-card-meta { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
-        .pj-card-badge { font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+        .pj-card-graphic-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+        .pj-card-status { position: absolute; top: 10px; right: 10px; }
+        .pj-card-body { padding: 16px 16px 20px; display: flex; flex-direction: column; flex: 1; }
+        .pj-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 6px; }
+        .pj-card-city-lbl { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; }
+        .pj-card-badge { font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+        .pj-card-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.3; margin: 0 0 8px; }
+        .pj-card-meta { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 5px; font-size: 0.75rem; color: var(--muted); }
         .pj-meta-sep { color: var(--muted); font-size: 0.7rem; }
-        .pj-meta-txt { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
-        .pj-card-client { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
-        .pj-card-blurb { font-size: 0.84rem; color: var(--muted); line-height: 1.65; margin: 0; flex: 1; }
+        .pj-card-client { display: flex; align-items: center; gap: 5px; font-size: 0.74rem; color: var(--muted); margin-bottom: 10px; }
+        .pj-card-blurb { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin: 0; flex: 1; }
 
         /* ── Empty state ── */
         .pj-empty { text-align: center; padding: 56px 24px; color: var(--muted); font-size: 1rem; margin: 0; }
 
         /* ── Responsive ── */
         @media (max-width: 1024px) {
-          .pj-map-layout--open { grid-template-columns: 1fr 300px; }
+          .pj-map-col { flex-basis: 50%; }
         }
         @media (max-width: 860px) {
-          .pj-map-layout--open { grid-template-columns: 1fr; }
-          .city-panel-wrap { max-height: 380px; border-top: 1.5px solid var(--border); }
-          .pj-map-wrap { border-right: none; }
+          .pj-workspace { flex-direction: column; min-height: unset; }
+          .pj-map-col { flex: none; width: 100%; min-width: unset; border-right: none; border-bottom: 1.5px solid var(--border); }
+          .pj-panel-col { max-height: 400px; }
           .pj-grid { grid-template-columns: repeat(2, 1fr); }
           .pj-stats-inner { flex-wrap: wrap; }
           .pj-stat { flex: 0 0 50%; }
