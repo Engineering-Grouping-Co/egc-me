@@ -18,6 +18,7 @@ export default function Footer() {
             <h5>Company</h5>
             <Link to="/about">About Us</Link>
             <Link to="/divisions">Divisions</Link>
+            <Link to="/our-work">Our Work</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/about">Team</Link>
           </div>
@@ -55,7 +56,7 @@ export default function Footer() {
             &nbsp;|&nbsp;
             <Link to="/terms">Terms &amp; Conditions</Link>
           </p>
-          <p>CR No. [XXXXXXXXXX]</p>
+          <p>CR No. <Link to="/legal-profile" className="footer-cr-link">7040750007</Link></p>
         </div>
       </div>
 
@@ -90,6 +91,14 @@ export default function Footer() {
         }
         .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: underline; transition: color 0.15s; }
         .footer-bottom a:hover { color: var(--white); }
+        .footer-cr-link {
+          color: rgba(255,255,255,0.55);
+          text-decoration-style: dashed;
+          text-decoration-line: underline;
+          text-underline-offset: 3px;
+          transition: color 0.15s;
+        }
+        .footer-cr-link:hover { color: var(--white); }
         
         @media (max-width: 860px) {
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 44px; }
