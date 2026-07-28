@@ -1,134 +1,196 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-import { STATS, DIVISIONS, PROJECTS, SITE } from '../data';
+import { STATS, SERVICES, PROJECTS, SITE } from '../data';
 
-const TRUST = [
-  'ISO 9001 Certified',
-  '18+ Years of Operation',
-  '3 Active Divisions',
-];
+/* ── Scroll-down indicator ── */
+function ScrollIndicator() {
+  return (
+    <div className="h-scroll-ind" aria-hidden="true">
+      <div className="h-scroll-line" />
+      <ArrowDown size={14} />
+    </div>
+  );
+}
 
-const DIV_ICONS = {
-  steel: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <path d="M6 6H34V14H22V26H34V34H6V26H18V14H6V6Z" stroke="#2563EB" strokeWidth="2" strokeLinejoin="round"/>
-    </svg>
-  ),
-  wood: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <rect x="4" y="16" width="32" height="9" rx="1" stroke="#2563EB" strokeWidth="2"/>
-      <path d="M8 20c2-1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1 5 .5" stroke="#2563EB" strokeWidth="1.4" strokeLinecap="round"/>
-      <rect x="4" y="27" width="32" height="9" rx="1" stroke="#2563EB" strokeWidth="2"/>
-    </svg>
-  ),
-  leadsheet: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <rect x="4" y="24" width="32" height="5" rx="1" stroke="#2563EB" strokeWidth="2"/>
-      <rect x="4" y="17" width="32" height="5" rx="1" stroke="#2563EB" strokeWidth="2"/>
-      <rect x="4" y="10" width="32" height="5" rx="1" stroke="#2563EB" strokeWidth="2"/>
-    </svg>
-  ),
-};
+/* ── Service quick-card for hero strip ── */
+function ServicePill({ svc, index }) {
+  return (
+    <FadeIn delay={index + 1}>
+      <Link to="/what-we-build" className="h-svc-pill">
+        <span className="h-svc-pill-num">{svc.num}</span>
+        <span className="h-svc-pill-label">{svc.shortLabel}</span>
+        <ChevronRight size={13} className="h-svc-pill-arrow" />
+      </Link>
+    </FadeIn>
+  );
+}
 
 export default function Home() {
+  /* Track scroll position for hero parallax */
+  const heroRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      {/* HERO */}
-      <section className="h-hero">
-        <div className="container">
+      {/* ════════════════════════════════════════
+          HERO — full viewport height
+      ════════════════════════════════════════ */}
+      <section className="h-hero" ref={heroRef}>
+        {/* Background image */}
+        <div
+          className="h-hero-bg"
+          style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
+        />
+        {/* Overlay gradient */}
+        <div className="h-hero-overlay" />
+
+        <div className="container h-hero-content">
           <FadeIn className="h-hero-inner">
-            <p className="h-label">Jeddah, Kingdom of Saudi Arabia</p>
-            <h1 className="h-headline">
-              Steel, Wood &amp; Lead Sheet —<br />
-              Designed, Fabricated, Delivered.
-            </h1>
-            <p className="h-sub">
-              EGC designs, fabricates, and installs structural steel, timber joinery,
-              and lead sheet works for government and private sector projects across
-              the Kingdom — from first drawing to final handover.
+            <p className="h-hero-label">
+              <span className="h-hero-dot" />
+              Jeddah · Kingdom of Saudi Arabia
             </p>
-            <div className="h-btn-group">
-              <Link to="/divisions" className="btn btn-primary btn-lg">Explore Divisions <ArrowRight size={16}/></Link>
-              <Link to="/about"     className="btn btn-secondary btn-lg">About EGC</Link>
+            <h1 className="h-hero-headline">
+              We build the inside<br />
+              <span className="h-hero-headline-accent">of your building.</span>
+            </h1>
+            <p className="h-hero-sub">
+              Specialist interior contractor for healthcare environments,
+              architectural joinery, surface works, and metalwork —
+              across the Kingdom of Saudi Arabia.
+            </p>
+            <div className="h-hero-btns">
+              <Link to="/what-we-build" className="btn btn-white btn-lg">
+                What We Build <ArrowRight size={16} />
+              </Link>
+              <Link to="/contact" className="btn btn-outline-white btn-lg">
+                Get In Touch
+              </Link>
             </div>
-            <div className="h-trust">
-              {TRUST.map(t => (
-                <span key={t} className="h-trust-item">
-                  <CheckCircle2 size={13}/> {t}
+            <div className="h-hero-trust">
+              {['ISO 9001 Certified', '18+ Years in Saudi Arabia', '150+ Projects Delivered'].map(t => (
+                <span key={t} className="h-hero-trust-item">
+                  <CheckCircle2 size={13} /> {t}
                 </span>
               ))}
             </div>
           </FadeIn>
         </div>
+
+        <ScrollIndicator />
       </section>
 
-      {/* STATS */}
-      <section className="h-stats">
+      {/* ════════════════════════════════════════
+          SERVICES STRIP
+      ════════════════════════════════════════ */}
+      <div className="h-svc-strip">
         <div className="container">
-          <div className="h-stats-grid">
-            {STATS.map(s => (
-              <div className="h-stat" key={s.l}>
-                <div className="h-stat-num">{s.n}</div>
-                <div className="h-stat-lbl">{s.l}</div>
-              </div>
-            ))}
+          <div className="h-svc-strip-inner">
+            <span className="h-svc-strip-label">What We Build</span>
+            <div className="h-svc-pills">
+              {SERVICES.map((svc, i) => (
+                <ServicePill key={svc.id} svc={svc} index={i} />
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ABOUT PREVIEW */}
+      {/* ════════════════════════════════════════
+          HEALTHCARE SPOTLIGHT
+          (most distinctive capability first)
+      ════════════════════════════════════════ */}
       <section className="section">
         <div className="container">
-          <div className="h-feature-grid">
-            <FadeIn>
-              <p className="label">About EGC</p>
-              <h2 className="headline-medium">Built for the Kingdom's most demanding projects.</h2>
+          <div className="h-spotlight-grid">
+            <FadeIn className="h-spotlight-left">
+              <p className="overline">Our Core Expertise</p>
+              <h2 className="headline-medium" style={{ marginBottom: 18 }}>
+                Hospital environments<br />
+                demand a different standard.
+              </h2>
               <p className="body-text">
-                Engineering Grouping Co. (EGC) is a Jeddah-based specialty contracting
-                and manufacturing company. We run our own fabrication shops for steel,
-                timber, and lead sheet — every project moves from design to site under
-                one roof, one schedule, and one quality standard.
+                EGC's most specialist work is inside hospitals — constructing the rooms where
+                radiation is present and tolerances are non-negotiable. We build MRI suites, CT rooms,
+                x-ray departments, and nuclear medicine facilities from structural shielding
+                layer to final surface finish.
               </p>
-              <p className="body-text">
-                From government infrastructure and industrial facilities to hospitality
-                fit-outs and giga-project packages, EGC is the contractor that builds
-                what others only draw.
+              <p className="body-text" style={{ color: 'var(--muted)' }}>
+                Our teams work alongside radiation physicists and hospital project managers
+                to deliver rooms that pass attenuation compliance testing first time —
+                on the programme dates that matter to clinical operations.
               </p>
-              <Link to="/about" className="btn btn-secondary">Our story <ArrowRight size={14}/></Link>
+              <div className="h-spotlight-checklist">
+                {['MRI & CT suite construction', 'Lead-lined and radiation-shielded doors', 'X-ray and nuclear medicine rooms', 'Medical-grade joinery and surfaces'].map(c => (
+                  <div key={c} className="h-spotlight-check">
+                    <CheckCircle2 size={15} />
+                    <span>{c}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/what-we-build" className="btn btn-primary" style={{ marginTop: 28 }}>
+                Healthcare Services <ArrowRight size={14} />
+              </Link>
             </FadeIn>
-            <FadeIn delay={2}>
-              <div className="h-photo-placeholder">Company / site photo</div>
+            <FadeIn delay={2} className="h-spotlight-right">
+              <div className="h-spotlight-img-wrap">
+                <img
+                  src="/images/healthcare-xray.jpg"
+                  alt="Completed x-ray room with radiation shielding and specialist door"
+                  className="h-spotlight-img"
+                />
+                <div className="h-spotlight-img-badge">
+                  <span className="h-badge-num">01</span>
+                  <span className="h-badge-lbl">Healthcare &amp; Medical Environments</span>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* DIVISIONS */}
+      {/* ════════════════════════════════════════
+          ALL SERVICES — 4 CARDS
+      ════════════════════════════════════════ */}
       <section className="section section-gray">
         <div className="container">
           <FadeIn className="h-section-head">
-            <p className="label">Our Expertise</p>
-            <h2 className="headline-medium">Three materials. One standard.</h2>
+            <p className="label">Full Scope of Work</p>
+            <h2 className="headline-medium">Four service lines. One contractor.</h2>
             <p className="section-sub">
-              EGC runs its own fabrication shops — every project moves from design
-              to site under one roof, one schedule, and one quality standard.
+              Healthcare environments are our speciality, but EGC also delivers architectural
+              joinery, surface works, and steel fabrication — all under one quality programme.
             </p>
           </FadeIn>
-          <div className="h-div-grid">
-            {DIVISIONS.map((d, i) => (
-              <FadeIn delay={i + 1} key={d.id}>
-                <div className="h-div-card">
-                  <div className="h-div-card-top">
-                    <span className="h-div-num">Division {d.num}</span>
-                    {d.badge && <span className="h-div-badge">{d.badge}</span>}
+
+          <div className="h-services-grid">
+            {SERVICES.map((svc, i) => (
+              <FadeIn delay={(i % 4) + 1} key={svc.id}>
+                <div className="h-svc-card">
+                  <div className="h-svc-card-num">{svc.num}</div>
+                  {svc.thumb && (
+                    <div className="h-svc-card-img-wrap">
+                      <img src={svc.thumb} alt={svc.label} className="h-svc-card-img" />
+                    </div>
+                  )}
+                  {!svc.thumb && (
+                    <div className="h-svc-card-img-placeholder" />
+                  )}
+                  <div className="h-svc-card-body">
+                    <h3 className="h-svc-card-title">{svc.label}</h3>
+                    <p className="h-svc-card-tag">{svc.tag}</p>
+                    <p className="h-svc-card-desc">{svc.summary}</p>
                   </div>
-                  {DIV_ICONS[d.id]}
-                  <h3 className="headline-small" style={{ margin: '12px 0 4px' }}>{d.label}</h3>
-                  <p className="tag-mono">{d.tag}</p>
-                  <p className="body-text" style={{ fontSize: '0.9rem', marginTop: 6, marginBottom: 18 }}>{d.summary}</p>
-                  <Link to="/divisions" className="btn btn-secondary btn-sm">
-                    Learn more <ArrowRight size={13}/>
+                  <Link to="/what-we-build" className="h-svc-card-link">
+                    Learn more <ChevronRight size={14} />
                   </Link>
                 </div>
               </FadeIn>
@@ -137,65 +199,122 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED PROJECTS */}
+      {/* ════════════════════════════════════════
+          WORK GALLERY TEASER
+      ════════════════════════════════════════ */}
       <section className="section">
         <div className="container">
           <FadeIn className="h-row-head">
             <div>
-              <p className="label">Selected Projects</p>
-              <h2 className="headline-medium" style={{ marginBottom: 0 }}>Where we build.</h2>
+              <p className="label">Our Work</p>
+              <h2 className="headline-medium" style={{ marginBottom: 0 }}>Built across the Kingdom.</h2>
             </div>
-            <Link to="/projects" className="btn btn-secondary btn-sm">All projects <ArrowRight size={13}/></Link>
+            <Link to="/what-we-build" className="btn btn-secondary btn-sm">
+              See all work <ArrowRight size={13} />
+            </Link>
           </FadeIn>
-          <div className="h-proj-grid">
-            {PROJECTS.slice(0, 3).map((p, i) => (
-              <FadeIn delay={i + 1} key={p.id}>
-                <div className="h-proj-card">
-                  <div className="h-proj-card-top">
-                    <span className="h-proj-city">{p.city}</span>
-                    <span className={`status-pill status-${p.status.toLowerCase()}`}>{p.status}</span>
-                  </div>
-                  <h3 className="h-proj-name">{p.name}</h3>
-                  <div className="h-proj-meta">
-                    <span>{p.sector}</span><span>·</span>
-                    <span>{DIVISIONS.find(d => d.id === p.division)?.label}</span><span>·</span>
-                    <span>{p.year}</span>
-                  </div>
-                  <p className="h-proj-blurb">{p.blurb}</p>
+
+          <div className="h-gallery-grid">
+            <div className="h-gallery-main">
+              <img src="/images/hero-bg.jpg" alt="MRI suite installation in progress" className="h-gallery-img" />
+              <div className="h-gallery-caption">
+                <span className="h-gallery-service">Healthcare</span>
+                <span>MRI suite installation — Jeddah hospital project</span>
+              </div>
+            </div>
+            <div className="h-gallery-side">
+              <div className="h-gallery-item">
+                <img src="/images/joinery-doors.jpg" alt="Architectural walnut doors" className="h-gallery-img" />
+                <div className="h-gallery-caption">
+                  <span className="h-gallery-service">Joinery</span>
+                  <span>Architectural door installation</span>
                 </div>
-              </FadeIn>
-            ))}
+              </div>
+              <div className="h-gallery-item">
+                <img src="/images/corian-surfaces.jpg" alt="Corian nurse station countertop" className="h-gallery-img" />
+                <div className="h-gallery-caption">
+                  <span className="h-gallery-service">Surfaces</span>
+                  <span>Corian nurse station — hospital project</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CAREERS STRIP */}
+      {/* ════════════════════════════════════════
+          STATS BAR
+      ════════════════════════════════════════ */}
+      <div className="h-stats-bar">
+        <div className="container">
+          <div className="h-stats-grid">
+            {STATS.map((s, i) => (
+              <div key={s.l} className="h-stat" style={{ '--delay': `${i * 0.08}s` }}>
+                <div className="h-stat-num">{s.n}</div>
+                <div className="h-stat-lbl">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════
+          ABOUT SNIPPET
+      ════════════════════════════════════════ */}
       <section className="section section-gray">
         <div className="container">
-          <FadeIn className="h-careers-strip">
-            <div>
-              <p className="label">Work With Us</p>
-              <h2 className="headline-medium" style={{ marginBottom: 8 }}>We're building our team.</h2>
-              <p className="section-sub" style={{ marginTop: 0 }}>
-                EGC is growing across all three divisions. Fabricators, site supervisors,
-                engineers, and support professionals across Riyadh and on sites Kingdom-wide.
+          <div className="h-about-grid">
+            <FadeIn>
+              <p className="label">About EGC</p>
+              <h2 className="headline-medium">Built in Jeddah. Working across the Kingdom.</h2>
+              <p className="body-text">
+                Engineering Grouping Co. (EGC) is a Jeddah-based specialist interior contractor.
+                We design, fabricate, and install healthcare environments, architectural joinery,
+                Corian surface works, and steel fabrication — with our own crews, our own workshops,
+                and our own quality programme.
               </p>
-            </div>
-            <Link to="/careers" className="btn btn-primary">
-              View open positions <ArrowRight size={15}/>
-            </Link>
-          </FadeIn>
+              <p className="body-text" style={{ color: 'var(--muted)' }}>
+                We don't subcontract the core of what we do. Every MRI room, every reception counter,
+                every Corian countertop is built by our people — from first drawing to final handover.
+              </p>
+              <Link to="/about" className="btn btn-secondary">
+                About EGC <ArrowRight size={14} />
+              </Link>
+            </FadeIn>
+            <FadeIn delay={2}>
+              <div className="h-about-features">
+                {[
+                  { icon: '🏥', title: 'Healthcare Specialist', desc: 'Hospital interiors where compliance is non-negotiable.' },
+                  { icon: '🪵', title: 'In-House Joinery', desc: 'Our own timber workshop, our own craftsmen.' },
+                  { icon: '🔧', title: 'Single Contractor', desc: 'One quality standard across every discipline.' },
+                ].map(f => (
+                  <div key={f.title} className="h-about-feat">
+                    <span className="h-about-feat-icon">{f.icon}</span>
+                    <div>
+                      <div className="h-about-feat-title">{f.title}</div>
+                      <div className="h-about-feat-desc">{f.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ════════════════════════════════════════
+          CTA
+      ════════════════════════════════════════ */}
       <section className="section">
         <div className="container">
           <FadeIn className="h-cta-banner">
-            <p className="label">Get In Touch</p>
-            <h2 className="headline-medium" style={{ marginBottom: 10 }}>Ready to start your project?</h2>
+            <p className="label">Start a Conversation</p>
+            <h2 className="headline-medium" style={{ marginBottom: 10 }}>
+              Ready to discuss your project?
+            </h2>
             <p className="section-sub" style={{ margin: '0 auto 28px', textAlign: 'center' }}>
-              Consult with our team for solutions tailored to your scope, timeline, and budget.
+              Whether it's a hospital radiology department, a full interior fit-out, or a
+              specialist fabrication scope — our team is ready to respond.
             </p>
             <div className="h-cta-btns">
               <Link to="/contact" className="btn btn-primary btn-lg">Contact Us</Link>
@@ -208,113 +327,247 @@ export default function Home() {
       <style>{`
         /* ── HERO ── */
         .h-hero {
-          padding: 100px 0 80px;
-          background: linear-gradient(180deg, var(--blue-light) 0%, var(--white) 100%);
-          border-bottom: 1px solid var(--blue-mid);
-          text-align: center;
+          position: relative; height: 100vh; min-height: 620px;
+          display: flex; align-items: center;
+          overflow: hidden;
         }
-        .h-hero-inner { display: flex; flex-direction: column; align-items: center; }
-        .h-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px; }
-        .h-headline {
+        .h-hero-bg {
+          position: absolute; inset: 0;
+          background-size: cover; background-position: center 30%;
+          background-repeat: no-repeat;
+          transform: scale(1.04);
+          transition: transform 12s ease;
+        }
+        .h-hero-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(10,14,20,0.78) 0%,
+            rgba(10,14,20,0.55) 60%,
+            rgba(10,14,20,0.45) 100%
+          );
+        }
+        .h-hero-content {
+          position: relative; z-index: 2;
+          padding-top: 80px; /* offset for nav */
+        }
+        .h-hero-inner {
+          max-width: 760px;
+        }
+        .h-hero-label {
+          display: flex; align-items: center; gap: 8px;
+          font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+          text-transform: uppercase; color: rgba(255,255,255,0.6);
+          margin-bottom: 24px;
+        }
+        .h-hero-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: #10B981; flex-shrink: 0;
+          box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+        }
+        .h-hero-headline {
           font-family: var(--font-display);
-          font-size: clamp(2.2rem, 5vw, 3.8rem);
-          font-weight: 800; line-height: 1.07;
-          color: var(--dark); letter-spacing: -0.02em;
-          max-width: 820px; margin: 0 auto 20px;
+          font-size: clamp(2.6rem, 6vw, 4.8rem);
+          font-weight: 900; line-height: 1.03;
+          color: #fff; letter-spacing: -0.03em;
+          margin: 0 0 22px;
         }
-        .h-sub {
-          font-size: 1.08rem; color: var(--muted);
-          max-width: 600px; margin: 0 auto; line-height: 1.72;
+        .h-hero-headline-accent { color: #93C5FD; }
+        .h-hero-sub {
+          font-size: clamp(1rem, 1.8vw, 1.15rem);
+          color: rgba(255,255,255,0.72); line-height: 1.72;
+          max-width: 600px; margin-bottom: 32px;
         }
-        .h-btn-group { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
-        .h-trust { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
-        .h-trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 500; color: var(--muted); }
-        .h-trust-item svg { color: var(--blue); }
+        .h-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .h-hero-trust {
+          display: flex; gap: 20px; flex-wrap: wrap;
+          margin-top: 28px;
+        }
+        .h-hero-trust-item {
+          display: flex; align-items: center; gap: 6px;
+          font-size: 0.8rem; color: rgba(255,255,255,0.55); font-weight: 500;
+        }
+        .h-hero-trust-item svg { color: #10B981; }
 
-        /* ── STATS ── */
-        .h-stats { background: var(--blue); }
+        /* ── Scroll indicator ── */
+        .h-scroll-ind {
+          position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+          display: flex; flex-direction: column; align-items: center; gap: 6px;
+          color: rgba(255,255,255,0.35); z-index: 2;
+          animation: scrollBob 2s ease-in-out infinite;
+        }
+        .h-scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
+        @keyframes scrollBob {
+          0%, 100% { transform: translateX(-50%) translateY(0); }
+          50% { transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* ── Service strip ── */
+        .h-svc-strip { background: var(--dark); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .h-svc-strip-inner {
+          display: flex; align-items: center; gap: 20px;
+          padding: 16px 0; flex-wrap: wrap;
+        }
+        .h-svc-strip-label {
+          font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+          text-transform: uppercase; color: rgba(255,255,255,0.35);
+          white-space: nowrap; flex-shrink: 0;
+        }
+        .h-svc-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+        .h-svc-pill {
+          display: flex; align-items: center; gap: 7px;
+          padding: 7px 14px; border-radius: 999px;
+          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(255,255,255,0.04);
+          font-size: 0.8rem; font-weight: 500;
+          color: rgba(255,255,255,0.7); text-decoration: none;
+          transition: all 0.18s ease; cursor: pointer;
+        }
+        .h-svc-pill:hover { border-color: rgba(147,197,253,0.5); color: #93C5FD; background: rgba(147,197,253,0.06); }
+        .h-svc-pill-num { font-family: 'Courier New', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.3); }
+        .h-svc-pill-arrow { opacity: 0; transform: translateX(-4px); transition: all 0.18s ease; }
+        .h-svc-pill:hover .h-svc-pill-arrow { opacity: 1; transform: translateX(0); }
+
+        /* ── Healthcare spotlight ── */
+        .h-spotlight-grid {
+          display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+        }
+        .h-spotlight-checklist { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+        .h-spotlight-check {
+          display: flex; align-items: center; gap: 10px;
+          font-size: 0.9rem; color: var(--body); font-weight: 500;
+        }
+        .h-spotlight-check svg { color: var(--blue); flex-shrink: 0; }
+        .h-spotlight-img-wrap { position: relative; }
+        .h-spotlight-img {
+          width: 100%; border-radius: var(--radius-lg);
+          aspect-ratio: 4/3; object-fit: cover;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .h-spotlight-img-badge {
+          position: absolute; bottom: -18px; left: 20px;
+          background: var(--dark); border-radius: var(--radius-lg);
+          padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .h-badge-num {
+          font-family: 'Courier New', monospace; font-size: 1.1rem;
+          font-weight: 800; color: #93C5FD;
+        }
+        .h-badge-lbl {
+          font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7);
+          max-width: 180px; line-height: 1.35;
+        }
+
+        /* ── Services grid ── */
+        .h-section-head { margin-bottom: 48px; }
+        .h-section-head .section-sub { max-width: 580px; }
+        .h-services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .h-svc-card {
+          background: #fff; border: 1.5px solid var(--border);
+          border-radius: var(--radius-lg); overflow: hidden;
+          display: flex; flex-direction: column;
+          transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+        .h-svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.08); border-color: var(--blue-mid); }
+        .h-svc-card-num {
+          font-family: 'Courier New', monospace; font-size: 0.65rem;
+          font-weight: 800; color: var(--muted); padding: 14px 16px 0;
+          letter-spacing: 0.08em;
+        }
+        .h-svc-card-img-wrap { height: 140px; overflow: hidden; }
+        .h-svc-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .h-svc-card:hover .h-svc-card-img { transform: scale(1.04); }
+        .h-svc-card-img-placeholder { height: 140px; background: var(--gray-bg); }
+        .h-svc-card-body { padding: 16px; flex: 1; }
+        .h-svc-card-title { font-family: var(--font-display); font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; line-height: 1.3; }
+        .h-svc-card-tag { font-size: 0.65rem; font-weight: 600; color: var(--blue); letter-spacing: 0.04em; margin-bottom: 8px; }
+        .h-svc-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin: 0; }
+        .h-svc-card-link {
+          display: flex; align-items: center; gap: 4px;
+          padding: 12px 16px; font-size: 0.82rem; font-weight: 600;
+          color: var(--blue); text-decoration: none;
+          border-top: 1px solid var(--border);
+          transition: gap 0.15s ease, background 0.15s ease;
+        }
+        .h-svc-card-link:hover { gap: 8px; background: var(--blue-light); }
+
+        /* ── Gallery ── */
+        .h-row-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+        .h-gallery-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+        .h-gallery-main, .h-gallery-side { display: flex; flex-direction: column; gap: 12px; }
+        .h-gallery-item { flex: 1; position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+        .h-gallery-main { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+        .h-gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; aspect-ratio: auto; min-height: 220px; }
+        .h-gallery-main .h-gallery-img { aspect-ratio: 16/10; min-height: unset; }
+        .h-gallery-item .h-gallery-img { aspect-ratio: 4/3; min-height: unset; }
+        .h-gallery-main:hover .h-gallery-img,
+        .h-gallery-item:hover .h-gallery-img { transform: scale(1.03); }
+        .h-gallery-caption {
+          position: absolute; bottom: 0; left: 0; right: 0;
+          background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+          padding: 20px 14px 12px;
+          display: flex; flex-direction: column; gap: 2px;
+        }
+        .h-gallery-service {
+          font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em;
+          text-transform: uppercase; color: #93C5FD;
+        }
+        .h-gallery-caption > span:last-child { font-size: 0.78rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+        /* ── Stats ── */
+        .h-stats-bar { background: var(--blue); }
         .h-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
         .h-stat { padding: 40px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.15); }
         .h-stat:last-child { border-right: none; }
-        .h-stat-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
-        .h-stat-lbl { font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; }
+        .h-stat-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; }
+        .h-stat-lbl { font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.68); letter-spacing: 0.04em; }
 
-        /* ── FEATURE GRID ── */
-        .h-feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-        .h-photo-placeholder {
-          width: 100%; aspect-ratio: 16/10;
-          background: var(--gray-bg); border: 1.5px solid var(--border);
-          border-radius: var(--radius-lg); display: flex; align-items: center;
-          justify-content: center; color: var(--muted); font-size: 0.85rem; font-weight: 500;
+        /* ── About snippet ── */
+        .h-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+        .h-about-features { display: flex; flex-direction: column; gap: 0; border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 8px; }
+        .h-about-feat {
+          display: flex; align-items: flex-start; gap: 14px;
+          padding: 20px 22px; border-bottom: 1px solid var(--border);
+          transition: background 0.18s ease;
         }
-
-        /* ── SECTION HEAD ── */
-        .h-section-head { margin-bottom: 48px; }
-        .h-section-head .section-sub { max-width: 560px; }
-        .h-row-head {
-          display: flex; justify-content: space-between; align-items: flex-end;
-          gap: 20px; flex-wrap: wrap; margin-bottom: 28px;
-        }
-
-        /* ── DIVISIONS ── */
-        .h-div-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .h-div-card {
-          background: var(--white); border: 1.5px solid var(--border);
-          border-top: 3px solid var(--blue);
-          border-radius: var(--radius-lg); padding: 28px 24px;
-          display: flex; flex-direction: column;
-          transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        }
-        .h-div-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,99,235,0.1); }
-        .h-div-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .h-div-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-        .h-div-badge { font-size: 0.6rem; font-weight: 800; background: var(--blue); color: var(--white); padding: 3px 8px; border-radius: 4px; letter-spacing: 0.06em; }
-
-        /* ── PROJECT CARDS ── */
-        .h-proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-        .h-proj-card {
-          background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 22px;
-          transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        }
-        .h-proj-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.08); border-color: var(--blue-mid); }
-        .h-proj-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .h-proj-city { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
-        .h-proj-name { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.3; }
-        .h-proj-meta { display: flex; gap: 6px; font-size: 0.76rem; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; }
-        .h-proj-blurb { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin: 0; }
-
-        /* ── CAREERS STRIP ── */
-        .h-careers-strip {
-          background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 40px 48px;
-          display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;
-        }
+        .h-about-feat:last-child { border-bottom: none; }
+        .h-about-feat:hover { background: var(--gray-bg); }
+        .h-about-feat-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+        .h-about-feat-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+        .h-about-feat-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
 
         /* ── CTA ── */
-        .h-cta-banner {
-          background: var(--gray-bg); border: 1.5px solid var(--border);
-          border-radius: var(--radius-lg); padding: 60px 48px; text-align: center;
-        }
+        .h-cta-banner { background: var(--gray-bg); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 60px 48px; text-align: center; }
         .h-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
         /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+          .h-services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 900px) {
           .h-stats-grid { grid-template-columns: repeat(2, 1fr); }
           .h-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
           .h-stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
           .h-stat:nth-last-child(-n+2) { border-bottom: none; }
-          .h-div-grid { grid-template-columns: 1fr 1fr; }
-          .h-proj-grid { grid-template-columns: 1fr 1fr; }
+          .h-gallery-grid { grid-template-columns: 1fr; }
+          .h-gallery-side { flex-direction: row; }
+        }
+        @media (max-width: 800px) {
+          .h-spotlight-grid { grid-template-columns: 1fr; gap: 40px; }
+          .h-spotlight-img-badge { bottom: -14px; }
+          .h-about-grid { grid-template-columns: 1fr; gap: 36px; }
         }
         @media (max-width: 768px) {
-          .h-hero { padding: 72px 0 60px; }
-          .h-feature-grid { grid-template-columns: 1fr; gap: 32px; }
-          .h-careers-strip { padding: 32px 28px; flex-direction: column; align-items: flex-start; }
-          .h-cta-banner { padding: 44px 28px; }
+          .h-hero { min-height: 100svh; }
+          .h-hero-headline { font-size: clamp(2rem, 8vw, 3.5rem); }
+          .h-hero-trust { gap: 14px; }
+          .h-cta-banner { padding: 40px 24px; }
         }
-        @media (max-width: 560px) {
-          .h-div-grid { grid-template-columns: 1fr; }
-          .h-proj-grid { grid-template-columns: 1fr; }
-          .h-btn-group { flex-direction: column; align-items: center; }
+        @media (max-width: 640px) {
+          .h-services-grid { grid-template-columns: 1fr; }
+          .h-gallery-side { flex-direction: column; }
+          .h-hero-btns { flex-direction: column; align-items: flex-start; }
         }
       `}</style>
     </>

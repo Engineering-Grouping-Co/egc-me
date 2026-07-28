@@ -1,20 +1,16 @@
 import { Link } from 'react-router-dom';
-import FadeIn from '../components/FadeIn';
+import PageHeader from '../components/PageHeader';
 import { SITE } from '../data';
 
 export default function Terms() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb"><Link to="/">Home</Link><span>/</span><span>Terms &amp; Conditions</span></nav>
-          <FadeIn>
-            <p className="overline">Legal</p>
-            <h1 className="headline-lg" style={{ marginBottom: 10 }}>Terms &amp; Conditions</h1>
-            <p className="section-sub">Last updated: June 2026</p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Terms & Conditions' }]}
+        overline="Legal"
+        title="Terms & Conditions"
+        subtitle="Last updated: June 2026"
+      />
 
       <div className="legal-body">
         <h2>1. Agreement to Terms</h2>

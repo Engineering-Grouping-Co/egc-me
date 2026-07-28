@@ -1,20 +1,16 @@
 import { Link } from 'react-router-dom';
-import FadeIn from '../components/FadeIn';
+import PageHeader from '../components/PageHeader';
 import { SITE } from '../data';
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb"><Link to="/">Home</Link><span>/</span><span>Privacy Policy</span></nav>
-          <FadeIn>
-            <p className="overline">Legal</p>
-            <h1 className="headline-lg" style={{ marginBottom: 10 }}>Privacy Policy</h1>
-            <p className="section-sub">Last updated: June 2026</p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Privacy Policy' }]}
+        overline="Legal"
+        title="Privacy Policy"
+        subtitle="Last updated: June 2026"
+      />
 
       <div className="legal-body">
         <h2>1. Introduction</h2>

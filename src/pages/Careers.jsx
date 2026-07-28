@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, ArrowRight, Wrench, Building2, TrendingUp, ShieldCheck, Briefcase, Mail } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
+import PageHeader from '../components/PageHeader';
 import { CAREERS, SITE } from '../data';
 
 /* ── Culture perks ── */
@@ -87,22 +88,13 @@ export default function Careers() {
 
   return (
     <>
-      {/* ── PAGE HERO ── matches all other pages exactly ── */}
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb">
-            <Link to="/">Home</Link><span>/</span><span>Careers</span>
-          </nav>
-          <FadeIn>
-            <p className="overline">Work With Us</p>
-            <h1 className="headline-lg" style={{ marginBottom: 14 }}>Build your career at EGC.</h1>
-            <p className="section-sub">
-              We're looking for skilled fabricators, site supervisors, engineers, and support professionals
-              to join our team in Jeddah and across the Kingdom.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Careers' }]}
+        overline="Work With Us"
+        title="Build your career at EGC."
+        subtitle="We're looking for skilled fabricators, site supervisors, engineers, and support professionals to join our team in Jeddah and across the Kingdom."
+        decorNum="02"
+      />
 
       {/* ── CULTURE / WHY EGC ── */}
       <section className="section section-gray">

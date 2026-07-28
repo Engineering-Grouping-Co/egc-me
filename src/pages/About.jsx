@@ -1,35 +1,26 @@
 import { Link } from 'react-router-dom';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-import { TEAM, VALUES, CERTIFICATIONS } from '../data';
+import PageHeader from '../components/PageHeader';
+import { CERTIFICATIONS, VALUES } from '../data';
 
 const VALUE_ICONS = [
-  <svg key="q" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L14 17.3l-5.6 2.9 1.1-6.2L5 9.6l6.2-.9L14 3z" stroke="#2563EB" strokeWidth="1.8" strokeLinejoin="round"/></svg>,
-  <svg key="c" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#2563EB" strokeWidth="1.8"/><path d="M14 8v6l4 4" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round"/></svg>,
-  <svg key="p" width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 20c0-4.4 4-8 9-8s9 3.6 9 8" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round"/><circle cx="14" cy="9" r="4" stroke="#2563EB" strokeWidth="1.8"/></svg>,
-  <svg key="g" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#2563EB" strokeWidth="1.8"/><path d="M4 14h20M14 4c-3 3-4 6-4 10s1 7 4 10M14 4c3 3 4 6 4 10s-1 7-4 10" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round"/></svg>,
+  <svg key="q" width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 2l2.6 5.4 5.9.8-4.3 4.2 1 5.9L13 16.3l-5.3 2.7 1-5.9L4.5 8.3l5.9-.8L13 2z" stroke="#2563EB" strokeWidth="1.7" strokeLinejoin="round"/></svg>,
+  <svg key="c" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9.5" stroke="#2563EB" strokeWidth="1.7"/><path d="M13 7.5v5.5l3.7 3.7" stroke="#2563EB" strokeWidth="1.7" strokeLinecap="round"/></svg>,
+  <svg key="p" width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4.5 19c0-4.1 3.8-7.5 8.5-7.5s8.5 3.4 8.5 7.5" stroke="#2563EB" strokeWidth="1.7" strokeLinecap="round"/><circle cx="13" cy="8.5" r="3.7" stroke="#2563EB" strokeWidth="1.7"/></svg>,
+  <svg key="g" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9.5" stroke="#2563EB" strokeWidth="1.7"/><path d="M3.5 13h19M13 3.5c-2.8 2.8-3.7 5.7-3.7 9.5s.9 6.7 3.7 9.5M13 3.5c2.8 2.8 3.7 5.7 3.7 9.5s-.9 6.7-3.7 9.5" stroke="#2563EB" strokeWidth="1.7" strokeLinecap="round"/></svg>,
 ];
 
 export default function About() {
   return (
     <>
-      {/* PAGE HERO */}
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb">
-            <Link to="/">Home</Link><span>/</span><span>About</span>
-          </nav>
-          <FadeIn>
-            <p className="overline">About EGC</p>
-            <h1 className="headline-lg" style={{ marginBottom: 14 }}>About Engineering Grouping Co.</h1>
-            <p className="section-sub">
-              A Jeddah-based specialty contracting and manufacturing company — designing,
-              fabricating, and installing structural steel, architectural joinery, and lead
-              sheet works across the Kingdom of Saudi Arabia.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'About' }]}
+        overline="Company Profile"
+        title="About Engineering Grouping Co."
+        subtitle="A Jeddah-based specialist interior contractor — building precision environments for hospitals, clinics, commercial buildings, and institutional projects across Saudi Arabia."
+        decorNum="EGC"
+      />
 
       {/* COMPANY STORY */}
       <section className="section">
@@ -37,35 +28,54 @@ export default function About() {
           <div className="feature-grid">
             <FadeIn>
               <p className="overline">Our Story</p>
-              <h2 className="headline-lg" style={{ marginBottom: 18 }}>Building the Kingdom, one material at a time.</h2>
-              <p className="body-lg" style={{ marginBottom: 14 }}>
-                Engineering Grouping Co. was established with a straightforward conviction:
-                that the best way to deliver a fabrication project is to control it from first
-                drawing to final handover. We started with structural steel and built our own
-                shop rather than subcontracting — because control over quality and programme
-                starts in the workshop, not on a specification sheet.
+              <h2 className="headline-medium" style={{ marginBottom: 20 }}>
+                Precision environments.<br />Built by our hands.
+              </h2>
+              <p className="body-text">
+                Engineering Grouping Co. (EGC) was founded in Jeddah on a straightforward conviction:
+                the best way to deliver a specialist interior project is to control it entirely in-house.
+                From the first shop drawing to the final surface polish, our people do the work.
               </p>
-              <p className="body-md" style={{ marginBottom: 14, color: 'var(--muted)' }}>
-                Over the years we expanded into architectural woodwork and joinery, bringing
-                the same principle — in-house fabrication, our own crews, single-point
-                accountability — to a second discipline. Today our timber shop delivers custom
-                millwork and fit-out packages to hospitality, commercial, and residential
-                clients across the Kingdom.
+              <p className="body-text">
+                Over time, the healthcare sector became our core. Hospitals, diagnostic centres, and
+                clinics require interiors that a general contractor cannot deliver — radiation-controlled
+                rooms where shielding is measured in millimetres, doors that seal against RF leakage,
+                surfaces that meet clinical hygiene standards. EGC built the expertise, the tools,
+                and the processes to deliver that work reliably.
               </p>
-              <p className="body-md" style={{ color: 'var(--muted)' }}>
-                Our third division, Lead Sheet Works, is now active, to serve the
-                waterproofing and roofing requirements of giga-projects and premium
-                developments. EGC now covers three materials, three disciplines, and one
-                consistent standard of delivery.
+              <p className="body-text" style={{ color: 'var(--muted)' }}>
+                Alongside healthcare, our joinery workshop produces architectural woodwork for
+                commercial, hospitality, and institutional projects. Our Corian fabrication team
+                supplies clinical and commercial surfaces. Our steel shop handles the metalwork
+                that supports it all. One company, four disciplines, one quality standard.
               </p>
+              <Link to="/what-we-build" className="btn btn-secondary">
+                What we build <ArrowRight size={14} />
+              </Link>
             </FadeIn>
             <FadeIn delay={2}>
-              <div className="photo-placeholder aspect-16-10" style={{ marginBottom: 16 }}>Company / site photo</div>
+              <img
+                src="/images/hero-bg.jpg"
+                alt="EGC team installing MRI room shielding"
+                className="ab-hero-img"
+              />
               <div className="about-quick-facts">
-                <div className="qf-item"><span className="qf-num">Est.</span><span className="qf-lbl">Year Founded</span></div>
-                <div className="qf-item"><span className="qf-num">150+</span><span className="qf-lbl">Projects</span></div>
-                <div className="qf-item"><span className="qf-num">3</span><span className="qf-lbl">Divisions</span></div>
-                <div className="qf-item"><span className="qf-num">9</span><span className="qf-lbl">Regions</span></div>
+                <div className="qf-item">
+                  <span className="qf-num">2006</span>
+                  <span className="qf-lbl">Founded</span>
+                </div>
+                <div className="qf-item">
+                  <span className="qf-num">150+</span>
+                  <span className="qf-lbl">Projects</span>
+                </div>
+                <div className="qf-item">
+                  <span className="qf-num">4</span>
+                  <span className="qf-lbl">Services</span>
+                </div>
+                <div className="qf-item">
+                  <span className="qf-num">9</span>
+                  <span className="qf-lbl">Regions</span>
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -76,10 +86,11 @@ export default function About() {
       <section className="section section-gray">
         <div className="container">
           <FadeIn className="section-header center">
-            <p className="overline">What We Stand For</p>
-            <h2 className="headline-lg">Our values, in practice.</h2>
+            <p className="overline">How we work</p>
+            <h2 className="headline-lg">Four principles. Every project.</h2>
             <p className="section-sub">
-              Four principles that shape every project we take on, from shop floor to site.
+              The same standards that apply to a radiation-shielded MRI room apply to
+              a bespoke reception counter. Our principles don't flex by project type.
             </p>
           </FadeIn>
           <div className="grid-4">
@@ -100,43 +111,44 @@ export default function About() {
       <section className="section">
         <div className="container">
           <FadeIn className="section-header">
-            <p className="overline">Sectors We Serve</p>
-            <h2 className="headline-lg">Government and private sector.</h2>
+            <p className="overline">Who We Work With</p>
+            <h2 className="headline-lg">Healthcare and commercial clients.</h2>
           </FadeIn>
           <div className="grid-2">
             <FadeIn delay={1}>
               <div className="card sector-card">
                 <div className="sector-badge">01</div>
-                <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Government &amp; Semi-Government</h3>
+                <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Healthcare & Government</h3>
                 <p className="body-md" style={{ marginBottom: 18 }}>
-                  EGC has a long-standing record of delivery on public infrastructure, government
-                  buildings, and semi-government facilities — where programme certainty and
-                  compliance documentation matter most.
+                  EGC's primary clients are hospitals, medical cities, diagnostic centres, and the
+                  government health authorities that commission them. We understand the programme
+                  criticality, the compliance requirements, and the documentation standards that
+                  public health infrastructure demands.
                 </p>
                 <ul className="sector-list">
-                  <li>Government administrative and security facilities</li>
-                  <li>Municipal and utility infrastructure</li>
-                  <li>Defence-related facilities</li>
-                  <li>Giga-project and Vision 2030 packages</li>
-                  <li>Public-sector industrial city works</li>
+                  <li>Government hospitals and medical cities</li>
+                  <li>Private hospital groups and diagnostic networks</li>
+                  <li>Oncology, radiology, and imaging departments</li>
+                  <li>Nuclear medicine and radiation therapy facilities</li>
+                  <li>Government administrative and institutional buildings</li>
                 </ul>
               </div>
             </FadeIn>
             <FadeIn delay={2}>
               <div className="card sector-card">
                 <div className="sector-badge">02</div>
-                <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Private Sector &amp; Commercial</h3>
+                <h3 className="headline-md" style={{ margin: '14px 0 10px' }}>Commercial & Hospitality</h3>
                 <p className="body-md" style={{ marginBottom: 18 }}>
-                  Developers, EPC contractors, and industrial operators choose EGC for our
-                  in-house capacity, schedule reliability, and ability to manage complex
-                  multi-discipline packages under a single contract.
+                  Beyond healthcare, EGC delivers interior joinery and surface works for developers,
+                  EPC contractors, hospitality operators, and commercial tenants who need a specialist
+                  fabricator with in-house capacity and schedule accountability.
                 </p>
                 <ul className="sector-list">
-                  <li>Mixed-use and commercial developments</li>
-                  <li>Hospitality, hotel, and resort fit-outs</li>
-                  <li>Industrial warehouses and storage facilities</li>
-                  <li>Retail and F&amp;B fit-out packages</li>
-                  <li>EPC subcontract packages</li>
+                  <li>Commercial office buildings and towers</li>
+                  <li>Hotels, resorts, and hospitality fit-outs</li>
+                  <li>Café and F&B interior packages</li>
+                  <li>Retail and mixed-use development fit-outs</li>
+                  <li>Industrial facilities and manufacturing plants</li>
                 </ul>
               </div>
             </FadeIn>
@@ -151,8 +163,7 @@ export default function About() {
             <p className="overline">Accreditations</p>
             <h2 className="headline-lg">Quality. Safety. Environment.</h2>
             <p className="section-sub">
-              EGC operates under internationally recognised management systems across
-              all three divisions.
+              EGC operates under internationally recognised management systems across all service lines.
             </p>
           </FadeIn>
           <div className="grid-3">
@@ -169,14 +180,14 @@ export default function About() {
         </div>
       </section>
 
-      {/* TEAM */}
+      {/* TEAM PLACEHOLDER */}
       <section className="section" id="team">
         <div className="container">
           <FadeIn className="section-header">
             <p className="overline">The Team</p>
             <h2 className="headline-lg">The people behind the build.</h2>
             <p className="section-sub">
-              Leadership and division heads driving EGC's projects from tender to handover.
+              Leadership and project heads driving EGC's work from tender to handover.
             </p>
           </FadeIn>
           <div className="team-placeholder">
@@ -187,7 +198,28 @@ export default function About() {
         </div>
       </section>
 
+      {/* CTA */}
+      <section className="section section-gray">
+        <div className="container">
+          <FadeIn className="cta-banner">
+            <p className="overline">Work With EGC</p>
+            <h2 className="headline-lg" style={{ marginBottom: 12 }}>Ready to start your project?</h2>
+            <p className="section-sub" style={{ margin: '0 auto 28px' }}>
+              Get in touch to discuss your scope, timeline, and requirements.
+            </p>
+            <div className="btn-group" style={{ justifyContent: 'center' }}>
+              <Link to="/contact" className="btn btn-primary btn-lg">Contact Us</Link>
+              <Link to="/what-we-build" className="btn btn-secondary btn-lg">What We Build</Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       <style>{`
+        .ab-hero-img {
+          width: 100%; aspect-ratio: 16/10; object-fit: cover;
+          border-radius: var(--radius-lg); margin-bottom: 16px;
+        }
         .about-quick-facts {
           display: grid; grid-template-columns: repeat(4, 1fr);
           border: 1.5px solid var(--border); border-radius: var(--radius-lg);
@@ -195,15 +227,15 @@ export default function About() {
         }
         .qf-item {
           display: flex; flex-direction: column; align-items: center;
-          padding: 20px 12px; text-align: center;
+          padding: 18px 12px; text-align: center;
           border-right: 1px solid var(--border);
         }
         .qf-item:last-child { border-right: none; }
-        .qf-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 4px; }
-        .qf-lbl { font-size: 0.72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+        .qf-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 4px; }
+        .qf-lbl { font-size: 0.68rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
         .val-card { text-align: center; padding: 32px 24px; }
-        .val-icon { width: 52px; height: 52px; margin: 0 auto; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .val-icon { width: 50px; height: 50px; margin: 0 auto; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
 
         .sector-card { padding: 36px 32px; }
         .sector-badge { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--blue-mid); line-height: 1; }
@@ -212,20 +244,18 @@ export default function About() {
         .sector-list li::before { content: '—'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
 
         .cert-card { text-align: center; padding: 36px 24px; }
-        .cert-code { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--blue); }
+        .cert-code { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--blue); margin-bottom: 2px; }
 
-        .team-card { padding: 22px 18px; text-align: center; }
-        .team-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .team-badge { font-size: 0.62rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
-        .team-verified { color: var(--blue); }
-        .team-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--blue-light); border: 2px solid var(--blue-mid); color: var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; margin: 0 auto 14px; }
-        .team-name { font-family: var(--font-display); font-size: 0.98rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-        .team-role { font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; line-height: 1.4; }
-        .team-dept { font-size: 0.68rem; font-weight: 600; background: var(--gray-bg); color: var(--blue); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--border); }
         .team-placeholder { border: 1.5px solid var(--border); border-radius: var(--radius-lg); background: var(--gray-bg); }
 
-        @media (max-width: 860px) { .about-quick-facts { grid-template-columns: repeat(2, 1fr); } .qf-item:nth-child(2) { border-right: none; } .qf-item:nth-child(1), .qf-item:nth-child(2) { border-bottom: 1px solid var(--border); } }
-        @media (max-width: 600px) { .sector-card { padding: 28px 22px; } }
+        @media (max-width: 860px) {
+          .about-quick-facts { grid-template-columns: repeat(2, 1fr); }
+          .qf-item:nth-child(2) { border-right: none; }
+          .qf-item:nth-child(1), .qf-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+        }
+        @media (max-width: 600px) {
+          .sector-card { padding: 28px 20px; }
+        }
       `}</style>
     </>
   );

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FileText, Image as ImageIcon, Download, ExternalLink, Eye } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
+import PageHeader from '../components/PageHeader';
 
 /* ──────────────────────────────────────────────
    Saudi-compliant legal profile page.
@@ -283,23 +284,12 @@ function DocCard({ doc }) {
 export default function LegalProfile() {
   return (
     <>
-      {/* ── PAGE HERO ── */}
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb">
-            <Link to="/">Home</Link><span>/</span><span>Legal Profile</span>
-          </nav>
-          <FadeIn>
-            <p className="overline">Company Disclosures</p>
-            <h1 className="headline-lg" style={{ marginBottom: 14 }}>Legal & Commercial Profile</h1>
-            <p className="section-sub">
-              Official commercial registration, national address, ZATCA, and certification records for
-              Engineering Grouping Co. This page is maintained for public transparency and legal compliance
-              within the Kingdom of Saudi Arabia.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Legal Profile' }]}
+        overline="Company Disclosures"
+        title="Legal & Commercial Profile"
+        subtitle="Official commercial registration, national address, ZATCA, and certification records for Engineering Grouping Co. — maintained for public transparency and legal compliance within the Kingdom of Saudi Arabia."
+      />
 
       {/* ── IDENTITY BAR ── */}
       <div className="lp-identity-bar">

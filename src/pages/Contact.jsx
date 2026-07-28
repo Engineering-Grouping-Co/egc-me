@@ -2,32 +2,26 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Globe, Send, ShieldCheck, ArrowUpRight, ArrowRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
+import PageHeader from '../components/PageHeader';
 import { SITE } from '../data';
 
 const SECTORS   = ['Government', 'Private', 'Industrial', 'Other'];
-const DIVISIONS = ['Steel', 'Wood', 'Lead Sheet', 'Multiple', 'Not sure'];
+const SERVICE_OPTS = ['Healthcare / Medical', 'Interior Joinery', 'Corian & Surfaces', 'Steel Fabrication', 'Multiple Services', 'Not sure'];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', sector: 'Government', division: 'Not sure', message: '' });
+  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', sector: 'Government', service: 'Not sure', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const set = field => e => setForm(v => ({ ...v, [field]: e.target.value }));
 
   return (
     <>
-      {/* PAGE HERO */}
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb"><Link to="/">Home</Link><span>/</span><span>Contact</span></nav>
-          <FadeIn>
-            <p className="overline">Get In Touch</p>
-            <h1 className="headline-lg" style={{ marginBottom: 14 }}>Tell us about your project.</h1>
-            <p className="section-sub">
-              Our business development team responds within 1–2 business days.
-              For urgent enquiries, call us directly.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Contact Us' }]}
+        overline="Get In Touch"
+        title="Tell us about your project."
+        subtitle="Our business development team responds within 1–2 business days. For urgent enquiries, call us directly."
+        decorNum="03"
+      />
 
       {/* MAIN CONTACT SECTION */}
       <section className="section">
@@ -42,7 +36,7 @@ export default function Contact() {
                   <p>Our team will be in touch within 1–2 business days.</p>
                   <button
                     className="btn btn-secondary"
-                    onClick={() => { setSubmitted(false); setForm({ name: '', company: '', email: '', phone: '', sector: 'Government', division: 'Not sure', message: '' }); }}
+                    onClick={() => { setSubmitted(false); setForm({ name: '', company: '', email: '', phone: '', sector: 'Government', service: 'Not sure', message: '' }); }}
                   >
                     Send another message
                   </button>
@@ -82,9 +76,9 @@ export default function Contact() {
                       </select>
                     </label>
                     <label className="f-label">
-                      <span>Division of interest</span>
-                      <select value={form.division} onChange={set('division')}>
-                        {DIVISIONS.map(d => <option key={d}>{d}</option>)}
+                      <span>Service of interest</span>
+                      <select value={form.service} onChange={set('service')}>
+                        {SERVICE_OPTS.map(d => <option key={d}>{d}</option>)}
                       </select>
                     </label>
                   </div>

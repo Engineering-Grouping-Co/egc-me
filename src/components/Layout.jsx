@@ -85,17 +85,16 @@ export default function Layout({ children }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     const routeTitles = {
-      '/':              'Home',
-      '/about':         'About',
-      '/divisions':     'Divisions',
-      '/our-work':      'Our Work',
-      '/projects':      'Projects',
-      '/careers':       'Careers',
-      '/suppliers':     'Suppliers',
-      '/contact':       'Contact Us',
-      '/legal-profile': 'Legal Profile',
-      '/privacy-policy':'Privacy Policy',
-      '/terms':         'Terms & Conditions',
+      '/':               'Home',
+      '/about':          'About',
+      '/what-we-build':  'What We Build',
+      '/projects':       'Projects',
+      '/careers':        'Careers',
+      '/suppliers':      'Suppliers',
+      '/contact':        'Contact Us',
+      '/legal-profile':  'Legal Profile',
+      '/privacy-policy': 'Privacy Policy',
+      '/terms':          'Terms & Conditions',
     };
     document.title = routeTitles[pathname] || 'EGC';
   }, [pathname]);

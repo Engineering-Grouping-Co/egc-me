@@ -2,13 +2,15 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, MapPin, ArrowRight, Building2, Calendar, Briefcase, ChevronRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-import { PROJECTS, PROJECT_FILTERS, KSA_PATH, DIVISIONS } from '../data';
+import PageHeader from '../components/PageHeader';
+import { PROJECTS, PROJECT_FILTERS, KSA_PATH, SERVICES } from '../data';
 
 /* ── Colour maps ── */
 const DIV_ACCENT = {
-  steel:     { border: '#2563EB', light: '#EFF6FF', mid: '#BFDBFE', text: '#1E40AF', badgeBg: '#DBEAFE', label: 'Steel' },
-  wood:      { border: '#D97706', light: '#FFFBEB', mid: '#FDE68A', text: '#92400E', badgeBg: '#FDE68A', label: 'Wood' },
-  leadsheet: { border: '#475569', light: '#F1F5F9', mid: '#CBD5E1', text: '#1E293B', badgeBg: '#CBD5E1', label: 'Lead Sheet' },
+  healthcare: { border: '#0EA5E9', light: '#F0F9FF', mid: '#BAE6FD', text: '#0369A1', badgeBg: '#BAE6FD', label: 'Healthcare' },
+  joinery:    { border: '#D97706', light: '#FFFBEB', mid: '#FDE68A', text: '#92400E', badgeBg: '#FDE68A', label: 'Joinery' },
+  corian:     { border: '#475569', light: '#F1F5F9', mid: '#CBD5E1', text: '#1E293B', badgeBg: '#CBD5E1', label: 'Surfaces' },
+  steel:      { border: '#2563EB', light: '#EFF6FF', mid: '#BFDBFE', text: '#1E40AF', badgeBg: '#DBEAFE', label: 'Steel' },
 };
 
 const STATUS_CLASS = {
@@ -28,9 +30,9 @@ const CITIES = Array.from(
 
 function cityColour(cityData) {
   const counts = {};
-  cityData.projects.forEach(p => { counts[p.division] = (counts[p.division] || 0) + 1; });
+  cityData.projects.forEach(p => { counts[p.service] = (counts[p.service] || 0) + 1; });
   const dom = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
-  return DIV_ACCENT[dom]?.border ?? '#2563EB';
+  return DIV_ACCENT[dom]?.border ?? '#0EA5E9';
 }
 
 const ACTIVE_COUNT = PROJECTS.filter(p => p.status !== 'Completed').length;
@@ -72,15 +74,15 @@ function DivisionGraphic({ division, size = 40 }) {
 
 /* ── Project card in the bottom grid ── */
 function ProjectCard({ p, delay = 1 }) {
-  const c = DIV_ACCENT[p.division] ?? DIV_ACCENT.steel;
-  const divLabel = DIVISIONS.find(d => d.id === p.division)?.label ?? p.division;
+  const c = DIV_ACCENT[p.service] ?? DIV_ACCENT.healthcare;
+  const divLabel = SERVICES.find(d => d.id === p.service)?.shortLabel ?? p.service;
   return (
     <FadeIn delay={delay}>
       <div className="pj-card" style={{ '--pj-accent': c.border, '--pj-badge': c.badgeBg, '--pj-text': c.text }}>
         {/* graphic area */}
         <div className="pj-card-graphic" style={{ background: c.light, borderColor: c.mid }}>
-          <DivisionGraphic division={p.division} size={44} />
-          <span className="pj-card-graphic-label" style={{ color: c.text }}>{divLabel} Division</span>
+          <DivisionGraphic division={p.service} size={44} />
+          <span className="pj-card-graphic-label" style={{ color: c.text }}>{divLabel}</span>
           <span className={`status-pill ${STATUS_CLASS[p.status] ?? 'status-completed'} pj-card-status`}>{p.status}</span>
         </div>
         <div className="pj-card-body">
@@ -116,10 +118,10 @@ function ProjectCard({ p, delay = 1 }) {
 function CityPanel({ cityData, divFilter, onClose }) {
   const filtered = divFilter === 'all'
     ? cityData.projects
-    : cityData.projects.filter(p => p.division === divFilter);
+    : cityData.projects.filter(p => p.service === divFilter);
 
   const divCounts = cityData.projects.reduce((acc, p) => {
-    acc[p.division] = (acc[p.division] || 0) + 1;
+    acc[p.service] = (acc[p.service] || 0) + 1;
     return acc;
   }, {});
 
@@ -155,17 +157,16 @@ function CityPanel({ cityData, divFilter, onClose }) {
         {filtered.length === 0 ? (
           <p className="cp-empty">No projects match this filter for {cityData.city}.</p>
         ) : filtered.map(p => {
-          const c = DIV_ACCENT[p.division] ?? DIV_ACCENT.steel;
-          const divLabel = DIVISIONS.find(d => d.id === p.division)?.label ?? p.division;
+          const c = DIV_ACCENT[p.service] ?? DIV_ACCENT.healthcare;
+          const divLabel = SERVICES.find(d => d.id === p.service)?.shortLabel ?? p.service;
           return (
             <div
               key={p.id}
               className="cp-row"
               style={{ '--cpr-accent': c.border, '--cpr-light': c.light, '--cpr-badge': c.badgeBg, '--cpr-text': c.text }}
             >
-              {/* division graphic */}
               <div className="cp-row-graphic" style={{ background: c.light, borderColor: c.mid }}>
-                <DivisionGraphic division={p.division} size={32} />
+                <DivisionGraphic division={p.service} size={32} />
               </div>
               {/* content */}
               <div className="cp-row-content">
@@ -204,7 +205,7 @@ export default function Projects() {
   const activeCityData = activeCity ? CITIES.find(c => c.city === activeCity) : null;
 
   const visibleCards = PROJECTS.filter(p => {
-    const divOk = divFilter === 'all' || p.division === divFilter;
+    const divOk = divFilter === 'all' || p.service === divFilter;
     const cityOk = !activeCity || p.city === activeCity;
     return divOk && cityOk;
   });
@@ -214,27 +215,18 @@ export default function Projects() {
   }, [activeCity]);
 
   const visibleCities = CITIES.filter(cd =>
-    divFilter === 'all' || cd.projects.some(p => p.division === divFilter)
+    divFilter === 'all' || cd.projects.some(p => p.service === divFilter)
   );
 
   return (
     <>
-      {/* ── PAGE HERO ── */}
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb">
-            <Link to="/">Home</Link><span>/</span><span>Projects</span>
-          </nav>
-          <FadeIn>
-            <p className="overline">Our Track Record</p>
-            <h1 className="headline-lg" style={{ marginBottom: 14 }}>Projects across the Kingdom.</h1>
-            <p className="section-sub">
-              Government infrastructure, industrial facilities, hospitality fit-outs, and giga-project
-              packages — delivered by EGC's own fabrication and site crews. Click any city pin to explore.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Projects' }]}
+        overline="Our Track Record"
+        title="Projects across the Kingdom."
+        subtitle="Healthcare environments, interior fit-outs, and specialist fabrication — delivered by EGC's own crews. Click any city pin on the map to explore projects in that location."
+        decorNum="05"
+      />
 
       {/* ── STATS BAR ── */}
       <div className="pj-stats-bar">
@@ -256,8 +248,8 @@ export default function Projects() {
             </div>
             <div className="pj-stat-divider" />
             <div className="pj-stat">
-              <span className="pj-stat-n">3</span>
-              <span className="pj-stat-l">Active Divisions</span>
+              <span className="pj-stat-n">4</span>
+              <span className="pj-stat-l">Service Lines</span>
             </div>
           </div>
         </div>
@@ -322,7 +314,7 @@ export default function Projects() {
                 {visibleCities.map(cd => {
                   const isActive = activeCity === cd.city;
                   const col = cityColour(cd);
-                  const n = cd.projects.filter(p => divFilter === 'all' || p.division === divFilter).length;
+                  const n = cd.projects.filter(p => divFilter === 'all' || p.service === divFilter).length;
                   const r = 9 + Math.min(n - 1, 3) * 3;
 
                   return (
@@ -463,11 +455,11 @@ export default function Projects() {
             <h2 className="headline-lg" style={{ marginBottom: 12 }}>Discuss your scope with our team.</h2>
             <p className="section-sub" style={{ margin: '0 auto 28px' }}>
               Whether you have tender documents or just a concept, we're ready to discuss how EGC can deliver —
-              steel, timber, or lead sheet.
+              healthcare environments, joinery, surfaces, and more.
             </p>
             <div className="btn-group" style={{ justifyContent: 'center' }}>
               <Link to="/contact" className="btn btn-primary btn-lg">Contact Us</Link>
-              <Link to="/divisions" className="btn btn-secondary btn-lg">Our Divisions</Link>
+              <Link to="/what-we-build" className="btn btn-secondary btn-lg">What We Build</Link>
             </div>
           </FadeIn>
         </div>

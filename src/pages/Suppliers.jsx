@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, ExternalLink, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
+import PageHeader from '../components/PageHeader';
 import { SUPPLIER_STEPS, SITE } from '../data';
 
 const WHAT_WE_SOURCE = [
@@ -14,8 +15,8 @@ const WHAT_WE_SOURCE = [
     items: ['Hardwoods — oak, teak, walnut, ash', 'MDF, plywood, and engineered boards', 'Veneers and laminates', 'Timber hardware — hinges, fittings, handles', 'Lacquers, stains, and finishing materials'],
   },
   {
-    title: 'Lead Sheet & Roofing',
-    items: ['Milled lead sheet — Code 3 to Code 8 (BS EN 12588)', 'Copper fixings — clips, nails, screws', 'Bituminous and waterproofing accessories', 'Flashings and pre-formed lead components', 'Related roofing consumables and sealants'],
+    title: 'Corian, Surfaces & Shielding',
+    items: ['Corian and solid surface sheets and fabricated components', 'Lead sheet and radiation shielding materials', 'Corian adhesives and polishing compounds', 'Sink hardware and surface fixtures', 'Radiation-shielded door components and hardware'],
   },
 ];
 
@@ -52,21 +53,13 @@ function FaqItem({ q, a }) {
 export default function Suppliers() {
   return (
     <>
-      {/* PAGE HERO */}
-      <section className="page-hero">
-        <div className="container">
-          <nav className="breadcrumb"><Link to="/">Home</Link><span>/</span><span>Suppliers</span></nav>
-          <FadeIn>
-            <p className="overline">Supplier Network</p>
-            <h1 className="headline-lg" style={{ marginBottom: 14 }}>Become a Registered EGC Supplier.</h1>
-            <p className="section-sub">
-              EGC sources steel, timber, lead sheet, and site materials through a single
-              vendor network managed on our ERP platform. Register once — receive RFQs
-              across all three divisions.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumb={[{ label: 'Suppliers' }]}
+        overline="Supplier Network"
+        title="Become a Registered EGC Supplier."
+        subtitle="EGC sources materials and services across healthcare, joinery, surface works, and steel fabrication through a single vendor network managed on our ERP platform. Register once — receive RFQs across all our active projects."
+        decorNum="04"
+      />
 
       {/* WHAT WE SOURCE */}
       <section className="section">
