@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Monitor, Smartphone, ArrowRight, Download, CheckCircle2, ExternalLink, Wifi, Lock, Globe2 } from 'lucide-react';
+import { Monitor, Smartphone, ExternalLink, Download, ChevronDown } from 'lucide-react';
 
 const APP_URL = 'https://app.egc-me.com';
 
@@ -26,10 +26,10 @@ function Step({ num, title, desc, img }) {
 
 const INSTRUCTIONS = {
   desktop: [
-    { num: '01', title: 'Open app.egc-me.com in Chrome', desc: 'Navigate to app.egc-me.com in Google Chrome on your desktop.' },
+    { num: '01', title: 'Open app.egc-me.com in Chrome', desc: 'Navigate to app.egc-me.com in Google Chrome.' },
     {
       num: '02', title: 'Click the install icon in the address bar',
-      desc: "Look for the small screen icon (⊞) on the far right of the Chrome address bar and click it.",
+      desc: 'Look for the small screen icon (⊞) on the far right of the Chrome address bar and click it.',
       img: (
         <div className="inst-browser-mock">
           <div className="inst-browser-bar">
@@ -39,14 +39,14 @@ const INSTRUCTIONS = {
         </div>
       ),
     },
-    { num: '03', title: 'Click "Install" to confirm', desc: 'A dialog will appear — click the blue "Install" button.' },
-    { num: '04', title: "Done — it's on your desktop", desc: 'The EGC App opens as a standalone window on your desktop and taskbar.' },
+    { num: '03', title: 'Click "Install" to confirm', desc: 'A dialog will appear — click "Install".' },
+    { num: '04', title: "Done", desc: 'The EGC App opens as a standalone window on your desktop and taskbar.' },
   ],
   android: [
     { num: '01', title: 'Open app.egc-me.com in Chrome', desc: 'Open Chrome on your Android device and go to app.egc-me.com.' },
     {
       num: '02', title: 'Tap "Add to Home Screen"',
-      desc: 'Chrome shows a banner: "Add EGC App to Home Screen". Tap it. If you miss it, use the three-dot menu (⋮) → "Add to Home Screen".',
+      desc: 'Chrome shows a banner at the bottom. Tap it. If you miss it, use the three-dot menu (⋮) → "Add to Home Screen".',
       img: (
         <div className="inst-mobile-mock">
           <div className="inst-mock-inner">
@@ -65,14 +65,14 @@ const INSTRUCTIONS = {
         </div>
       ),
     },
-    { num: '03', title: 'Tap "Add" to confirm', desc: 'Confirm the dialog — the EGC App icon will appear on your home screen.' },
-    { num: '04', title: 'Launch from your home screen', desc: 'Tap the icon to open the EGC App in full-screen mode.' },
+    { num: '03', title: 'Confirm', desc: 'Tap "Add" — the EGC App icon will appear on your home screen.' },
+    { num: '04', title: 'Launch from your home screen', desc: 'Tap the icon to open the EGC App.' },
   ],
   ios: [
-    { num: '01', title: 'Open app.egc-me.com in Safari', desc: 'Use Safari on your iPhone or iPad — not Chrome. Navigate to app.egc-me.com.' },
+    { num: '01', title: 'Open app.egc-me.com in Safari', desc: 'Use Safari on your iPhone or iPad — not Chrome.' },
     {
       num: '02', title: 'Tap the Share button',
-      desc: 'Tap the Share icon at the bottom of Safari — it looks like a box with an upward-pointing arrow.',
+      desc: 'Tap the Share icon at the bottom — a box with an upward arrow.',
       img: (
         <div className="inst-mobile-mock">
           <div className="inst-mock-inner">
@@ -88,25 +88,28 @@ const INSTRUCTIONS = {
         </div>
       ),
     },
-    { num: '03', title: 'Select "Add to Home Screen"', desc: 'Scroll the share sheet, tap "Add to Home Screen", then tap "Add" to confirm.' },
-    { num: '04', title: 'Launch from your home screen', desc: 'The EGC App icon will be on your home screen — tap it to launch full-screen.' },
+    { num: '03', title: 'Select "Add to Home Screen"', desc: 'Scroll the share sheet, tap "Add to Home Screen", then tap "Add".' },
+    { num: '04', title: 'Done', desc: 'Tap the EGC App icon on your home screen to launch.' },
   ],
 };
 
 export default function Install() {
   const [platform, setPlatform] = useState('desktop');
 
-  useEffect(() => { setPlatform(detectPlatform()); }, []);
+  useEffect(() => {
+    setPlatform(detectPlatform());
+    document.title = 'Install';
+  }, []);
 
   const TAB_DEFS = [
-    { id: 'desktop', label: 'Desktop',      icon: Monitor },
-    { id: 'android', label: 'Android',      icon: Smartphone },
+    { id: 'desktop', label: 'Desktop',       icon: Monitor },
+    { id: 'android', label: 'Android',       icon: Smartphone },
     { id: 'ios',     label: 'iPhone / iPad', icon: Smartphone },
   ];
 
   return (
     <>
-      {/* ── NAV ── */}
+      {/* NAV */}
       <div className="inst-nav">
         <div className="container">
           <Link to="/" className="inst-nav-logo">
@@ -119,127 +122,118 @@ export default function Install() {
         </div>
       </div>
 
-      {/* ── MAIN (hero + guide, one dark background) ── */}
-      <div className="inst-dark-canvas">
+      {/* WHITE BODY */}
+      <div className="inst-body">
 
-        {/* HERO */}
-        <div className="container">
-          <div className="inst-hero-layout">
+        {/* ABOVE-FOLD — app intro + phone */}
+        <div className="inst-above-fold">
+          <div className="container">
+            <div className="inst-fold-layout">
 
-            {/* Left */}
-            <div className="inst-hero-left">
-              <div className="inst-app-badge">
-                <div className="inst-app-icon">EGC</div>
-                <div>
-                  <div className="inst-app-name">EGC App</div>
-                  <div className="inst-app-domain">app.egc-me.com</div>
-                </div>
-              </div>
-
-              <h1 className="inst-headline">Your work,<br />in your pocket.</h1>
-
-              <p className="inst-sub">
-                The EGC Employee Self-Service app — your one-stop centre for HR requests,
-                payslips, leave, attendance, and company announcements, on any device.
-              </p>
-
-              <div className="inst-trust">
-                {[
-                  [CheckCircle2, 'No App Store needed'],
-                  [Wifi,         'Works offline'],
-                  [Globe2,       'Desktop · Android · iOS'],
-                  [Lock,         'Always up-to-date'],
-                ].map(([Icon, label]) => (
-                  <span key={label} className="inst-trust-item">
-                    <Icon size={13} /> {label}
-                  </span>
-                ))}
-              </div>
-
-              <div className="inst-hero-btns">
-                <a href={APP_URL} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg">
-                  <Download size={15} /> Open &amp; Install
-                </a>
-                <a href="#how-to-install" className="btn btn-outline-white btn-lg">
-                  How to install <ArrowRight size={15} />
-                </a>
-              </div>
-            </div>
-
-            {/* Right — phone with screenshot */}
-            <div className="inst-hero-right">
-              <div className="inst-phone">
-                {/* Black status bar — matches the nav */}
-                <div className="inst-phone-statusbar">
-                  <span className="inst-phone-time">9:41</span>
-                  <div className="inst-phone-icons">
-                    <span>▲</span><span>WiFi</span><span>🔋</span>
+              {/* Left */}
+              <div className="inst-fold-left">
+                <div className="inst-app-badge">
+                  <div className="inst-app-icon">EGC</div>
+                  <div>
+                    <div className="inst-app-name">EGC App</div>
+                    <div className="inst-app-domain">app.egc-me.com</div>
                   </div>
                 </div>
-                <img
-                  src="/images/egc-app-screenshot.png"
-                  alt="EGC App screenshot showing employee dashboard"
-                  className="inst-phone-screenshot"
-                />
-              </div>
-              <div className="inst-phone-glow" aria-hidden="true" />
-            </div>
 
+                <h1 className="inst-headline">Install the<br />EGC App.</h1>
+
+                <p className="inst-sub">
+                  Your employee self-service portal — HR requests, payslips,
+                  leave, attendance, and company updates, all in one place.
+                </p>
+
+                <a href={APP_URL} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg" style={{ marginBottom: 48 }}>
+                  <Download size={15} /> Open &amp; Install
+                </a>
+
+                {/* Bouncing scroll hint */}
+                <div className="inst-scroll-hint">
+                  <ChevronDown size={18} className="inst-bounce" />
+                  <span>Scroll for installation instructions</span>
+                </div>
+              </div>
+
+              {/* Right — phone */}
+              <div className="inst-fold-right">
+                <div className="inst-phone">
+                  <div className="inst-phone-statusbar">
+                    <span className="inst-phone-time">9:41</span>
+                    <div className="inst-phone-icons">
+                      <svg width="14" height="10" viewBox="0 0 14 10" fill="white" opacity="0.8"><rect x="0" y="5" width="2" height="5" rx="0.5"/><rect x="3" y="3" width="2" height="7" rx="0.5"/><rect x="6" y="1" width="2" height="9" rx="0.5"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="white" strokeWidth="1.2" opacity="0.8"><path d="M1 7.5 C3.5 4 10.5 4 13 7.5"/><path d="M3.5 9.5 C5 7.5 9 7.5 10.5 9.5"/><circle cx="7" cy="9.5" r="0.8" fill="white" stroke="none"/></svg>
+                      <svg width="22" height="10" viewBox="0 0 22 10" fill="none" opacity="0.8"><rect x="0.5" y="0.5" width="18" height="9" rx="2" stroke="white" strokeWidth="1"/><rect x="2" y="2" width="14" height="6" rx="1" fill="white"/><path d="M20 3.5 C21.2 3.5 21.2 6.5 20 6.5" stroke="white" strokeWidth="1" fill="none"/></svg>
+                    </div>
+                  </div>
+                  <img
+                    src="/images/egc-app-screenshot.png"
+                    alt="EGC App employee dashboard"
+                    className="inst-phone-screenshot"
+                  />
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        {/* DIVIDER */}
-        <div className="inst-section-divider" />
-
         {/* INSTALLATION GUIDE */}
-        <div className="container" id="how-to-install">
-          <div className="inst-guide-header">
-            <p className="inst-overline">Installation Guide</p>
-            <h2 className="inst-guide-title">Install it in under a minute.</h2>
-            <p className="inst-guide-sub">
-              Detected:{' '}
-              <strong>
-                {platform === 'ios' ? 'iOS · use Safari' : platform === 'android' ? 'Android · use Chrome' : 'Desktop · use Chrome'}
-              </strong>
-              . Switch below if needed.
-            </p>
-          </div>
+        <div className="inst-guide-section" id="how-to-install">
+          <div className="container">
 
-          {/* Tabs */}
-          <div className="inst-tabs">
-            {TAB_DEFS.map(({ id, label, icon: Icon }) => (
-              <button
-                key={id}
-                className={`inst-tab${platform === id ? ' active' : ''}`}
-                onClick={() => setPlatform(id)}
-              >
-                <Icon size={14} /> {label}
-              </button>
-            ))}
-          </div>
-
-          {/* Steps */}
-          <div className="inst-steps">
-            {INSTRUCTIONS[platform].map(s => <Step key={s.num} {...s} />)}
-          </div>
-
-          {/* CTA */}
-          <div className="inst-cta">
-            <div className="inst-cta-inner">
-              <div>
-                <div className="inst-cta-title">Ready? Start here.</div>
-                <div className="inst-cta-sub">Visit <strong>app.egc-me.com</strong> — Chrome will prompt you to install automatically.</div>
-              </div>
-              <a href={APP_URL} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg">
-                Open app.egc-me.com <ExternalLink size={15} />
-              </a>
+            <div className="inst-guide-header">
+              <p className="overline">Installation Guide</p>
+              <h2 className="headline-medium" style={{ marginBottom: 6 }}>How to install.</h2>
+              <p className="section-sub" style={{ marginTop: 0 }}>
+                You're on{' '}
+                <strong style={{ color: 'var(--dark)' }}>
+                  {platform === 'ios' ? 'iOS · use Safari' : platform === 'android' ? 'Android · use Chrome' : 'Desktop · use Chrome'}
+                </strong>.
+                Switch below if needed.
+              </p>
             </div>
+
+            {/* Platform tabs */}
+            <div className="inst-tabs">
+              {TAB_DEFS.map(({ id, label, icon: Icon }) => (
+                <button
+                  key={id}
+                  className={`inst-tab${platform === id ? ' active' : ''}`}
+                  onClick={() => setPlatform(id)}
+                >
+                  <Icon size={14} /> {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Steps */}
+            <div className="inst-steps">
+              {INSTRUCTIONS[platform].map(s => <Step key={s.num} {...s} />)}
+            </div>
+
+            {/* CTA */}
+            <div className="inst-cta">
+              <div className="inst-cta-inner">
+                <div>
+                  <div className="inst-cta-title">Ready to install?</div>
+                  <div className="inst-cta-sub">Open <strong>app.egc-me.com</strong> — your browser will prompt you to install.</div>
+                </div>
+                <a href={APP_URL} target="_blank" rel="noreferrer" className="btn btn-primary btn-lg">
+                  Open app.egc-me.com <ExternalLink size={14} />
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
 
-      {/* ── FOOTER STRIP ── */}
+      {/* FOOTER STRIP */}
       <div className="inst-footer-strip">
         <div className="container">
           <span>© 2026 Engineering Grouping Co. &nbsp;·&nbsp;</span>
@@ -250,10 +244,10 @@ export default function Install() {
       </div>
 
       <style>{`
-        /* ── Nav ── */
+        /* Nav */
         .inst-nav {
-          background: #060A12;
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          background: var(--dark);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
           padding: 13px 0;
           position: sticky; top: 0; z-index: 100;
         }
@@ -262,29 +256,25 @@ export default function Install() {
         .inst-logo-egc { color: #fff; font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1; }
         .inst-logo-sub { font-family: var(--font-body); font-size: 0.48rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
 
-        /* ── Dark canvas — entire page below nav ── */
-        .inst-dark-canvas {
-          background: #060A12;
-          padding-top: 72px;
-          padding-bottom: 72px;
-        }
+        /* White body */
+        .inst-body { background: #fff; }
 
-        /* ── Hero ── */
-        .inst-hero-layout {
+        /* Above fold */
+        .inst-above-fold { padding: 80px 0 72px; }
+        .inst-fold-layout {
           display: grid;
-          grid-template-columns: 1fr 300px;
-          gap: 64px;
+          grid-template-columns: 1fr 280px;
+          gap: 72px;
           align-items: center;
-          padding-bottom: 72px;
         }
 
         /* App badge */
         .inst-app-badge {
           display: inline-flex; align-items: center; gap: 11px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.09);
+          background: var(--gray-bg);
+          border: 1.5px solid var(--border);
           border-radius: 11px; padding: 9px 14px;
-          margin-bottom: 26px;
+          margin-bottom: 28px;
         }
         .inst-app-icon {
           width: 36px; height: 36px; border-radius: 8px;
@@ -293,109 +283,96 @@ export default function Install() {
           font-family: var(--font-display); font-size: 0.65rem; font-weight: 900;
           color: #fff; letter-spacing: 0.04em; flex-shrink: 0;
         }
-        .inst-app-name { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: #fff; }
-        .inst-app-domain { font-size: 0.7rem; color: rgba(255,255,255,0.38); }
+        .inst-app-name { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--dark); }
+        .inst-app-domain { font-size: 0.7rem; color: var(--muted); }
 
         /* Headline */
         .inst-headline {
           font-family: var(--font-display);
-          font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-          font-weight: 900; line-height: 1.06;
-          color: #fff; letter-spacing: -0.028em;
+          font-size: clamp(2.6rem, 5vw, 4rem);
+          font-weight: 900; line-height: 1.05;
+          color: var(--dark); letter-spacing: -0.03em;
           margin: 0 0 18px;
         }
         .inst-sub {
-          font-size: 1rem; color: rgba(255,255,255,0.55);
-          line-height: 1.74; max-width: 480px; margin-bottom: 24px;
+          font-size: 1rem; color: var(--muted);
+          line-height: 1.72; max-width: 440px; margin-bottom: 28px;
         }
 
-        /* Trust */
-        .inst-trust { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 32px; }
-        .inst-trust-item {
-          display: flex; align-items: center; gap: 6px;
-          font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 500;
+        /* Scroll hint */
+        .inst-scroll-hint {
+          display: flex; align-items: center; gap: 8px;
+          font-size: 0.78rem; color: var(--muted); font-weight: 500;
         }
-        .inst-trust-item svg { color: #10B981; flex-shrink: 0; }
+        .inst-bounce {
+          animation: bounceDown 1.6s ease-in-out infinite;
+          color: var(--blue);
+        }
+        @keyframes bounceDown {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(5px); }
+        }
 
-        /* Buttons */
-        .inst-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-        /* ── Phone ── */
-        .inst-hero-right { position: relative; display: flex; justify-content: center; }
+        /* Phone */
+        .inst-fold-right { display: flex; justify-content: center; }
         .inst-phone {
           width: 240px;
-          border-radius: 28px 28px 28px 28px;
+          border-radius: 32px;
           overflow: hidden;
-          border: 1.5px solid rgba(255,255,255,0.1);
-          box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
-          position: relative; z-index: 2;
+          border: 1.5px solid var(--border);
+          box-shadow: 0 20px 56px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06);
           background: #000;
         }
         .inst-phone-statusbar {
           background: #000;
           display: flex; align-items: center; justify-content: space-between;
-          padding: 8px 16px 4px;
+          padding: 10px 16px 6px;
         }
-        .inst-phone-time { font-size: 0.7rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-        .inst-phone-icons { display: flex; gap: 5px; font-size: 0.55rem; color: rgba(255,255,255,0.7); align-items: center; }
-        .inst-phone-screenshot {
-          display: block; width: 100%;
-          /* slight crop at bottom to avoid excess whitespace */
-        }
-        .inst-phone-glow {
-          position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
-          width: 260px; height: 160px;
-          background: radial-gradient(ellipse, rgba(14,165,233,0.14) 0%, transparent 70%);
-          z-index: 1; pointer-events: none;
-        }
+        .inst-phone-time { font-size: 0.68rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+        .inst-phone-icons { display: flex; gap: 5px; align-items: center; }
+        .inst-phone-screenshot { display: block; width: 100%; }
 
-        /* ── Section divider ── */
-        .inst-section-divider {
-          border: none;
-          border-top: 1px solid rgba(255,255,255,0.07);
-          margin: 0 0 64px;
+        /* Guide section */
+        .inst-guide-section {
+          background: #fff;
+          border-top: 1px solid var(--border);
+          padding: 72px 0 80px;
         }
-
-        /* ── Guide ── */
         .inst-guide-header { margin-bottom: 28px; }
-        .inst-overline { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #93C5FD; display: block; margin-bottom: 10px; }
-        .inst-guide-title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin: 0 0 10px; }
-        .inst-guide-sub { font-size: 0.92rem; color: rgba(255,255,255,0.45); }
-        .inst-guide-sub strong { color: rgba(255,255,255,0.75); font-weight: 600; }
 
         /* Tabs */
         .inst-tabs {
-          display: flex; gap: 0; flex-wrap: wrap;
-          border-bottom: 1px solid rgba(255,255,255,0.1);
+          display: flex; flex-wrap: wrap;
+          border-bottom: 1px solid var(--border);
           margin-bottom: 32px;
         }
         .inst-tab {
           display: flex; align-items: center; gap: 7px;
-          padding: 10px 20px;
-          font-size: 0.83rem; font-weight: 600;
+          padding: 11px 20px;
+          font-size: 0.84rem; font-weight: 600;
           border: none; border-bottom: 2.5px solid transparent;
-          background: none; cursor: pointer; color: rgba(255,255,255,0.35);
+          background: none; cursor: pointer; color: var(--muted);
           transition: color 0.15s, border-color 0.15s;
           margin-bottom: -1px;
         }
-        .inst-tab:hover { color: rgba(255,255,255,0.75); }
-        .inst-tab.active { color: #93C5FD; border-bottom-color: #93C5FD; }
+        .inst-tab:hover { color: var(--dark); }
+        .inst-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 
         /* Steps */
         .inst-steps { display: flex; flex-direction: column; max-width: 680px; }
         .inst-step {
           display: flex; gap: 18px; align-items: flex-start;
-          padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+          padding: 22px 0; border-bottom: 1px solid var(--border);
         }
         .inst-step:last-child { border-bottom: none; }
         .inst-step-num {
-          font-family: 'Courier New', monospace; font-size: 0.6rem; font-weight: 800;
-          letter-spacing: 0.1em; color: rgba(255,255,255,0.3);
-          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 5px; padding: 4px 9px; flex-shrink: 0; margin-top: 2px;
+          font-family: 'Courier New', monospace; font-size: 0.62rem; font-weight: 800;
+          letter-spacing: 0.1em; color: var(--muted);
+          background: var(--gray-bg); border: 1.5px solid var(--border);
+          border-radius: 6px; padding: 4px 9px; flex-shrink: 0; margin-top: 2px;
         }
-        .inst-step-title { font-family: var(--font-display); font-size: 0.97rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .inst-step-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.68; }
+        .inst-step-title { font-family: var(--font-display); font-size: 0.97rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+        .inst-step-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.68; }
         .inst-step-img { margin-top: 14px; }
 
         /* Browser mockup */
@@ -413,47 +390,44 @@ export default function Install() {
         }
 
         /* Mobile mockup */
-        .inst-mobile-mock { max-width: 200px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 18px; overflow: hidden; background: #111; }
-        .inst-mock-inner { display: flex; flex-direction: column; min-height: 280px; }
+        .inst-mobile-mock { max-width: 200px; border: 1.5px solid var(--border); border-radius: 18px; overflow: hidden; }
+        .inst-mock-inner { display: flex; flex-direction: column; min-height: 280px; background: #fff; }
         .inst-mock-statusbar { background: #000; height: 20px; }
-        .inst-mock-urlbar { background: #1A1A2E; padding: 7px 12px; font-size: 0.66rem; color: rgba(255,255,255,0.4); text-align: center; }
-        .inst-mock-body { flex: 1; background: #0D1117; }
+        .inst-mock-urlbar { background: var(--gray-bg); padding: 7px 12px; font-size: 0.66rem; color: var(--muted); text-align: center; border-bottom: 1px solid var(--border); }
+        .inst-mock-body { flex: 1; background: var(--gray-bg); }
         .inst-mock-banner {
           display: flex; align-items: center; gap: 9px; padding: 10px 12px;
-          background: #1A1A2E; border-top: 1px solid rgba(255,255,255,0.08);
-          font-size: 0.7rem;
+          background: #fff; border-top: 1px solid var(--border); font-size: 0.7rem;
         }
         .inst-mock-banner-icon { font-size: 1.1rem; }
-        .inst-mock-banner-title { font-weight: 700; color: #fff; font-size: 0.72rem; }
-        .inst-mock-banner-sub { color: rgba(255,255,255,0.4); font-size: 0.62rem; }
+        .inst-mock-banner-title { font-weight: 700; color: var(--dark); font-size: 0.72rem; }
+        .inst-mock-banner-sub { color: var(--muted); font-size: 0.62rem; }
         .inst-mock-banner-btn {
-          margin-left: auto; background: #2563EB; color: #fff;
+          margin-left: auto; background: var(--blue); color: #fff;
           padding: 4px 10px; border-radius: 5px; font-size: 0.66rem; font-weight: 700; white-space: nowrap;
         }
         .inst-ios-toolbar {
           display: flex; justify-content: space-around; padding: 10px 8px;
-          background: #1A1A2E; border-top: 1px solid rgba(255,255,255,0.08);
-          font-size: 0.95rem; color: rgba(255,255,255,0.4);
+          background: var(--gray-bg); border-top: 1px solid var(--border);
+          font-size: 0.95rem; color: var(--muted);
         }
-        .inst-ios-share-icon { color: #93C5FD; }
+        .inst-ios-share-icon { color: var(--blue); }
 
         /* CTA */
         .inst-cta {
           margin-top: 40px;
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 14px;
-          background: rgba(255,255,255,0.04);
-          padding: 28px 32px;
+          border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+          background: var(--gray-bg); padding: 28px 32px;
         }
         .inst-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-        .inst-cta-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .inst-cta-sub { font-size: 0.87rem; color: rgba(255,255,255,0.45); }
-        .inst-cta-sub strong { color: rgba(255,255,255,0.75); }
+        .inst-cta-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+        .inst-cta-sub { font-size: 0.87rem; color: var(--muted); }
+        .inst-cta-sub strong { color: var(--dark); font-weight: 600; }
 
         /* Footer strip */
         .inst-footer-strip {
-          background: #060A12;
-          border-top: 1px solid rgba(255,255,255,0.07);
+          background: var(--dark);
+          border-top: 1px solid rgba(255,255,255,0.08);
           padding: 20px 0;
           font-size: 0.82rem; color: rgba(255,255,255,0.35);
         }
@@ -461,13 +435,13 @@ export default function Install() {
         .inst-footer-strip a { color: rgba(255,255,255,0.5); text-decoration: none; }
         .inst-footer-strip a:hover { color: #fff; }
 
-        /* ── Responsive ── */
+        /* Responsive */
         @media (max-width: 820px) {
-          .inst-hero-layout { grid-template-columns: 1fr; gap: 48px; padding-bottom: 56px; }
-          .inst-hero-right { display: none; }
+          .inst-fold-layout { grid-template-columns: 1fr; }
+          .inst-fold-right { display: none; }
+          .inst-above-fold { padding: 56px 0 48px; }
         }
         @media (max-width: 580px) {
-          .inst-dark-canvas { padding-top: 48px; padding-bottom: 48px; }
           .inst-logo-sub { display: none; }
           .inst-cta { padding: 20px; }
           .inst-cta-inner { flex-direction: column; align-items: flex-start; }
