@@ -17,8 +17,7 @@ export default function Footer() {
           <div className="footer-col">
             <h5>Company</h5>
             <Link to="/about">About Us</Link>
-            <Link to="/divisions">Divisions</Link>
-            <Link to="/our-work">Our Work</Link>
+            <Link to="/what-we-build">What We Build</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/about">Team</Link>
           </div>
@@ -27,6 +26,7 @@ export default function Footer() {
             <Link to="/careers">Careers</Link>
             <Link to="/suppliers">Suppliers</Link>
             <Link to="/contact">Contact Us</Link>
+            <Link to="/install" className="footer-install-link">📲 Install App</Link>
           </div>
           <div className="footer-col">
             <h5>Contact</h5>
@@ -99,6 +99,7 @@ export default function Footer() {
           transition: color 0.15s;
         }
         .footer-cr-link:hover { color: var(--white); }
+        .footer-install-link { color: rgba(147,197,253,0.7) !important; }
         
         @media (max-width: 860px) {
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 44px; }

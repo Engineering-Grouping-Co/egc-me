@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import LegalProfile from './pages/LegalProfile';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import Install from './pages/Install';
 
 const BASENAME = '/';
 
@@ -27,6 +28,8 @@ export default function App() {
         <Route path="/legal-profile"   element={<Layout><LegalProfile /></Layout>} />
         <Route path="/privacy-policy"  element={<Layout><PrivacyPolicy /></Layout>} />
         <Route path="/terms"           element={<Layout><Terms /></Layout>} />
+        {/* Install page — standalone, no site Layout wrapper */}
+        <Route path="/install"         element={<Install />} />
         {/* Legacy redirects */}
         <Route path="/divisions"       element={<Navigate to="/what-we-build" replace />} />
         <Route path="/our-work"        element={<Navigate to="/what-we-build" replace />} />
