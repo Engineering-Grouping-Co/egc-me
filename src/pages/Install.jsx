@@ -132,13 +132,6 @@ export default function Install() {
 
               {/* Left */}
               <div className="inst-fold-left">
-                <div className="inst-app-badge">
-                  <div className="inst-app-icon">EGC</div>
-                  <div>
-                    <div className="inst-app-name">EGC App</div>
-                    <div className="inst-app-domain">app.egc-me.com</div>
-                  </div>
-                </div>
 
                 <h1 className="inst-headline">Install the<br />EGC App.</h1>
 
@@ -160,21 +153,11 @@ export default function Install() {
 
               {/* Right — phone */}
               <div className="inst-fold-right">
-                <div className="inst-phone">
-                  <div className="inst-phone-statusbar">
-                    <span className="inst-phone-time">9:41</span>
-                    <div className="inst-phone-icons">
-                      <svg width="14" height="10" viewBox="0 0 14 10" fill="white" opacity="0.8"><rect x="0" y="5" width="2" height="5" rx="0.5"/><rect x="3" y="3" width="2" height="7" rx="0.5"/><rect x="6" y="1" width="2" height="9" rx="0.5"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
-                      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="white" strokeWidth="1.2" opacity="0.8"><path d="M1 7.5 C3.5 4 10.5 4 13 7.5"/><path d="M3.5 9.5 C5 7.5 9 7.5 10.5 9.5"/><circle cx="7" cy="9.5" r="0.8" fill="white" stroke="none"/></svg>
-                      <svg width="22" height="10" viewBox="0 0 22 10" fill="none" opacity="0.8"><rect x="0.5" y="0.5" width="18" height="9" rx="2" stroke="white" strokeWidth="1"/><rect x="2" y="2" width="14" height="6" rx="1" fill="white"/><path d="M20 3.5 C21.2 3.5 21.2 6.5 20 6.5" stroke="white" strokeWidth="1" fill="none"/></svg>
-                    </div>
-                  </div>
-                  <img
-                    src="/images/egc-app-screenshot.png"
-                    alt="EGC App employee dashboard"
-                    className="inst-phone-screenshot"
-                  />
-                </div>
+                <img
+                  src="/images/egc-app-frame.png"
+                  alt="EGC App employee dashboard"
+                  className="inst-hero-image"
+                />
               </div>
 
             </div>
@@ -268,23 +251,7 @@ export default function Install() {
           align-items: center;
         }
 
-        /* App badge */
-        .inst-app-badge {
-          display: inline-flex; align-items: center; gap: 11px;
-          background: var(--gray-bg);
-          border: 1.5px solid var(--border);
-          border-radius: 11px; padding: 9px 14px;
-          margin-bottom: 28px;
-        }
-        .inst-app-icon {
-          width: 36px; height: 36px; border-radius: 8px;
-          background: linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%);
-          display: flex; align-items: center; justify-content: center;
-          font-family: var(--font-display); font-size: 0.65rem; font-weight: 900;
-          color: #fff; letter-spacing: 0.04em; flex-shrink: 0;
-        }
-        .inst-app-name { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--dark); }
-        .inst-app-domain { font-size: 0.7rem; color: var(--muted); }
+
 
         /* Headline */
         .inst-headline {
@@ -315,22 +282,7 @@ export default function Install() {
 
         /* Phone */
         .inst-fold-right { display: flex; justify-content: center; }
-        .inst-phone {
-          width: 240px;
-          border-radius: 32px;
-          overflow: hidden;
-          border: 1.5px solid var(--border);
-          box-shadow: 0 20px 56px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06);
-          background: #000;
-        }
-        .inst-phone-statusbar {
-          background: #000;
-          display: flex; align-items: center; justify-content: space-between;
-          padding: 10px 16px 6px;
-        }
-        .inst-phone-time { font-size: 0.68rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-        .inst-phone-icons { display: flex; gap: 5px; align-items: center; }
-        .inst-phone-screenshot { display: block; width: 100%; }
+        .inst-hero-image { display: block; width: 300px; height: auto; }
 
         /* Guide section */
         .inst-guide-section {
