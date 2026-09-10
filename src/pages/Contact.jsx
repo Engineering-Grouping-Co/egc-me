@@ -3,157 +3,152 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Globe, Send, ShieldCheck, ArrowUpRight, ArrowRight } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import PageHeader from '../components/PageHeader';
-import { SITE } from '../data';
-
-const SECTORS   = ['Government', 'Private', 'Industrial', 'Other'];
-const SERVICE_OPTS = ['Healthcare / Medical', 'Interior Joinery', 'Corian & Surfaces', 'Steel Fabrication', 'Multiple Services', 'Not sure'];
+import { useLocale } from '../i18n/LocaleContext';
+import { useContent } from '../content';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', sector: 'Government', service: 'Not sure', message: '' });
+  const locale = useLocale();
+  const { SITE, COPY } = useContent();
+  const t = COPY.contact;
+  const to = (segment) => `/${locale}/${segment}`;
+
+  const emptyForm = { name: '', company: '', email: '', phone: '', sector: t.sectors[0], service: t.services[t.services.length - 1], message: '' };
+  const [form, setForm] = useState(emptyForm);
   const [submitted, setSubmitted] = useState(false);
-  const set = field => e => setForm(v => ({ ...v, [field]: e.target.value }));
+  const set = (field) => (e) => setForm((v) => ({ ...v, [field]: e.target.value }));
+
+  const altLinks = [
+    { link: `mailto:${SITE.email}`, isExternal: false, isMail: true },
+    { link: SITE.supplierPortal, isExternal: true },
+    { link: to('careers'), isExternal: false },
+  ];
 
   return (
     <>
       <PageHeader
-        breadcrumb={[{ label: 'Contact Us' }]}
-        overline="Get In Touch"
-        title="Tell us about your project."
-        subtitle="Our business development team responds within 1–2 business days. For urgent enquiries, call us directly."
+        breadcrumb={[{ label: t.pageTitle }]}
+        overline={t.pageOverline}
+        title={t.pageTitle}
+        subtitle={t.pageSubtitle}
         decorNum="03"
       />
 
-      {/* MAIN CONTACT SECTION */}
       <section className="section">
         <div className="container">
           <div className="contact-layout">
-            {/* FORM */}
             <FadeIn className="contact-form-card">
               {submitted ? (
                 <div className="form-success">
                   <div className="success-icon"><ShieldCheck size={36} /></div>
-                  <h3>Message received.</h3>
-                  <p>Our team will be in touch within 1–2 business days.</p>
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => { setSubmitted(false); setForm({ name: '', company: '', email: '', phone: '', sector: 'Government', service: 'Not sure', message: '' }); }}
-                  >
-                    Send another message
+                  <h3>{t.successTitle}</h3>
+                  <p>{t.successBody}</p>
+                  <button className="btn btn-secondary" onClick={() => { setSubmitted(false); setForm(emptyForm); }}>
+                    {t.successButton}
                   </button>
                 </div>
               ) : (
-                <form
-                  className="c-form"
-                  onSubmit={e => { e.preventDefault(); setSubmitted(true); }}
-                  noValidate
-                >
-                  <h2 className="form-title">Project Enquiry</h2>
+                <form className="c-form" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} noValidate>
+                  <h2 className="form-title">{t.formTitle}</h2>
                   <div className="form-row-2">
                     <label className="f-label">
-                      <span>Full name *</span>
-                      <input required value={form.name} onChange={set('name')} type="text" placeholder="Your full name" />
+                      <span>{t.labelName}</span>
+                      <input required value={form.name} onChange={set('name')} type="text" placeholder={t.placeholderName} />
                     </label>
                     <label className="f-label">
-                      <span>Company</span>
-                      <input value={form.company} onChange={set('company')} type="text" placeholder="Company name" />
+                      <span>{t.labelCompany}</span>
+                      <input value={form.company} onChange={set('company')} type="text" placeholder={t.placeholderCompany} />
                     </label>
                   </div>
                   <div className="form-row-2">
                     <label className="f-label">
-                      <span>Email *</span>
-                      <input required value={form.email} onChange={set('email')} type="email" placeholder="you@company.com" />
+                      <span>{t.labelEmail}</span>
+                      <input required value={form.email} onChange={set('email')} type="email" placeholder={t.placeholderEmail} />
                     </label>
                     <label className="f-label">
-                      <span>Phone</span>
-                      <input value={form.phone} onChange={set('phone')} type="tel" placeholder="+966 5x xxx xxxx" />
+                      <span>{t.labelPhone}</span>
+                      <input value={form.phone} onChange={set('phone')} type="tel" placeholder={t.placeholderPhone} />
                     </label>
                   </div>
                   <div className="form-row-2">
                     <label className="f-label">
-                      <span>Sector</span>
+                      <span>{t.labelSector}</span>
                       <select value={form.sector} onChange={set('sector')}>
-                        {SECTORS.map(s => <option key={s}>{s}</option>)}
+                        {t.sectors.map((s) => <option key={s}>{s}</option>)}
                       </select>
                     </label>
                     <label className="f-label">
-                      <span>Service of interest</span>
+                      <span>{t.labelService}</span>
                       <select value={form.service} onChange={set('service')}>
-                        {SERVICE_OPTS.map(d => <option key={d}>{d}</option>)}
+                        {t.services.map((d) => <option key={d}>{d}</option>)}
                       </select>
                     </label>
                   </div>
                   <label className="f-label">
-                    <span>Message *</span>
-                    <textarea
-                      required value={form.message} onChange={set('message')} rows={5}
-                      placeholder="Tell us about your project — scope, location, timeline, and any technical requirements."
-                    />
+                    <span>{t.labelMessage}</span>
+                    <textarea required value={form.message} onChange={set('message')} rows={5} placeholder={t.placeholderMessage} />
                   </label>
                   <button type="submit" className="btn btn-primary btn-block btn-lg" style={{ marginTop: 8 }}>
-                    Send message <Send size={16} />
+                    {t.submitLabel} <Send size={16} />
                   </button>
                 </form>
               )}
             </FadeIn>
 
-            {/* OFFICE INFO */}
             <FadeIn delay={2} className="office-card">
-              <h2 className="office-card-title">Head Office</h2>
+              <h2 className="office-card-title">{t.officeTitle}</h2>
               <div className="office-row"><MapPin size={15} className="office-icon" /><span>{SITE.address}</span></div>
               <div className="office-row"><Phone size={15} className="office-icon" /><a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></div>
               <div className="office-row"><Mail size={15} className="office-icon" /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
-              <div className="office-row"><Globe size={15} className="office-icon" /><span>Sun – Thu, 8:00 AM – 5:00 PM</span></div>
+              <div className="office-row"><Globe size={15} className="office-icon" /><span>{SITE.hours}</span></div>
 
               <hr className="office-hr" />
-              <p className="office-sub-label">Supplier Portal</p>
+              <p className="office-sub-label">{t.supplierLabel}</p>
               <a href={SITE.supplierPortal} target="_blank" rel="noreferrer" className="office-portal-link">
-                Open the Supplier Portal <ArrowUpRight size={14} />
+                {t.supplierLink} <ArrowUpRight size={14} />
               </a>
 
               <hr className="office-hr" />
-              <p className="office-sub-label">Connect</p>
+              <p className="office-sub-label">{t.connectLabel}</p>
               <a href={SITE.linkedin} target="_blank" rel="noreferrer" className="office-li-link">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.91 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg>
-                LinkedIn — EGC
+                {t.linkedinLabel}
               </a>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ALTERNATIVE CONTACT CARDS */}
       <section className="section section-gray">
         <div className="container">
           <FadeIn className="section-header center">
-            <p className="overline">Other Ways to Reach Us</p>
-            <h2 className="headline-lg">Direct contacts.</h2>
+            <p className="overline">{t.altOverline}</p>
+            <h2 className="headline-lg">{t.altHeadline}</h2>
           </FadeIn>
           <div className="grid-3">
-            {[
-              { title: 'General Enquiries', desc: 'For project enquiries, capability discussions, and general information.', link: `mailto:${SITE.email}`, linkLabel: SITE.email },
-              { title: 'Supplier Portal',   desc: 'Vendor registration, prequalification documents, and RFQ responses.', link: SITE.supplierPortal, linkLabel: 'erp.egc-me.com', external: true },
-              { title: 'Careers',           desc: 'Job applications and open CV submissions for future positions.', link: `/careers`, linkLabel: 'View open positions' },
-            ].map((c, i) => (
-              <FadeIn delay={i + 1} key={c.title}>
-                <div className="card alt-card">
-                  <h3 className="headline-sm" style={{ marginBottom: 8 }}>{c.title}</h3>
-                  <p className="body-sm" style={{ marginBottom: 18 }}>{c.desc}</p>
-                  {c.external ? (
-                    <a href={c.link} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
-                      {c.linkLabel} <ArrowUpRight size={13} />
-                    </a>
-                  ) : c.link.startsWith('/') ? (
-                    <Link to={c.link} className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
-                      {c.linkLabel} <ArrowRight size={13} />
-                    </Link>
-                  ) : (
-                    <a href={c.link} className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
-                      {c.linkLabel} <ArrowRight size={13} />
-                    </a>
-                  )}
-                </div>
-              </FadeIn>
-            ))}
+            {t.altCards.map((c, i) => {
+              const a = altLinks[i];
+              return (
+                <FadeIn delay={i + 1} key={c.title}>
+                  <div className="card alt-card">
+                    <h3 className="headline-sm" style={{ marginBottom: 8 }}>{c.title}</h3>
+                    <p className="body-sm" style={{ marginBottom: 18 }}>{c.desc}</p>
+                    {a.isExternal ? (
+                      <a href={a.link} target="_blank" rel="noreferrer" className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
+                        {c.linkLabel} <ArrowUpRight size={13} />
+                      </a>
+                    ) : a.isMail ? (
+                      <a href={a.link} className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
+                        {SITE.email} <ArrowRight size={13} />
+                      </a>
+                    ) : (
+                      <Link to={a.link} className="btn btn-secondary btn-sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
+                        {c.linkLabel} <ArrowRight size={13} />
+                      </Link>
+                    )}
+                  </div>
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>

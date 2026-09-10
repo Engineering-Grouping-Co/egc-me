@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useLocale } from '../i18n/LocaleContext';
+import { useContent } from '../content';
 
 /**
  * PageHeader — consistent inner-page header used across all non-home pages.
  *
  * Props:
- *   breadcrumb   [{label, to?}]   — breadcrumb items after "Home"
+ *   breadcrumb   [{label, to?}]   — breadcrumb items after "Home"; `to` is
+ *                                   a bare segment (e.g. "about"), not a
+ *                                   full path — PageHeader locale-prefixes it.
  *   overline     string           — small label above the title
  *   title        string | node    — main page heading (rendered as h1)
  *   subtitle     string           — supporting paragraph
@@ -19,18 +23,22 @@ export default function PageHeader({
   decorNum,
   accentColor,
 }) {
+  const locale = useLocale();
+  const { UI } = useContent();
+  const to = (segment) => `/${locale}/${segment}`;
   const borderColor = accentColor || 'var(--blue)';
+
   return (
     <div className="pg-hdr" style={{ '--accent': borderColor }}>
       <div className="container">
         {/* Breadcrumb */}
         <nav className="pg-hdr-crumb" aria-label="breadcrumb">
-          <Link to="/">Home</Link>
+          <Link to={to('')}>{UI.home}</Link>
           {breadcrumb.map((b, i) => (
             <span key={i} className="pg-hdr-crumb-item">
               <span className="pg-hdr-crumb-sep" aria-hidden="true">/</span>
               {b.to
-                ? <Link to={b.to}>{b.label}</Link>
+                ? <Link to={to(b.to)}>{b.label}</Link>
                 : <span>{b.label}</span>}
             </span>
           ))}
@@ -98,6 +106,7 @@ export default function PageHeader({
           /* Shift down to align baseline with title */
           transform: translateY(8px);
         }
+        [dir="rtl"] .pg-hdr-decor { padding-left: 0; padding-right: 20px; letter-spacing: 0; }
         @media (max-width: 768px) {
           .pg-hdr { padding: 30px 0 28px; }
           .pg-hdr-decor { display: none; }

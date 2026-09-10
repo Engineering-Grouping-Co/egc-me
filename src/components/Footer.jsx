@@ -1,42 +1,47 @@
 import { Link } from 'react-router-dom';
-
-const SUPPLIER_PORTAL_URL = "https://erp.egc-me.com";
+import { useLocale } from '../i18n/LocaleContext';
+import { useContent } from '../content';
 
 export default function Footer() {
+  const locale = useLocale();
+  const { SITE, UI } = useContent();
+  const to = (segment) => `/${locale}/${segment}`;
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link to="/" className="footer-logo">
-              <span className="logo-egc">EGC</span>
-              <span className="logo-sub logo-sub-light">ENGINEERING GROUPING CO.</span>
+            <Link to={to('')} className="footer-logo">
+              <span className="logo-egc">{SITE.shortName}</span>
+              <span className="logo-sub logo-sub-light">{SITE.name}</span>
             </Link>
-            <p className="footer-tagline">JDJA8188, Almanar District<br />Jeddah, Kingdom of Saudi Arabia</p>
+            <p className="footer-tagline">{SITE.address}</p>
           </div>
           <div className="footer-col">
-            <h5>Company</h5>
-            <Link to="/about">About Us</Link>
-            <Link to="/what-we-build">What We Build</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/about">Team</Link>
+            <h5>{UI.footerCompany}</h5>
+            <Link to={to('about')}>{UI.footerAbout}</Link>
+            <Link to={to('what-we-build')}>{UI.footerWhatWeBuild}</Link>
+            <Link to={to('manufacturing')}>{UI.footerManufacturing}</Link>
+            <Link to={to('software-engineering')}>{UI.footerSoftware}</Link>
+            <Link to={to('projects')}>{UI.footerProjects}</Link>
           </div>
           <div className="footer-col">
-            <h5>Work With Us</h5>
-            <Link to="/careers">Careers</Link>
-            <Link to="/suppliers">Suppliers</Link>
-            <Link to="/contact">Contact Us</Link>
-            <Link to="/install" className="footer-install-link">📲 Install App</Link>
+            <h5>{UI.footerWorkWithUs}</h5>
+            <Link to={to('careers')}>{UI.footerCareers}</Link>
+            <Link to={to('suppliers')}>{UI.footerSuppliers}</Link>
+            <Link to={to('contact')}>{UI.footerContact}</Link>
+            <Link to="/install" className="footer-install-link">📲 {UI.footerInstall}</Link>
           </div>
           <div className="footer-col">
-            <h5>Contact</h5>
-            <a href="tel:+966504341861">+966 50 434 1861</a>
-            <a href="mailto:info@egc-me.com">info@egc-me.com</a>
-            <a href={SUPPLIER_PORTAL_URL} target="_blank" rel="noreferrer" className="footer-linkedin-link">
-              Supplier Portal Login
+            <h5>{UI.footerContactHeading}</h5>
+            <a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a>
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            <a href={SITE.supplierPortal} target="_blank" rel="noreferrer" className="footer-linkedin-link">
+              {UI.footerSupplierPortal}
             </a>
             <a
-              href="https://www.linkedin.com/company/egc-me/"
+              href={SITE.linkedin}
               target="_blank"
               rel="noreferrer"
               className="footer-linkedin"
@@ -50,13 +55,13 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <p>
-            © 2026 Engineering Grouping Co. (EGC). All rights reserved.
+            © 2026 {SITE.name} ({SITE.shortName}). {UI.footerRights}
             &nbsp;|&nbsp;
-            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to={to('privacy-policy')}>{UI.footerPrivacy}</Link>
             &nbsp;|&nbsp;
-            <Link to="/terms">Terms &amp; Conditions</Link>
+            <Link to={to('terms')}>{UI.footerTerms}</Link>
           </p>
-          <p>CR No. <Link to="/legal-profile" className="footer-cr-link">7040750007</Link></p>
+          <p>{UI.footerCrLabel} <Link to={to('legal-profile')} className="footer-cr-link">{SITE.cr}</Link></p>
         </div>
       </div>
 
@@ -82,7 +87,7 @@ export default function Footer() {
         .footer-linkedin svg { width: 16px; height: 16px; }
         .footer-linkedin:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
         .footer-linkedin-link { font-size: 0.88rem; text-decoration: none; color: rgba(255,255,255,0.65); }
-        
+
         .footer-bottom {
           border-top: 1px solid rgba(255,255,255,0.1);
           padding: 22px 0 32px;
@@ -100,7 +105,7 @@ export default function Footer() {
         }
         .footer-cr-link:hover { color: var(--white); }
         .footer-install-link { color: rgba(147,197,253,0.7) !important; }
-        
+
         @media (max-width: 860px) {
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 44px; }
           .footer-brand { grid-column: span 2; }

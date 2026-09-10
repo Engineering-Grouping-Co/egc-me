@@ -2,18 +2,22 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import { useContent } from '../content';
 
 const BANNER_KEY = 'egc_dev_banner_dismissed';
 
 function DevBanner() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    // Show once per session (not if already dismissed this session)
-    if (!sessionStorage.getItem(BANNER_KEY)) {
-      setVisible(true);
-    }
-  }, []);
+  const { UI } = useContent();
+  // Lazy initializer, not an effect: this needs to be correct on the very
+  // first render so scripts/prerender.mjs's addInitScript-set
+  // window.__PRERENDER__ flag (present before any page script runs) keeps
+  // the "under development" notice out of the static HTML snapshot
+  // entirely, rather than flashing it in before an effect can hide it.
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    if (window.__PRERENDER__) return false;
+    return !sessionStorage.getItem(BANNER_KEY);
+  });
 
   const dismiss = () => {
     sessionStorage.setItem(BANNER_KEY, '1');
@@ -26,10 +30,8 @@ function DevBanner() {
     <div className="dev-banner" role="alert">
       <div className="dev-banner-inner">
         <span className="dev-banner-icon" aria-hidden="true">🚧</span>
-        <p className="dev-banner-text">
-          This website is currently under development — some sections and information may not be fully up to date.
-        </p>
-        <button className="dev-banner-close" onClick={dismiss} aria-label="Dismiss notice">
+        <p className="dev-banner-text">{UI.devBanner}</p>
+        <button className="dev-banner-close" onClick={dismiss} aria-label={UI.devBannerDismiss}>
           ✕
         </button>
       </div>
@@ -81,26 +83,24 @@ function DevBanner() {
 
 export default function Layout({ children }) {
   const { pathname } = useLocation();
+  const { UI } = useContent();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const routeTitles = {
-      '/':               'Home',
-      '/about':          'About',
-      '/what-we-build':  'What We Build',
-      '/projects':       'Projects',
-      '/careers':        'Careers',
-      '/suppliers':      'Suppliers',
-      '/contact':        'Contact Us',
-      '/legal-profile':  'Legal Profile',
-      '/privacy-policy': 'Privacy Policy',
-      '/terms':          'Terms & Conditions',
-    };
-    document.title = routeTitles[pathname] || 'EGC';
+  }, [pathname]);
+
+  useEffect(() => {
+    // Readiness signal for scripts/prerender.mjs: layout effects (e.g.
+    // <Seo>'s head tags) always flush before this passive effect in the
+    // same commit, so by the time this runs the page is safe to snapshot.
+    window.__APP_READY__ = true;
   }, [pathname]);
 
   return (
     <>
+      <a href="#main-content" className="skip-link">
+        {UI.skipToContent}
+      </a>
       <DevBanner />
       <Header />
       <main id="main-content" className="page-fade">

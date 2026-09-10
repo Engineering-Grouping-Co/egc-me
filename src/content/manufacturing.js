@@ -1,0 +1,56 @@
+export const MANUFACTURING = {
+  en: {
+    heroOverline: 'Manufacturing',
+    heroTitle: "EGC's factories build what our sites install.",
+    heroSubtitle: 'Two in-house manufacturing facilities back EGC\'s contracting work — an active Wood & Corian factory, and a steel fabrication facility that is part of the Group\'s industrial footprint.',
+    wood: {
+      badge: 'Active Facility',
+      title: 'Wood & Corian Factory',
+      desc: "EGC's Wood & Corian factory produces solid-surface and architectural joinery at scale — the same fabrication capability behind the Infection Controlled Surfaces & Joinery work on our healthcare projects, and a standalone manufacturing capability for commercial and institutional clients directly. Production runs from CNC-cut timber components through to finished, polished Corian solid-surface elements, all under one roof and one quality programme.",
+      capabilities: [
+        'Corian and solid-surface fabrication at scale',
+        'CNC-cut architectural joinery and millwork',
+        'Custom timber doors, frames and panelling',
+        'Reception counters, casework and built-in furniture',
+        'Templating, workshop fabrication, and on-site installation',
+      ],
+      flagshipTitle: 'Flagship work',
+      flagshipNote: "Including interior works at Jeddah's international airport and multiple military hospital facilities across the Kingdom.",
+      flagshipDisclaimer: 'Project names and full case-study details to follow.',
+    },
+    steel: {
+      badge: 'Group Facility — Production Paused',
+      title: 'Steel Factory',
+      desc: "EGC's steel manufacturing facility remains part of the Group's industrial footprint. Production is currently paused; steel fabrication needs on active projects continue to be supported through our contracting operations.",
+    },
+    ctaTitle: 'Sourcing manufactured components at scale?',
+    ctaSubtitle: "Talk to us about Corian, joinery, or steel fabrication capacity for your project.",
+  },
+  ar: {
+    heroOverline: 'التصنيع',
+    heroTitle: 'مصانع EGC تصنّع ما تُركّبه مواقعنا.',
+    heroSubtitle: 'يدعم أعمال EGC الإنشائية مرفقان تصنيعيان داخليان — مصنع نشط للخشب والكوريان، ومصنع لتصنيع الصلب يُعد جزءًا من البصمة الصناعية للمجموعة.',
+    wood: {
+      badge: 'مرفق نشط',
+      title: 'مصنع الخشب والكوريان',
+      desc: 'ينتج مصنع الخشب والكوريان التابع لشركة EGC أعمال الأسطح الصلبة والنجارة المعمارية على نطاق واسع — وهي نفس القدرة التصنيعية التي تقف خلف أعمال الأسطح والنجارة المقاومة للعدوى في مشاريعنا الطبية، وقدرة تصنيعية مستقلة للعملاء التجاريين والمؤسسيين مباشرة. يمتد الإنتاج من مكونات الخشب المقطوعة بتقنية CNC إلى عناصر الكوريان الصلبة الجاهزة والمصقولة، تحت سقف واحد وبرنامج جودة واحد.',
+      capabilities: [
+        'تصنيع الكوريان والأسطح الصلبة على نطاق واسع',
+        'نجارة معمارية وأعمال خشبية مقطوعة بتقنية CNC',
+        'أبواب وإطارات وألواح خشبية مخصصة',
+        'مكاتب استقبال وأثاث مدمج وخزائن',
+        'أخذ القياسات والتصنيع بالورشة والتركيب الميداني',
+      ],
+      flagshipTitle: 'أبرز الأعمال',
+      flagshipNote: 'من أعماله التصميمات الداخلية لمطار جدة الدولي وعدد من المستشفيات العسكرية في مختلف مناطق المملكة.',
+      flagshipDisclaimer: 'أسماء المشاريع وتفاصيل دراسات الحالة الكاملة ستُضاف لاحقًا.',
+    },
+    steel: {
+      badge: 'مرفق تابع للمجموعة — الإنتاج متوقف مؤقتًا',
+      title: 'مصنع الصلب',
+      desc: 'يظل مصنع تصنيع الصلب التابع لشركة EGC جزءًا من البصمة الصناعية للمجموعة. الإنتاج متوقف مؤقتًا حاليًا؛ وتستمر تلبية احتياجات تصنيع الصلب في المشاريع النشطة من خلال عمليات المقاولات لدينا.',
+    },
+    ctaTitle: 'تبحث عن مكونات مصنّعة على نطاق واسع؟',
+    ctaSubtitle: 'تواصل معنا بخصوص طاقة تصنيع الكوريان أو النجارة أو الصلب لمشروعك.',
+  },
+};

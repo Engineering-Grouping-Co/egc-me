@@ -1,8 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/Layout';
+import LocaleLayout from './i18n/LocaleLayout';
+import RootRedirect from './pages/RootRedirect';
+import Seo from './components/Seo';
+import { ROUTES, DEFAULT_LOCALE } from './content/routes';
+
 import Home from './pages/Home';
 import About from './pages/About';
 import WhatWeBuild from './pages/WhatWeBuild';
+import Manufacturing from './pages/Manufacturing';
+import SoftwareEngineering from './pages/SoftwareEngineering';
 import Projects from './pages/Projects';
 import Careers from './pages/Careers';
 import Suppliers from './pages/Suppliers';
@@ -12,29 +18,58 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
 import Install from './pages/Install';
 
-const BASENAME = '/';
+const PAGES = {
+  home: Home,
+  about: About,
+  whatWeBuild: WhatWeBuild,
+  manufacturing: Manufacturing,
+  softwareEngineering: SoftwareEngineering,
+  projects: Projects,
+  careers: Careers,
+  suppliers: Suppliers,
+  contact: Contact,
+  legalProfile: LegalProfile,
+  privacyPolicy: PrivacyPolicy,
+  terms: Terms,
+};
 
 export default function App() {
   return (
-    <BrowserRouter basename={BASENAME}>
+    <BrowserRouter basename="/">
       <Routes>
-        <Route path="/"                element={<Layout><Home /></Layout>} />
-        <Route path="/about"           element={<Layout><About /></Layout>} />
-        <Route path="/what-we-build"   element={<Layout><WhatWeBuild /></Layout>} />
-        <Route path="/projects"        element={<Layout><Projects /></Layout>} />
-        <Route path="/careers"         element={<Layout><Careers /></Layout>} />
-        <Route path="/suppliers"       element={<Layout><Suppliers /></Layout>} />
-        <Route path="/contact"         element={<Layout><Contact /></Layout>} />
-        <Route path="/legal-profile"   element={<Layout><LegalProfile /></Layout>} />
-        <Route path="/privacy-policy"  element={<Layout><PrivacyPolicy /></Layout>} />
-        <Route path="/terms"           element={<Layout><Terms /></Layout>} />
-        {/* Install page — standalone, no site Layout wrapper */}
-        <Route path="/install"         element={<Install />} />
-        {/* Legacy redirects */}
-        <Route path="/divisions"       element={<Navigate to="/what-we-build" replace />} />
-        <Route path="/our-work"        element={<Navigate to="/what-we-build" replace />} />
-        {/* Catch-all */}
-        <Route path="*"                element={<Layout><Home /></Layout>} />
+        <Route path="/" element={<RootRedirect />} />
+
+        <Route path="/:locale" element={<LocaleLayout />}>
+          {ROUTES.map((r) => {
+            const Page = PAGES[r.key];
+            return (
+              <Route
+                key={r.key}
+                index={r.segment === ''}
+                path={r.segment || undefined}
+                element={
+                  <>
+                    <Seo routeKey={r.key} />
+                    <Page />
+                  </>
+                }
+              />
+            );
+          })}
+          <Route path="*" element={<Navigate to="." replace />} />
+        </Route>
+
+        {/* Install — standalone, no site Layout, no locale prefix, not
+            touched by this redesign. Static path wins over /:locale
+            regardless of declaration order (React Router ranks static
+            segments above dynamic ones). */}
+        <Route path="/install" element={<Install />} />
+
+        {/* Legacy pre-redesign redirects */}
+        <Route path="/divisions" element={<Navigate to={`/${DEFAULT_LOCALE}/what-we-build`} replace />} />
+        <Route path="/our-work" element={<Navigate to={`/${DEFAULT_LOCALE}/what-we-build`} replace />} />
+
+        <Route path="*" element={<RootRedirect />} />
       </Routes>
     </BrowserRouter>
   );

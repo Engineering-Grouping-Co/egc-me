@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap');
 
 /* ── TOKENS ── */
 :root {
@@ -6,6 +6,8 @@
   --blue-dark:   #1D4ED8;
   --blue-light:  #EFF6FF;
   --blue-mid:    #BFDBFE;
+  --accent-manufacturing: #D97706;
+  --accent-software:      #0D9488;
   --dark:        #111111;
   --body:        #374151;
   --muted:       #6B7280;
@@ -14,11 +16,21 @@
   --white:       #FFFFFF;
   --font-display: 'DM Sans', sans-serif;
   --font-body:    'Inter', sans-serif;
+  --font-display-ar: 'IBM Plex Sans Arabic', 'DM Sans', sans-serif;
+  --font-body-ar:    'IBM Plex Sans Arabic', 'Inter', sans-serif;
   --container:   1160px;
   --section-pad: 88px;
   --radius:      8px;
   --radius-lg:   10px;
   --transition:  0.2s ease;
+}
+
+/* Re-fonts the entire site with one override, since every component
+ * already references var(--font-display)/var(--font-body) rather than
+ * hardcoded font literals. */
+[dir="rtl"] {
+  --font-display: var(--font-display-ar);
+  --font-body: var(--font-body-ar);
 }
 
 /* ── RESET ── */
@@ -41,8 +53,19 @@ input, select, textarea { font-family: inherit; }
 h1, h2, h3, h4, h5 { margin: 0; }
 p { margin: 0; }
 
+/* ── ACCESSIBILITY ── */
+.skip-link {
+  position: absolute; top: -48px; left: 12px; z-index: 1000;
+  background: var(--dark); color: #fff;
+  padding: 10px 18px; border-radius: 6px;
+  font-size: 0.85rem; font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 12px; }
+[dir="rtl"] .skip-link { left: auto; right: 12px; }
+
 /* ── LAYOUT ── */
-.container { max-width: var(--container); margin: 0 auto; padding: 0 28px; }
+.container { max-width: var(--container); margin: 0 auto; padding-inline: 28px; }
 .section    { padding: var(--section-pad) 0; background: #fff; }
 .section-gray {
   padding: var(--section-pad) 0;
@@ -130,7 +153,7 @@ p { margin: 0; }
   margin-top: 12px; max-width: 580px; line-height: 1.72;
 }
 .section-header.center { text-align: center; }
-.section-header.center .section-sub { margin-left: auto; margin-right: auto; }
+.section-header.center .section-sub { margin-inline: auto; }
 
 /* ── BUTTONS ── */
 .btn {
@@ -154,6 +177,18 @@ p { margin: 0; }
 .btn-lg  { padding: 14px 28px; font-size: 1rem; }
 .btn-block { width: 100%; justify-content: center; }
 .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* Flips directional arrow/chevron icons inside buttons and links for RTL
+ * (the vast majority of icon usage in buttons across this app is a
+ * trailing ArrowRight/ChevronRight "go forward" affordance). */
+[dir="rtl"] .btn svg,
+[dir="rtl"] .h-svc-card-link svg,
+[dir="rtl"] .h-svc-pill-arrow,
+[dir="rtl"] .wb-proj-all svg,
+[dir="rtl"] .office-portal-link svg,
+[dir="rtl"] .cp-div-pill svg {
+  transform: scaleX(-1);
+}
 
 /* ── CARDS ── */
 .card {
@@ -225,9 +260,9 @@ p { margin: 0; }
 .stats-bar-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
 .stat-item {
   padding: 38px 20px; text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.14);
+  border-inline-end: 1px solid rgba(255,255,255,0.14);
 }
-.stat-item:last-child { border-right: none; }
+.stat-item:last-child { border-inline-end: none; }
 .stat-num {
   font-family: var(--font-display);
   font-size: 2.6rem; font-weight: 800;
@@ -258,6 +293,7 @@ p { margin: 0; }
 .legal-body h2 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin: 40px 0 10px; color: var(--dark); }
 .legal-body p  { font-size: 0.95rem; color: var(--body); line-height: 1.75; margin-bottom: 16px; }
 .legal-body ul { margin: 10px 0 16px 18px; list-style: disc; }
+[dir="rtl"] .legal-body ul { margin: 10px 18px 16px 0; }
 .legal-body ul li { font-size: 0.93rem; color: var(--body); margin-bottom: 6px; line-height: 1.6; }
 
 /* ── DIVIDER ── */
@@ -273,8 +309,8 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
   .feature-grid { grid-template-columns: 1fr; gap: 36px; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.14); }
-  .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.14); }
+  .stat-item { border-inline-end: none; border-bottom: 1px solid rgba(255,255,255,0.14); }
+  .stat-item:nth-child(odd) { border-inline-end: 1px solid rgba(255,255,255,0.14); }
   .stat-item:nth-last-child(-n+2) { border-bottom: none; }
   .cta-banner { padding: 40px 28px; }
 }
@@ -283,7 +319,7 @@ hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .btn-group { flex-direction: column; align-items: flex-start; }
-  .container { padding: 0 18px; }
+  .container { padding-inline: 18px; }
 }
 @media (max-width: 400px) {
   .grid-4 { grid-template-columns: 1fr; }
