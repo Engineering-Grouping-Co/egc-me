@@ -1,4 +1,4 @@
-.footer { background: #06111f; color: rgba(255, 255, 255, 0.66); padding-block-start: 72px; }
+.footer { background: var(--ink); color: rgba(255, 255, 255, 0.66); padding-block-start: 72px; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; padding-block-end: 56px; }
 .footer-brand { display: flex; flex-direction: column; gap: 14px; }
 .footer-logo img { height: 56px; width: auto; }

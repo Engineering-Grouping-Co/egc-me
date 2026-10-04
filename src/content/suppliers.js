@@ -70,20 +70,3 @@ export const REQUIREMENTS = {
     'سياسة الصحة والسلامة المهنية أو إقرار الامتثال (لموردي المواقع)',
   ],
 };
-
-export const FAQS = {
-  en: [
-    { q: 'Who can register as an EGC supplier?', a: 'Any legally registered company or individual trader operating in Saudi Arabia or internationally that supplies materials, products, or services relevant to healthcare construction, manufacturing, or software engineering.' },
-    { q: 'How long does the prequalification process take?', a: 'Standard prequalification takes 5–10 business days from receipt of a complete submission. Complex or high-value vendor categories may take longer if a factory or site visit is required.' },
-    { q: 'Do I need ISO certification to register?', a: 'ISO certification is not mandatory for all categories, but it is required for suppliers in quality-critical product categories. The portal will indicate which documents are required for each category.' },
-    { q: 'How are RFQs issued once I am approved?', a: 'Approved vendors receive RFQs directly through the EGC ERP Supplier Portal. You will be notified by email when an RFQ is available for your product or service category.' },
-    { q: 'Can I update my supplier profile after registration?', a: 'Yes. You can update your profile, upload new certifications, and manage your product catalogue at any time through the Supplier Portal at erp.egc-me.com.' },
-  ],
-  ar: [
-    { q: 'من يمكنه التسجيل كمورد لدى EGC؟', a: 'أي شركة مسجلة نظاميًا أو تاجر فردي يعمل داخل المملكة العربية السعودية أو دوليًا ويوفر مواد أو منتجات أو خدمات ذات صلة بالإنشاءات الطبية أو التصنيع أو هندسة البرمجيات.' },
-    { q: 'كم تستغرق عملية التأهيل المسبق؟', a: 'يستغرق التأهيل المسبق القياسي من 5 إلى 10 أيام عمل من استلام طلب مكتمل. قد تستغرق فئات الموردين المعقدة أو عالية القيمة وقتًا أطول إذا استلزم الأمر زيارة للمصنع أو الموقع.' },
-    { q: 'هل أحتاج إلى شهادة آيزو للتسجيل؟', a: 'شهادة الآيزو ليست إلزامية لجميع الفئات، لكنها مطلوبة للموردين في فئات المنتجات الحساسة للجودة. ستوضح البوابة المستندات المطلوبة لكل فئة.' },
-    { q: 'كيف تُصدر طلبات عروض الأسعار بعد الاعتماد؟', a: 'يستلم الموردون المعتمدون طلبات عروض الأسعار مباشرة عبر بوابة موردي EGC ERP، وستصلك إشعارات بالبريد الإلكتروني عند توفر طلب لفئة منتجك أو خدمتك.' },
-    { q: 'هل يمكنني تحديث ملفي كمورد بعد التسجيل؟', a: 'نعم، يمكنك تحديث ملفك ورفع شهادات جديدة وإدارة كتالوج منتجاتك في أي وقت عبر بوابة الموردين على erp.egc-me.com.' },
-  ],
-};

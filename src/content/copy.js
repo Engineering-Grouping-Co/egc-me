@@ -1,19 +1,6 @@
 /* Page-level copy for the supporting pages. Structured data used on the same
  * pages (projects, careers, suppliers…) lives in its own module. */
 export const COPY = {
-  knowledge: {
-    en: {
-      h1: 'Knowledge Center',
-      lead: 'Plain-language guides on shielding, imaging-room readiness and choosing a healthcare contractor, written by the people who build the rooms.',
-      reviewed: 'Technical content is general guidance. Always follow your equipment manufacturer’s site-planning guide and your radiation protection physicist’s report.',
-    },
-    ar: {
-      h1: 'مركز المعرفة',
-      lead: 'أدلة بلغة واضحة عن التدريع وجاهزية غرف التصوير واختيار مقاول المشاريع الصحية، يكتبها من يبنون هذه الغرف.',
-      reviewed: 'المحتوى التقني إرشادات عامة. اتبع دائمًا دليل تخطيط الموقع الصادر عن الشركة المصنِّعة لجهازك وتقرير الفيزيائي المختص بالوقاية الإشعاعية.',
-    },
-  },
-
   projects: {
     en: {
       h1: 'Projects across the Kingdom',

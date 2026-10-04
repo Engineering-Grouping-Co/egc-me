@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Cable, DoorOpen, Layers, Plus, Shield } from 'lucide-react';
+import { ArrowUpRight, Cable, DoorOpen, Layers, Shield } from 'lucide-react';
 import { useContent } from '../content';
 import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { findRoute } from '../content/routes';
@@ -61,41 +61,22 @@ export function SectionHead({ title, lead, as: Tag = 'h2', children }) {
   );
 }
 
-/** Native <details> accordion: answers stay in the DOM for crawlers and assistants. */
-export function Faq({ items, title }) {
-  if (!items?.length) return null;
-  return (
-    <div className="faq">
-      {title && <h2>{title}</h2>}
-      <div className="faq__list">
-        {items.map((f) => (
-          <details key={f.q} className="faq__item">
-            <summary>
-              <span>{f.q}</span>
-              <Plus size={20} aria-hidden="true" />
-            </summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/** Closing call-to-action band. */
+/** Closing call-to-action band: white, ruled in black like the other content blocks. */
 export function CtaBand({ title, text, primary, secondary }) {
   return (
     <section className="cta">
-      <div className="wrap cta__inner">
-        <div>
-          <h2>{title}</h2>
-          {text && <p className="lead">{text}</p>}
-        </div>
-        <div className="row cta__actions">
-          {primary && <Link className="btn btn--blue btn--lg" to={primary.to}>{primary.label}</Link>}
-          {secondary && (
-            <a className="btn btn--ghost-light btn--lg" href={secondary.href} dir="ltr">{secondary.label}</a>
-          )}
+      <div className="wrap">
+        <div className="cta__inner">
+          <div className="cta__text">
+            <h2>{title}</h2>
+            {text && <p className="lead">{text}</p>}
+          </div>
+          <div className="row cta__actions">
+            {primary && <Link className="btn btn--primary btn--lg" to={primary.to}>{primary.label}</Link>}
+            {secondary && (
+              <a className="btn btn--ghost btn--lg" href={secondary.href} dir="ltr">{secondary.label}</a>
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -130,13 +111,19 @@ export function Facts({ rows }) {
   );
 }
 
-export function DisciplineRows({ items }) {
+/** Rows linking to the four discipline pages. With `onActive`, hovering or focusing a row drives the plan drawing. */
+export function DisciplineRows({ items, active, onActive, compact = false }) {
   const lp = useLocalePath();
   return (
-    <ul className="drows">
+    <ul className={`drows${compact ? ' drows--compact' : ''}`}>
       {items.map((s) => (
         <li key={s.id}>
-          <Link className="drow" to={lp(findRoute(s.id).segment)}>
+          <Link
+            className={`drow${active === s.id ? ' is-active' : ''}`}
+            to={lp(findRoute(s.id).segment)}
+            onPointerEnter={onActive ? (e) => e.pointerType === 'mouse' && onActive(s.id) : undefined}
+            onFocus={onActive ? () => onActive(s.id) : undefined}
+          >
             <span className="drow__icon"><Icon name={s.icon} /></span>
             <span className="drow__body">
               <h3>{s.label}</h3>
@@ -147,21 +134,6 @@ export function DisciplineRows({ items }) {
         </li>
       ))}
     </ul>
-  );
-}
-
-export function ArticleCard({ slug, featured = false }) {
-  const locale = useLocale();
-  const lp = useLocalePath();
-  const { ARTICLES, UI } = useContent();
-  const a = ARTICLES[slug];
-  const t = a[locale];
-  return (
-    <Link className={`acard${featured ? ' acard--featured' : ''}`} to={lp(`knowledge/${slug}`)}>
-      <h3>{t.title}</h3>
-      <p>{t.summary}</p>
-      <span className="acard__meta">{a.minutes} {UI.minRead}</span>
-    </Link>
   );
 }
 

@@ -2,12 +2,12 @@ import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
-import { CtaBand, Faq, PageHero } from '../components/Parts';
+import { CtaBand, PageHero } from '../components/Parts';
 import './pages.css';
 
 export default function Systems() {
   const lp = useLocalePath();
-  const { SYSTEMS: S, UI, SITE, faqs } = useContent();
+  const { SYSTEMS: S, SITE } = useContent();
 
   return (
     <>
@@ -44,12 +44,6 @@ export default function Systems() {
         <div className="wrap split split--5-7 split--top">
           <h2>{S.why.title}</h2>
           <p className="lead" style={{ maxWidth: '56ch' }}>{S.why.text}</p>
-        </div>
-      </section>
-
-      <section className="sec">
-        <div className="wrap">
-          <Faq title={UI.faqTitle} items={faqs('systems')} />
         </div>
       </section>
 

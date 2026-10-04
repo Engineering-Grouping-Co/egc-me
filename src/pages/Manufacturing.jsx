@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
-import { CtaBand, Faq, PageHero } from '../components/Parts';
+import { CtaBand, PageHero } from '../components/Parts';
 import './pages.css';
 
 export default function Manufacturing() {
   const lp = useLocalePath();
-  const { MANUFACTURING: M, UI, SITE, faqs } = useContent();
+  const { MANUFACTURING: M, SITE } = useContent();
 
   return (
     <>
@@ -62,12 +62,6 @@ export default function Manufacturing() {
             <h2 style={{ marginTop: 14 }}>{M.steel.title}</h2>
           </div>
           <p className="lead" style={{ maxWidth: '58ch' }}>{M.steel.text}</p>
-        </div>
-      </section>
-
-      <section className="sec sec--paper">
-        <div className="wrap">
-          <Faq title={UI.faqTitle} items={faqs('manufacturing')} />
         </div>
       </section>
 

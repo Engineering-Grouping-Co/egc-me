@@ -27,7 +27,6 @@ export default function Footer() {
             <Link to={lp('software-engineering')}>{UI.footerSoftware}</Link>
             <Link to={lp('healthcare-systems')}>{UI.footerSystems}</Link>
             <Link to={lp('projects')}>{UI.footerProjects}</Link>
-            <Link to={lp('knowledge')}>{UI.footerKnowledge}</Link>
           </div>
 
           <div className="footer-col">

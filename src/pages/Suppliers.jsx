@@ -1,10 +1,10 @@
 import { Check, ExternalLink } from 'lucide-react';
 import { useContent } from '../content';
-import { Faq, PageHero, SectionHead, Steps } from '../components/Parts';
+import { PageHero, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 export default function Suppliers() {
-  const { SITE, UI, SUPPLIER_STEPS, WHAT_WE_SOURCE, REQUIREMENTS, SUPPLIER_FAQS, COPY } = useContent();
+  const { SITE, SUPPLIER_STEPS, WHAT_WE_SOURCE, REQUIREMENTS, COPY } = useContent();
   const t = COPY.suppliers;
 
   return (
@@ -67,12 +67,6 @@ export default function Suppliers() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className="sec sec--paper">
-        <div className="wrap">
-          <Faq title={UI.faqTitle} items={SUPPLIER_FAQS} />
         </div>
       </section>
     </>

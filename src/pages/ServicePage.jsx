@@ -1,20 +1,20 @@
 import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useContent } from '../content';
-import { useLocalePath } from '../i18n/LocaleContext';
+import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { getSeo } from '../content/seo';
 import Img from '../components/Img';
 import SuiteDrawing from '../components/SuiteDrawing';
-import { ArticleCard, CtaBand, DisciplineRows, Faq, PageHero, SectionHead, Steps } from '../components/Parts';
+import { CtaBand, DisciplineRows, PageHero, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 /** One template for the four discipline pages. `id` matches the services.js entry and the route key. */
 export default function ServicePage({ id }) {
+  const locale = useLocale();
   const lp = useLocalePath();
-  const { locale, SERVICES, HOME, UI, SITE, ARTICLES, faqs } = useContent();
+  const { SERVICES, HOME, UI, SITE } = useContent();
   const svc = SERVICES.find((s) => s.id === id);
   const others = SERVICES.filter((s) => s.id !== id);
-  const guides = Object.entries(ARTICLES).filter(([, a]) => a.related.includes(id)).map(([slug]) => slug).slice(0, 3);
 
   const aside = svc.image ? (
     <div className="frame">
@@ -82,22 +82,8 @@ export default function ServicePage({ id }) {
 
       <section className="sec sec--paper">
         <div className="wrap">
-          <Faq title={UI.faqTitle} items={faqs(id)} />
-        </div>
-      </section>
-
-      <section className="sec">
-        <div className="wrap">
           <SectionHead title={UI.relatedDisciplines} />
           <DisciplineRows items={others} />
-          {guides.length > 0 && (
-            <div className="related-guides">
-              <h2 className="h-side">{UI.relatedGuides}</h2>
-              <div className="grid-3">
-                {guides.map((slug) => <ArticleCard key={slug} slug={slug} />)}
-              </div>
-            </div>
-          )}
         </div>
       </section>
 

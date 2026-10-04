@@ -11,7 +11,6 @@ export default function NotFound() {
     ['healthcare-contractor', UI.footerHub],
     ['manufacturing', UI.footerManufacturing],
     ['software-engineering', UI.footerSoftware],
-    ['knowledge', UI.footerKnowledge],
     ['contact', UI.contactUs],
   ];
   return (

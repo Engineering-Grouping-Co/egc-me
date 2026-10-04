@@ -23,11 +23,17 @@ export const HOME = {
       primary: 'Explore healthcare construction',
       secondary: 'Request a proposal',
       partners: 'Working alongside the installation teams of',
+      carousel: { label: 'What EGC does', pause: 'Pause slideshow', play: 'Play slideshow' },
     },
+    slides: [
+      { id: 'shielding', title: 'Radiation & magnetic shielding', short: 'Shielding', text: 'Lead-lined CT and PET-CT rooms and RF-shielded MRI suites.', image: 'hero-bg', position: 'center 45%', alt: 'EGC crew installing shielding panels around an MRI suite' },
+      { id: 'doors', title: 'Medical doors & access', short: 'Doors', text: 'Lead-lined and RF-shielded doors with interlocks and signage.', image: 'healthcare-xray', position: 'center 30%', alt: 'X-ray room with a lead-lined door and warning light' },
+      { id: 'surfaces', title: 'Infection-control surfaces', short: 'Surfaces', text: 'Seamless Corian counters and nurse stations made for clinical cleaning.', image: 'corian-surfaces', position: 'center 62%', alt: 'Seamless Corian nurse station with integrated sink' },
+      { id: 'factory', title: 'Wood & Corian factory', short: 'Factory', text: 'Joinery, doors and solid surfaces made in our own Jeddah workshop.', image: 'joinery-doors', position: 'center 55%', alt: 'Walnut doors and joinery in a hospital corridor' },
+    ],
     drawing: {
       title: 'A shielded MRI suite, in plan',
-      hint: 'Select a marker to see which discipline builds each part.',
-      open: 'See this discipline',
+      hint: 'Point at a discipline, or select a marker, to see which part of the room it builds.',
       rooms: { magnet: 'Scan room', control: 'Control room', tech: 'Equipment room', corridor: 'Corridor' },
       dimension: 'Room size per OEM siting guide',
       markers: {
@@ -74,25 +80,6 @@ export const HOME = {
       lead: 'Headquartered in Almanar District, Jeddah, with projects in the Western, Central, Eastern and Southern regions.',
       cta: 'View the project map',
     },
-    knowledge: {
-      title: 'From the Knowledge Center',
-      lead: 'Plain-language guides for hospital owners and project teams.',
-      cta: 'All guides',
-    },
-    faqTitle: 'Questions we are asked most',
-    glance: {
-      title: 'Engineering Grouping Co. at a glance',
-      rows: [
-        ['Legal name', 'Engineering Grouping Co.'],
-        ['Also known as', 'EGC, Engineering Group, التجمع الهندسي'],
-        ['Founded', '2006'],
-        ['Headquarters', 'Almanar District, Jeddah, Saudi Arabia'],
-        ['Specialty', 'Healthcare room preparation: MRI, CT, PET-CT and X-ray'],
-        ['Businesses', 'Healthcare construction, Wood & Corian factory, software engineering'],
-        ['Commercial registration', '7040750007'],
-        ['VAT number', '314367391500003'],
-      ],
-    },
     cta: {
       title: 'Planning an MRI, CT or PET-CT room?',
       text: 'Send us the equipment model and the site, and we will tell you what the room needs and how we would deliver it.',
@@ -106,11 +93,17 @@ export const HOME = {
       primary: 'استعرض الإنشاءات الطبية',
       secondary: 'اطلب عرضًا',
       partners: 'نعمل بجانب فرق التركيب التابعة لـ',
+      carousel: { label: 'ما تقوم به EGC', pause: 'إيقاف العرض', play: 'تشغيل العرض' },
     },
+    slides: [
+      { id: 'shielding', title: 'التدريع الإشعاعي والمغناطيسي', short: 'التدريع', text: 'غرف أشعة مقطعية وPET-CT مبطنة بالرصاص وغرف رنين مدرّعة ضد الترددات الراديوية.', image: 'hero-bg', position: 'center 45%', alt: 'فريق EGC أثناء تركيب ألواح التدريع حول غرفة رنين مغناطيسي' },
+      { id: 'doors', title: 'الأبواب الطبية والتحكم بالدخول', short: 'الأبواب', text: 'أبواب مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية مع قفل تبادلي ولوحات تحذير.', image: 'healthcare-xray', position: 'center 30%', alt: 'غرفة أشعة سينية بباب مبطن بالرصاص وإشارة تحذير' },
+      { id: 'surfaces', title: 'الأسطح المقاومة للعدوى', short: 'الأسطح', text: 'منضدات كوريان متصلة ومحطات تمريض مصممة للتنظيف السريري.', image: 'corian-surfaces', position: 'center 62%', alt: 'محطة تمريض من الكوريان المتصل مع حوض مدمج' },
+      { id: 'factory', title: 'مصنع الخشب والكوريان', short: 'المصنع', text: 'نجارة وأبواب وأسطح صلبة تُصنَّع في ورشتنا الخاصة بجدة.', image: 'joinery-doors', position: 'center 55%', alt: 'أبواب من خشب الجوز ونجارة في ممر مستشفى' },
+    ],
     drawing: {
       title: 'مسقط أفقي لغرفة رنين مغناطيسي مدرّعة',
-      hint: 'اختر علامة لتعرف أي تخصص ينفذ كل جزء.',
-      open: 'اعرض هذا التخصص',
+      hint: 'مرّر المؤشر على أحد التخصصات أو اختر علامة لترى أي جزء من الغرفة ينفذه.',
       rooms: { magnet: 'غرفة الفحص', control: 'غرفة التحكم', tech: 'غرفة المعدات', corridor: 'الممر' },
       dimension: 'مقاس الغرفة وفق دليل تخطيط الموقع',
       markers: {
@@ -157,25 +150,6 @@ export const HOME = {
       lead: 'مقرنا الرئيسي في حي المنار بجدة، ولدينا مشاريع في المنطقة الغربية والوسطى والشرقية والجنوبية.',
       cta: 'اعرض خريطة المشاريع',
     },
-    knowledge: {
-      title: 'من مركز المعرفة',
-      lead: 'أدلة بلغة واضحة لملّاك المستشفيات وفرق المشاريع.',
-      cta: 'جميع الأدلة',
-    },
-    faqTitle: 'أكثر الأسئلة التي تصلنا',
-    glance: {
-      title: 'التجمع الهندسي (EGC) في سطور',
-      rows: [
-        ['الاسم النظامي', 'شركة المجموعة الهندسية'],
-        ['يُعرف أيضًا باسم', 'التجمع الهندسي، EGC، Engineering Grouping Co.'],
-        ['تأسست', '2006'],
-        ['المقر الرئيسي', 'حي المنار، جدة، المملكة العربية السعودية'],
-        ['التخصص', 'تجهيز الغرف الطبية: الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية'],
-        ['الأعمال', 'الإنشاءات الطبية، مصنع الخشب والكوريان، هندسة البرمجيات'],
-        ['السجل التجاري', '7040750007'],
-        ['الرقم الضريبي', '314367391500003'],
-      ],
-    },
     cta: {
       title: 'تخطط لغرفة رنين أو أشعة مقطعية أو PET-CT؟',
       text: 'أرسل لنا طراز الجهاز والموقع، وسنوضح ما تحتاجه الغرفة وكيف سننفذها.',
@@ -191,7 +165,7 @@ export const ABOUT = {
     story: {
       title: 'Built by our own hands',
       p: [
-        'Engineering Grouping Co. (EGC) was founded in Jeddah in 2006 on a simple conviction: the best way to deliver a specialist interior is to control it end to end. From the first shop drawing to the final surface polish, our own people do the work.',
+        'Engineering Grouping Co. (EGC), also known as Engineering Group and, in Arabic, التجمع الهندسي, was founded in Jeddah in 2006 on a simple conviction: the best way to deliver a specialist interior is to control it end to end. From the first shop drawing to the final surface polish, our own people do the work.',
         'Over time, healthcare became our core. MRI, CT, PET-CT and X-ray rooms demand shielding measured in millimetres, doors that seal against radiation and RF, services that respect the shield, and surfaces that meet clinical hygiene standards. We built the expertise, workshops and processes to deliver all of it as one scope.',
         'Our Wood & Corian factory and, more recently, our software engineering team extend the same approach: make what matters ourselves, to a standard we are willing to put our name on.',
       ],
@@ -233,7 +207,7 @@ export const ABOUT = {
     story: {
       title: 'نبنيها بأيدينا',
       p: [
-        'تأسست شركة التجمع الهندسي (EGC) في جدة عام 2006 على قناعة بسيطة: أفضل طريقة لتنفيذ تجهيز داخلي متخصص هي التحكم فيه من أوله إلى آخره. من أول مخطط تنفيذي إلى التلميع النهائي للسطح، فريقنا هو من ينفذ العمل.',
+        'تأسست شركة التجمع الهندسي (EGC)، المعروفة أيضًا باسم Engineering Grouping Co. وEngineering Group، في جدة عام 2006 على قناعة بسيطة: أفضل طريقة لتنفيذ تجهيز داخلي متخصص هي التحكم فيه من أوله إلى آخره. من أول مخطط تنفيذي إلى التلميع النهائي للسطح، فريقنا هو من ينفذ العمل.',
         'ومع الوقت صار القطاع الصحي جوهر عملنا. فغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية تتطلب تدريعًا يُقاس بالمليمتر، وأبوابًا تحكم الغلق ضد الإشعاع والترددات الراديوية، وخدمات تحترم الدرع، وأسطحًا تلبي معايير النظافة السريرية. وبنينا الخبرة والورش والعمليات لتنفيذ ذلك كله في نطاق واحد.',
         'ويمتد النهج نفسه إلى مصنع الخشب والكوريان، وأخيرًا إلى فريق هندسة البرمجيات: نصنع بأنفسنا ما يهم، بمعيار نرضى أن نضع اسمنا عليه.',
       ],

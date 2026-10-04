@@ -7,9 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { LOCALES, DEFAULT_LOCALE, ROUTES, STANDALONE_ROUTES, SITE_URL, routeUrl } from '../src/content/routes.js';
 import { SITE } from '../src/content/site.js';
 import { getSeo } from '../src/content/seo.js';
-import { getFaqs } from '../src/content/faq.js';
 import { SERVICES } from '../src/content/services.js';
-import { ARTICLES } from '../src/content/knowledge.js';
 import { HOME, ABOUT } from '../src/content/home.js';
 import { HUB, MANUFACTURING, SOFTWARE, SYSTEMS } from '../src/content/sectors.js';
 
@@ -58,8 +56,22 @@ Sitemap: ${SITE_URL}/sitemap.xml
 
 /* ── llms.txt (https://llmstxt.org) ── */
 const FACTS = {
-  en: () => HOME.en.glance.rows.map(([k, v]) => `- ${k}: ${v}`).join('\n'),
-  ar: () => HOME.ar.glance.rows.map(([k, v]) => `- ${k}: ${v}`).join('\n'),
+  en: () => [
+    ['Legal name', SITE.en.legalName],
+    ['Also known as', SITE.en.alternateNames.join(', ')],
+    ['Founded', SITE.en.founded],
+    ['Headquarters', SITE.en.address],
+    ['Commercial registration', SITE.en.cr],
+    ['VAT number', SITE.en.vat],
+  ].map(([k, v]) => `- ${k}: ${v}`).join('\n'),
+  ar: () => [
+    ['الاسم النظامي', SITE.ar.legalName],
+    ['يُعرف أيضًا باسم', SITE.ar.alternateNames.join('، ')],
+    ['تأسست', SITE.ar.founded],
+    ['المقر الرئيسي', SITE.ar.address],
+    ['السجل التجاري', SITE.ar.cr],
+    ['الرقم الضريبي', SITE.ar.vat],
+  ].map(([k, v]) => `- ${k}: ${v}`).join('\n'),
 };
 
 function pageLine(key, locale) {
@@ -70,9 +82,7 @@ function pageLine(key, locale) {
 
 function llms() {
   const core = ['hub', 'shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', 'systems', 'about', 'projects', 'contact'];
-  const guides = ROUTES.filter((r) => r.article).map((r) => r.key);
-  const section = (locale) =>
-    [...core.map((k) => pageLine(k, locale)), '', ...guides.map((k) => pageLine(k, locale))].join('\n');
+  const section = (locale) => core.map((k) => pageLine(k, locale)).join('\n');
 
   return `# Engineering Grouping Co. (EGC)
 
@@ -102,33 +112,22 @@ ${section('ar')}
 function bullets(list) {
   return list.map((x) => `- ${x}`).join('\n');
 }
-function faqBlock(key, locale) {
-  const f = getFaqs(key, locale);
-  return f.length ? `\n### FAQ\n${f.map((x) => `**${x.q}**\n${x.a}`).join('\n\n')}\n` : '';
-}
 
 function fullFor(locale) {
   const svc = SERVICES[locale];
   const out = [];
-  out.push(`# ${HOME[locale].hero.h1}\n\n${HOME[locale].hero.lead}\n\n## ${HOME[locale].glance.title}\n${FACTS[locale]()}\n${faqBlock('home', locale)}`);
+  out.push(`# ${HOME[locale].hero.h1}\n\n${HOME[locale].hero.lead}\n\n## ${locale === 'ar' ? 'معلومات أساسية' : 'Key facts'}\n${FACTS[locale]()}\n`);
   out.push(`# ${ABOUT[locale].h1}\n\n${ABOUT[locale].lead}\n\n${ABOUT[locale].story.p.join('\n\n')}`);
-  out.push(`# ${HUB[locale].h1}\n\n${HUB[locale].lead}\n\n## ${HUB[locale].answer.title}\n${HUB[locale].answer.p.join('\n\n')}\n\n## ${HUB[locale].rooms.title}\n${bullets(HUB[locale].rooms.items.map((r) => `${r.t}: ${r.d}`))}${faqBlock('hub', locale)}`);
+  out.push(`# ${HUB[locale].h1}\n\n${HUB[locale].lead}\n\n## ${HUB[locale].answer.title}\n${HUB[locale].answer.p.join('\n\n')}\n\n## ${HUB[locale].rooms.title}\n${bullets(HUB[locale].rooms.items.map((r) => `${r.t}: ${r.d}`))}`);
   for (const s of svc) {
-    out.push(`# ${s.h1}\n\n${s.lead}\n\n## ${s.explainTitle}\n${s.explain.join('\n\n')}\n\n## ${s.full}\n${bullets(s.deliver)}\n\n## Rooms\n${bullets(s.rooms)}${faqBlock(s.id, locale)}`);
+    out.push(`# ${s.h1}\n\n${s.lead}\n\n## ${s.explainTitle}\n${s.explain.join('\n\n')}\n\n## ${s.full}\n${bullets(s.deliver)}\n\n## Rooms\n${bullets(s.rooms)}`);
   }
   const m = MANUFACTURING[locale];
-  out.push(`# ${m.h1}\n\n${m.lead}\n\n## ${m.wood.title}\n${m.wood.p.join('\n\n')}\n${bullets(m.wood.capabilities)}\n\n${m.work.text}\n\n## ${m.steel.title}\n${m.steel.text}${faqBlock('manufacturing', locale)}`);
+  out.push(`# ${m.h1}\n\n${m.lead}\n\n## ${m.wood.title}\n${m.wood.p.join('\n\n')}\n${bullets(m.wood.capabilities)}\n\n${m.work.text}\n\n## ${m.steel.title}\n${m.steel.text}`);
   const sw = SOFTWARE[locale];
-  out.push(`# ${sw.h1}\n\n${sw.lead}\n\n${sw.pillars.map((p) => `## ${p.t} (${p.tag})\n${p.d}\n${bullets(p.pts)}`).join('\n\n')}${faqBlock('software', locale)}`);
+  out.push(`# ${sw.h1}\n\n${sw.lead}\n\n${sw.pillars.map((p) => `## ${p.t} (${p.tag})\n${p.d}\n${bullets(p.pts)}`).join('\n\n')}`);
   const sy = SYSTEMS[locale];
-  out.push(`# ${sy.h1}\n\n${sy.lead}\n\n${sy.items.map((i) => `## ${i.t}\n${i.d}`).join('\n\n')}${faqBlock('systems', locale)}`);
-  for (const [slug, a] of Object.entries(ARTICLES)) {
-    const t = a[locale];
-    const body = t.sections
-      .map((s) => `## ${s.h}\n${(s.p || []).join('\n\n')}${s.ul ? `\n${bullets(s.ul)}` : ''}${s.table ? `\n${[s.table.head, ...s.table.rows].map((r) => `| ${r.join(' | ')} |`).join('\n')}` : ''}`)
-      .join('\n\n');
-    out.push(`# ${t.title}\nSource: ${routeUrl(locale, `knowledge/${slug}`)}\n\n${t.intro}\n\n${body}\n\n## ${locale === 'ar' ? 'أبرز النقاط' : 'Key takeaways'}\n${bullets(t.takeaways)}${faqBlock(`article:${slug}`, locale)}`);
-  }
+  out.push(`# ${sy.h1}\n\n${sy.lead}\n\n${sy.items.map((i) => `## ${i.t}\n${i.d}`).join('\n\n')}`);
   return out.join('\n\n---\n\n');
 }
 

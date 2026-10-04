@@ -1,27 +1,14 @@
-.home-hero { padding-block: clamp(36px, 5vw, 72px) clamp(56px, 7vw, 104px); }
-.home-hero__grid { display: grid; grid-template-columns: minmax(0, 5.2fr) minmax(0, 6.8fr); gap: clamp(36px, 4.5vw, 72px); align-items: center; }
-.home-hero .h-display { font-size: clamp(2.2rem, 1rem + 2.7vw, 3.45rem); }
-.home-hero .lead { margin-block-start: 24px; }
-.home-hero__actions { margin-block: 32px 44px; }
+/* OEM strip under the hero */
+.partners-band { padding-block: 22px; border-block-end: 1px solid var(--line); background: var(--white); }
 
-/* the drawing sheet */
+/* disciplines beside the plan drawing */
+.plan { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 88px); align-items: center; }
+.plan .sec-head { margin-bottom: clamp(20px, 2.5vw, 32px); }
+.plan .sec-head .lead { font-size: 1.08rem; }
 .sheet { background: var(--white); border: 1px solid var(--line-2); margin: 0; }
 .sheet__bar { padding: 12px 20px; border-block-end: 1px solid var(--line-2); font-size: 0.88rem; font-weight: 600; color: var(--ink); background: var(--paper); }
-.sheet__body { padding: clamp(12px, 2vw, 24px); }
-.sheet__foot { padding: 18px 20px 22px; border-block-start: 1px solid var(--line); display: grid; gap: 14px; }
-.legend { display: flex; flex-wrap: wrap; gap: 8px; }
-.legend__btn {
-  display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border: 1.5px solid var(--line-2); border-radius: 999px;
-  font-size: 0.92rem; font-weight: 500; color: var(--ink); background: var(--white); transition: all 0.15s;
-}
-[dir='rtl'] .legend__btn { padding: 8px 8px 8px 14px; }
-.legend__btn:hover { border-color: var(--blue); }
-.legend__btn[aria-pressed='true'] { border-color: var(--blue); background: var(--blue-soft); color: var(--blue-ink); }
-.legend__n { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 0.8rem; font-weight: 600; transition: background 0.15s; }
-.legend__btn[aria-pressed='true'] .legend__n { background: var(--blue); }
-.sheet__detail h2 { font-size: 1.2rem; letter-spacing: -0.01em; margin-block-end: 6px; }
-[dir='rtl'] .sheet__detail h2 { letter-spacing: 0; }
-.sheet__detail p { color: var(--muted); font-size: 0.97rem; margin-block-end: 8px; max-width: 60ch; }
+.sheet__body { padding: clamp(12px, 2vw, 28px); }
+.sheet__foot { padding: 14px 20px 18px; border-block-start: 1px solid var(--line); }
 
 .home-more { margin-block-start: 28px; }
 
@@ -34,7 +21,9 @@
 .sectors__side .sector { padding-block: 0 36px; }
 .sectors__side .sector + .sector { padding-block: 36px 0; border-block-start: 1px solid var(--line-2); }
 
+@media (max-width: 1000px) {
+  .plan { grid-template-columns: minmax(0, 1fr); }
+}
 @media (max-width: 960px) {
-  .home-hero__grid { grid-template-columns: minmax(0, 1fr); }
   .sectors { grid-template-columns: minmax(0, 1fr); }
 }

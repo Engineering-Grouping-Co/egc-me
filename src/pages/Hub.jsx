@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
-import { CtaBand, DisciplineRows, Faq, PageHero, PartnerStrip, SectionHead, Steps } from '../components/Parts';
+import { CtaBand, DisciplineRows, PageHero, PartnerStrip, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 export default function Hub() {
   const lp = useLocalePath();
-  const { HUB, HOME, SERVICES, PROCESS, SITE, UI, faqs } = useContent();
+  const { HUB, HOME, SERVICES, PROCESS, SITE, UI } = useContent();
 
   return (
     <>
@@ -33,9 +33,6 @@ export default function Hub() {
           <h2>{HUB.answer.title}</h2>
           <div className="prose">
             {HUB.answer.p.map((t) => <p key={t}>{t}</p>)}
-            <p>
-              <Link className="tlink" to={lp('knowledge/what-is-a-healthcare-contractor')}>{HUB.answer.link}</Link>
-            </p>
           </div>
         </div>
       </section>
@@ -91,12 +88,6 @@ export default function Hub() {
         <div className="wrap">
           <SectionHead title={HUB.process.title} />
           <Steps items={PROCESS} tone="ink" />
-        </div>
-      </section>
-
-      <section className="sec sec--paper">
-        <div className="wrap">
-          <Faq title={UI.faqTitle} items={faqs('hub')} />
         </div>
       </section>
 

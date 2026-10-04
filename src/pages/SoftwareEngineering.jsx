@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import ModulesDiagram from '../components/ModulesDiagram';
-import { CtaBand, Faq, PageHero, SectionHead, Steps } from '../components/Parts';
+import { CtaBand, PageHero, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 export default function SoftwareEngineering() {
   const lp = useLocalePath();
-  const { SOFTWARE: S, UI, SITE, faqs } = useContent();
+  const { SOFTWARE: S, SITE } = useContent();
 
   return (
     <>
@@ -78,12 +78,6 @@ export default function SoftwareEngineering() {
         <div className="wrap">
           <SectionHead title={S.approach.title} />
           <Steps items={S.approach.steps} />
-        </div>
-      </section>
-
-      <section className="sec sec--paper">
-        <div className="wrap">
-          <Faq title={UI.faqTitle} items={faqs('software')} />
         </div>
       </section>
 

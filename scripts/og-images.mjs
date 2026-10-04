@@ -17,15 +17,14 @@ const card = (lang) => {
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0}
-body{width:1200px;height:630px;background:#0a1a2f;color:#fff;font-family:${ar ? "'IBM Plex Sans Arabic'" : "'IBM Plex Sans'"},sans-serif;position:relative;overflow:hidden}
+body{width:1200px;height:630px;background:#0a0a0a;color:#fff;font-family:${ar ? "'IBM Plex Sans Arabic'" : "'IBM Plex Sans'"},sans-serif;position:relative;overflow:hidden}
 .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:linear-gradient(${ar ? '270deg' : '90deg'},transparent 10%,#000)}
-.bar{position:absolute;inset-inline:0;top:0;height:10px;background:#0376fd}
 .wrap{position:absolute;inset:0;padding:72px 80px;display:flex;flex-direction:column;justify-content:space-between}
 img{height:92px;width:auto;align-self:flex-start}
 h1{font-size:${ar ? 64 : 68}px;line-height:${ar ? 1.3 : 1.08};font-weight:600;letter-spacing:${ar ? 0 : '-0.025em'};max-width:900px}
 p{font-size:30px;line-height:1.45;color:rgba(255,255,255,.72);max-width:880px;margin-top:22px}
 .site{font-size:28px;color:#6fb2ff;font-weight:500}
-</style></head><body><div class="grid"></div><div class="bar"></div>
+</style></head><body><div class="grid"></div>
 <div class="wrap"><img src="${logo}"><div><h1>${h}</h1><p>${sub}</p></div><div class="site">${site}</div></div></body></html>`;
 };
 

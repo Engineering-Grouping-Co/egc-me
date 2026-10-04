@@ -11,7 +11,6 @@ export const HUB = {
         'A healthcare contractor builds and fits out the spaces where patients are diagnosed and treated. What separates it from general construction is the rule set: infection control, radiation and magnetic protection, medical gases, and the installation requirements of the equipment itself.',
         'EGC is a specialty contractor. We usually work alongside a hospital’s main contractor and take responsibility for the rooms that need specialist skills, delivering them ready for the equipment manufacturer to install.',
       ],
-      link: 'Read the full guide',
     },
     rooms: {
       title: 'Rooms we prepare',
@@ -41,13 +40,6 @@ export const HUB = {
     },
     process: { title: 'Our process' },
     cta: { title: 'Tell us about your imaging room', text: 'Share the equipment model and location and we will respond with how we would deliver it.', primary: 'Request a proposal' },
-    faqs: [
-      { q: 'What does a healthcare contractor do?', a: 'A healthcare contractor builds and fits out clinical spaces where infection control, radiation protection and equipment requirements shape the work. EGC specialises in imaging rooms: shielding, medical doors, MEP and infection-control surfaces.' },
-      { q: 'Which rooms does EGC prepare?', a: 'MRI suites, CT and PET-CT rooms, X-ray and fluoroscopy rooms, nuclear medicine rooms and radiation therapy vaults.' },
-      { q: 'Does EGC work with Siemens Healthineers, Philips Healthcare and GE HealthCare?', a: 'Yes. We build rooms from the manufacturer’s site-planning guide for the exact model and coordinate with its installation team.' },
-      { q: 'Can EGC work inside an operating hospital?', a: 'Yes, with phasing plans and infection-control measures such as dust containment and agreed working hours.' },
-      { q: 'Where in Saudi Arabia does EGC work?', a: 'From our headquarters in Jeddah we deliver projects across the Western, Central, Eastern and Southern regions, including Riyadh, Dammam, Madinah, Jubail and Abha.' },
-    ],
   },
   ar: {
     h1: 'مقاول مشاريع صحية لغرف التصوير الطبي في السعودية',
@@ -58,7 +50,6 @@ export const HUB = {
         'مقاول المشاريع الصحية يبني ويجهّز المساحات التي يُشخَّص فيها المرضى ويُعالَجون. وما يميّزه عن البناء العام هو منظومة القواعد: مكافحة العدوى، والحماية من الإشعاع والمجال المغناطيسي، والغازات الطبية، ومتطلبات تركيب المعدات نفسها.',
         'وEGC مقاول متخصص. نعمل عادةً بجانب المقاول الرئيسي للمستشفى ونتولى مسؤولية الغرف التي تحتاج مهارات خاصة، ونسلّمها جاهزة لتركيب الشركة المصنِّعة للمعدات.',
       ],
-      link: 'اقرأ الدليل الكامل',
     },
     rooms: {
       title: 'الغرف التي نجهّزها',
@@ -88,13 +79,6 @@ export const HUB = {
     },
     process: { title: 'منهجنا في العمل' },
     cta: { title: 'أخبرنا عن غرفة التصوير لديك', text: 'شاركنا طراز الجهاز والموقع وسنرد بكيفية تنفيذنا لها.', primary: 'اطلب عرضًا' },
-    faqs: [
-      { q: 'ماذا يفعل مقاول المشاريع الصحية؟', a: 'يبني ويجهّز مقاول المشاريع الصحية المساحات السريرية التي تحكم أعمالها قواعد مكافحة العدوى والحماية الإشعاعية ومتطلبات المعدات. وتتخصص EGC في غرف التصوير: التدريع والأبواب الطبية والأعمال الكهروميكانيكية والأسطح المقاومة للعدوى.' },
-      { q: 'ما الغرف التي تجهّزها EGC؟', a: 'غرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية والتنظير الفلوري والطب النووي وغرف العلاج الإشعاعي.' },
-      { q: 'هل تعمل EGC مع سيمنز هيلثينيرز وفيليبس هيلث كير وجي إي هيلث كير؟', a: 'نعم. نبني الغرف وفق دليل تخطيط الموقع الصادر عن الشركة المصنِّعة للطراز المحدد وننسّق مع فريق التركيب لديها.' },
-      { q: 'هل تستطيع EGC العمل داخل مستشفى عامل؟', a: 'نعم، بخطط مراحل وإجراءات مكافحة عدوى مثل عزل الغبار وساعات عمل متفق عليها.' },
-      { q: 'أين تعمل EGC في السعودية؟', a: 'ننفذ مشاريع من مقرنا في جدة في المناطق الغربية والوسطى والشرقية والجنوبية، ومنها الرياض والدمام والمدينة المنورة والجبيل وأبها.' },
-    ],
   },
 };
 
@@ -129,11 +113,6 @@ export const MANUFACTURING = {
       text: 'EGC’s steel manufacturing facility remains part of the group. Production is currently paused; steel fabrication needs on active projects continue to be supported through our contracting operations.',
     },
     cta: { title: 'Sourcing Corian or joinery at scale?', text: 'Talk to us about capacity and lead times for your project.', primary: 'Contact the factory team' },
-    faqs: [
-      { q: 'Does EGC fabricate Corian?', a: 'Yes. Our Jeddah factory fabricates Corian and other solid-surface products, from clinical counters and vanities to nurse stations and wall cladding.' },
-      { q: 'Does the factory supply projects EGC is not building?', a: 'Yes. The factory works directly for commercial, hospitality and institutional clients as well as supplying our own healthcare rooms.' },
-      { q: 'Is EGC’s steel factory operating?', a: 'Production at the steel facility is currently paused. Steel fabrication needed on active projects is supported through our contracting operations.' },
-    ],
   },
   ar: {
     h1: 'مصنع الخشب والكوريان في جدة',
@@ -165,11 +144,6 @@ export const MANUFACTURING = {
       text: 'تظل منشأة تصنيع الصلب التابعة لـ EGC جزءًا من المجموعة. الإنتاج متوقف مؤقتًا حاليًا؛ وتستمر تلبية احتياجات تصنيع الصلب في المشاريع النشطة عبر عمليات المقاولات لدينا.',
     },
     cta: { title: 'تبحث عن كوريان أو نجارة بكميات كبيرة؟', text: 'تحدث إلينا عن الطاقة الإنتاجية ومدد التوريد لمشروعك.', primary: 'تواصل مع فريق المصنع' },
-    faqs: [
-      { q: 'هل تصنّع EGC الكوريان؟', a: 'نعم. يصنّع مصنعنا في جدة الكوريان ومنتجات الأسطح الصلبة الأخرى، من المنضدات والمغاسل السريرية إلى محطات التمريض وكسوة الجدران.' },
-      { q: 'هل يورّد المصنع لمشاريع لا تنفذها EGC؟', a: 'نعم. يعمل المصنع مباشرة لعملاء تجاريين وفندقيين ومؤسسيين إلى جانب توريد غرفنا الطبية.' },
-      { q: 'هل مصنع الصلب لدى EGC يعمل؟', a: 'الإنتاج في منشأة الصلب متوقف مؤقتًا. وتُلبّى احتياجات تصنيع الصلب في المشاريع النشطة عبر عمليات المقاولات لدينا.' },
-    ],
   },
 };
 
@@ -204,11 +178,6 @@ export const SOFTWARE = {
       ],
     },
     cta: { title: 'Have a system that needs building?', text: 'Hospital information system, ERP rollout or a client website: talk to our engineering team.', primary: 'Talk to our engineers' },
-    faqs: [
-      { q: 'What software does EGC build?', a: 'Hospital and radiology information systems (HIS and RIS), patient information management systems, ERP and managerial software, construction and project-management platforms, and bilingual websites.' },
-      { q: 'Is your ERP compliant with ZATCA e-invoicing?', a: 'ZATCA e-invoicing (Fatoora), GOSI and Wage Protection System reporting, and PDPL-aligned data handling are designed in from the start rather than added afterwards.' },
-      { q: 'Do you build websites as well?', a: 'Yes. We design and build bilingual Arabic and English websites for clients, with SEO and performance foundations.' },
-    ],
   },
   ar: {
     h1: 'هندسة البرمجيات للقطاع الصحي والإنشاءات في السعودية',
@@ -240,11 +209,6 @@ export const SOFTWARE = {
       ],
     },
     cta: { title: 'لديك نظام يحتاج إلى بناء؟', text: 'نظام معلومات مستشفى أو تطبيق تخطيط موارد أو موقع إلكتروني: تحدث إلى فريقنا الهندسي.', primary: 'تحدث إلى مهندسينا' },
-    faqs: [
-      { q: 'ما البرمجيات التي تبنيها EGC؟', a: 'أنظمة معلومات المستشفيات والأشعة (HIS وRIS)، وأنظمة إدارة معلومات المرضى، وبرمجيات تخطيط الموارد والإدارة، ومنصات إدارة الإنشاءات والمشاريع، ومواقع إلكترونية ثنائية اللغة.' },
-      { q: 'هل نظام تخطيط الموارد لديكم متوافق مع الفوترة الإلكترونية؟', a: 'التوافق مع الفوترة الإلكترونية (فاتورة) وتقارير التأمينات الاجتماعية ونظام حماية الأجور ومعالجة البيانات وفق نظام حماية البيانات الشخصية مصمم منذ البداية لا مضاف لاحقًا.' },
-      { q: 'هل تبنون المواقع الإلكترونية أيضًا؟', a: 'نعم. نصمم ونبني مواقع إلكترونية ثنائية اللغة بالعربية والإنجليزية للعملاء، بأسس لتحسين محركات البحث والأداء.' },
-    ],
   },
 };
 
@@ -260,10 +224,6 @@ export const SYSTEMS = {
     ],
     why: { title: 'Why from EGC', text: 'The people who build the room are best placed to install what goes in it: same site team, same programme, no gaps between the room and the system.' },
     cta: { title: 'Register your interest', text: 'Tell us about your ward or theatre project and we will be in touch as the range launches.', primary: 'Register interest' },
-    faqs: [
-      { q: 'Does EGC supply nurse call systems today?', a: 'Not yet. The range is being prepared for launch. If you have a current requirement, contact us and we will confirm what we can deliver.' },
-      { q: 'What does turnkey installation include?', a: 'Design coordination, supply, installation, testing, commissioning and handover documentation delivered as a single package.' },
-    ],
   },
   ar: {
     badge: 'قريبًا',
@@ -276,9 +236,5 @@ export const SYSTEMS = {
     ],
     why: { title: 'لماذا من EGC', text: 'من يبني الغرفة هو الأقدر على تركيب ما بداخلها: الفريق الميداني نفسه والبرنامج الزمني نفسه، دون فجوات بين الغرفة والنظام.' },
     cta: { title: 'سجّل اهتمامك', text: 'أخبرنا عن مشروع جناحك أو غرف عملياتك وسنتواصل معك مع إطلاق المجموعة.', primary: 'سجّل اهتمامك' },
-    faqs: [
-      { q: 'هل تورّد EGC أنظمة نداء الممرضات حاليًا؟', a: 'ليس بعد. المجموعة قيد التجهيز للإطلاق. إن كان لديك احتياج قائم فتواصل معنا وسنؤكد ما يمكننا تنفيذه.' },
-      { q: 'ماذا يشمل التركيب الشامل؟', a: 'تنسيق التصميم والتوريد والتركيب والاختبار والتشغيل ووثائق التسليم، في حزمة واحدة.' },
-    ],
   },
 };

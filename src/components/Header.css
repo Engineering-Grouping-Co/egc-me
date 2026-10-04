@@ -4,14 +4,12 @@
   border-block-end: 1px solid var(--line);
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
-/* the "markup pen": one azure rule above the bar */
-.hdr::before { content: ''; display: block; height: 3px; background: var(--blue); }
 .hdr[data-scrolled='true'] {
   --hdr-h: 68px;
   background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: saturate(180%) blur(16px);
   backdrop-filter: saturate(180%) blur(16px);
-  box-shadow: 0 10px 30px -18px rgba(10, 26, 47, 0.35);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.3);
 }
 
 .hdr__bar { display: flex; align-items: center; gap: 28px; height: var(--hdr-h); transition: height 0.25s ease; }
@@ -53,7 +51,7 @@
   position: absolute; inset-inline: 0; inset-block-start: 100%;
   background: var(--white);
   border-block: 1px solid var(--line);
-  box-shadow: 0 28px 48px -28px rgba(10, 26, 47, 0.3);
+  box-shadow: 0 28px 48px -28px rgba(0, 0, 0, 0.25);
   animation: megaIn 0.16s ease-out;
 }
 @keyframes megaIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
@@ -74,7 +72,7 @@
 .mega__feature img { border-radius: 0; }
 .mega__feature span {
   position: absolute; inset-inline: 0; inset-block-end: 0; padding: 36px 16px 14px;
-  color: #fff; font-weight: 600; background: linear-gradient(transparent, rgba(10, 26, 47, 0.82));
+  color: #fff; font-weight: 600; background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
 }
 
 /* ── mobile drawer ── */

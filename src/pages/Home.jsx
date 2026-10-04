@@ -2,20 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
-import { findRoute } from '../content/routes';
+import HeroSlides from '../components/HeroSlides';
 import SuiteDrawing from '../components/SuiteDrawing';
 import KsaMap from '../components/KsaMap';
 import Img from '../components/Img';
-import { ArticleCard, CtaBand, DisciplineRows, Facts, Faq, PartnerStrip, SectionHead, Steps } from '../components/Parts';
+import { CtaBand, DisciplineRows, PartnerStrip, SectionHead, Steps } from '../components/Parts';
 import './Home.css';
-
-const FEATURED_GUIDES = ['what-is-a-healthcare-contractor', 'mri-room-shielding', 'ct-pet-ct-radiation-shielding'];
 
 export default function Home() {
   const lp = useLocalePath();
-  const { HOME, SERVICES, PROCESS, PROJECTS, KSA_PATH, SITE, faqs } = useContent();
+  const { HOME, SERVICES, PROCESS, PROJECTS, KSA_PATH, SITE } = useContent();
   const [active, setActive] = useState('shielding');
-  const detail = SERVICES.find((s) => s.id === active);
 
   const pins = Object.values(
     PROJECTS.reduce((acc, p) => {
@@ -27,17 +24,31 @@ export default function Home() {
 
   return (
     <>
-      {/* ── hero: the plan drawing is the one bold thing on the page ── */}
-      <section className="phero home-hero">
-        <div className="wrap home-hero__grid">
-          <div className="home-hero__text">
-            <h1 className="h-display">{HOME.hero.h1}</h1>
-            <p className="lead">{HOME.hero.lead}</p>
-            <div className="row home-hero__actions">
-              <Link className="btn btn--primary btn--lg" to={lp('healthcare-contractor')}>{HOME.hero.primary}</Link>
-              <Link className="btn btn--ghost btn--lg" to={lp('contact')}>{HOME.hero.secondary}</Link>
-            </div>
-            <PartnerStrip label={HOME.hero.partners} />
+      {/* ── hero: what we do, as a slideshow ── */}
+      <HeroSlides
+        slides={HOME.slides}
+        title={HOME.hero.h1}
+        lead={HOME.hero.lead}
+        primary={{ label: HOME.hero.secondary, to: lp('contact') }}
+        secondary={{ label: HOME.hero.primary, to: lp('healthcare-contractor') }}
+        ui={HOME.hero.carousel}
+      />
+
+      <div className="partners-band">
+        <div className="wrap">
+          <PartnerStrip label={HOME.hero.partners} />
+        </div>
+      </div>
+
+      {/* ── disciplines, tied to the plan: the one bold, interactive thing on the page ── */}
+      <section className="sec">
+        <div className="wrap plan">
+          <div className="plan__text">
+            <SectionHead title={HOME.disciplines.title} lead={HOME.disciplines.lead} />
+            <DisciplineRows items={SERVICES} active={active} onActive={setActive} compact />
+            <p className="home-more">
+              <Link className="tlink" to={lp('healthcare-contractor')}>{HOME.disciplines.cta}</Link>
+            </p>
           </div>
 
           <figure className="sheet frame">
@@ -47,39 +58,8 @@ export default function Home() {
             </div>
             <figcaption className="sheet__foot">
               <p className="small">{HOME.drawing.hint}</p>
-              <div className="legend" role="group" aria-label={HOME.drawing.title}>
-                {SERVICES.map((s, i) => (
-                  <button
-                    key={s.id}
-                    type="button"
-                    className="legend__btn"
-                    aria-pressed={active === s.id}
-                    onClick={() => setActive(s.id)}
-                    onPointerEnter={(e) => e.pointerType === 'mouse' && setActive(s.id)}
-                  >
-                    <span className="legend__n">{i + 1}</span>
-                    {s.short}
-                  </button>
-                ))}
-              </div>
-              <div className="sheet__detail" aria-live="polite">
-                <h2>{detail.full}</h2>
-                <p>{detail.summary}</p>
-                <Link className="tlink" to={lp(findRoute(detail.id).segment)}>{HOME.drawing.open}</Link>
-              </div>
             </figcaption>
           </figure>
-        </div>
-      </section>
-
-      {/* ── disciplines ── */}
-      <section className="sec">
-        <div className="wrap">
-          <SectionHead title={HOME.disciplines.title} lead={HOME.disciplines.lead} />
-          <DisciplineRows items={SERVICES} />
-          <p className="home-more">
-            <Link className="tlink" to={lp('healthcare-contractor')}>{HOME.disciplines.cta}</Link>
-          </p>
         </div>
       </section>
 
@@ -124,41 +104,13 @@ export default function Home() {
       </section>
 
       {/* ── reach ── */}
-      <section className="sec">
+      <section className="sec sec--paper">
         <div className="wrap split">
           <div>
             <SectionHead title={HOME.reach.title} lead={HOME.reach.lead} />
             <Link className="btn btn--ghost" to={lp('projects')}>{HOME.reach.cta}</Link>
           </div>
           <KsaMap path={KSA_PATH} pins={pins} label={SITE.country} />
-        </div>
-      </section>
-
-      {/* ── entity facts ── */}
-      <section className="sec sec--paper">
-        <div className="wrap split split--5-7 split--top">
-          <h2>{HOME.glance.title}</h2>
-          <Facts rows={HOME.glance.rows} />
-        </div>
-      </section>
-
-      {/* ── knowledge ── */}
-      <section className="sec">
-        <div className="wrap">
-          <SectionHead title={HOME.knowledge.title} lead={HOME.knowledge.lead} />
-          <div className="grid-3">
-            {FEATURED_GUIDES.map((slug) => <ArticleCard key={slug} slug={slug} />)}
-          </div>
-          <p className="home-more">
-            <Link className="tlink" to={lp('knowledge')}>{HOME.knowledge.cta}</Link>
-          </p>
-        </div>
-      </section>
-
-      {/* ── faq ── */}
-      <section className="sec sec--paper">
-        <div className="wrap">
-          <Faq title={HOME.faqTitle} items={faqs('home')} />
         </div>
       </section>
 

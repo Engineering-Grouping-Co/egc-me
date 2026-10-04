@@ -1,15 +1,6 @@
 /* Primary navigation. Same shape in both languages. `href` values are route
  * segments (optionally with #hash) — Header converts them to locale paths.
  * `external: true` hrefs are absolute URLs. */
-import { ARTICLES } from './knowledge.js';
-import { ARTICLE_SLUGS } from './routes.js';
-
-const articleLinks = (locale) =>
-  ARTICLE_SLUGS.map((slug) => ({
-    label: ARTICLES[slug][locale].title.replace(/:.*$/, '').replace(/([?؟]).*$/, '$1'),
-    href: `knowledge/${slug}`,
-  }));
-
 export const NAV = {
   en: [
     {
@@ -57,14 +48,6 @@ export const NAV = {
       },
     },
     { id: 'projects', label: 'Projects', href: 'projects' },
-    {
-      id: 'knowledge',
-      label: 'Knowledge Center',
-      menu: {
-        intro: { title: 'Knowledge Center', text: 'Plain-language guides for hospital owners and project teams.', href: 'knowledge', cta: 'All guides' },
-        groups: [{ title: 'Guides', links: articleLinks('en') }],
-      },
-    },
     {
       id: 'work',
       label: 'Work With Us',
@@ -129,14 +112,6 @@ export const NAV = {
       },
     },
     { id: 'projects', label: 'المشاريع', href: 'projects' },
-    {
-      id: 'knowledge',
-      label: 'مركز المعرفة',
-      menu: {
-        intro: { title: 'مركز المعرفة', text: 'أدلة بلغة واضحة لملّاك المستشفيات وفرق المشاريع.', href: 'knowledge', cta: 'جميع الأدلة' },
-        groups: [{ title: 'الأدلة', links: articleLinks('ar') }],
-      },
-    },
     {
       id: 'work',
       label: 'اعمل معنا',

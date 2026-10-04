@@ -14,14 +14,6 @@ export const LOCALES = ['en', 'ar'];
 export const DEFAULT_LOCALE = 'en';
 export const SITE_URL = 'https://egc-me.com';
 
-export const ARTICLE_SLUGS = [
-  'what-is-a-healthcare-contractor',
-  'mri-room-shielding',
-  'ct-pet-ct-radiation-shielding',
-  'imaging-room-readiness-checklist',
-  'infection-control-surfaces',
-];
-
 /* `parent` drives breadcrumbs (Seo JSON-LD + PageHero). */
 export const ROUTES = [
   { key: 'home',          segment: '' },
@@ -35,13 +27,6 @@ export const ROUTES = [
   { key: 'software',      segment: 'software-engineering' },
   { key: 'systems',       segment: 'healthcare-systems' },
   { key: 'projects',      segment: 'projects' },
-  { key: 'knowledge',     segment: 'knowledge' },
-  ...ARTICLE_SLUGS.map((slug) => ({
-    key: `article:${slug}`,
-    segment: `knowledge/${slug}`,
-    parent: 'knowledge',
-    article: slug,
-  })),
   { key: 'careers',       segment: 'careers' },
   { key: 'suppliers',     segment: 'suppliers' },
   { key: 'contact',       segment: 'contact' },

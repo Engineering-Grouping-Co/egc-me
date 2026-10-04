@@ -2,17 +2,15 @@ import { useLayoutEffect } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
 import { LOCALES, DEFAULT_LOCALE, SITE_URL, routeUrl, findRoute } from '../content/routes';
 import { getSeo } from '../content/seo';
-import { getFaqs } from '../content/faq';
 import { SITE } from '../content/site';
 import { SERVICES } from '../content/services';
-import { ARTICLES } from '../content/knowledge';
 import { UI } from '../content/ui';
 
 const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_ID = `${SITE_URL}/#website`;
 const COUNTRY = { '@type': 'Country', name: 'Saudi Arabia' };
 
-const PAGE_TYPES = { about: 'AboutPage', contact: 'ContactPage', projects: 'CollectionPage', knowledge: 'CollectionPage' };
+const PAGE_TYPES = { about: 'AboutPage', contact: 'ContactPage', projects: 'CollectionPage' };
 const SERVICE_KEYS = ['hub', 'shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', 'systems'];
 
 function organization(locale) {
@@ -142,49 +140,6 @@ function buildJsonLd({ routeKey, locale, seo, canonical }) {
     });
   }
 
-  if (route?.article) {
-    const a = ARTICLES[route.article];
-    graph.push({
-      '@type': 'Article',
-      '@id': `${canonical}#article`,
-      headline: a[locale].title,
-      description: a[locale].summary,
-      datePublished: a.published,
-      dateModified: a.published,
-      inLanguage: locale,
-      mainEntityOfPage: { '@id': `${canonical}#webpage` },
-      author: { '@id': ORG_ID },
-      publisher: { '@id': ORG_ID },
-      image: `${SITE_URL}/og-image${locale === 'ar' ? '-ar' : ''}.png`,
-    });
-  }
-
-  if (routeKey === 'knowledge') {
-    graph.push({
-      '@type': 'ItemList',
-      itemListElement: Object.keys(ARTICLES).map((slug, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        url: routeUrl(locale, `knowledge/${slug}`),
-        name: ARTICLES[slug][locale].title,
-      })),
-    });
-  }
-
-  const faqs = getFaqs(routeKey, locale);
-  if (faqs.length) {
-    graph.push({
-      '@type': 'FAQPage',
-      '@id': `${canonical}#faq`,
-      inLanguage: locale,
-      mainEntity: faqs.map((f) => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
-    });
-  }
-
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
@@ -225,7 +180,7 @@ export default function Seo({ routeKey, noindex = false }) {
       )}
       <link rel="alternate" type="text/plain" href="/llms.txt" title="EGC summary for AI assistants" />
 
-      <meta property="og:type" content={route?.article ? 'article' : 'website'} />
+      <meta property="og:type" content="website" />
       <meta property="og:site_name" content={SITE[locale].name} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />

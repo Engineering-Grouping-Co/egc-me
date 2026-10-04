@@ -1,6 +1,6 @@
-/* The four Healthcare Construction disciplines. Each entry powers three things:
- * the card/row everywhere it is listed, its own landing page (ServicePage),
- * and its FAQPage structured data (via content/faq.js). `id` equals the route key. */
+/* The four Healthcare Construction disciplines. Each entry powers the row
+ * everywhere it is listed and its own landing page (ServicePage).
+ * `id` equals the route key. */
 export const SERVICES = {
   en: [
     {
@@ -33,11 +33,6 @@ export const SERVICES = {
         { t: 'Detail the envelope', d: 'Shop drawings show every lining layer, seam, junction and penetration, so nothing is improvised on site.' },
         { t: 'Build and inspect', d: 'Our own crews install the shielding, and continuity is checked before finishes close it in.' },
         { t: 'Test and hand over', d: 'We support the RF attenuation test or the radiation survey, then release the room to the OEM installation team.' },
-      ],
-      faqs: [
-        { q: 'Does an MRI room need lead?', a: 'Not for the magnet itself — MRI uses no ionising radiation. An MRI room needs RF shielding to keep outside interference out of the image, and sometimes magnetic shielding. Lead may still be specified where the room borders an X-ray or CT room.' },
-        { q: 'Who decides how thick the lead lining must be?', a: 'A qualified radiation protection physicist, based on the equipment’s workload, how the surrounding spaces are occupied and their distance from the source. The contractor builds exactly to the resulting shielding report.' },
-        { q: 'Can you add shielding to an existing room?', a: 'Yes, subject to the structure and the physicist’s review. Retrofit shielding is common when a department is upgraded to a new scanner.' },
       ],
     },
     {
@@ -72,11 +67,6 @@ export const SERVICES = {
         { t: 'Install and seal', d: 'Doors are hung, sealed and aligned by our own crews.' },
         { t: 'Adjust and commission', d: 'Closers, interlocks, signage and contacts are tested before handover.' },
       ],
-      faqs: [
-        { q: 'What is the difference between a lead-lined door and an RF-shielded door?', a: 'A lead-lined door stops ionising radiation and is used for CT, PET-CT and X-ray rooms. An RF-shielded door keeps radio-frequency interference out of an MRI room and relies on continuous electrical contact around the leaf.' },
-        { q: 'Can shielded doors be motorised?', a: 'Yes. We supply both manual and motorised doors, with interlocks or access control when the room requires them.' },
-        { q: 'Do shielded doors need maintenance?', a: 'They benefit from periodic checks of seals, contact fingers, hinges and closers, because a door that no longer closes true can compromise the room’s shielding.' },
-      ],
     },
     {
       id: 'mep',
@@ -107,11 +97,6 @@ export const SERVICES = {
         { t: 'Plan every penetration', d: 'Each crossing of the shielded envelope is located, detailed and sealed on the drawings first.' },
         { t: 'Install and test', d: 'Services are installed, pressure-tested and balanced to the specified conditions.' },
         { t: 'Document', d: 'As-built drawings and test records are handed over with the room.' },
-      ],
-      faqs: [
-        { q: 'What is a waveguide?', a: 'A short metal tube fitted through an MRI room’s RF shield. Its length relative to its diameter blocks radio-frequency signals, so a pipe or duct can pass through the wall without breaking the Faraday cage.' },
-        { q: 'Why do imaging rooms need special HVAC?', a: 'Scanners give off significant heat and must run within manufacturer-specified temperature and humidity limits. The system also has to respect the shielding, with penetrations detailed and non-magnetic components inside an MRI room.' },
-        { q: 'Does EGC install medical gas?', a: 'Yes — oxygen, medical air and vacuum pipeline systems form part of our specialised MEP scope.' },
       ],
     },
     {
@@ -144,11 +129,6 @@ export const SERVICES = {
         { t: 'Fabricate in the factory', d: 'CNC cutting, thermoforming and seaming in our Jeddah Corian and joinery workshop.' },
         { t: 'Install and join', d: 'Pieces are fixed, seams bonded and sinks integrated on site.' },
         { t: 'Polish and hand over', d: 'Surfaces are finished to the specified sheen and cleaned for use.' },
-      ],
-      faqs: [
-        { q: 'What is Corian?', a: 'Corian is a brand of solid-surface material — a mineral-filled acrylic. It is non-porous, can be joined with invisible seams and can be formed around integrated sinks and coved edges.' },
-        { q: 'Is solid surface a substitute for cleaning protocols?', a: 'No. It removes places where contamination can lodge, which makes cleaning more effective, but the hospital’s disinfection protocol still applies. Check disinfectant compatibility with the manufacturer’s guidance.' },
-        { q: 'Can scratches be repaired on site?', a: 'Light marks in solid surface can usually be sanded and polished out on site, which is one reason it suits busy clinical counters.' },
       ],
     },
   ],
@@ -184,11 +164,6 @@ export const SERVICES = {
         { t: 'التنفيذ والفحص', d: 'تركّب فرقنا التدريع بنفسها، ويُفحص اتصال الطبقات قبل أن تغطيه التشطيبات.' },
         { t: 'الاختبار والتسليم', d: 'ندعم اختبار توهين الترددات الراديوية أو المسح الإشعاعي، ثم نسلّم الغرفة لفريق التركيب التابع للشركة المصنِّعة.' },
       ],
-      faqs: [
-        { q: 'هل تحتاج غرفة الرنين المغناطيسي إلى رصاص؟', a: 'ليس للمغناطيس نفسه، فالرنين المغناطيسي لا يستخدم إشعاعًا مؤيِّنًا. تحتاج الغرفة إلى تدريع ضد الترددات الراديوية لمنع التداخل الخارجي عن الصورة، وأحيانًا إلى تدريع مغناطيسي. وقد يُطلب الرصاص إذا جاورت الغرفة غرفة أشعة سينية أو مقطعية.' },
-        { q: 'من يحدد سماكة التبطين بالرصاص؟', a: 'فيزيائي مختص بالوقاية الإشعاعية، بناءً على حجم عمل الجهاز وطريقة إشغال الأماكن المجاورة وبعدها عن المصدر. وينفّذ المقاول وفق تقرير التدريع الناتج تمامًا.' },
-        { q: 'هل يمكن إضافة تدريع لغرفة قائمة؟', a: 'نعم، مع مراعاة الهيكل الإنشائي ومراجعة الفيزيائي. والتدريع التحديثي شائع عند ترقية قسم إلى جهاز أحدث.' },
-      ],
     },
     {
       id: 'doors',
@@ -222,11 +197,6 @@ export const SERVICES = {
         { t: 'التركيب والإحكام', d: 'تعلّق فرقنا الأبواب وتحكم عزلها وتضبط محاذاتها.' },
         { t: 'الضبط والتشغيل', d: 'تُختبر المغاليق والقفل التبادلي واللوحات الإرشادية وملامسات التوصيل قبل التسليم.' },
       ],
-      faqs: [
-        { q: 'ما الفرق بين الباب المبطن بالرصاص والباب المدرّع ضد الترددات الراديوية؟', a: 'الباب المبطن بالرصاص يحجب الإشعاع المؤيِّن ويُستخدم لغرف الأشعة المقطعية وPET-CT والأشعة السينية. أما باب الترددات الراديوية فيمنع التداخل الراديوي عن غرفة الرنين المغناطيسي، ويعتمد على تلامس كهربائي متصل حول الضلفة.' },
-        { q: 'هل يمكن أتمتة الأبواب المدرّعة؟', a: 'نعم. نوفر أبوابًا يدوية ومؤتمتة، مع قفل تبادلي أو تحكم بالدخول عندما تتطلب الغرفة ذلك.' },
-        { q: 'هل تحتاج الأبواب المدرّعة إلى صيانة؟', a: 'تستفيد من فحص دوري لموانع التسرب وأصابع التلامس والمفصلات والمغاليق، فالباب الذي لا يُغلق باستقامة قد يُضعف تدريع الغرفة.' },
-      ],
     },
     {
       id: 'mep',
@@ -257,11 +227,6 @@ export const SERVICES = {
         { t: 'تخطيط كل نقطة اختراق', d: 'تُحدَّد كل نقطة عبور للغلاف المدرّع وتُفصَّل وتُحكَم على المخططات أولًا.' },
         { t: 'التركيب والاختبار', d: 'تُركَّب الخدمات وتُختبر ضغطيًا وتُوازَن وفق الظروف المحددة.' },
         { t: 'التوثيق', d: 'تُسلَّم مخططات ما بعد التنفيذ وسجلات الاختبار مع الغرفة.' },
-      ],
-      faqs: [
-        { q: 'ما هو الموجّه الموجي (Waveguide)؟', a: 'أنبوب معدني قصير يُركَّب عبر درع الترددات الراديوية لغرفة الرنين. يحجب طوله بالنسبة إلى قطره الإشارات الراديوية، فيمر الأنبوب أو المجرى عبر الجدار دون كسر قفص فاراداي.' },
-        { q: 'لماذا تحتاج غرف التصوير إلى تكييف خاص؟', a: 'تُصدر الأجهزة حرارة كبيرة ويجب أن تعمل ضمن حدود حرارة ورطوبة تحددها الشركة المصنِّعة. كما يجب أن يراعي النظام التدريع بتفاصيل نقاط الاختراق ومكونات غير مغناطيسية داخل غرفة الرنين.' },
-        { q: 'هل تنفذ EGC الغازات الطبية؟', a: 'نعم، فأنظمة الأكسجين والهواء الطبي والشفط جزء من نطاق أعمالنا الكهروميكانيكية المتخصصة.' },
       ],
     },
     {
@@ -294,11 +259,6 @@ export const SERVICES = {
         { t: 'التصنيع في المصنع', d: 'قطع بتقنية CNC وتشكيل حراري ولحام وصلات في ورشة الكوريان والنجارة بجدة.' },
         { t: 'التركيب والوصل', d: 'تُثبَّت القطع وتُلصق الوصلات وتُدمج المغاسل في الموقع.' },
         { t: 'التلميع والتسليم', d: 'تُشطَّب الأسطح بدرجة اللمعان المحددة وتُنظَّف للاستخدام.' },
-      ],
-      faqs: [
-        { q: 'ما هو الكوريان؟', a: 'الكوريان علامة تجارية لمادة الأسطح الصلبة — أكريليك مدعّم بمعادن. وهو غير مسامي ويمكن وصله بوصلات غير مرئية وتشكيله حول مغاسل مدمجة وحواف مقوّسة.' },
-        { q: 'هل يغني السطح الصلب عن بروتوكولات التنظيف؟', a: 'لا. فهو يزيل الأماكن التي قد يعلق فيها التلوث فيجعل التنظيف أكثر فعالية، لكن يظل بروتوكول التعقيم في المستشفى ساريًا. تحقق من توافق المطهرات مع إرشادات الشركة المصنِّعة.' },
-        { q: 'هل يمكن إصلاح الخدوش في الموقع؟', a: 'يمكن عادةً تنعيم العلامات الخفيفة في السطح الصلب وتلميعها في الموقع، وهذا من أسباب ملاءمته للمنضدات السريرية كثيرة الاستخدام.' },
       ],
     },
   ],

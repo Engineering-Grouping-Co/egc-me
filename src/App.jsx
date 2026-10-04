@@ -11,8 +11,6 @@ import Manufacturing from './pages/Manufacturing';
 import SoftwareEngineering from './pages/SoftwareEngineering';
 import Systems from './pages/Systems';
 import Projects from './pages/Projects';
-import Knowledge from './pages/Knowledge';
-import Article from './pages/Article';
 import Careers from './pages/Careers';
 import Suppliers from './pages/Suppliers';
 import Contact from './pages/Contact';
@@ -34,7 +32,6 @@ const PAGES = {
   software: <SoftwareEngineering />,
   systems: <Systems />,
   projects: <Projects />,
-  knowledge: <Knowledge />,
   careers: <Careers />,
   suppliers: <Suppliers />,
   contact: <Contact />,
@@ -42,8 +39,6 @@ const PAGES = {
   privacyPolicy: <PrivacyPolicy />,
   terms: <Terms />,
 };
-
-const pageFor = (r) => (r.article ? <Article slug={r.article} /> : PAGES[r.key]);
 
 function localeRoutes() {
   return [
@@ -55,7 +50,7 @@ function localeRoutes() {
         element={
           <>
             <Seo routeKey={r.key} />
-            {pageFor(r)}
+            {PAGES[r.key]}
           </>
         }
       />

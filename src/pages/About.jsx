@@ -3,7 +3,7 @@ import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import { findRoute } from '../content/routes';
 import Img from '../components/Img';
-import { CtaBand, Facts, PageHero, PartnerStrip, SectionHead } from '../components/Parts';
+import { CtaBand, PageHero, PartnerStrip, SectionHead } from '../components/Parts';
 import './pages.css';
 
 export default function About() {
@@ -29,9 +29,8 @@ export default function About() {
             <h2>{ABOUT.story.title}</h2>
             {ABOUT.story.p.map((t) => <p key={t}>{t}</p>)}
           </div>
-          <div>
-            <h2 className="h-side">{HOME.glance.title}</h2>
-            <Facts rows={HOME.glance.rows} />
+          <div className="frame about-photo">
+            <Img name="joinery-doors" alt={ABOUT.story.title} sizes="(min-width: 900px) 40vw, 100vw" />
           </div>
         </div>
       </section>

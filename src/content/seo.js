@@ -1,9 +1,7 @@
 /* Per-route title / description / breadcrumb name. Titles lead with the phrase
  * people actually search ("healthcare contractor Saudi Arabia", "مقاول مشاريع صحية")
  * and keep every brand variant discoverable ("EGC", "Engineering Grouping Co.",
- * "Engineering Group", "التجمع الهندسي"). Articles take their title/summary from
- * content/knowledge.js, so they are not listed here. */
-import { ARTICLES } from './knowledge.js';
+ * "Engineering Group", "التجمع الهندسي"). */
 
 export const SEO_CONTENT = {
   home: {
@@ -138,18 +136,6 @@ export const SEO_CONTENT = {
       description: 'مشاريع تجهيز الغرف الطبية والتصنيع التي نفذتها EGC في جدة والرياض والدمام والمدينة المنورة والجبيل وأبها.',
     },
   },
-  knowledge: {
-    en: {
-      name: 'Knowledge Center',
-      title: 'Knowledge Center: MRI, CT & PET-CT Room Guides | EGC',
-      description: 'Plain-language guides on MRI and radiation shielding, imaging-room readiness, infection-control surfaces and choosing a healthcare contractor.',
-    },
-    ar: {
-      name: 'مركز المعرفة',
-      title: 'مركز المعرفة: أدلة غرف الرنين والأشعة المقطعية وPET-CT | EGC',
-      description: 'أدلة بلغة واضحة عن تدريع الرنين المغناطيسي والإشعاعي وجاهزية غرف التصوير والأسطح المقاومة للعدوى واختيار مقاول المشاريع الصحية.',
-    },
-  },
   careers: {
     en: {
       name: 'Careers',
@@ -212,12 +198,7 @@ export const SEO_CONTENT = {
   },
 };
 
-/** SEO entry for any route key, including article routes. */
+/** SEO entry for any route key. */
 export function getSeo(routeKey, locale) {
-  if (routeKey.startsWith('article:')) {
-    const a = ARTICLES[routeKey.slice('article:'.length)];
-    const c = a[locale];
-    return { name: c.title, title: `${c.title} | EGC`, description: c.summary };
-  }
   return SEO_CONTENT[routeKey][locale];
 }
