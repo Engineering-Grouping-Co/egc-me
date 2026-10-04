@@ -1,28 +1,35 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Globe } from 'lucide-react';
 import { useLocale } from '../i18n/LocaleContext';
 import { UI } from '../content/ui';
 
 /**
- * Swaps only the locale segment of the current path so toggling language
- * preserves the page you're on (/en/what-we-build <-> /ar/what-we-build)
- * instead of bouncing to home. Slugs are the same in both locales, so this
- * is a plain string replace, not a route lookup table.
+ * Swaps only the locale prefix of the current path, so toggling language keeps
+ * you on the same page. Rendered as a real <a hreflang> so crawlers can follow it.
  */
-export default function LocaleSwitcher({ className = '' }) {
-  const locale = useLocale();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const ui = UI[locale];
+function otherLocalePath(pathname, locale) {
+  const english = pathname.replace(/^\/ar(\/|$)/, '/');
+  if (locale === 'ar') return english;
+  return english === '/' ? '/ar/' : `/ar${english}`;
+}
 
-  const switchTo = () => {
-    const next = ui.switchLocaleTo;
-    const nextPath = location.pathname.replace(/^\/(en|ar)/, `/${next}`);
-    navigate(`${nextPath}${location.search}${location.hash}`);
-  };
+export default function LocaleSwitcher({ className = '', onNavigate }) {
+  const locale = useLocale();
+  const { pathname, search, hash } = useLocation();
+  const ui = UI[locale];
+  const target = locale === 'ar' ? 'en' : 'ar';
 
   return (
-    <button type="button" className={`locale-switch ${className}`} onClick={switchTo} lang={ui.switchLocaleTo}>
-      {ui.switchLocaleLabel}
-    </button>
+    <Link
+      to={`${otherLocalePath(pathname, locale)}${search}${hash}`}
+      className={`lang-switch ${className}`}
+      hrefLang={target}
+      lang={target}
+      aria-label={ui.switchAria}
+      onClick={onNavigate}
+    >
+      <Globe size={18} aria-hidden="true" />
+      <span>{ui.switchLabel}</span>
+    </Link>
   );
 }

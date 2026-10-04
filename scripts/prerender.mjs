@@ -1,119 +1,150 @@
-// Static prerendering for GitHub Pages, run after `vite build` (see the
-// "build" script in package.json). Crawls every LOCALES × ROUTES
-// combination plus /install with a headless browser and writes real
-// rendered HTML to dist/<route>/index.html, so every page ships with
-// full content and correct <head> tags in the initial response instead
-// of an empty <div id="root"> shell.
+// Static prerendering for GitHub Pages, run after `vite build` (see "build" in package.json).
+// Crawls every LOCALES × ROUTES page with a headless browser and writes real
+// rendered HTML to dist/<route>/index.html, so every URL ships full content and correct <head>
+// tags in the initial response instead of an empty <div id="root">.
 //
-// "/" is handled separately (see buildRootRedirectPage) — it's a pure
-// client-language-detecting redirect with no content of its own, so
-// rather than crawl a transient React render, this script edits the
-// Vite-built dist/index.html shell directly, preserving its hashed
-// asset tags while adding a delayed no-JS <meta refresh> fallback and a
-// <noscript> block.
+// Pages are collected in memory and written only after the crawl finishes, so the Vite-built
+// shell (dist/index.html) is the SPA fallback for every request while crawling.
+//
+// Also writes tiny redirect stubs for pre-redesign URLs (/en/**, /what-we-build/ …). GitHub Pages
+// cannot issue real 301s, so each stub carries rel=canonical + an instant meta refresh — which
+// Google treats as a permanent redirect.
 import { chromium } from 'playwright';
 import { preview } from 'vite';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LOCALES, DEFAULT_LOCALE, ROUTES, STANDALONE_ROUTES, routePath, routeUrl } from '../src/content/routes.js';
+import { LOCALES, ROUTES, STANDALONE_ROUTES, SITE_URL, routePath, legacyRedirects } from '../src/content/routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 
-async function buildRootRedirectPage() {
-  const indexPath = path.join(DIST, 'index.html');
-  let html = await fs.readFile(indexPath, 'utf8');
+const outFile = (urlPath) => path.join(DIST, urlPath.replace(/^\//, ''), 'index.html');
 
-  // No <meta refresh> here deliberately: this exact file is also what
-  // GitHub Pages' 404.html trick and (locally) vite preview's SPA
-  // fallback serve for ANY unmatched path — including every trailing-
-  // slash-less deep link the app's own <Link>s generate (/ar/about, not
-  // /ar/about/). A timed refresh would fire on those too, forcing a
-  // visitor correctly routed back to /ar/about by the 404 decoder script
-  // (or already on the right pathname via vite preview) over to /en/ a
-  // second later. RootRedirect's client JS handles the real "/" case;
-  // <noscript> covers visitors with JS disabled.
-  const hreflangLinks = [
-    ...LOCALES.map((l) => `<link rel="alternate" hreflang="${l}" href="${routeUrl(l, '')}" />`),
-    `<link rel="alternate" hreflang="x-default" href="${routeUrl(DEFAULT_LOCALE, '')}" />`,
-  ].join('\n    ');
-  html = html.replace('</head>', `    ${hreflangLinks}\n  </head>`);
-
-  const noscript = `<noscript><div style="font-family:sans-serif;padding:40px;text-align:center;">` +
-    `<p>JavaScript is required to view this site.</p>` +
-    `<p><a href="/en/">Continue in English</a> &middot; <a href="/ar/">المتابعة بالعربية</a></p>` +
-    `</div></noscript>`;
-  html = html.replace('<div id="root">', `${noscript}\n    <div id="root">`);
-
-  await fs.writeFile(indexPath, html, 'utf8');
-}
-
-function buildCrawlList() {
+function crawlList() {
   const list = [];
   for (const locale of LOCALES) {
-    for (const r of ROUTES) {
-      list.push({
-        url: routePath(locale, r.segment),
-        outDir: path.join(DIST, locale, r.segment),
-        readySignal: true,
-      });
-    }
-  }
-  for (const r of STANDALONE_ROUTES) {
-    if (r.path === '/') continue; // handled by buildRootRedirectPage instead
-    list.push({ url: r.path, outDir: path.join(DIST, r.path.replace(/^\//, '')), readySignal: false });
+    for (const r of ROUTES) list.push({ url: routePath(locale, r.segment), ready: true });
   }
   return list;
 }
 
-async function main() {
-  await buildRootRedirectPage();
+function redirectStub(to) {
+  const abs = `${SITE_URL}${to}`;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<link rel="canonical" href="${abs}">
+<meta http-equiv="refresh" content="0; url=${to}">
+<script>location.replace(${JSON.stringify(to)} + location.search + location.hash)</script>
+</head>
+<body><p>This page has moved to <a href="${to}">${abs}</a>.</p></body>
+</html>
+`;
+}
 
-  const crawlList = buildCrawlList();
+
+/**
+ * Runs inside the page. Serialises the live DOM so React can hydrate it:
+ * `page.content()` merges adjacent text nodes (`"Hello " + name + "!"` becomes one node), which
+ * React's hydrator treats as a mismatch. React's own server renderer separates such nodes with
+ * `<!-- -->`, so we do the same.
+ */
+function serializeDocument() {
+  const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
+  const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const escAttr = (t) => t.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  const attrs = (el) => Array.from(el.attributes).map((a) => ` ${a.name}="${escAttr(a.value)}"`).join('');
+
+  function children(node) {
+    let out = '';
+    let prevText = false;
+    for (const c of node.childNodes) {
+      const isText = c.nodeType === 3;
+      if (isText && prevText) out += '<!-- -->';
+      out += ser(c);
+      prevText = isText;
+    }
+    return out;
+  }
+  function ser(n) {
+    if (n.nodeType === 3) return esc(n.data);
+    if (n.nodeType === 8) return `<!--${n.data}-->`;
+    if (n.nodeType !== 1) return '';
+    const tag = n.localName;
+    const open = `<${tag}${attrs(n)}>`;
+    if (VOID.has(tag)) return open;
+    if (tag === 'script' || tag === 'style') return `${open}${n.textContent}</${tag}>`;
+    return `${open}${children(n)}</${tag}>`;
+  }
+
+  const html = document.documentElement;
+  return `<!DOCTYPE html><html${attrs(html)}><head>${document.head.innerHTML}</head><body${attrs(document.body)}>${children(document.body)}</body></html>`;
+}
+
+async function main() {
+  const shell = await fs.readFile(path.join(DIST, 'index.html'), 'utf8');
   const server = await preview({ root: ROOT, preview: { port: 4173, strictPort: false } });
   const baseUrl = server.resolvedUrls.local[0].replace(/\/$/, '');
-
   const browser = await chromium.launch();
-  let hadError = false;
+  const results = [];
+  let failed = false;
 
-  for (const route of crawlList) {
+  for (const route of crawlList()) {
     const page = await browser.newPage();
-    page.on('pageerror', (err) => {
-      hadError = true;
-      console.error(`[prerender] client error on ${route.url}:`, err.message);
-    });
+    const fail = (msg) => {
+      failed = true;
+      console.error(`[prerender] ${route.url}: ${msg}`);
+    };
+    page.on('pageerror', (err) => fail(`client error — ${err.message}`));
+    page.on('console', (m) => m.type() === 'error' && fail(`console error — ${m.text()}`));
+    // only our own assets can fail the build; third-party hosts (fonts CDN) must not
+    page.on('requestfailed', (r) => r.url().startsWith(baseUrl) && fail(`request failed — ${r.url()}`));
+    page.on('response', (r) => r.url().startsWith(baseUrl) && r.status() >= 400 && fail(`HTTP ${r.status()} — ${r.url()}`));
 
-    await page.addInitScript(() => {
-      window.__PRERENDER__ = true;
-    });
-
+    await page.addInitScript(() => { window.__PRERENDER__ = true; });
     await page.goto(`${baseUrl}${route.url}`, { waitUntil: 'load' });
+    if (route.ready) await page.waitForFunction(() => window.__APP_READY__ === true, null, { timeout: 15000 });
+    else await page.waitForLoadState('networkidle');
 
-    if (route.readySignal) {
-      await page.waitForFunction(() => window.__APP_READY__ === true, { timeout: 15000 });
-    } else {
-      await page.waitForLoadState('networkidle');
-    }
-
-    const html = await page.content();
-    await fs.mkdir(route.outDir, { recursive: true });
-    await fs.writeFile(path.join(route.outDir, 'index.html'), html, 'utf8');
-    console.log(`[prerender] wrote ${path.relative(ROOT, route.outDir)}/index.html`);
-
+    // lets main.jsx tell a matching snapshot (hydrate) from the home page served via the 404 redirect
+    await page.evaluate((u) => document.getElementById('root').setAttribute('data-prerendered', u), route.url);
+    results.push({ url: route.url, html: await page.evaluate(serializeDocument) });
+    console.log(`[prerender] rendered ${route.url}`);
     await page.close();
   }
 
   await browser.close();
-  await server.httpServer.close();
+  await new Promise((resolve) => server.httpServer.close(resolve));
 
-  if (hadError) {
-    console.error('[prerender] one or more routes threw a client-side error — failing the build.');
+  if (failed) {
+    console.error('[prerender] errors above — failing the build.');
     process.exit(1);
   }
 
-  console.log(`[prerender] done — ${crawlList.length} routes + / prerendered.`);
+  for (const { url, html } of results) {
+    const file = outFile(url);
+    await fs.mkdir(path.dirname(file), { recursive: true });
+    await fs.writeFile(file, html, 'utf8');
+  }
+  // /install/ is a separately-designed, client-rendered page whose state is set in an effect, so a
+  // snapshot of it would not hydrate. Serve the plain app shell, exactly as before.
+  for (const r of STANDALONE_ROUTES) {
+    const file = outFile(r.path);
+    await fs.mkdir(path.dirname(file), { recursive: true });
+    await fs.writeFile(file, shell, 'utf8');
+  }
+  for (const { from, to } of legacyRedirects()) {
+    const file = outFile(from);
+    await fs.mkdir(path.dirname(file), { recursive: true });
+    // never let a stub overwrite a real page (e.g. "/")
+    if (results.some((r) => r.url === from)) continue;
+    await fs.writeFile(file, redirectStub(to), 'utf8');
+  }
+  console.log(`[prerender] wrote ${results.length} pages and ${legacyRedirects().length} redirect stubs.`);
 }
 
 main().catch((err) => {

@@ -1,148 +1,223 @@
-/* Per-route title/description copy consumed by <Seo>. Keys match
- * ROUTES[].key in src/content/routes.js. */
+/* Per-route title / description / breadcrumb name. Titles lead with the phrase
+ * people actually search ("healthcare contractor Saudi Arabia", "مقاول مشاريع صحية")
+ * and keep every brand variant discoverable ("EGC", "Engineering Grouping Co.",
+ * "Engineering Group", "التجمع الهندسي"). Articles take their title/summary from
+ * content/knowledge.js, so they are not listed here. */
+import { ARTICLES } from './knowledge.js';
+
 export const SEO_CONTENT = {
   home: {
     en: {
       name: 'Home',
-      title: 'EGC | Healthcare Room Preparation Contractor — Jeddah, Saudi Arabia',
-      description: 'Engineering Grouping Co. (EGC) is a Jeddah-based specialty contractor preparing MRI, CT and PET-CT rooms for Siemens Healthineers, Philips Healthcare and GE Healthcare equipment across Saudi Arabia — radiation & magnetic shielding, medical doors, specialized MEP, and infection-controlled surfaces.',
+      title: 'Healthcare Contractor in Saudi Arabia | Engineering Grouping Co. (EGC)',
+      description: 'Engineering Grouping Co. (EGC) is a Jeddah healthcare contractor for MRI, CT and PET-CT rooms: radiation shielding, medical doors, MEP and clinical surfaces.',
     },
     ar: {
       name: 'الرئيسية',
-      title: 'إي جي سي | مقاول تجهيز الغرف الطبية — جدة، السعودية',
-      description: 'شركة المجموعة الهندسية (EGC) مقاول متخصص في جدة لتجهيز غرف الرنين المغناطيسي والأشعة المقطعية وPET-CT لمعدات Siemens Healthineers وPhilips Healthcare وGE Healthcare في المملكة العربية السعودية — تدريع إشعاعي ومغناطيسي، أبواب طبية، أعمال كهروميكانيكية متخصصة، وأسطح مقاومة للعدوى.',
+      title: 'مقاول مشاريع صحية في السعودية | التجمع الهندسي (EGC)',
+      description: 'شركة التجمع الهندسي (EGC) مقاول مشاريع صحية في جدة لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT: تدريع إشعاعي وأبواب طبية وأعمال كهروميكانيكية وأسطح سريرية.',
     },
   },
   about: {
     en: {
       name: 'About',
-      title: 'About EGC | Specialty Healthcare Contractor in Saudi Arabia',
-      description: 'EGC has delivered specialist healthcare room-preparation projects across Saudi Arabia since 2006, backed by an in-house Wood & Corian manufacturing factory and ISO-certified quality, safety and environmental management systems.',
+      title: 'About EGC (Engineering Grouping Co.) | Healthcare Contractor, Jeddah',
+      description: 'Founded in 2006 in Jeddah, Engineering Grouping Co. builds imaging rooms for hospitals, with its own Wood & Corian factory and ISO-certified management systems.',
     },
     ar: {
       name: 'من نحن',
-      title: 'من نحن | مقاول متخصص في الإنشاءات الطبية بالسعودية',
-      description: 'تنفذ شركة المجموعة الهندسية (EGC) مشاريع تجهيز الغرف الطبية المتخصصة في جميع أنحاء المملكة العربية السعودية منذ عام 2006، بدعم من مصنع الخشب والكوريان الخاص بها وأنظمة إدارة جودة وسلامة وبيئة معتمدة وفق الآيزو.',
+      title: 'عن التجمع الهندسي (EGC) | مقاول مشاريع صحية في جدة',
+      description: 'تأسست شركة التجمع الهندسي في جدة عام 2006 وتبني غرف التصوير للمستشفيات، ولديها مصنعها الخاص للخشب والكوريان وأنظمة إدارة معتمدة وفق الآيزو.',
     },
   },
-  whatWeBuild: {
+  hub: {
     en: {
-      name: 'Healthcare Construction',
-      title: 'Healthcare Construction | Radiation Shielding, Medical Doors & MEP — EGC',
-      description: 'Structural radiation & magnetic shielding for MRI, CT and PET-CT rooms, medical doors & access systems, specialized MEP, and infection-controlled surfaces & joinery — delivered in-house by EGC across Saudi hospitals and diagnostic centres.',
+      name: 'Healthcare Contractor',
+      title: 'Healthcare Contractor Saudi Arabia: Imaging Rooms, Shielding & MEP | EGC',
+      description: 'Specialty healthcare contractor for MRI, CT, PET-CT and X-ray rooms in Saudi Arabia: radiation and magnetic shielding, medical doors, healthcare MEP and clinical surfaces.',
     },
     ar: {
-      name: 'الإنشاءات الطبية',
-      title: 'الإنشاءات الطبية | التدريع الإشعاعي والأبواب الطبية والأعمال الكهروميكانيكية — EGC',
-      description: 'التدريع الإنشائي للإشعاع والمجال المغناطيسي لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT، والأبواب الطبية وأنظمة التحكم بالدخول، والأعمال الكهروميكانيكية المتخصصة، والأسطح والنجارة المقاومة للعدوى — تنفذها EGC داخليًا في مستشفيات ومراكز تشخيص بالمملكة.',
+      name: 'مقاول مشاريع صحية',
+      title: 'مقاول مشاريع صحية في السعودية: غرف التصوير والتدريع والأعمال الكهروميكانيكية | EGC',
+      description: 'مقاول مشاريع صحية متخصص لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية: تدريع إشعاعي ومغناطيسي وأبواب طبية وأعمال كهروميكانيكية وأسطح سريرية.',
+    },
+  },
+  shielding: {
+    en: {
+      name: 'Radiation & Magnetic Shielding',
+      title: 'MRI & Radiation Shielding Contractor in Saudi Arabia | EGC',
+      description: 'Lead-lined CT, PET-CT and X-ray rooms and RF-shielded MRI suites in Saudi Arabia, built to the OEM site-planning guide and the physicist’s shielding report.',
+    },
+    ar: {
+      name: 'التدريع الإشعاعي والمغناطيسي',
+      title: 'مقاول تدريع إشعاعي ومغناطيسي لغرف الرنين والأشعة في السعودية | EGC',
+      description: 'غرف أشعة مقطعية وPET-CT وأشعة سينية مبطنة بالرصاص وغرف رنين مغناطيسي مدرّعة ضد الترددات الراديوية في السعودية، وفق دليل الشركة المصنِّعة وتقرير الفيزيائي.',
+    },
+  },
+  doors: {
+    en: {
+      name: 'Medical Doors & Access',
+      title: 'Lead-Lined & RF-Shielded Medical Doors in Saudi Arabia | EGC',
+      description: 'Fabrication and installation of lead-lined radiation doors, RF-shielded MRI doors and hermetic sliding doors, with interlocks and access control.',
+    },
+    ar: {
+      name: 'الأبواب الطبية',
+      title: 'أبواب طبية مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية في السعودية | EGC',
+      description: 'تصنيع وتركيب أبواب إشعاعية مبطنة بالرصاص وأبواب رنين مغناطيسي مدرّعة وأبواب انزلاقية محكمة الغلق، مع قفل تبادلي وتحكم بالدخول.',
+    },
+  },
+  mep: {
+    en: {
+      name: 'Healthcare MEP',
+      title: 'Healthcare MEP Contractor for Imaging Rooms in Saudi Arabia | EGC',
+      description: 'Medical gases, earthing, EMI-aware cable routing and controlled HVAC for MRI, CT and PET-CT rooms, coordinated with the shielding.',
+    },
+    ar: {
+      name: 'الأعمال الكهروميكانيكية الطبية',
+      title: 'مقاول أعمال كهروميكانيكية للمنشآت الصحية وغرف التصوير في السعودية | EGC',
+      description: 'غازات طبية وتأريض وتمديد كابلات واعٍ بالتداخل الكهرومغناطيسي وتكييف متحكَّم به لغرف الرنين والأشعة المقطعية وPET-CT، بالتنسيق مع التدريع.',
+    },
+  },
+  surfaces: {
+    en: {
+      name: 'Infection-Control Surfaces',
+      title: 'Corian & Infection-Control Surfaces for Hospitals in Saudi Arabia | EGC',
+      description: 'Seamless Corian counters, nurse stations, scrub sinks and medical joinery, fabricated in our own Jeddah factory for clinical cleaning protocols.',
+    },
+    ar: {
+      name: 'الأسطح المقاومة للعدوى',
+      title: 'أسطح كوريان ونجارة طبية مقاومة للعدوى للمستشفيات في السعودية | EGC',
+      description: 'منضدات كوريان متصلة ومحطات تمريض ومغاسل جراحية ونجارة طبية، تُصنَّع في مصنعنا بجدة وفق بروتوكولات التنظيف السريري.',
     },
   },
   manufacturing: {
     en: {
       name: 'Manufacturing',
-      title: 'Manufacturing | Wood & Corian Factory — EGC Saudi Arabia',
-      description: "EGC's in-house Wood & Corian factory fabricates solid-surface and architectural joinery at scale, with work including interiors at Jeddah's international airport and multiple military hospital facilities across the Kingdom.",
+      title: 'Corian & Joinery Factory in Jeddah, Saudi Arabia | EGC Manufacturing',
+      description: 'EGC’s Jeddah Wood & Corian factory fabricates solid-surface counters and architectural joinery for healthcare, airport and military-hospital interiors.',
     },
     ar: {
       name: 'التصنيع',
-      title: 'التصنيع | مصنع الخشب والكوريان — EGC السعودية',
-      description: 'ينتج مصنع الخشب والكوريان التابع لشركة EGC أعمال الأسطح الصلبة والنجارة المعمارية على نطاق واسع، ومن أعماله التصميمات الداخلية لمطار جدة وعدد من المستشفيات العسكرية في مختلف مناطق المملكة.',
+      title: 'مصنع كوريان ونجارة في جدة، السعودية | تصنيع EGC',
+      description: 'يصنّع مصنع الخشب والكوريان التابع لـ EGC في جدة منضدات الأسطح الصلبة والنجارة المعمارية للمنشآت الصحية ومطار جدة والمستشفيات العسكرية.',
     },
   },
-  softwareEngineering: {
+  software: {
     en: {
       name: 'Software Engineering',
-      title: 'Software Engineering | HIS, RIS & ERP Systems — EGC Saudi Arabia',
-      description: 'EGC builds Hospital & Radiology Information Systems, Patient Information Management Systems, ERP & managerial software engineered for KSA regulatory compliance (ZATCA e-invoicing, GOSI/WPS, PDPL), plus client-facing websites.',
+      title: 'HIS, RIS & ERP Software Development in Saudi Arabia | EGC',
+      description: 'Hospital and radiology information systems, patient information management and ERP built for ZATCA e-invoicing, GOSI/WPS and PDPL, plus bilingual websites.',
     },
     ar: {
       name: 'هندسة البرمجيات',
-      title: 'هندسة البرمجيات | أنظمة المستشفيات والأشعة وتخطيط الموارد — EGC السعودية',
-      description: 'تطور EGC أنظمة معلومات المستشفيات والأشعة، وأنظمة إدارة معلومات المرضى، وبرمجيات تخطيط الموارد والإدارة المصممة للتوافق مع الأنظمة السعودية (الفوترة الإلكترونية لهيئة الزكاة والضريبة والجمارك، التأمينات الاجتماعية وحماية الأجور، ونظام حماية البيانات الشخصية)، إضافة إلى مواقع إلكترونية للعملاء.',
+      title: 'تطوير أنظمة المستشفيات والأشعة وتخطيط الموارد في السعودية | EGC',
+      description: 'أنظمة معلومات المستشفيات والأشعة وإدارة معلومات المرضى وتخطيط الموارد المبنية وفق الفوترة الإلكترونية والتأمينات الاجتماعية وحماية الأجور ونظام حماية البيانات، ومواقع ثنائية اللغة.',
+    },
+  },
+  systems: {
+    en: {
+      name: 'Healthcare Systems & Turnkey',
+      title: 'Nurse Call Systems, OR Clocks & Turnkey Installation | EGC (Launching Soon)',
+      description: 'EGC is preparing to supply nurse call systems, operating-room clocks and turnkey healthcare installation in Saudi Arabia. Register your interest.',
+    },
+    ar: {
+      name: 'الأنظمة الطبية والتسليم الشامل',
+      title: 'أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل | EGC (قريبًا)',
+      description: 'تستعد EGC لتوريد أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل للمنشآت الصحية في السعودية. سجّل اهتمامك.',
     },
   },
   projects: {
     en: {
       name: 'Projects',
-      title: 'Projects | EGC Healthcare & Manufacturing Portfolio Across Saudi Arabia',
-      description: "A cross-section of EGC's healthcare room-preparation and manufacturing project work across Saudi Arabia's regions.",
+      title: 'Healthcare Projects Across Saudi Arabia | EGC Project Map',
+      description: 'EGC’s healthcare room-preparation and manufacturing projects across Jeddah, Riyadh, Dammam, Madinah, Jubail and Abha.',
     },
     ar: {
       name: 'المشاريع',
-      title: 'المشاريع | أعمال EGC في الإنشاءات الطبية والتصنيع بالسعودية',
-      description: 'نبذة عن مشاريع تجهيز الغرف الطبية وأعمال التصنيع التي نفذتها EGC في مناطق مختلفة بالمملكة العربية السعودية.',
+      title: 'مشاريع صحية في أنحاء السعودية | خريطة مشاريع EGC',
+      description: 'مشاريع تجهيز الغرف الطبية والتصنيع التي نفذتها EGC في جدة والرياض والدمام والمدينة المنورة والجبيل وأبها.',
+    },
+  },
+  knowledge: {
+    en: {
+      name: 'Knowledge Center',
+      title: 'Knowledge Center: MRI, CT & PET-CT Room Guides | EGC',
+      description: 'Plain-language guides on MRI and radiation shielding, imaging-room readiness, infection-control surfaces and choosing a healthcare contractor.',
+    },
+    ar: {
+      name: 'مركز المعرفة',
+      title: 'مركز المعرفة: أدلة غرف الرنين والأشعة المقطعية وPET-CT | EGC',
+      description: 'أدلة بلغة واضحة عن تدريع الرنين المغناطيسي والإشعاعي وجاهزية غرف التصوير والأسطح المقاومة للعدوى واختيار مقاول المشاريع الصحية.',
     },
   },
   careers: {
     en: {
       name: 'Careers',
-      title: 'Careers at EGC | Join a Specialty Healthcare Contractor in Jeddah',
-      description: 'Open positions across healthcare projects, manufacturing, software engineering, HSE and corporate functions at EGC — a specialty contractor headquartered in Jeddah, Saudi Arabia.',
+      title: 'Careers at EGC | Healthcare Construction & Software Jobs in Jeddah',
+      description: 'Open roles across healthcare projects, the Wood & Corian factory, software engineering and corporate functions at EGC in Jeddah.',
     },
     ar: {
       name: 'الوظائف',
-      title: 'الوظائف في EGC | انضم إلى مقاول متخصص في الإنشاءات الطبية بجدة',
-      description: 'وظائف شاغرة في المشاريع الطبية والتصنيع وهندسة البرمجيات والصحة والسلامة والوظائف الإدارية في EGC، المقاول المتخصص الذي يتخذ من جدة مقرًا له.',
+      title: 'الوظائف في EGC | وظائف إنشاءات طبية وبرمجيات في جدة',
+      description: 'وظائف شاغرة في المشاريع الطبية ومصنع الخشب والكوريان وهندسة البرمجيات والوظائف الإدارية في EGC بجدة.',
     },
   },
   suppliers: {
     en: {
       name: 'Suppliers',
-      title: 'Suppliers & Vendor Registration | EGC Procurement, Saudi Arabia',
-      description: 'Register as an approved EGC vendor — procurement categories, prequalification steps, document requirements, and access to the supplier portal.',
+      title: 'Become an Approved Supplier | EGC Vendor Registration, Saudi Arabia',
+      description: 'Register as an approved EGC vendor: procurement categories, prequalification steps, document requirements and the supplier portal.',
     },
     ar: {
       name: 'الموردون',
-      title: 'الموردون وتسجيل البائعين | مشتريات EGC، السعودية',
-      description: 'سجّل كمورد معتمد لدى EGC — فئات المشتريات، وخطوات التأهيل المسبق، والمستندات المطلوبة، والدخول إلى بوابة الموردين.',
+      title: 'سجّل كمورد معتمد | تسجيل الموردين لدى EGC، السعودية',
+      description: 'سجّل كمورد معتمد لدى EGC: فئات المشتريات وخطوات التأهيل المسبق والمستندات المطلوبة وبوابة الموردين.',
     },
   },
   contact: {
     en: {
-      name: 'Contact Us',
-      title: 'Contact EGC | Jeddah Head Office, Saudi Arabia',
-      description: 'Get in touch with EGC about a healthcare construction, manufacturing, or software engineering project — head office in Almanar District, Jeddah, Kingdom of Saudi Arabia.',
+      name: 'Contact',
+      title: 'Contact EGC | Healthcare Contractor, Almanar District, Jeddah',
+      description: 'Contact Engineering Grouping Co. about an imaging-room, manufacturing or software project. Head office in Almanar District, Jeddah. Phone +966 50 434 1861.',
     },
     ar: {
       name: 'تواصل معنا',
-      title: 'تواصل مع EGC | المكتب الرئيسي بجدة، السعودية',
-      description: 'تواصل مع EGC بخصوص مشروع في الإنشاءات الطبية أو التصنيع أو هندسة البرمجيات — المكتب الرئيسي في حي المنار، جدة، المملكة العربية السعودية.',
+      title: 'تواصل مع التجمع الهندسي (EGC) | مقاول مشاريع صحية، حي المنار، جدة',
+      description: 'تواصل مع شركة التجمع الهندسي بخصوص مشروع غرف تصوير أو تصنيع أو برمجيات. المقر الرئيسي في حي المنار بجدة. هاتف 966504341861+.',
     },
   },
   legalProfile: {
     en: {
       name: 'Legal Profile',
-      title: 'Legal Profile | Commercial Registration & VAT — EGC',
-      description: "EGC's commercial registration, VAT, national address and certification documents.",
+      title: 'Legal Profile: Commercial Registration & VAT | EGC',
+      description: 'EGC’s commercial registration (7040750007), VAT number, national address and certification documents.',
     },
     ar: {
       name: 'الملف القانوني',
-      title: 'الملف القانوني | السجل التجاري والرقم الضريبي — EGC',
-      description: 'السجل التجاري والرقم الضريبي والعنوان الوطني ومستندات الاعتماد الخاصة بشركة EGC.',
+      title: 'الملف القانوني: السجل التجاري والرقم الضريبي | EGC',
+      description: 'السجل التجاري (7040750007) والرقم الضريبي والعنوان الوطني ومستندات الاعتماد الخاصة بشركة EGC.',
     },
   },
   privacyPolicy: {
-    en: {
-      name: 'Privacy Policy',
-      title: 'Privacy Policy — EGC',
-      description: "How Engineering Grouping Co. collects, uses, and protects personal data.",
-    },
-    ar: {
-      name: 'سياسة الخصوصية',
-      title: 'سياسة الخصوصية — EGC',
-      description: 'كيفية جمع شركة المجموعة الهندسية للبيانات الشخصية واستخدامها وحمايتها.',
-    },
+    en: { name: 'Privacy Policy', title: 'Privacy Policy | EGC', description: 'How Engineering Grouping Co. collects, uses and protects personal data.' },
+    ar: { name: 'سياسة الخصوصية', title: 'سياسة الخصوصية | EGC', description: 'كيفية جمع شركة المجموعة الهندسية للبيانات الشخصية واستخدامها وحمايتها.' },
   },
   terms: {
-    en: {
-      name: 'Terms & Conditions',
-      title: 'Terms & Conditions — EGC',
-      description: 'Terms and conditions governing the use of the EGC website and services.',
-    },
-    ar: {
-      name: 'الشروط والأحكام',
-      title: 'الشروط والأحكام — EGC',
-      description: 'الشروط والأحكام التي تحكم استخدام موقع وخدمات شركة EGC.',
-    },
+    en: { name: 'Terms & Conditions', title: 'Terms & Conditions | EGC', description: 'Terms and conditions governing use of the EGC website and services.' },
+    ar: { name: 'الشروط والأحكام', title: 'الشروط والأحكام | EGC', description: 'الشروط والأحكام التي تحكم استخدام موقع وخدمات EGC.' },
+  },
+  notFound: {
+    en: { name: 'Page not found', title: 'Page not found | EGC', description: 'This page does not exist.' },
+    ar: { name: 'الصفحة غير موجودة', title: 'الصفحة غير موجودة | EGC', description: 'هذه الصفحة غير موجودة.' },
   },
 };
+
+/** SEO entry for any route key, including article routes. */
+export function getSeo(routeKey, locale) {
+  if (routeKey.startsWith('article:')) {
+    const a = ARTICLES[routeKey.slice('article:'.length)];
+    const c = a[locale];
+    return { name: c.title, title: `${c.title} | EGC`, description: c.summary };
+  }
+  return SEO_CONTENT[routeKey][locale];
+}

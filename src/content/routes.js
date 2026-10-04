@@ -1,49 +1,92 @@
 /**
  * Single source of truth for site routes — consumed by src/App.jsx (route
- * generation), scripts/prerender.mjs (crawl list), and scripts/sitemap.mjs
- * (sitemap/robots generation). Plain data, no JSX, so it can be imported
- * unmodified by plain Node ESM scripts as well as the Vite client bundle.
+ * generation), scripts/prerender.mjs (crawl list), scripts/sitemap.mjs
+ * (sitemap / robots / llms.txt). Plain data, no JSX, so plain Node ESM
+ * scripts can import it unmodified.
+ *
+ * URL scheme: English lives at the root (/, /about/ …) so the domain's
+ * homepage is a real, indexable page; Arabic lives under /ar/. Every URL
+ * ends with a trailing slash because GitHub Pages 301-redirects the
+ * slash-less form — canonicals, hreflang and sitemap must match the final URL.
  */
 
 export const LOCALES = ['en', 'ar'];
 export const DEFAULT_LOCALE = 'en';
-
 export const SITE_URL = 'https://egc-me.com';
 
-/* Every locale-prefixed route. `jsonLdType` drives the structured-data
- * block emitted by <Seo>. */
+export const ARTICLE_SLUGS = [
+  'what-is-a-healthcare-contractor',
+  'mri-room-shielding',
+  'ct-pet-ct-radiation-shielding',
+  'imaging-room-readiness-checklist',
+  'infection-control-surfaces',
+];
+
+/* `parent` drives breadcrumbs (Seo JSON-LD + PageHero). */
 export const ROUTES = [
-  { key: 'home',               segment: '',                     jsonLdType: 'Organization'    },
-  { key: 'about',               segment: 'about',                jsonLdType: 'AboutPage'        },
-  { key: 'whatWeBuild',         segment: 'what-we-build',        jsonLdType: 'Service'          },
-  { key: 'manufacturing',       segment: 'manufacturing',        jsonLdType: 'Service'          },
-  { key: 'softwareEngineering', segment: 'software-engineering', jsonLdType: 'Service'          },
-  { key: 'projects',            segment: 'projects',             jsonLdType: 'CollectionPage'   },
-  { key: 'careers',             segment: 'careers',              jsonLdType: 'CollectionPage'   },
-  { key: 'suppliers',           segment: 'suppliers',            jsonLdType: 'WebPage'          },
-  { key: 'contact',             segment: 'contact',              jsonLdType: 'ContactPage'      },
-  { key: 'legalProfile',        segment: 'legal-profile',        jsonLdType: 'WebPage'          },
-  { key: 'privacyPolicy',       segment: 'privacy-policy',       jsonLdType: 'WebPage'          },
-  { key: 'terms',               segment: 'terms',                jsonLdType: 'WebPage'          },
+  { key: 'home',          segment: '' },
+  { key: 'about',         segment: 'about' },
+  { key: 'hub',           segment: 'healthcare-contractor' },
+  { key: 'shielding',     segment: 'healthcare-contractor/radiation-shielding',        parent: 'hub' },
+  { key: 'doors',         segment: 'healthcare-contractor/medical-doors',              parent: 'hub' },
+  { key: 'mep',           segment: 'healthcare-contractor/healthcare-mep',             parent: 'hub' },
+  { key: 'surfaces',      segment: 'healthcare-contractor/infection-control-surfaces', parent: 'hub' },
+  { key: 'manufacturing', segment: 'manufacturing' },
+  { key: 'software',      segment: 'software-engineering' },
+  { key: 'systems',       segment: 'healthcare-systems' },
+  { key: 'projects',      segment: 'projects' },
+  { key: 'knowledge',     segment: 'knowledge' },
+  ...ARTICLE_SLUGS.map((slug) => ({
+    key: `article:${slug}`,
+    segment: `knowledge/${slug}`,
+    parent: 'knowledge',
+    article: slug,
+  })),
+  { key: 'careers',       segment: 'careers' },
+  { key: 'suppliers',     segment: 'suppliers' },
+  { key: 'contact',       segment: 'contact' },
+  { key: 'legalProfile',  segment: 'legal-profile' },
+  { key: 'privacyPolicy', segment: 'privacy-policy' },
+  { key: 'terms',         segment: 'terms' },
 ];
 
-/* Routes that live outside the /:locale prefix entirely. Install is a
- * separately-designed standalone page (untouched by this redesign); root
- * is a locale-detecting redirect page. */
-export const STANDALONE_ROUTES = [
-  { key: 'install', path: '/install', jsonLdType: null },
-];
+/* Outside the locale scheme entirely: the separately-designed PWA landing page. */
+export const STANDALONE_ROUTES = [{ key: 'install', path: '/install/' }];
 
-/* Legacy pre-redesign URLs (no locale prefix) that must keep resolving. */
-export const LEGACY_REDIRECTS = [
-  { from: '/divisions', to: `/${DEFAULT_LOCALE}/what-we-build` },
-  { from: '/our-work',  to: `/${DEFAULT_LOCALE}/what-we-build` },
-];
-
-export function routePath(locale, segment) {
-  return segment ? `/${locale}/${segment}` : `/${locale}/`;
+export function routePath(locale, segment = '') {
+  const base = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
+  return segment ? `${base}/${segment}/` : `${base}/`;
 }
 
-export function routeUrl(locale, segment) {
+export function routeUrl(locale, segment = '') {
   return `${SITE_URL}${routePath(locale, segment)}`;
+}
+
+export function findRoute(key) {
+  return ROUTES.find((r) => r.key === key);
+}
+
+/**
+ * Pre-redesign URLs that must keep resolving:
+ *  - /en/** (live for a few weeks) now folds into the root English URLs
+ *  - what-we-build was renamed healthcare-contractor
+ * Static stubs are emitted by scripts/prerender.mjs; App.jsx handles the
+ * same table client-side.
+ */
+const RENAMED = { 'what-we-build': 'healthcare-contractor' };
+
+export function legacyRedirects() {
+  const list = [];
+  for (const [from, to] of Object.entries(RENAMED)) {
+    list.push({ from: `/${from}/`, to: routePath('en', to) });
+    list.push({ from: `/en/${from}/`, to: routePath('en', to) });
+    list.push({ from: `/ar/${from}/`, to: routePath('ar', to) });
+  }
+  list.push({ from: '/divisions/', to: routePath('en', 'healthcare-contractor') });
+  list.push({ from: '/our-work/', to: routePath('en', 'healthcare-contractor') });
+  list.push({ from: '/en/', to: routePath('en', '') });
+  for (const r of ROUTES) {
+    if (r.segment) list.push({ from: `/en/${r.segment}/`, to: routePath('en', r.segment) });
+  }
+  return list;
 }

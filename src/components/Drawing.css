@@ -1,0 +1,67 @@
+.suite { width: 100%; height: auto; overflow: visible; color: var(--ink); font-family: var(--font); }
+
+.suite .ln { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.suite .ln.thin { stroke-width: 1.3; }
+.suite .ln.dotted { stroke-width: 2.4; stroke-dasharray: 1 6; }
+.suite .door-leaf { stroke-width: 3.5; }
+.suite .swing-plain { stroke-dasharray: 3 4; }
+.suite .corridor { fill: var(--paper-2); stroke: none; }
+.suite .room-label { font-size: 17px; font-weight: 500; fill: var(--muted); text-anchor: middle; unicode-bidi: plaintext; }
+.suite .eq { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.5; }
+.suite .eq.strong { fill: #fff; stroke-width: 2.4; }
+.suite .bore { fill: #fff; stroke: var(--ink); stroke-width: 2.4; }
+.suite .couch { fill: #fff; stroke: var(--ink); stroke-width: 1.6; }
+.suite .arrow-tip { fill: var(--ink); }
+.suite .gaps rect { fill: #fff; }
+
+/* regions: each belongs to one discipline */
+.suite .reg { --c: var(--ink); transition: opacity 0.2s; }
+.suite .band { color: var(--c); opacity: 0.5; transition: color 0.2s; }
+.suite .outline { stroke: var(--c); }
+.suite .rf-layer { fill: none; stroke: var(--blue); stroke-width: 2; }
+.suite .leaf { fill: none; stroke: var(--c); stroke-width: 6; stroke-linecap: round; }
+.suite .swing { fill: none; stroke: var(--c); stroke-width: 1.4; stroke-dasharray: 4 4; }
+.suite .jamb { fill: none; stroke: var(--ink); stroke-width: 2.4; }
+.suite .panel { fill: #fff; stroke: var(--c); stroke-width: 2.2; }
+.suite .svc { fill: none; stroke: var(--c); stroke-width: 2.2; stroke-linecap: round; }
+.suite .svc.dashed { stroke-dasharray: 7 4; }
+.suite .svc.dotted { stroke-dasharray: 1 5; stroke-width: 3; }
+.suite .counter { fill: #fff; stroke: var(--c); stroke-width: 2.2; }
+.suite .screen { fill: var(--c); }
+
+.suite[data-active] .reg { opacity: 0.38; }
+.suite[data-active='shielding'] .reg--shielding,
+.suite[data-active='doors'] .reg--doors,
+.suite[data-active='mep'] .reg--mep,
+.suite[data-active='surfaces'] .reg--surfaces { opacity: 1; --c: var(--blue); }
+.suite[data-active='shielding'] .reg--shielding .band { opacity: 0.75; }
+
+/* dimension line */
+.suite .ext { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.suite .dim-label { font-size: 16px; fill: var(--muted); text-anchor: middle; unicode-bidi: plaintext; }
+
+/* markers */
+.suite .mk .dot { fill: #fff; stroke: var(--ink); stroke-width: 2; transition: fill 0.15s, stroke 0.15s; }
+.suite .mk .num { font-size: 15px; font-weight: 600; fill: var(--ink); text-anchor: middle; pointer-events: none; transition: fill 0.15s; }
+.suite .mk .leader { fill: none; stroke: var(--ink); stroke-width: 1.3; }
+.suite .mk .hit { fill: transparent; }
+.suite .mk.on .dot { fill: var(--blue); stroke: var(--blue); }
+.suite .mk.on .num { fill: #fff; }
+.suite .mk[role='button'] { cursor: pointer; outline: none; }
+.suite .mk[role='button']:hover .dot { stroke: var(--blue); }
+.suite .mk[role='button']:focus-visible .dot { stroke: var(--blue); stroke-width: 4; }
+
+/* the one orchestrated moment: the drawing is inked in once */
+@keyframes suite-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes suite-fade { from { opacity: 0; } }
+.suite .draw { stroke-dasharray: 1; animation: suite-draw 1.5s cubic-bezier(0.65, 0.05, 0.25, 1) 0.1s backwards; }
+.suite .band { animation: suite-fade 0.7s ease 0.9s backwards; }
+.suite .mk { animation: suite-fade 0.4s ease 1.3s backwards; }
+
+/* software modules diagram */
+.modules .core { fill: var(--ink); }
+.modules .core-label { fill: #fff; font-size: 15px; font-weight: 600; text-anchor: middle; unicode-bidi: plaintext; }
+.modules .chip-bg { fill: rgba(255, 255, 255, 0.14); }
+.modules .chip-label { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+.modules .node { fill: #fff; stroke: var(--blue); stroke-width: 1.8; }
+.modules .node-label { fill: var(--ink); font-size: 14px; font-weight: 600; text-anchor: middle; unicode-bidi: plaintext; }

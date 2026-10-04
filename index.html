@@ -2,30 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fallback tags for the pre-hydration flash and the "/" redirect
-         page (which isn't captured by scripts/prerender.mjs, so it never
-         gets a React-rendered <Seo>). Every other route's <Seo> removes
-         these via their data-default marker as soon as it mounts, so
-         they never end up duplicated in prerendered output. -->
-    <meta name="description" content="Engineering Grouping Co. (EGC) — Jeddah-based specialty contractor preparing MRI, CT and PET-CT rooms for Siemens Healthineers, Philips Healthcare and GE Healthcare equipment across Saudi Arabia. Radiation shielding, medical doors, MEP, manufacturing, and software engineering." data-default="true" />
-    <meta name="keywords" content="EGC, Engineering Grouping Co, radiation shielding, MRI room construction, medical doors, healthcare MEP, Corian manufacturing, Jeddah, Saudi Arabia" />
-    <meta property="og:title" content="EGC | Healthcare Room Preparation Contractor — Jeddah, Saudi Arabia" data-default="true" />
-    <meta property="og:description" content="Specialty contractor preparing healthcare rooms for OEM medical imaging equipment across Saudi Arabia — radiation & magnetic shielding, medical doors, specialized MEP, and infection-controlled surfaces." data-default="true" />
+    <meta name="theme-color" content="#0a1a2f" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- Fallback tags for the pre-hydration flash and any route that doesn't render its own <Seo>.
+         Every real page's <Seo> removes these (data-default) as soon as it mounts, so they never
+         end up duplicated in prerendered output. -->
+    <title data-default="true">Healthcare Contractor in Saudi Arabia | Engineering Grouping Co. (EGC)</title>
+    <meta
+      name="description"
+      content="Engineering Grouping Co. (EGC) is a Jeddah healthcare contractor for MRI, CT and PET-CT rooms: radiation shielding, medical doors, MEP and clinical surfaces."
+      data-default="true"
+    />
+    <meta property="og:title" content="Healthcare Contractor in Saudi Arabia | Engineering Grouping Co. (EGC)" data-default="true" />
     <meta property="og:type" content="website" data-default="true" />
-    <meta property="og:url" content="https://egc-me.com/en/" data-default="true" />
-    <title data-default="true">EGC | Healthcare Room Preparation Contractor — Jeddah, Saudi Arabia</title>
-    <!-- GitHub Pages SPA redirect handler -->
+    <meta property="og:url" content="https://egc-me.com/" data-default="true" />
+    <meta property="og:image" content="https://egc-me.com/og-image.png" data-default="true" />
+
+    <!-- GitHub Pages SPA redirect handler (pairs with public/404.html) -->
     <script>
-      (function(l) {
+      (function (l) {
         if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
           }).join('?');
           window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
         }
-      }(window.location))
+      })(window.location);
     </script>
   </head>
   <body>

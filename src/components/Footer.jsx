@@ -1,121 +1,69 @@
 import { Link } from 'react-router-dom';
-import { useLocale } from '../i18n/LocaleContext';
 import { useContent } from '../content';
+import { useLocalePath } from '../i18n/LocaleContext';
+import './Footer.css';
 
 export default function Footer() {
-  const locale = useLocale();
+  const lp = useLocalePath();
   const { SITE, UI } = useContent();
-  const to = (segment) => `/${locale}/${segment}`;
 
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="wrap">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link to={to('')} className="footer-logo">
-              <span className="logo-egc">{SITE.shortName}</span>
-              <span className="logo-sub logo-sub-light">{SITE.name}</span>
+            <Link to={lp('')} className="footer-logo" aria-label={SITE.name}>
+              <img src="/logo-light.webp" width="720" height="171" alt={SITE.name} />
             </Link>
-            <p className="footer-tagline">{SITE.address}</p>
+            <p className="footer-tagline">{UI.footerTagline}</p>
+            <p className="footer-address">{SITE.address}</p>
           </div>
+
           <div className="footer-col">
             <h5>{UI.footerCompany}</h5>
-            <Link to={to('about')}>{UI.footerAbout}</Link>
-            <Link to={to('what-we-build')}>{UI.footerWhatWeBuild}</Link>
-            <Link to={to('manufacturing')}>{UI.footerManufacturing}</Link>
-            <Link to={to('software-engineering')}>{UI.footerSoftware}</Link>
-            <Link to={to('projects')}>{UI.footerProjects}</Link>
+            <Link to={lp('about')}>{UI.footerAbout}</Link>
+            <Link to={lp('healthcare-contractor')}>{UI.footerHub}</Link>
+            <Link to={lp('manufacturing')}>{UI.footerManufacturing}</Link>
+            <Link to={lp('software-engineering')}>{UI.footerSoftware}</Link>
+            <Link to={lp('healthcare-systems')}>{UI.footerSystems}</Link>
+            <Link to={lp('projects')}>{UI.footerProjects}</Link>
+            <Link to={lp('knowledge')}>{UI.footerKnowledge}</Link>
           </div>
+
           <div className="footer-col">
-            <h5>{UI.footerWorkWithUs}</h5>
-            <Link to={to('careers')}>{UI.footerCareers}</Link>
-            <Link to={to('suppliers')}>{UI.footerSuppliers}</Link>
-            <Link to={to('contact')}>{UI.footerContact}</Link>
-            <Link to="/install" className="footer-install-link">📲 {UI.footerInstall}</Link>
+            <h5>{UI.footerWork}</h5>
+            <Link to={lp('careers')}>{UI.footerCareers}</Link>
+            <Link to={lp('suppliers')}>{UI.footerSuppliers}</Link>
+            <Link to={lp('contact')}>{UI.footerContact}</Link>
+            <Link to="/install/" className="footer-install-link">{UI.footerInstall}</Link>
           </div>
+
           <div className="footer-col">
             <h5>{UI.footerContactHeading}</h5>
-            <a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a>
+            <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} dir="ltr" className="footer-ltr">{SITE.phone}</a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            <a href={SITE.supplierPortal} target="_blank" rel="noreferrer" className="footer-linkedin-link">
-              {UI.footerSupplierPortal}
-            </a>
-            <a
-              href={SITE.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="footer-linkedin"
-              aria-label="LinkedIn"
-            >
+            <a href={SITE.supplierPortal} target="_blank" rel="noreferrer">{UI.footerSupplierPortal}</a>
+            <a href={SITE.linkedin} target="_blank" rel="noreferrer" className="footer-linkedin" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.91 1.64-1.86 3.37-1.86 3.61 0 4.28 2.38 4.28 5.47v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
               </svg>
             </a>
           </div>
         </div>
+
         <div className="footer-bottom">
           <p>
-            © 2026 {SITE.name} ({SITE.shortName}). {UI.footerRights}
-            &nbsp;|&nbsp;
-            <Link to={to('privacy-policy')}>{UI.footerPrivacy}</Link>
-            &nbsp;|&nbsp;
-            <Link to={to('terms')}>{UI.footerTerms}</Link>
+            © 2026 {SITE.legalName}{SITE.legalName.endsWith('.') ? '' : '.'} {UI.footerRights}
+            <span className="footer-sep" aria-hidden="true"> | </span>
+            <Link to={lp('privacy-policy')}>{UI.footerPrivacy}</Link>
+            <span className="footer-sep" aria-hidden="true"> | </span>
+            <Link to={lp('terms')}>{UI.footerTerms}</Link>
           </p>
-          <p>{UI.footerCrLabel} <Link to={to('legal-profile')} className="footer-cr-link">{SITE.cr}</Link></p>
+          <p>
+            {UI.footerCr} <Link to={lp('legal-profile')} className="footer-cr-link">{SITE.cr}</Link>
+          </p>
         </div>
       </div>
-
-      <style>{`
-        .footer { background: var(--dark); color: rgba(255,255,255,0.65); padding-top: 72px; }
-        .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 0.8fr); gap: 48px; padding-bottom: 56px; }
-        .footer-brand { display: flex; flex-direction: column; gap: 12px; }
-        .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .footer-logo .logo-egc { color: var(--white); font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1; }
-        .footer-logo .logo-sub { font-family: var(--font-body); font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; }
-        .footer-logo .logo-sub-light { color: rgba(255,255,255,0.6); }
-        .footer-tagline { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
-        .footer-col { display: flex; flex-direction: column; gap: 10px; }
-        .footer-col h5 { font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 6px; }
-        .footer-col a { font-size: 0.88rem; transition: color 0.15s; text-decoration: none; color: rgba(255,255,255,0.65); }
-        .footer-col a:hover { color: var(--white); }
-        .footer-linkedin {
-          display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center;
-          background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
-          color: rgba(255,255,255,0.65); transition: background 0.2s, color 0.2s;
-          margin-top: 4px;
-        }
-        .footer-linkedin svg { width: 16px; height: 16px; }
-        .footer-linkedin:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
-        .footer-linkedin-link { font-size: 0.88rem; text-decoration: none; color: rgba(255,255,255,0.65); }
-
-        .footer-bottom {
-          border-top: 1px solid rgba(255,255,255,0.1);
-          padding: 22px 0 32px;
-          display: flex; justify-content: space-between; align-items: center; gap: 16px;
-          flex-wrap: wrap; font-size: 0.78rem; color: rgba(255,255,255,0.38);
-        }
-        .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: underline; transition: color 0.15s; }
-        .footer-bottom a:hover { color: var(--white); }
-        .footer-cr-link {
-          color: rgba(255,255,255,0.55);
-          text-decoration-style: dashed;
-          text-decoration-line: underline;
-          text-underline-offset: 3px;
-          transition: color 0.15s;
-        }
-        .footer-cr-link:hover { color: var(--white); }
-        .footer-install-link { color: rgba(147,197,253,0.7) !important; }
-
-        @media (max-width: 860px) {
-          .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 44px; }
-          .footer-brand { grid-column: span 2; }
-        }
-        @media (max-width: 500px) {
-          .footer-grid { grid-template-columns: 1fr; }
-          .footer-brand { grid-column: span 1; }
-          .footer-bottom { flex-direction: column; text-align: center; }
-        }
-      `}</style>
     </footer>
   );
 }

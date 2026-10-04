@@ -1,103 +1,98 @@
+import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import FadeIn from '../components/FadeIn';
-import PageHeader from '../components/PageHeader';
-import { useLocale } from '../i18n/LocaleContext';
 import { useContent } from '../content';
+import { useLocalePath } from '../i18n/LocaleContext';
+import ModulesDiagram from '../components/ModulesDiagram';
+import { CtaBand, Faq, PageHero, SectionHead, Steps } from '../components/Parts';
+import './pages.css';
 
 export default function SoftwareEngineering() {
-  const locale = useLocale();
-  const { SITE, UI, SOFTWARE } = useContent();
-  const s = SOFTWARE;
-  const to = (segment) => `/${locale}/${segment}`;
+  const lp = useLocalePath();
+  const { SOFTWARE: S, UI, SITE, faqs } = useContent();
 
   return (
     <>
-      <PageHeader
-        breadcrumb={[{ label: s.heroOverline }]}
-        overline={s.heroOverline}
-        title={s.heroTitle}
-        subtitle={s.heroSubtitle}
-        accentColor="var(--accent-software)"
-        decorNum="03"
+      <PageHero
+        routeKey="software"
+        title={S.h1}
+        lead={S.lead}
+        actions={<Link className="btn btn--primary btn--lg" to={lp('contact')}>{S.cta.primary}</Link>}
+        wide
+        aside={
+          <figure className="sheet frame">
+            <div className="sheet__bar">{S.diagram.label}</div>
+            <div className="sheet__body">
+              <ModulesDiagram
+                nodes={S.pillars.map((p) => p.tag)}
+                chips={['ZATCA', 'GOSI', 'PDPL']}
+                core={S.diagram.core}
+                label={S.diagram.label}
+              />
+            </div>
+          </figure>
+        }
       />
 
-      {/* PILLARS */}
-      <section className="section">
-        <div className="container">
-          <div className="sw-pillars-grid">
-            {s.pillars.map((p, i) => (
-              <FadeIn delay={(i % 3) + 1} key={p.id}>
-                <div className="card sw-pillar-card">
-                  <div className="sw-pillar-num">{p.num}</div>
-                  <h3 className="headline-sm" style={{ margin: '10px 0 4px' }}>{p.label}</h3>
-                  <p className="sw-pillar-tag">{p.tag}</p>
-                  <p className="body-sm" style={{ marginBottom: 14 }}>{p.desc}</p>
-                  <ul className="sw-point-list">
-                    {p.points.map((pt) => (
-                      <li key={pt} className="sw-point-item">
-                        <CheckCircle2 size={13} />
+      <section className="sec">
+        <div className="wrap">
+          <ul className="spillars">
+            {S.pillars.map((p) => (
+              <li key={p.id} id={p.id}>
+                <div>
+                  <h2>{p.t}</h2>
+                  <span className="tag">{p.tag}</span>
+                </div>
+                <div>
+                  <p className="lead">{p.d}</p>
+                  <ul className="checks">
+                    {p.pts.map((pt) => (
+                      <li key={pt}>
+                        <Check size={20} strokeWidth={2.2} aria-hidden="true" />
                         <span>{pt}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </FadeIn>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="sec sec--ink">
+        <div className="wrap">
+          <SectionHead title={S.compliance.title} lead={S.compliance.lead} />
+          <div className="grid-3 lines lines--ink">
+            {S.compliance.items.map((c) => (
+              <article key={c.c} className="line-block">
+                <p className="cert__code cert__code--ink">{c.c}</p>
+                <h3>{c.t}</h3>
+                <p>{c.d}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* COMPLIANCE */}
-      <section className="section section-gray">
-        <div className="container">
-          <FadeIn className="section-header center">
-            <h2 className="headline-lg">{s.complianceTitle}</h2>
-            <p className="section-sub">{s.complianceSubtitle}</p>
-          </FadeIn>
-          <div className="grid-3">
-            {s.complianceItems.map((c, i) => (
-              <FadeIn delay={i + 1} key={c.code}>
-                <div className="card sw-compliance-card">
-                  <div className="sw-compliance-code">{c.code}</div>
-                  <h3 className="headline-sm" style={{ margin: '10px 0 8px' }}>{c.name}</h3>
-                  <p className="body-sm" style={{ margin: 0 }}>{c.desc}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead title={S.approach.title} />
+          <Steps items={S.approach.steps} />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section">
-        <div className="container">
-          <FadeIn className="cta-banner">
-            <h2 className="headline-lg" style={{ marginBottom: 12 }}>{s.ctaTitle}</h2>
-            <p className="section-sub" style={{ margin: '0 auto 28px' }}>{s.ctaSubtitle}</p>
-            <div className="btn-group" style={{ justifyContent: 'center' }}>
-              <Link to={to('contact')} className="btn btn-primary btn-lg">{UI.contactUs} <ArrowRight size={14} /></Link>
-              <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="btn btn-secondary btn-lg">{SITE.phone}</a>
-            </div>
-          </FadeIn>
+      <section className="sec sec--paper">
+        <div className="wrap">
+          <Faq title={UI.faqTitle} items={faqs('software')} />
         </div>
       </section>
 
-      <style>{`
-        .sw-pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .sw-pillar-card { padding: 28px 24px; }
-        .sw-pillar-num { font-family: 'Courier New', monospace; font-size: 0.65rem; font-weight: 800; color: var(--muted); letter-spacing: 0.08em; }
-        .sw-pillar-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent-software); margin-bottom: 10px; }
-        .sw-point-list { display: flex; flex-direction: column; gap: 7px; margin: 0; padding: 0; }
-        .sw-point-item { display: flex; align-items: flex-start; gap: 8px; font-size: 0.82rem; color: var(--body); line-height: 1.5; }
-        .sw-point-item svg { color: var(--accent-software); flex-shrink: 0; margin-top: 2px; }
-
-        .sw-compliance-card { text-align: center; padding: 32px 24px; }
-        .sw-compliance-code { display: inline-block; font-family: var(--font-display); font-size: 1rem; font-weight: 800; color: var(--accent-software); background: var(--gray-bg); border-radius: 6px; padding: 4px 12px; }
-
-        @media (max-width: 1024px) { .sw-pillars-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { .sw-pillars-grid { grid-template-columns: 1fr; } }
-      `}</style>
+      <CtaBand
+        title={S.cta.title}
+        text={S.cta.text}
+        primary={{ label: S.cta.primary, to: `${lp('contact')}?topic=software` }}
+        secondary={{ label: SITE.email, href: `mailto:${SITE.email}` }}
+      />
     </>
   );
 }

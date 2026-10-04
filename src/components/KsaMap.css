@@ -1,0 +1,10 @@
+.ksa { width: 100%; height: auto; font-family: var(--font); direction: ltr; } /* text-anchor start/end are physical in the label offsets */
+.ksa__land { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+.ksa__dot { fill: var(--white); stroke: var(--blue); stroke-width: 2.5; transition: fill 0.15s; }
+.ksa__n { font-size: 15px; font-weight: 600; fill: var(--blue-ink); text-anchor: middle; pointer-events: none; }
+.ksa__city { font-size: 19px; font-weight: 600; fill: var(--ink); paint-order: stroke; stroke: var(--paper-2); stroke-width: 5px; unicode-bidi: plaintext; pointer-events: none; }
+.ksa__halo { fill: none; stroke: var(--blue); stroke-width: 2; opacity: 0.35; }
+.ksa__pin[role='button'] { cursor: pointer; outline: none; }
+.ksa__pin[role='button']:hover .ksa__dot, .ksa__pin.on .ksa__dot { fill: var(--blue); }
+.ksa__pin[role='button']:hover .ksa__n, .ksa__pin.on .ksa__n { fill: #fff; }
+.ksa__pin[role='button']:focus-visible .ksa__dot { stroke: var(--ink); stroke-width: 3; }
