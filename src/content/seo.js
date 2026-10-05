@@ -7,19 +7,19 @@ export const SEO_CONTENT = {
   home: {
     en: {
       name: 'Home',
-      title: 'Healthcare Contractor in Saudi Arabia | Engineering Grouping Co. (EGC)',
+      title: 'Engineering Grouping Co. (EGC) | Healthcare Contractor, Jeddah',
       description: 'Engineering Grouping Co. (EGC) is a Jeddah healthcare contractor for MRI, CT and PET-CT rooms: radiation shielding, medical doors, MEP and clinical surfaces.',
     },
     ar: {
       name: 'الرئيسية',
-      title: 'مقاول مشاريع صحية في السعودية | التجمع الهندسي (EGC)',
+      title: 'التجمع الهندسي (EGC) | مقاول مشاريع صحية في جدة',
       description: 'شركة التجمع الهندسي (EGC) مقاول مشاريع صحية في جدة لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT: تدريع إشعاعي وأبواب طبية وأعمال كهروميكانيكية وأسطح سريرية.',
     },
   },
   about: {
     en: {
       name: 'About',
-      title: 'About EGC (Engineering Grouping Co.) | Healthcare Contractor, Jeddah',
+      title: 'About Engineering Grouping Co. (EGC) | Healthcare Contractor',
       description: 'Founded in 2006 in Jeddah, Engineering Grouping Co. builds imaging rooms for hospitals, with its own Wood & Corian factory and ISO-certified management systems.',
     },
     ar: {
@@ -31,12 +31,12 @@ export const SEO_CONTENT = {
   hub: {
     en: {
       name: 'Healthcare Contractor',
-      title: 'Healthcare Contractor Saudi Arabia: Imaging Rooms, Shielding & MEP | EGC',
-      description: 'Specialty healthcare contractor for MRI, CT, PET-CT and X-ray rooms in Saudi Arabia: radiation and magnetic shielding, medical doors, healthcare MEP and clinical surfaces.',
+      title: 'Healthcare Contractor Saudi Arabia: Imaging Rooms | EGC',
+      description: 'Specialty healthcare contractor for MRI, CT, PET-CT and X-ray rooms in Saudi Arabia: shielding, medical doors, healthcare MEP and clinical surfaces.',
     },
     ar: {
       name: 'مقاول مشاريع صحية',
-      title: 'مقاول مشاريع صحية في السعودية: غرف التصوير والتدريع والأعمال الكهروميكانيكية | EGC',
+      title: 'مقاول مشاريع صحية في السعودية: غرف التصوير والتدريع | EGC',
       description: 'مقاول مشاريع صحية متخصص لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية: تدريع إشعاعي ومغناطيسي وأبواب طبية وأعمال كهروميكانيكية وأسطح سريرية.',
     },
   },
@@ -79,7 +79,7 @@ export const SEO_CONTENT = {
   surfaces: {
     en: {
       name: 'Infection-Control Surfaces',
-      title: 'Corian & Infection-Control Surfaces for Hospitals in Saudi Arabia | EGC',
+      title: 'Corian & Infection-Control Surfaces for Hospitals | EGC',
       description: 'Seamless Corian counters, nurse stations, scrub sinks and medical joinery, fabricated in our own Jeddah factory for clinical cleaning protocols.',
     },
     ar: {
@@ -91,7 +91,7 @@ export const SEO_CONTENT = {
   manufacturing: {
     en: {
       name: 'Manufacturing',
-      title: 'Corian & Joinery Factory in Jeddah, Saudi Arabia | EGC Manufacturing',
+      title: 'Corian & Joinery Factory in Jeddah | EGC Manufacturing',
       description: 'EGC’s Jeddah Wood & Corian factory fabricates solid-surface counters and architectural joinery for healthcare, airport and military-hospital interiors.',
     },
     ar: {
@@ -109,18 +109,18 @@ export const SEO_CONTENT = {
     ar: {
       name: 'هندسة البرمجيات',
       title: 'تطوير أنظمة المستشفيات والأشعة وتخطيط الموارد في السعودية | EGC',
-      description: 'أنظمة معلومات المستشفيات والأشعة وإدارة معلومات المرضى وتخطيط الموارد المبنية وفق الفوترة الإلكترونية والتأمينات الاجتماعية وحماية الأجور ونظام حماية البيانات، ومواقع ثنائية اللغة.',
+      description: 'أنظمة معلومات المستشفيات والأشعة وإدارة المرضى وتخطيط الموارد وفق الفوترة الإلكترونية والتأمينات الاجتماعية وحماية الأجور ونظام حماية البيانات، ومواقع ثنائية اللغة.',
     },
   },
   systems: {
     en: {
       name: 'Healthcare Systems & Turnkey',
-      title: 'Nurse Call Systems, OR Clocks & Turnkey Installation | EGC (Launching Soon)',
+      title: 'Nurse Call Systems, OR Clocks & Turnkey Installation | EGC',
       description: 'EGC is preparing to supply nurse call systems, operating-room clocks and turnkey healthcare installation in Saudi Arabia. Register your interest.',
     },
     ar: {
       name: 'الأنظمة الطبية والتسليم الشامل',
-      title: 'أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل | EGC (قريبًا)',
+      title: 'أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل | EGC',
       description: 'تستعد EGC لتوريد أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل للمنشآت الصحية في السعودية. سجّل اهتمامك.',
     },
   },
@@ -151,7 +151,7 @@ export const SEO_CONTENT = {
   suppliers: {
     en: {
       name: 'Suppliers',
-      title: 'Become an Approved Supplier | EGC Vendor Registration, Saudi Arabia',
+      title: 'Become an Approved Supplier | EGC Vendor Registration',
       description: 'Register as an approved EGC vendor: procurement categories, prequalification steps, document requirements and the supplier portal.',
     },
     ar: {
@@ -169,7 +169,7 @@ export const SEO_CONTENT = {
     ar: {
       name: 'تواصل معنا',
       title: 'تواصل مع التجمع الهندسي (EGC) | مقاول مشاريع صحية، حي المنار، جدة',
-      description: 'تواصل مع شركة التجمع الهندسي بخصوص مشروع غرف تصوير أو تصنيع أو برمجيات. المقر الرئيسي في حي المنار بجدة. هاتف 966504341861+.',
+      description: 'تواصل مع شركة التجمع الهندسي بخصوص مشروع غرف تصوير أو تصنيع أو برمجيات. المقر الرئيسي في حي المنار بجدة. هاتف ‎+966 50 434 1861‎.',
     },
   },
   legalProfile: {
@@ -189,8 +189,8 @@ export const SEO_CONTENT = {
     ar: { name: 'سياسة الخصوصية', title: 'سياسة الخصوصية | EGC', description: 'كيفية جمع شركة المجموعة الهندسية للبيانات الشخصية واستخدامها وحمايتها.' },
   },
   terms: {
-    en: { name: 'Terms & Conditions', title: 'Terms & Conditions | EGC', description: 'Terms and conditions governing use of the EGC website and services.' },
-    ar: { name: 'الشروط والأحكام', title: 'الشروط والأحكام | EGC', description: 'الشروط والأحكام التي تحكم استخدام موقع وخدمات EGC.' },
+    en: { name: 'Terms & Conditions', title: 'Terms & Conditions | EGC', description: 'Terms and conditions that apply when you use the Engineering Grouping Co. (EGC) website and its services.' },
+    ar: { name: 'الشروط والأحكام', title: 'الشروط والأحكام | EGC', description: 'الشروط والأحكام التي تنطبق عند استخدام موقع شركة التجمع الهندسي (EGC) وخدماتها.' },
   },
   notFound: {
     en: { name: 'Page not found', title: 'Page not found | EGC', description: 'This page does not exist.' },

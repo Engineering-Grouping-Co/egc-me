@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
-import { CtaBand, PageHero } from '../components/Parts';
+import { CtaBand, PageHero, Rich } from '../components/Parts';
 import './pages.css';
 
 export default function Manufacturing() {
@@ -29,7 +29,7 @@ export default function Manufacturing() {
           <div className="prose">
             <span className="tag tag--live">{M.wood.badge}</span>
             <h2>{M.wood.title}</h2>
-            {M.wood.p.map((t) => <p key={t}>{t}</p>)}
+            {M.wood.p.map((t) => <p key={t}><Rich>{t}</Rich></p>)}
             <ul className="checks">
               {M.wood.capabilities.map((c) => (
                 <li key={c}>

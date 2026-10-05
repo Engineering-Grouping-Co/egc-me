@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
-import { CtaBand, DisciplineRows, PageHero, PartnerStrip, SectionHead, Steps } from '../components/Parts';
+import { CtaBand, DisciplineRows, PageHero, PartnerStrip, Rich, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 export default function Hub() {
@@ -32,7 +32,7 @@ export default function Hub() {
         <div className="wrap split split--5-7 split--top">
           <h2>{HUB.answer.title}</h2>
           <div className="prose">
-            {HUB.answer.p.map((t) => <p key={t}>{t}</p>)}
+            {HUB.answer.p.map((t) => <p key={t}><Rich>{t}</Rich></p>)}
           </div>
         </div>
       </section>

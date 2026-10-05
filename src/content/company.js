@@ -18,13 +18,13 @@ export const VALUES = {
     { title: 'Precision Over Everything', desc: 'Healthcare environments where shielding has to be right. Joinery where tolerances are measured in millimetres. We hold that standard across construction, manufacturing, and software alike.' },
     { title: 'In-House, End to End', desc: 'We design, fabricate, and install with our own people — and now build the software layer with our own engineers too. No handoffs, no subcontracting the parts that matter.' },
     { title: 'Programme Reliability', desc: 'A hospital cannot open a department late. We understand programme criticality and deliver on the dates we commit to.' },
-    { title: 'Kingdom-First Partnership', desc: "Deep roots in Saudi Arabia's healthcare and construction market — and the relationships that come with 18 years of delivery." },
+    { title: 'Kingdom-First Partnership', desc: "Deep roots in Saudi Arabia's healthcare and construction market — and the relationships built since 2006." },
   ],
   ar: [
     { title: 'الدقة فوق كل اعتبار', desc: 'بيئات طبية يجب أن يكون التدريع فيها دقيقًا تمامًا. نجارة تُقاس تفاوتاتها بالمليمتر. نحافظ على هذا المعيار في الإنشاءات والتصنيع والبرمجيات على حد سواء.' },
     { title: 'داخليًا من الألف إلى الياء', desc: 'نصمم ونصنّع ونركّب بكوادرنا الخاصة — ونبني الآن الطبقة البرمجية أيضًا بمهندسينا. لا تسليم لجهات وسيطة، ولا تعهيد للأجزاء التي تهم.' },
     { title: 'الالتزام بالجدول الزمني', desc: 'لا يمكن لمستشفى أن يفتتح قسمًا بتأخير. نفهم أهمية الجدول الزمني ونلتزم بالمواعيد التي نتعهد بها.' },
-    { title: 'شراكة تضع المملكة أولًا', desc: 'جذور عميقة في سوق الرعاية الصحية والإنشاءات بالمملكة العربية السعودية — والعلاقات التي تراكمت عبر 18 عامًا من التنفيذ.' },
+    { title: 'شراكة تضع المملكة أولًا', desc: 'جذور عميقة في سوق الرعاية الصحية والإنشاءات بالمملكة العربية السعودية — والعلاقات التي بنيناها منذ عام 2006.' },
   ],
 };
 

@@ -1,19 +1,22 @@
 // Generates dist/sitemap.xml, dist/robots.txt, dist/llms.txt and dist/llms-full.txt from the same
 // content modules the pages render from, so none of them can drift out of date.
 // Runs as the last step of `npm run build` (after prerender.mjs).
-import { promises as fs } from 'node:fs';
+import { promises as fs, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LOCALES, DEFAULT_LOCALE, ROUTES, STANDALONE_ROUTES, SITE_URL, routeUrl } from '../src/content/routes.js';
+import { LOCALES, DEFAULT_LOCALE, ROUTES, SITE_URL, routeUrl } from '../src/content/routes.js';
 import { SITE } from '../src/content/site.js';
 import { getSeo } from '../src/content/seo.js';
 import { SERVICES } from '../src/content/services.js';
 import { HOME, ABOUT } from '../src/content/home.js';
+import { plain } from '../src/content/rich.js';
 import { HUB, MANUFACTURING, SOFTWARE, SYSTEMS } from '../src/content/sectors.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(path.resolve(__dirname, '..'), 'dist');
 const TODAY = new Date().toISOString().slice(0, 10);
+// per-page last-changed dates written by scripts/lastmod.mjs (from git)
+const LASTMOD = JSON.parse(readFileSync(path.join(path.resolve(__dirname, '..'), 'src/content/lastmod.json'), 'utf8'));
 
 /* ── sitemap ── */
 function alternates(segment) {
@@ -26,10 +29,10 @@ function sitemap() {
   const entries = [];
   for (const r of ROUTES) {
     for (const locale of LOCALES) {
-      entries.push(`  <url>\n    <loc>${routeUrl(locale, r.segment)}</loc>\n    <lastmod>${TODAY}</lastmod>\n${alternates(r.segment)}\n  </url>`);
+      entries.push(`  <url>\n    <loc>${routeUrl(locale, r.segment)}</loc>\n    <lastmod>${LASTMOD[r.key] || TODAY}</lastmod>\n${alternates(r.segment)}\n  </url>`);
     }
   }
-  for (const r of STANDALONE_ROUTES) entries.push(`  <url>\n    <loc>${SITE_URL}${r.path}</loc>\n    <lastmod>${TODAY}</lastmod>\n  </url>`);
+  // STANDALONE_ROUTES (/install/) is a utility page for staff, served noindex, so it is not listed
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries.join('\n')}\n</urlset>\n`;
 }
 
@@ -113,17 +116,20 @@ function bullets(list) {
   return list.map((x) => `- ${x}`).join('\n');
 }
 
+const mdTable = (head, rows) =>
+  [head, head.map(() => '---'), ...rows].map((r) => `| ${r.join(' | ')} |`).join('\n');
+
 function fullFor(locale) {
   const svc = SERVICES[locale];
   const out = [];
   out.push(`# ${HOME[locale].hero.h1}\n\n${HOME[locale].hero.lead}\n\n## ${locale === 'ar' ? 'معلومات أساسية' : 'Key facts'}\n${FACTS[locale]()}\n`);
-  out.push(`# ${ABOUT[locale].h1}\n\n${ABOUT[locale].lead}\n\n${ABOUT[locale].story.p.join('\n\n')}`);
-  out.push(`# ${HUB[locale].h1}\n\n${HUB[locale].lead}\n\n## ${HUB[locale].answer.title}\n${HUB[locale].answer.p.join('\n\n')}\n\n## ${HUB[locale].rooms.title}\n${bullets(HUB[locale].rooms.items.map((r) => `${r.t}: ${r.d}`))}`);
+  out.push(`# ${ABOUT[locale].h1}\n\n${ABOUT[locale].lead}\n\n${ABOUT[locale].story.p.map(plain).join('\n\n')}`);
+  out.push(`# ${HUB[locale].h1}\n\n${HUB[locale].lead}\n\n## ${HUB[locale].answer.title}\n${HUB[locale].answer.p.map(plain).join('\n\n')}\n\n## ${HUB[locale].rooms.title}\n${bullets(HUB[locale].rooms.items.map((r) => `${r.t}: ${r.d}`))}`);
   for (const s of svc) {
-    out.push(`# ${s.h1}\n\n${s.lead}\n\n## ${s.explainTitle}\n${s.explain.join('\n\n')}\n\n## ${s.full}\n${bullets(s.deliver)}\n\n## Rooms\n${bullets(s.rooms)}`);
+    out.push(`# ${s.h1}\n\n${s.lead}\n\n## ${s.explainTitle}\n${s.explain.map(plain).join('\n\n')}\n\n## ${s.full}\n${bullets(s.deliver)}\n\n## Rooms\n${bullets(s.rooms)}\n\n## ${s.compare.title}\n${mdTable(s.compare.head, s.compare.rows)}\n\n## ${s.roles.title}\n${mdTable(s.roles.head, s.roles.rows)}`);
   }
   const m = MANUFACTURING[locale];
-  out.push(`# ${m.h1}\n\n${m.lead}\n\n## ${m.wood.title}\n${m.wood.p.join('\n\n')}\n${bullets(m.wood.capabilities)}\n\n${m.work.text}\n\n## ${m.steel.title}\n${m.steel.text}`);
+  out.push(`# ${m.h1}\n\n${m.lead}\n\n## ${m.wood.title}\n${m.wood.p.map(plain).join('\n\n')}\n${bullets(m.wood.capabilities)}\n\n${m.work.text}\n\n## ${m.steel.title}\n${m.steel.text}`);
   const sw = SOFTWARE[locale];
   out.push(`# ${sw.h1}\n\n${sw.lead}\n\n${sw.pillars.map((p) => `## ${p.t} (${p.tag})\n${p.d}\n${bullets(p.pts)}`).join('\n\n')}`);
   const sy = SYSTEMS[locale];

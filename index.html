@@ -9,12 +9,8 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
-    />
+    <!-- fonts are self-hosted and declared in src/styles/global.css. They are deliberately not
+         preloaded: on a slow phone the preloads delayed the hero photo (LCP) by 150-570 ms. -->
 
     <!-- Fallback tags for the pre-hydration flash and any route that doesn't render its own <Seo>.
          Every real page's <Seo> removes these (data-default) as soon as it mounts, so they never

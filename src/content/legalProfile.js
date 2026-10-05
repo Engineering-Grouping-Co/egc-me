@@ -5,7 +5,7 @@
 
 export const CR_DATA = {
   en: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة المجموعة الهندسية', legalType: 'Limited Liability Company (LLC)', issuingCity: 'Jeddah', region: 'Makkah', status: 'Active' },
-  ar: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة المجموعة الهندسية', legalType: 'شركة ذات مسؤولية محدودة', issuingCity: 'جدة', region: 'مكة المكرمة', status: 'سارية' },
+  ar: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة المجموعة الهندسية', legalType: 'شركة ذات مسؤولية محدودة', issuingCity: 'جدة', region: 'منطقة مكة المكرمة', status: 'سارية' },
 };
 
 export const VAT_NUMBER = '314367391500003';
@@ -145,7 +145,7 @@ export const LP_COPY = {
     idVatLabel: 'الرقم الضريبي',
     idAddressLabel: 'العنوان الوطني',
     idCityLabel: 'مدينة التسجيل',
-    regionSuffix: 'منطقة',
+    regionSuffix: '',
     docsTitle: 'المستندات الرسمية',
     docsBadge: 'تنزيل',
     docsIntro: 'المستندات المتوفرة حاليًا متاحة للعرض والتنزيل مباشرة. يمكن طلب باقي المستندات عبر البريد الإلكتروني لأغراض المناقصات أو المشتريات أو الأغراض القانونية.',

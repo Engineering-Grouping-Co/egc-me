@@ -100,7 +100,7 @@ export default function Header() {
     <header className="hdr" data-scrolled={scrolled} ref={rootRef}>
       <div className="hdr__bar wrap">
         <Link to={lp('')} className="hdr__logo" aria-label={`${SITE.name} — ${UI.home}`}>
-          <img src="/logo.webp" width="720" height="171" alt={SITE.name} fetchPriority="high" />
+          <img src="/logo-md.webp" width="440" height="104" alt={SITE.name} />
         </Link>
 
         <nav className="hdr__nav" aria-label={UI.primaryNav}>
@@ -128,7 +128,7 @@ export default function Header() {
                     <div className="mega" id={`mega-${item.id}`} hidden={open !== item.id}>
                       <div className="mega__inner wrap">
                         <div className="mega__intro">
-                          <h3>{item.menu.intro.title}</h3>
+                          <p className="mega__intro-title">{item.menu.intro.title}</p>
                           <p>{item.menu.intro.text}</p>
                           <Link className="tlink" to={resolve(item.menu.intro.href)} onClick={() => setOpen(null)}>
                             {item.menu.intro.cta}

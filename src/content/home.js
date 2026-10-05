@@ -18,7 +18,7 @@ export const PROCESS = {
 export const HOME = {
   en: {
     hero: {
-      h1: 'Healthcare contractor for imaging rooms across Saudi Arabia',
+      h1: 'EGC: specialist healthcare contractor for MRI, CT and PET-CT rooms',
       lead: 'Engineering Grouping Co. (EGC) prepares the rooms that medical imaging equipment moves into: MRI, CT, PET-CT and X-ray. Shielding, doors, MEP and clinical surfaces, delivered by our own crews and our own factory in Jeddah.',
       primary: 'Explore healthcare construction',
       secondary: 'Request a proposal',
@@ -26,7 +26,7 @@ export const HOME = {
       carousel: { label: 'What EGC does', pause: 'Pause slideshow', play: 'Play slideshow' },
     },
     slides: [
-      { id: 'shielding', title: 'Radiation & magnetic shielding', short: 'Shielding', text: 'Lead-lined CT and PET-CT rooms and RF-shielded MRI suites.', image: 'hero-bg', position: 'center 45%', alt: 'EGC crew installing shielding panels around an MRI suite' },
+      { id: 'shielding', title: 'Radiation & magnetic shielding', short: 'Shielding', text: 'Lead-lined CT and PET-CT rooms and RF-shielded MRI suites.', image: 'hero-bg', position: 'center 45%', positionMobile: '70% 45%', alt: 'EGC crew installing shielding panels around an MRI suite' },
       { id: 'doors', title: 'Medical doors & access', short: 'Doors', text: 'Lead-lined and RF-shielded doors with interlocks and signage.', image: 'healthcare-xray', position: 'center 30%', alt: 'X-ray room with a lead-lined door and warning light' },
       { id: 'surfaces', title: 'Infection-control surfaces', short: 'Surfaces', text: 'Seamless Corian counters and nurse stations made for clinical cleaning.', image: 'corian-surfaces', position: 'center 62%', alt: 'Seamless Corian nurse station with integrated sink' },
       { id: 'factory', title: 'Wood & Corian factory', short: 'Factory', text: 'Joinery, doors and solid surfaces made in our own Jeddah workshop.', image: 'joinery-doors', position: 'center 55%', alt: 'Walnut doors and joinery in a hospital corridor' },
@@ -51,7 +51,7 @@ export const HOME = {
     },
     sectors: {
       title: 'More than the room',
-      lead: 'The same standard of precision runs through the rest of the group.',
+      lead: 'Engineering Grouping Co. (EGC), also known as Engineering Group and in Arabic التجمع الهندسي, runs three businesses to one standard: healthcare construction, a Wood & Corian factory and software engineering.',
       items: {
         manufacturing: {
           title: 'Wood & Corian factory',
@@ -88,7 +88,7 @@ export const HOME = {
   },
   ar: {
     hero: {
-      h1: 'مقاول مشاريع صحية لغرف التصوير الطبي في أنحاء المملكة',
+      h1: 'التجمع الهندسي: مقاول مشاريع صحية متخصص لغرف الرنين والأشعة المقطعية وPET-CT',
       lead: 'شركة التجمع الهندسي (EGC) تُجهّز الغرف التي تنتقل إليها أجهزة التصوير الطبي: الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية. تدريع وأبواب وأعمال كهروميكانيكية وأسطح سريرية، تنفذها كوادرنا ومصنعنا الخاص في جدة.',
       primary: 'استعرض الإنشاءات الطبية',
       secondary: 'اطلب عرضًا',
@@ -96,7 +96,7 @@ export const HOME = {
       carousel: { label: 'ما تقوم به EGC', pause: 'إيقاف العرض', play: 'تشغيل العرض' },
     },
     slides: [
-      { id: 'shielding', title: 'التدريع الإشعاعي والمغناطيسي', short: 'التدريع', text: 'غرف أشعة مقطعية وPET-CT مبطنة بالرصاص وغرف رنين مدرّعة ضد الترددات الراديوية.', image: 'hero-bg', position: 'center 45%', alt: 'فريق EGC أثناء تركيب ألواح التدريع حول غرفة رنين مغناطيسي' },
+      { id: 'shielding', title: 'التدريع الإشعاعي والمغناطيسي', short: 'التدريع', text: 'غرف أشعة مقطعية وPET-CT مبطنة بالرصاص وغرف رنين مدرّعة ضد الترددات الراديوية.', image: 'hero-bg', position: 'center 45%', positionMobile: '70% 45%', alt: 'فريق EGC أثناء تركيب ألواح التدريع حول غرفة رنين مغناطيسي' },
       { id: 'doors', title: 'الأبواب الطبية والتحكم بالدخول', short: 'الأبواب', text: 'أبواب مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية مع قفل تبادلي ولوحات تحذير.', image: 'healthcare-xray', position: 'center 30%', alt: 'غرفة أشعة سينية بباب مبطن بالرصاص وإشارة تحذير' },
       { id: 'surfaces', title: 'الأسطح المقاومة للعدوى', short: 'الأسطح', text: 'منضدات كوريان متصلة ومحطات تمريض مصممة للتنظيف السريري.', image: 'corian-surfaces', position: 'center 62%', alt: 'محطة تمريض من الكوريان المتصل مع حوض مدمج' },
       { id: 'factory', title: 'مصنع الخشب والكوريان', short: 'المصنع', text: 'نجارة وأبواب وأسطح صلبة تُصنَّع في ورشتنا الخاصة بجدة.', image: 'joinery-doors', position: 'center 55%', alt: 'أبواب من خشب الجوز ونجارة في ممر مستشفى' },
@@ -121,7 +121,7 @@ export const HOME = {
     },
     sectors: {
       title: 'أكثر من غرفة',
-      lead: 'معيار الدقة نفسه يسري في بقية المجموعة.',
+      lead: 'شركة التجمع الهندسي (EGC)، المعروفة أيضًا باسم Engineering Grouping Co. وEngineering Group، تدير ثلاثة أعمال بمعيار واحد: الإنشاءات الطبية، ومصنع للخشب والكوريان، وهندسة البرمجيات.',
       items: {
         manufacturing: {
           title: 'مصنع الخشب والكوريان',
@@ -167,7 +167,7 @@ export const ABOUT = {
       p: [
         'Engineering Grouping Co. (EGC), also known as Engineering Group and, in Arabic, التجمع الهندسي, was founded in Jeddah in 2006 on a simple conviction: the best way to deliver a specialist interior is to control it end to end. From the first shop drawing to the final surface polish, our own people do the work.',
         'Over time, healthcare became our core. MRI, CT, PET-CT and X-ray rooms demand shielding measured in millimetres, doors that seal against radiation and RF, services that respect the shield, and surfaces that meet clinical hygiene standards. We built the expertise, workshops and processes to deliver all of it as one scope.',
-        'Our Wood & Corian factory and, more recently, our software engineering team extend the same approach: make what matters ourselves, to a standard we are willing to put our name on.',
+        'Our [Wood & Corian factory](manufacturing) and, more recently, our [software engineering](software-engineering) team extend the same approach: make what matters ourselves, to a standard we are willing to put our name on.',
       ],
     },
     group: {
@@ -209,7 +209,7 @@ export const ABOUT = {
       p: [
         'تأسست شركة التجمع الهندسي (EGC)، المعروفة أيضًا باسم Engineering Grouping Co. وEngineering Group، في جدة عام 2006 على قناعة بسيطة: أفضل طريقة لتنفيذ تجهيز داخلي متخصص هي التحكم فيه من أوله إلى آخره. من أول مخطط تنفيذي إلى التلميع النهائي للسطح، فريقنا هو من ينفذ العمل.',
         'ومع الوقت صار القطاع الصحي جوهر عملنا. فغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية تتطلب تدريعًا يُقاس بالمليمتر، وأبوابًا تحكم الغلق ضد الإشعاع والترددات الراديوية، وخدمات تحترم الدرع، وأسطحًا تلبي معايير النظافة السريرية. وبنينا الخبرة والورش والعمليات لتنفيذ ذلك كله في نطاق واحد.',
-        'ويمتد النهج نفسه إلى مصنع الخشب والكوريان، وأخيرًا إلى فريق هندسة البرمجيات: نصنع بأنفسنا ما يهم، بمعيار نرضى أن نضع اسمنا عليه.',
+        'ويمتد النهج نفسه إلى [مصنع الخشب والكوريان](manufacturing)، وأخيرًا إلى فريق [هندسة البرمجيات](software-engineering): نصنع بأنفسنا ما يهم، بمعيار نرضى أن نضع اسمنا عليه.',
       ],
     },
     group: {

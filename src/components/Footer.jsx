@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link to={lp('')} className="footer-logo" aria-label={SITE.name}>
-              <img src="/logo-light.webp" width="720" height="171" alt={SITE.name} />
+              <img src="/logo-light-md.webp" width="480" height="114" alt={SITE.name} />
             </Link>
             <p className="footer-tagline">{UI.footerTagline}</p>
             <p className="footer-address">{SITE.address}</p>

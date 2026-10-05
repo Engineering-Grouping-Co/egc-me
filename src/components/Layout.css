@@ -1,5 +1,15 @@
-.notice { background: var(--ink); color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; }
-.notice__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 40px; }
-.notice p { padding-block: 8px; line-height: 1.4; }
-.notice button { display: inline-flex; padding: 6px; border-radius: 4px; opacity: 0.7; }
-.notice button:hover { opacity: 1; background: rgba(255, 255, 255, 0.1); }
+/* Fixed, not in flow: it appears after hydration, and anything in flow would push the whole page down. */
+.notice {
+  position: fixed; z-index: 90; inset-block-end: max(16px, env(safe-area-inset-bottom)); inset-inline-start: 16px;
+  max-width: min(460px, calc(100vw - 32px)); background: var(--ink); color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem; border-radius: 6px; box-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.55);
+}
+.notice__inner { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 4px 4px 4px 16px; }
+[dir='rtl'] .notice__inner { padding: 4px 16px 4px 4px; }
+.notice p { padding-block: 8px; line-height: 1.45; }
+.notice button { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 4px; opacity: 0.75; }
+.notice button:hover { opacity: 1; background: rgba(255, 255, 255, 0.12); }
+.notice button:focus-visible { outline-color: #fff; }
+@media (max-width: 560px) {
+  .notice { inset-inline: 8px; max-width: none; inset-block-end: max(8px, env(safe-area-inset-bottom)); }
+}

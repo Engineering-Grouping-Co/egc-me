@@ -27,7 +27,7 @@ function DevBanner() {
   };
   return (
     <div className="notice" role="note">
-      <div className="notice__inner wrap">
+      <div className="notice__inner">
         <p>{UI.devBanner}</p>
         <button type="button" onClick={dismiss} aria-label={UI.devBannerDismiss}><X size={16} /></button>
       </div>

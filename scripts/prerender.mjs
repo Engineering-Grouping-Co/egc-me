@@ -30,6 +30,19 @@ function crawlList() {
   return list;
 }
 
+/** The plain app shell for a standalone page, with its own title and a noindex, so the homepage's
+ *  fallback tags are not repeated on a utility page that search engines have no reason to list. */
+function standaloneShell(shell, route) {
+  const title = route.title || 'EGC app';
+  const description = route.description || 'EGC staff app.';
+  return shell
+    .replace(/<title[^>]*>.*?<\/title>/s, `<title>${title}</title>`)
+    .replace(/<meta\s+name="description"[^>]*>/s, `<meta name="description" content="${description}" />`)
+    .replace(/<meta property="og:title"[^>]*>/s, `<meta property="og:title" content="${title}" />`)
+    .replace(/<meta property="og:url"[^>]*>/s, `<meta property="og:url" content="${SITE_URL}${route.path}" />`)
+    .replace('</head>', `  <meta name="robots" content="noindex,follow" />\n    <link rel="canonical" href="${SITE_URL}${route.path}" />\n  </head>`);
+}
+
 function redirectStub(to) {
   const abs = `${SITE_URL}${to}`;
   return `<!doctype html>
@@ -135,7 +148,7 @@ async function main() {
   for (const r of STANDALONE_ROUTES) {
     const file = outFile(r.path);
     await fs.mkdir(path.dirname(file), { recursive: true });
-    await fs.writeFile(file, shell, 'utf8');
+    await fs.writeFile(file, standaloneShell(shell, r), 'utf8');
   }
   for (const { from, to } of legacyRedirects()) {
     const file = outFile(from);

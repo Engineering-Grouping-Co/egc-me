@@ -3,7 +3,7 @@ import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import { findRoute } from '../content/routes';
 import Img from '../components/Img';
-import { CtaBand, PageHero, PartnerStrip, SectionHead } from '../components/Parts';
+import { CtaBand, PageHero, PartnerStrip, Rich, SectionHead } from '../components/Parts';
 import './pages.css';
 
 export default function About() {
@@ -27,7 +27,7 @@ export default function About() {
         <div className="wrap split split--7-5 split--top">
           <div className="prose">
             <h2>{ABOUT.story.title}</h2>
-            {ABOUT.story.p.map((t) => <p key={t}>{t}</p>)}
+            {ABOUT.story.p.map((t) => <p key={t}><Rich>{t}</Rich></p>)}
           </div>
           <div className="frame about-photo">
             <Img name="joinery-doors" alt={ABOUT.story.title} sizes="(min-width: 900px) 40vw, 100vw" />

@@ -5,7 +5,7 @@ import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { getSeo } from '../content/seo';
 import Img from '../components/Img';
 import SuiteDrawing from '../components/SuiteDrawing';
-import { CtaBand, DisciplineRows, PageHero, SectionHead, Steps } from '../components/Parts';
+import { CtaBand, DataTable, DisciplineRows, PageHero, Rich, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 /** One template for the four discipline pages. `id` matches the services.js entry and the route key. */
@@ -48,7 +48,7 @@ export default function ServicePage({ id }) {
         <div className="wrap split split--7-5 split--top">
           <div className="prose">
             <h2>{svc.explainTitle}</h2>
-            {svc.explain.map((t) => <p key={t}>{t}</p>)}
+            {svc.explain.map((t) => <p key={t}><Rich>{t}</Rich></p>)}
           </div>
           <div>
             <h2 className="h-side">{UI.rooms}</h2>
@@ -70,6 +70,20 @@ export default function ServicePage({ id }) {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead title={svc.compare.title} />
+          <DataTable {...svc.compare} />
+        </div>
+      </section>
+
+      <section className="sec sec--paper">
+        <div className="wrap">
+          <SectionHead title={svc.roles.title} />
+          <DataTable {...svc.roles} />
         </div>
       </section>
 

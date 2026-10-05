@@ -24,7 +24,7 @@
   padding-block: 22px 32px; border-block-start: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.82rem; color: rgba(255, 255, 255, 0.42);
 }
-.footer-bottom a { color: rgba(255, 255, 255, 0.58); text-decoration: underline; text-underline-offset: 3px; transition: color 0.15s; }
+.footer-bottom a { display: inline-block; padding-block: 5px; color: rgba(255, 255, 255, 0.58); text-decoration: underline; text-underline-offset: 3px; transition: color 0.15s; }
 .footer-bottom a:hover { color: #fff; }
 .footer-cr-link { text-decoration-style: dashed !important; }
 

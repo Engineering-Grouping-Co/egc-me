@@ -36,7 +36,9 @@ export const ROUTES = [
 ];
 
 /* Outside the locale scheme entirely: the separately-designed PWA landing page. */
-export const STANDALONE_ROUTES = [{ key: 'install', path: '/install/' }];
+export const STANDALONE_ROUTES = [
+  { key: 'install', path: '/install/', title: 'Install the EGC app | Engineering Grouping Co.', description: 'Install the EGC staff app on your phone or computer.' },
+];
 
 export function routePath(locale, segment = '') {
   const base = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
@@ -69,6 +71,8 @@ export function legacyRedirects() {
   }
   list.push({ from: '/divisions/', to: routePath('en', 'healthcare-contractor') });
   list.push({ from: '/our-work/', to: routePath('en', 'healthcare-contractor') });
+  list.push({ from: '/ar/divisions/', to: routePath('ar', 'healthcare-contractor') });
+  list.push({ from: '/ar/our-work/', to: routePath('ar', 'healthcare-contractor') });
   list.push({ from: '/en/', to: routePath('en', '') });
   for (const r of ROUTES) {
     if (r.segment) list.push({ from: `/en/${r.segment}/`, to: routePath('en', r.segment) });

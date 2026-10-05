@@ -14,6 +14,18 @@
 .lines--ink .line-block h3 { color: #fff; }
 .lines--ink .line-block p { color: rgba(255, 255, 255, 0.7); }
 
+/* comparison / responsibility tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line-2); background: var(--white); }
+.table { width: 100%; border-collapse: collapse; font-size: 0.97rem; line-height: 1.55; min-width: 680px; }
+.table[data-cols='2'] { min-width: 0; }
+.table th, .table td { padding: 16px 20px; text-align: start; vertical-align: top; border-block-end: 1px solid var(--line); }
+.table thead th { background: var(--paper); color: var(--ink); font-weight: 600; border-block-end: 1px solid var(--line-2); }
+.table tbody th { width: 24%; font-weight: 600; color: var(--ink); }
+.table[data-cols='2'] tbody th { width: 30%; }
+.table td { color: var(--text); }
+.table tbody tr:last-child th, .table tbody tr:last-child td { border-block-end: 0; }
+.sec--paper .table-wrap { background: var(--white); }
+
 /* lists */
 .checks { display: grid; gap: 14px; }
 .checks li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; align-items: start; }

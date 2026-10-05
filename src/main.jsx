@@ -19,5 +19,12 @@ if (container.hasChildNodes() && container.dataset.prerendered === window.locati
     onRecoverableError: (err) => console.error('[hydration]', err),
   });
 } else {
+  if (container.hasChildNodes()) {
+    // An unknown URL arrives as the prerendered home page (via public/404.html). Its head tags would
+    // otherwise sit next to the not-found page's own, so clear them before rendering.
+    document.head
+      .querySelectorAll('title, meta[name="description"], meta[name="robots"], meta[property^="og:"], meta[name^="twitter:"], link[rel="canonical"], link[rel="alternate"][hreflang]')
+      .forEach((el) => el.remove());
+  }
   createRoot(container).render(app);
 }

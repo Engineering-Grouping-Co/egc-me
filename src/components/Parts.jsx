@@ -5,6 +5,7 @@ import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { findRoute } from '../content/routes';
 import { getSeo } from '../content/seo';
 import { PARTNERS } from '../content/partners';
+import { LINK_PATTERN } from '../content/rich';
 import './Parts.css';
 
 const ICONS = { shield: Shield, door: DoorOpen, cable: Cable, layers: Layers };
@@ -57,6 +58,44 @@ export function SectionHead({ title, lead, as: Tag = 'h2', children }) {
       <Tag>{title}</Tag>
       {lead && <p className="lead">{lead}</p>}
       {children}
+    </div>
+  );
+}
+
+/** Text with [label](route-segment) links turned into router links (see content/rich.js). */
+export function Rich({ children }) {
+  const lp = useLocalePath();
+  const text = String(children);
+  const parts = [];
+  let last = 0;
+  for (const m of text.matchAll(LINK_PATTERN)) {
+    parts.push(text.slice(last, m.index));
+    parts.push(<Link key={m.index} className="tlink" to={lp(m[2])}>{m[1]}</Link>);
+    last = m.index + m[0].length;
+  }
+  if (!parts.length) return text;
+  parts.push(text.slice(last));
+  return parts;
+}
+
+/** Comparison / responsibility table. The first column is the row header. */
+export function DataTable({ title, head, rows }) {
+  return (
+    <div className="table-wrap">
+      <table className="table" data-cols={head.length}>
+        {title && <caption className="sr-only">{title}</caption>}
+        <thead>
+          <tr>{head.map((h, i) => <th key={i} scope="col">{h}</th>)}</tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r[0]}>
+              <th scope="row">{r[0]}</th>
+              {r.slice(1).map((c, i) => <td key={i}>{c}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

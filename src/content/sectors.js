@@ -8,8 +8,8 @@ export const HUB = {
     answer: {
       title: 'What a healthcare contractor does',
       p: [
-        'A healthcare contractor builds and fits out the spaces where patients are diagnosed and treated. What separates it from general construction is the rule set: infection control, radiation and magnetic protection, medical gases, and the installation requirements of the equipment itself.',
-        'EGC is a specialty contractor. We usually work alongside a hospital’s main contractor and take responsibility for the rooms that need specialist skills, delivering them ready for the equipment manufacturer to install.',
+        'A healthcare contractor builds and fits out the spaces where patients are diagnosed and treated. What separates it from general construction is the rule set: infection control, radiation and magnetic protection, medical gases and the installation requirements of the equipment itself. Imaging rooms are the most demanding example. An MRI, CT or PET-CT room has to be shielded to a physicist’s report and the manufacturer’s site-planning guide, with doors, services and surfaces that keep that shield intact and meet clinical hygiene standards. EGC is a specialty healthcare contractor in Jeddah. We usually work alongside a hospital’s main contractor and take responsibility for the rooms that need specialist skills, from [radiation and magnetic shielding](healthcare-contractor/radiation-shielding) and [medical doors](healthcare-contractor/medical-doors) to [healthcare MEP](healthcare-contractor/healthcare-mep) and [infection-control surfaces](healthcare-contractor/infection-control-surfaces), delivering them ready for the equipment manufacturer to install.',
+        'The work is delivered by our own crews and our own [Wood & Corian factory](manufacturing), so shielding, doors, services and surfaces are coordinated by one team. [About EGC](about).',
       ],
     },
     rooms: {
@@ -47,8 +47,8 @@ export const HUB = {
     answer: {
       title: 'ماذا يفعل مقاول المشاريع الصحية',
       p: [
-        'مقاول المشاريع الصحية يبني ويجهّز المساحات التي يُشخَّص فيها المرضى ويُعالَجون. وما يميّزه عن البناء العام هو منظومة القواعد: مكافحة العدوى، والحماية من الإشعاع والمجال المغناطيسي، والغازات الطبية، ومتطلبات تركيب المعدات نفسها.',
-        'وEGC مقاول متخصص. نعمل عادةً بجانب المقاول الرئيسي للمستشفى ونتولى مسؤولية الغرف التي تحتاج مهارات خاصة، ونسلّمها جاهزة لتركيب الشركة المصنِّعة للمعدات.',
+        'يبني مقاول المشاريع الصحية ويجهّز المساحات التي يُشخَّص فيها المرضى ويُعالَجون. وما يميّزه عن البناء العام هو منظومة القواعد: مكافحة العدوى، والحماية من الإشعاع والمجال المغناطيسي، والغازات الطبية، ومتطلبات تركيب المعدات نفسها. وغرف التصوير هي أشد الأمثلة تطلبًا: فغرفة الرنين المغناطيسي أو الأشعة المقطعية أو PET-CT يجب أن تُدرَّع وفق تقرير الفيزيائي ودليل تخطيط الموقع الصادر عن الشركة المصنِّعة، بأبواب وخدمات وأسطح تحافظ على سلامة هذا الدرع وتلبي معايير النظافة السريرية. وEGC مقاول متخصص في المشاريع الصحية مقره جدة. نعمل عادةً بجانب المقاول الرئيسي للمستشفى ونتولى مسؤولية الغرف التي تحتاج مهارات خاصة، من [التدريع الإشعاعي والمغناطيسي](healthcare-contractor/radiation-shielding) و[الأبواب الطبية](healthcare-contractor/medical-doors) إلى [الأعمال الكهروميكانيكية الطبية](healthcare-contractor/healthcare-mep) و[الأسطح المقاومة للعدوى](healthcare-contractor/infection-control-surfaces)، ونسلّمها جاهزة لتركيب الشركة المصنِّعة للمعدات.',
+        'وتنفذ العمل كوادرنا و[مصنعنا للخشب والكوريان](manufacturing) في جدة، فينسّق فريق واحد التدريع والأبواب والخدمات والأسطح. [تعرّف على EGC](about).',
       ],
     },
     rooms: {
@@ -90,7 +90,7 @@ export const MANUFACTURING = {
       badge: 'In production',
       title: 'Wood & Corian factory',
       p: [
-        'Our Wood & Corian factory produces solid-surface and architectural joinery at scale. It makes the seamless counters, nurse stations and cabinetry that go into our healthcare rooms, and it works directly for commercial and institutional clients.',
+        'Our Wood & Corian factory produces solid-surface and architectural joinery at scale. It makes the seamless counters, nurse stations and cabinetry that go into our [healthcare rooms](healthcare-contractor/infection-control-surfaces), and it works directly for commercial and institutional clients.',
         'Production runs from CNC-cut timber components to finished, polished Corian elements — under one roof and one quality programme.',
       ],
       capabilities: [
@@ -121,7 +121,7 @@ export const MANUFACTURING = {
       badge: 'قيد الإنتاج',
       title: 'مصنع الخشب والكوريان',
       p: [
-        'ينتج مصنع الخشب والكوريان لدينا أعمال الأسطح الصلبة والنجارة المعمارية على نطاق واسع. ويصنع المنضدات المتصلة ومحطات التمريض والخزائن التي تدخل في غرفنا الطبية، ويعمل مباشرة لعملاء تجاريين ومؤسسيين.',
+        'ينتج مصنع الخشب والكوريان لدينا أعمال الأسطح الصلبة والنجارة المعمارية على نطاق واسع. ويصنع المنضدات المتصلة ومحطات التمريض والخزائن التي تدخل في [غرفنا الطبية](healthcare-contractor/infection-control-surfaces)، ويعمل مباشرة لعملاء تجاريين ومؤسسيين.',
         'يمتد الإنتاج من مكونات الخشب المقطوعة بتقنية CNC إلى عناصر الكوريان الجاهزة والمصقولة، تحت سقف واحد وبرنامج جودة واحد.',
       ],
       capabilities: [

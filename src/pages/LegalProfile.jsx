@@ -48,7 +48,7 @@ export default function LegalProfile() {
             <div><dt>{t.idCrLabel}</dt><dd dir="ltr">{cr.number}</dd></div>
             <div><dt>{t.idVatLabel}</dt><dd dir="ltr">{VAT_NUMBER}</dd></div>
             <div><dt>{t.idAddressLabel}</dt><dd dir="ltr">{na.code}</dd></div>
-            <div><dt>{t.idCityLabel}</dt><dd>{cr.issuingCity}, {cr.region} {t.regionSuffix}</dd></div>
+            <div><dt>{t.idCityLabel}</dt><dd>{cr.issuingCity}, {`${cr.region} ${t.regionSuffix}`.trim()}</dd></div>
           </dl>
 
           <h2>{t.docsTitle}</h2>
@@ -69,7 +69,7 @@ export default function LegalProfile() {
               [t.crRows[1], cr.entityAr],
               [t.crRows[2], cr.legalType],
               [t.crRows[3], `${locale === 'ar' ? 'وزارة التجارة —' : 'Ministry of Commerce —'} ${cr.issuingCity}`],
-              [t.crRows[4], `${cr.region} ${t.regionSuffix}`],
+              [t.crRows[4], `${cr.region} ${t.regionSuffix}`.trim()],
               [t.crRows[5], cr.status],
             ]}
           />

@@ -4,24 +4,44 @@ import { LOCALES, DEFAULT_LOCALE, SITE_URL, routeUrl, findRoute } from '../conte
 import { getSeo } from '../content/seo';
 import { SITE } from '../content/site';
 import { SERVICES } from '../content/services';
-import { UI } from '../content/ui';
+import LASTMOD from '../content/lastmod.json';
 
 const ORG_ID = `${SITE_URL}/#organization`;
-const SITE_ID = `${SITE_URL}/#website`;
+const siteId = (locale) => `${routeUrl(locale, '')}#website`;
+const serviceId = (locale, key) => `${routeUrl(locale, findRoute(key).segment)}#service`;
 const COUNTRY = { '@type': 'Country', name: 'Saudi Arabia' };
 
 const PAGE_TYPES = { about: 'AboutPage', contact: 'ContactPage', projects: 'CollectionPage' };
 const SERVICE_KEYS = ['hub', 'shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', 'systems'];
+// what the Organization offers: the four disciplines plus the two live businesses (not the unreleased systems range)
+const OFFER_KEYS = ['shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software'];
+const KNOWS_ABOUT = {
+  en: [
+    'Healthcare construction', 'MRI room shielding', 'RF shielding', 'Radiation shielding', 'PET-CT room design',
+    'Lead-lined doors', 'Healthcare MEP', 'Corian fabrication', 'Hospital information systems', 'ZATCA e-invoicing',
+  ],
+  ar: [
+    'الإنشاءات الصحية', 'تدريع غرف الرنين المغناطيسي', 'التدريع ضد الترددات الراديوية', 'التدريع الإشعاعي', 'تصميم غرف PET-CT',
+    'الأبواب المبطنة بالرصاص', 'الأعمال الكهروميكانيكية الطبية', 'تصنيع الكوريان', 'أنظمة معلومات المستشفيات', 'الفوترة الإلكترونية (هيئة الزكاة والضريبة والجمارك)',
+  ],
+};
+const PHONE = (site) => site.phone.replace(/\s/g, '');
+const offer = (locale, key) => {
+  const svc = SERVICES[locale].find((s) => s.id === key);
+  return {
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', '@id': serviceId(locale, key), name: svc ? svc.full : getSeo(key, locale).name, url: routeUrl(locale, findRoute(key).segment) },
+  };
+};
 
 function organization(locale) {
   const site = SITE[locale];
-  const services = SERVICES[locale];
   return {
     '@type': ['GeneralContractor', 'Organization'],
     '@id': ORG_ID,
     name: site.name,
     legalName: site.legalName,
-    alternateName: site.alternateNames,
+    alternateName: site.alternateNames.filter((n) => n !== site.name),
     url: `${SITE_URL}/`,
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-mark.png`, width: 256, height: 256 },
     image: `${SITE_URL}/og-image.png`,
@@ -31,7 +51,7 @@ function organization(locale) {
         ? 'مقاول مشاريع صحية في جدة يجهّز غرف الرنين المغناطيسي والأشعة المقطعية وPET-CT: تدريع إشعاعي ومغناطيسي، أبواب طبية، أعمال كهروميكانيكية متخصصة، وأسطح مقاومة للعدوى، مع مصنع للكوريان وفريق لهندسة البرمجيات.'
         : 'Healthcare contractor in Jeddah preparing MRI, CT, PET-CT and X-ray rooms: radiation and magnetic shielding, medical doors, specialised MEP and infection-control surfaces, with its own Wood & Corian factory and software engineering team.',
     foundingDate: site.founded,
-    telephone: site.phone,
+    telephone: PHONE(site),
     email: site.email,
     vatID: site.vat,
     identifier: { '@type': 'PropertyValue', propertyID: 'Commercial Registration', value: site.cr },
@@ -46,7 +66,7 @@ function organization(locale) {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      telephone: site.phone,
+      telephone: PHONE(site),
       email: site.email,
       areaServed: 'SA',
       availableLanguage: ['English', 'Arabic'],
@@ -57,17 +77,11 @@ function organization(locale) {
       opens: '08:00',
       closes: '17:00',
     },
-    knowsAbout: [
-      'Healthcare construction', 'MRI room shielding', 'RF shielding', 'Radiation shielding', 'PET-CT room design',
-      'Lead-lined doors', 'Healthcare MEP', 'Corian fabrication', 'Hospital information systems', 'ZATCA e-invoicing',
-    ],
+    knowsAbout: KNOWS_ABOUT[locale],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: locale === 'ar' ? 'خدمات التجمع الهندسي' : 'EGC services',
-      itemListElement: services.map((s) => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: s.full, url: routeUrl(locale, findRoute(s.id).segment) },
-      })),
+      itemListElement: OFFER_KEYS.map((k) => offer(locale, k)),
     },
     sameAs: [site.linkedin],
   };
@@ -80,17 +94,16 @@ function buildJsonLd({ routeKey, locale, seo, canonical }) {
 
   graph.push(organization(locale));
 
-  if (isHome) {
-    graph.push({
-      '@type': 'WebSite',
-      '@id': SITE_ID,
-      url: `${SITE_URL}/`,
-      name: 'EGC',
-      alternateName: [...new Set([SITE.en.name, 'Engineering Group', SITE.ar.name, SITE.ar.legalName])],
-      inLanguage: LOCALES,
-      publisher: { '@id': ORG_ID },
-    });
-  }
+  // one WebSite per language home page: Google reads the site name from it
+  graph.push({
+    '@type': 'WebSite',
+    '@id': siteId(locale),
+    url: routeUrl(locale, ''),
+    name: SITE[locale].name,
+    alternateName: [...new Set(['EGC', 'Engineering Group', SITE.en.name, SITE.ar.name, ...SITE[locale].alternateNames])].filter((n) => n !== SITE[locale].name),
+    inLanguage: locale,
+    publisher: { '@id': ORG_ID },
+  });
 
   graph.push({
     '@type': PAGE_TYPES[routeKey] || 'WebPage',
@@ -99,7 +112,8 @@ function buildJsonLd({ routeKey, locale, seo, canonical }) {
     name: seo.title,
     description: seo.description,
     inLanguage: locale,
-    isPartOf: { '@id': SITE_ID },
+    isPartOf: { '@id': siteId(locale) },
+    ...(LASTMOD[routeKey] ? { dateModified: LASTMOD[routeKey] } : {}),
     about: { '@id': ORG_ID },
     breadcrumb: { '@id': `${canonical}#breadcrumb` },
   });
@@ -130,10 +144,7 @@ function buildJsonLd({ routeKey, locale, seo, canonical }) {
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
               name: seo.name,
-              itemListElement: SERVICES[locale].map((s) => ({
-                '@type': 'Offer',
-                itemOffered: { '@type': 'Service', name: s.full, url: routeUrl(locale, findRoute(s.id).segment) },
-              })),
+              itemListElement: SERVICES[locale].map((s) => offer(locale, s.id)),
             },
           }
         : {}),
@@ -190,7 +201,7 @@ export default function Seo({ routeKey, noindex = false }) {
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`${SITE[locale].name} — ${UI[locale].home}`} />
+      <meta property="og:image:alt" content={`${SITE[locale].name} — ${seo.name}`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />

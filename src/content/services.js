@@ -25,9 +25,30 @@ export const SERVICES = {
       ],
       explainTitle: 'Two different problems, two different shields',
       explain: [
-        'Ionising radiation — from CT, PET-CT and X-ray equipment — is stopped by dense material, usually lead. How much is needed is calculated by a radiation protection physicist for each wall, floor, ceiling, door and window.',
-        'MRI uses no ionising radiation. Its room is shielded against radio-frequency interference by a continuous conductive envelope, and sometimes against the magnet’s fringe field with steel. The OEM’s site-planning guide defines both.',
+        'Radiation shielding contractors build the rooms that keep an imaging scanner’s energy where it belongs. In CT, PET-CT and X-ray rooms the hazard is ionising radiation, which is stopped by dense material, usually lead; a radiation protection physicist calculates how much each wall, floor, ceiling, door and window needs and records it in a shielding report. In an MRI suite the problem is different: the room is shielded from radio-frequency interference by a continuous conductive envelope, usually copper, aluminium or galvanised steel, and sometimes the magnet’s fringe field is contained with steel plate, as the manufacturer’s site-planning guide specifies. EGC builds both kinds of room from those two documents. We detail every junction, door, window and penetration on shop drawings before work starts, install the shielding with our own crews, and support the RF attenuation test or radiation survey before the room is released to the equipment manufacturer’s installation team.',
+        'The weak points are always the same: [doors](healthcare-contractor/medical-doors), windows, junctions and every pipe, duct and cable that crosses the shield. That is why we coordinate shielding with the door and [healthcare MEP](healthcare-contractor/healthcare-mep) packages instead of treating it as a separate trade.',
       ],
+      compare: {
+        title: 'MRI and CT shielding compared',
+        head: ['', 'MRI suite', 'CT, PET-CT and X-ray rooms'],
+        rows: [
+          ['What it controls', 'Radio-frequency interference getting in, and the magnet’s fringe field reaching outside', 'Ionising radiation (X-rays, or the 511 keV photons from PET tracers) escaping the room'],
+          ['Typical material', 'A continuous conductive envelope of copper, aluminium or galvanised steel, plus steel plate where the manufacturer specifies it', 'Dense material, usually lead sheet or lead-lined board'],
+          ['Who sets the amount', 'The manufacturer’s site-planning guide', 'The radiation protection physicist’s shielding report'],
+          ['Usual weak points', 'Door, window, waveguides and filters, any unsealed seam', 'Door, viewing window, junctions, boxes and penetrations'],
+          ['How it is checked', 'RF attenuation test', 'Radiation survey once the room is built'],
+        ],
+      },
+      roles: {
+        title: 'Who specifies what, and who builds it',
+        head: ['Who', 'What they do'],
+        rows: [
+          ['Equipment manufacturer', 'Publishes the site-planning guide for the exact model: room size, RF and fringe-field limits, services and penetrations.'],
+          ['Radiation protection physicist', 'Calculates the shielding each surface needs and issues the shielding report.'],
+          ['Hospital design team and main contractor', 'Provide the structure, the layout and the programme the shielding has to fit into.'],
+          ['EGC', 'Reads both documents together, builds and inspects the shielding, and supports RF and radiation testing before handover.'],
+        ],
+      },
       process: [
         { t: 'Review the specification', d: 'We read the OEM site-planning guide and the physicist’s shielding report side by side and resolve conflicts before drawings are issued.' },
         { t: 'Detail the envelope', d: 'Shop drawings show every lining layer, seam, junction and penetration, so nothing is improvised on site.' },
@@ -58,9 +79,28 @@ export const SERVICES = {
       ],
       explainTitle: 'Why doors are where shielding usually fails',
       explain: [
-        'A door is the one moving part in the envelope. A lead-lined leaf must overlap the wall lining at the frame; an RF door must make continuous electrical contact all the way round.',
-        'Both depend on the frame being set out correctly when the wall is built, which is why the door and wall packages are best coordinated by one contractor.',
+        'A medical shielding door is a door built to be part of the room’s shield. In CT, PET-CT, X-ray and radiation therapy rooms it is lead-lined, so the leaf and frame match the lead equivalence of the surrounding wall, with the leaf overlapping the wall lining so there is no gap where the lining stops. In an MRI suite it is an RF-shielded door that makes continuous electrical contact all the way around the leaf, keeping radio-frequency interference out of the scan room. Hermetic sliding doors serve controlled clinical areas where the opening has to be sealed. EGC fabricates leaves, frames and ironmongery in-house to the equipment specification, hangs and seals them with our own crews, and commissions closers, interlocks, warning signage and contacts before handover. Because a door performs only as well as its frame was set out when the wall was built, we coordinate it with the shielding package.',
+        'A door is the one moving part in the envelope, which is why it is where [radiation and magnetic shielding](healthcare-contractor/radiation-shielding) most often fails. Wall and door packages are best coordinated by one contractor.',
       ],
+      compare: {
+        title: 'Door types compared',
+        head: ['Door type', 'Used in', 'What it has to do', 'Detail that matters'],
+        rows: [
+          ['Lead-lined radiation door', 'CT, PET-CT, X-ray and radiation therapy rooms', 'Match the lead equivalence of the surrounding wall', 'The leaf overlaps the wall lining at the frame, so no gap is left where the lining stops'],
+          ['RF-shielded door', 'MRI scan rooms', 'Keep radio-frequency interference out of the scan room', 'Continuous electrical contact all the way around the leaf'],
+          ['Hermetic sliding door', 'Controlled clinical areas', 'Seal the opening for pressure and cleanliness control', 'Sealed leaf and track, with automatic operation where the room needs it'],
+        ],
+      },
+      roles: {
+        title: 'Who specifies what, and who builds it',
+        head: ['Who', 'What they do'],
+        rows: [
+          ['Equipment manufacturer', 'Defines the opening, any RF-door requirement and the interlock or signal needs of the equipment.'],
+          ['Radiation protection physicist', 'Specifies the lead equivalence the leaf and frame must match.'],
+          ['Architect and main contractor', 'Set out the opening and carry the fire, access and ironmongery requirements.'],
+          ['EGC', 'Fabricates the leaf and frame in-house, installs and seals them, and commissions closers, interlocks, signage and contacts.'],
+        ],
+      },
       process: [
         { t: 'Survey the opening', d: 'Frames are set out against the wall build-up so the lining and the door overlap exactly.' },
         { t: 'Fabricate in-house', d: 'Leaves, frames and ironmongery are made to the equipment specification, not adapted from catalogue doors.' },
@@ -89,9 +129,29 @@ export const SERVICES = {
       ],
       explainTitle: 'Why MEP and shielding belong together',
       explain: [
-        'Every pipe, duct and cable that crosses a shielded wall is a potential leak in the shield. On an MRI suite it must pass through a waveguide or filter; in a lead-lined room it needs a lead-backed sleeve or box.',
-        'When shielding and MEP are separate packages, those details are discovered late and fixed on site. Under one contractor they are drawn once, before anything is cut.',
+        'Healthcare MEP for imaging rooms is mechanical, electrical and plumbing work engineered around the equipment and its shield. The equipment sets dedicated requirements: earthing, power, cooling and humidity limits, medical gas outlets and cable routes that avoid electromagnetic interference. The shield sets the rule for everything that crosses it: in an MRI suite pipes pass through waveguides, ducts through honeycomb waveguide vents and electrical cables through RF filters, while in a lead-lined room each crossing needs a lead-backed sleeve or box. EGC plans every penetration on the drawings before anything is cut, in step with the shielding, then installs, pressure-tests and balances the services to the specified conditions and hands over as-built drawings and test records with the room. Doing both under one contractor means the details that normally fall between packages are drawn once instead of being found on site.',
+        'When [shielding](healthcare-contractor/radiation-shielding) and MEP are separate packages, those crossings are discovered late and fixed on site. Under one contractor they are drawn once, before anything is cut.',
       ],
+      compare: {
+        title: 'What crosses the shield, and how',
+        head: ['Service', 'In an MRI suite', 'In a lead-lined room'],
+        rows: [
+          ['Pipes (medical gases, water)', 'Pass through a waveguide in the RF shield', 'Pass through a lead-backed sleeve'],
+          ['Air ducts', 'Pass through a honeycomb waveguide vent in the RF shield', 'Cross through a lead-lined section or baffle'],
+          ['Power and data cables', 'Enter through RF filters, routed to the manufacturer’s requirements', 'Run in lead-backed boxes and containment'],
+          ['Earthing', 'Dedicated earthing as the manufacturer specifies', 'Earthing to the equipment specification'],
+        ],
+      },
+      roles: {
+        title: 'Who specifies what, and who builds it',
+        head: ['Who', 'What they do'],
+        rows: [
+          ['Equipment manufacturer', 'States the heat load, power, cooling, humidity, gas and earthing the equipment needs.'],
+          ['Building services designer', 'Designs the building services and plant that serve the room.'],
+          ['Shielding specification', 'Defines where and how services may cross the shield.'],
+          ['EGC', 'Plans every penetration with the shielding, installs, pressure-tests and balances the services, and hands over as-built drawings and test records.'],
+        ],
+      },
       process: [
         { t: 'Agree loads and routes', d: 'We take heat loads, power and service requirements from the OEM and agree routes with the design team.' },
         { t: 'Plan every penetration', d: 'Each crossing of the shielded envelope is located, detailed and sealed on the drawings first.' },
@@ -121,9 +181,29 @@ export const SERVICES = {
       ],
       explainTitle: 'Seamless is the point',
       explain: [
-        'Joints, cracks and porous materials give contamination somewhere to hide. Solid surface is non-porous and its seams are bonded and sanded flush, so counters, upstands and sinks read as a single piece that can be wiped down end to end.',
-        'Because we make the pieces ourselves, they are templated to the room, fabricated to tolerance and installed by the same team — with no gaps between a supplier’s drawing and the wall.',
+        'Infection-control surfaces are the counters, nurse stations, sinks, cabinetry and wall finishes that are touched and cleaned all day in a clinical space. What makes a surface suitable is that it is non-porous, so contamination cannot soak in, and seamless, so there are no joints or cracks for it to hide in. Solid surface such as Corian meets both: seams are bonded and sanded flush, and counters, upstands and integrated sinks read as one piece that can be wiped down end to end. EGC makes these pieces in its own Wood & Corian factory in Jeddah: we template the finished room, cut and thermoform the parts in the workshop, then install, join and polish them on site with the same team. Fabricating in-house means there is no gap between a supplier’s drawing and the wall, and the surfaces are made to fit the room as it was actually built.',
+        'Because [our Wood & Corian factory](manufacturing) makes every piece, counters and cabinetry are templated to the room, fabricated to tolerance and installed by the same team.',
       ],
+      compare: {
+        title: 'What makes a surface suitable for clinical cleaning',
+        head: ['Property', 'Why it matters', 'How solid surface delivers it'],
+        rows: [
+          ['Non-porous', 'Contamination cannot soak into the material', 'Solid surface is non-porous all the way through'],
+          ['Seamless joints', 'Joints and cracks give contamination somewhere to hide', 'Seams are bonded and sanded flush, so the surface reads as one piece'],
+          ['Integrated sinks and upstands', 'Fewer edges and junctions to clean around', 'Sinks, splashbacks and upstands are formed as part of the counter'],
+          ['Repairable', 'Clinical surfaces are used hard every day', 'Surface damage can be sanded out, rather than the piece being replaced'],
+        ],
+      },
+      roles: {
+        title: 'Who specifies what, and who builds it',
+        head: ['Who', 'What they do'],
+        rows: [
+          ['Architect and interior designer', 'Specify the layout, profiles and finishes.'],
+          ['Hospital infection prevention team', 'Sets the cleaning and disinfection protocols the surfaces have to withstand.'],
+          ['Main contractor', 'Provides the programme and access to the finished room for templating.'],
+          ['EGC', 'Templates the room, fabricates in our own factory, then installs, joins and finishes the surfaces.'],
+        ],
+      },
       process: [
         { t: 'Template on site', d: 'We measure the finished room so every piece fits the wall as built.' },
         { t: 'Fabricate in the factory', d: 'CNC cutting, thermoforming and seaming in our Jeddah Corian and joinery workshop.' },
@@ -155,9 +235,30 @@ export const SERVICES = {
       ],
       explainTitle: 'مشكلتان مختلفتان، وتدريعان مختلفان',
       explain: [
-        'الإشعاع المؤيِّن الصادر عن أجهزة الأشعة المقطعية وPET-CT والأشعة السينية تحجبه مادة كثيفة، وغالبًا الرصاص. ويحدد الفيزيائي المختص بالوقاية الإشعاعية السماكة المطلوبة لكل جدار وأرضية وسقف وباب ونافذة.',
-        'أما الرنين المغناطيسي فلا يستخدم إشعاعًا مؤيِّنًا. وتُدرَّع غرفته ضد التداخل الراديوي بغلاف موصل متصل، وأحيانًا ضد المجال المغناطيسي المتسرب للخارج بصفائح من الفولاذ. ويحدد دليل تخطيط الموقع من الشركة المصنِّعة الأمرين معًا.',
+        'يبني مقاول التدريع الإشعاعي الغرف التي تُبقي طاقة جهاز التصوير داخل حدودها. ففي غرف الأشعة المقطعية وPET-CT والأشعة السينية يكون الخطر هو الإشعاع المؤيِّن، وتوقفه المواد الكثيفة وأشهرها الرصاص، ويحسب الفيزيائي المختص بالوقاية الإشعاعية ما يحتاجه كل جدار وأرضية وسقف وباب ونافذة ويدوّنه في تقرير التدريع. أما غرفة الرنين المغناطيسي فمشكلتها مختلفة: تُحمى الغرفة من تداخل الترددات الراديوية بغلاف موصل متصل، عادةً من النحاس أو الألومنيوم أو الصلب المجلفن، وقد يُحتوى المجال المغناطيسي المتسرب حول المغناطيس بألواح من الصلب وفق دليل تخطيط الموقع الصادر عن الشركة المصنِّعة. وتبني EGC النوعين من الغرف اعتمادًا على هاتين الوثيقتين: نفصّل كل وصلة وباب ونافذة واختراق في المخططات التنفيذية قبل بدء العمل، وتركّب كوادرنا التدريع بنفسها، وندعم اختبار توهين الترددات الراديوية أو المسح الإشعاعي قبل تسليم الغرفة لفريق تركيب الشركة المصنِّعة للجهاز.',
+        'ونقاط الضعف هي نفسها دائمًا: [الأبواب](healthcare-contractor/medical-doors) والنوافذ والوصلات وكل أنبوب ومجرى وكابل يخترق الدرع. ولذلك ننسّق التدريع مع حزمتي الأبواب و[الأعمال الكهروميكانيكية الطبية](healthcare-contractor/healthcare-mep) بدلًا من التعامل معه كأعمال منفصلة.',
       ],
+      compare: {
+        title: 'مقارنة بين تدريع الرنين وتدريع الأشعة المقطعية',
+        head: ['', 'غرفة الرنين المغناطيسي', 'غرف الأشعة المقطعية وPET-CT والأشعة السينية'],
+        rows: [
+          ['ما الذي يضبطه', 'منع تداخل الترددات الراديوية من الدخول، واحتواء المجال المغناطيسي المتسرب حول المغناطيس', 'منع الإشعاع المؤيِّن (الأشعة السينية أو فوتونات 511 كيلو إلكترون فولت الصادرة عن مواد PET) من الخروج من الغرفة'],
+          ['المادة المعتادة', 'غلاف موصل متصل من النحاس أو الألومنيوم أو الصلب المجلفن، مع ألواح صلب عند اشتراط الشركة المصنِّعة', 'مادة كثيفة، وغالبًا صفائح أو ألواح مبطنة بالرصاص'],
+          ['من يحدد المقدار', 'دليل تخطيط الموقع الصادر عن الشركة المصنِّعة', 'تقرير التدريع الصادر عن الفيزيائي المختص بالوقاية الإشعاعية'],
+          ['نقاط الضعف المعتادة', 'الباب والنافذة والموجّهات الموجية والمرشحات وأي وصلة غير محكمة', 'الباب ونافذة المراقبة والوصلات والصناديق والاختراقات'],
+          ['طريقة التحقق', 'اختبار توهين الترددات الراديوية', 'مسح إشعاعي بعد اكتمال الغرفة'],
+        ],
+      },
+      roles: {
+        title: 'من يحدد ماذا، ومن ينفذ',
+        head: ['الجهة', 'دورها'],
+        rows: [
+          ['الشركة المصنِّعة للجهاز', 'تصدر دليل تخطيط الموقع للطراز المحدد: مقاس الغرفة وحدود الترددات الراديوية والمجال المتسرب والخدمات والاختراقات.'],
+          ['الفيزيائي المختص بالوقاية الإشعاعية', 'يحسب التدريع المطلوب لكل سطح ويصدر تقرير التدريع.'],
+          ['فريق التصميم والمقاول الرئيسي', 'يوفران الهيكل والمخطط والبرنامج الزمني الذي يجب أن يتوافق معه التدريع.'],
+          ['EGC', 'تقرأ الوثيقتين معًا، وتنفذ التدريع وتفحصه، وتدعم اختبارات الترددات الراديوية والإشعاع قبل التسليم.'],
+        ],
+      },
       process: [
         { t: 'مراجعة المواصفات', d: 'نقرأ دليل تخطيط الموقع وتقرير التدريع من الفيزيائي جنبًا إلى جنب، ونحسم أي تعارض قبل إصدار المخططات.' },
         { t: 'تفصيل الغلاف الواقي', d: 'تُظهر مخططات التنفيذ كل طبقة تبطين وكل وصلة وتقاطع ونقطة اختراق، فلا يُرتجل شيء في الموقع.' },
@@ -188,9 +289,28 @@ export const SERVICES = {
       ],
       explainTitle: 'لماذا تُعدّ الأبواب أضعف نقطة في التدريع عادةً',
       explain: [
-        'الباب هو الجزء المتحرك الوحيد في الغلاف الواقي. يجب أن تتداخل ضلفة الباب المبطنة بالرصاص مع تبطين الجدار عند الإطار، ويجب أن يحافظ باب الترددات الراديوية على تلامس كهربائي متصل على محيطه بالكامل.',
-        'وكلاهما يعتمد على ضبط الإطار بدقة عند بناء الجدار، ولذلك يُفضَّل أن يتولى مقاول واحد التنسيق بين حزمتي الباب والجدار.',
+        'الباب الطبي المدرّع هو باب مصنوع ليكون جزءًا من درع الغرفة. ففي غرف الأشعة المقطعية وPET-CT والأشعة السينية والعلاج الإشعاعي يكون مبطنًا بالرصاص، فيطابق الباب، ضلفةً وإطارًا، ما في الجدار المحيط من رصاص مكافئ، وتتداخل الضلفة مع تبطين الجدار فلا تبقى فجوة حيث ينتهي التبطين. وفي غرفة الرنين المغناطيسي يكون الباب مدرّعًا ضد الترددات الراديوية ويصنع تلامسًا كهربائيًا متصلًا حول الضلفة بالكامل، فيمنع تداخل الترددات الراديوية من دخول غرفة الفحص. وتخدم الأبواب الانزلاقية محكمة الغلق المناطق السريرية المتحكَّم بها التي يجب إحكام فتحتها. وتصنّع EGC الضلف والإطارات والإكسسوارات في مصنعها وفق مواصفات الجهاز، وتركّبها وتحكم عزلها بكوادرها، وتختبر المغلقات والأقفال التبادلية ولوحات التحذير والتلامسات قبل التسليم. ولأن أداء الباب مرهون بدقة تحديد مكان إطاره عند بناء الجدار، ننسّقه مع حزمة التدريع.',
+        'والباب هو الجزء المتحرك الوحيد في الغلاف، ولهذا هو أكثر مواضع [التدريع الإشعاعي والمغناطيسي](healthcare-contractor/radiation-shielding) تعرضًا للقصور. وتُنسَّق حزمتا الجدار والباب على أفضل وجه عبر مقاول واحد.',
       ],
+      compare: {
+        title: 'مقارنة بين أنواع الأبواب',
+        head: ['نوع الباب', 'مكان استخدامه', 'وظيفته', 'التفصيل الحاسم'],
+        rows: [
+          ['باب إشعاعي مبطن بالرصاص', 'غرف الأشعة المقطعية وPET-CT والأشعة السينية والعلاج الإشعاعي', 'مطابقة ما في الجدار المحيط من رصاص مكافئ', 'تتداخل الضلفة مع تبطين الجدار عند الإطار فلا تبقى فجوة حيث ينتهي التبطين'],
+          ['باب مدرّع ضد الترددات الراديوية', 'غرف فحص الرنين المغناطيسي', 'منع تداخل الترددات الراديوية من دخول غرفة الفحص', 'تلامس كهربائي متصل حول الضلفة بالكامل'],
+          ['باب انزلاقي محكم الغلق', 'المناطق السريرية المتحكَّم بها', 'إحكام الفتحة للتحكم بالضغط والنظافة', 'ضلفة ومسار محكمان، مع تشغيل آلي حيث تتطلب الغرفة ذلك'],
+        ],
+      },
+      roles: {
+        title: 'من يحدد ماذا، ومن ينفذ',
+        head: ['الجهة', 'دورها'],
+        rows: [
+          ['الشركة المصنِّعة للجهاز', 'تحدد الفتحة وأي اشتراط لباب مدرّع ضد الترددات الراديوية واحتياجات القفل التبادلي والإشارات للجهاز.'],
+          ['الفيزيائي المختص بالوقاية الإشعاعية', 'يحدد الرصاص المكافئ الذي يجب أن تطابقه الضلفة والإطار.'],
+          ['المعماري والمقاول الرئيسي', 'يحددان موقع الفتحة ويحملان متطلبات الحريق والدخول والإكسسوارات.'],
+          ['EGC', 'تصنّع الضلفة والإطار في مصنعها، وتركّبهما وتحكم عزلهما، وتشغّل المغلقات والأقفال التبادلية ولوحات التحذير والتلامسات.'],
+        ],
+      },
       process: [
         { t: 'مسح الفتحة', d: 'تُضبط الأطر وفق تركيب الجدار ليتطابق التبطين مع الباب بدقة.' },
         { t: 'التصنيع داخليًا', d: 'تُصنَّع الضلف والأطر والإكسسوارات وفق مواصفات الجهاز، لا تعديلًا على أبواب جاهزة.' },
@@ -219,9 +339,29 @@ export const SERVICES = {
       ],
       explainTitle: 'لماذا يجب أن تعمل الأعمال الكهروميكانيكية والتدريع معًا',
       explain: [
-        'كل أنبوب ومجرى وكابل يعبر جدارًا مدرّعًا هو ثغرة محتملة في الدرع. في غرفة الرنين يجب أن يمر عبر موجّه موجي أو مرشّح، وفي الغرفة المبطنة بالرصاص يحتاج إلى كم أو صندوق مبطن بالرصاص.',
-        'عندما تكون حزمتا التدريع والأعمال الكهروميكانيكية منفصلتين تُكتشف هذه التفاصيل متأخرة وتُعالَج في الموقع. أما مع مقاول واحد فتُرسم مرة واحدة قبل أن يُقطع أي شيء.',
+        'الأعمال الكهروميكانيكية الطبية لغرف التصوير هي أعمال ميكانيكية وكهربائية وسباكة مصممة حول الجهاز ودرعه. فالجهاز يفرض متطلبات خاصة: تأريضًا وطاقة وحدودًا لدرجة الحرارة والرطوبة ومخارج غازات طبية ومسارات كابلات تتجنب التداخل الكهرومغناطيسي. والدرع يفرض قاعدة على كل ما يخترقه: ففي غرفة الرنين المغناطيسي تمر الأنابيب عبر موجّهات موجية والمجاري عبر فتحات تهوية بموجّهات موجية على شكل خلية نحل والكابلات الكهربائية عبر مرشحات للترددات الراديوية، وفي الغرفة المبطنة بالرصاص يحتاج كل اختراق إلى غلاف أو صندوق مبطن بالرصاص. وتخطط EGC كل اختراق على المخططات قبل أي قص، بالتنسيق مع التدريع، ثم تركّب الخدمات وتختبر ضغطها وتوازنها وفق الظروف المحددة، وتسلّم مخططات ما بعد التنفيذ وسجلات الاختبار مع الغرفة. وتنفيذ الأمرين عبر مقاول واحد يعني أن التفاصيل التي تقع عادةً بين الحزم تُرسم مرة واحدة بدل اكتشافها في الموقع.',
+        'وحين تكون أعمال [التدريع](healthcare-contractor/radiation-shielding) والأعمال الكهروميكانيكية حزمتين منفصلتين تُكتشف هذه الاختراقات متأخرًا وتُعالَج في الموقع. أما مع مقاول واحد فتُرسم مرة واحدة قبل أي قص.',
       ],
+      compare: {
+        title: 'ما الذي يخترق الدرع وكيف',
+        head: ['الخدمة', 'في غرفة الرنين المغناطيسي', 'في الغرفة المبطنة بالرصاص'],
+        rows: [
+          ['الأنابيب (الغازات الطبية والمياه)', 'تمر عبر موجّه موجي في درع الترددات الراديوية', 'تمر عبر غلاف مبطن بالرصاص'],
+          ['مجاري الهواء', 'تمر عبر فتحة تهوية بموجّهات موجية على شكل خلية نحل في درع الترددات الراديوية', 'تعبر عبر قطعة أو حاجز مبطن بالرصاص'],
+          ['كابلات الطاقة والبيانات', 'تدخل عبر مرشحات للترددات الراديوية وفق متطلبات الشركة المصنِّعة', 'تمر في صناديق ومجاري مبطنة بالرصاص'],
+          ['التأريض', 'تأريض مخصص وفق ما تحدده الشركة المصنِّعة', 'تأريض وفق مواصفات الجهاز'],
+        ],
+      },
+      roles: {
+        title: 'من يحدد ماذا، ومن ينفذ',
+        head: ['الجهة', 'دورها'],
+        rows: [
+          ['الشركة المصنِّعة للجهاز', 'تحدد الحمل الحراري والطاقة والتبريد والرطوبة والغازات والتأريض التي يحتاجها الجهاز.'],
+          ['مصمم الخدمات الهندسية للمبنى', 'يصمم الخدمات والمحطات التي تخدم الغرفة.'],
+          ['مواصفات التدريع', 'تحدد أين وكيف يجوز للخدمات أن تخترق الدرع.'],
+          ['EGC', 'تخطط كل اختراق مع التدريع، وتركّب الخدمات وتختبر ضغطها وتوازنها، وتسلّم مخططات ما بعد التنفيذ وسجلات الاختبار.'],
+        ],
+      },
       process: [
         { t: 'الاتفاق على الأحمال والمسارات', d: 'نأخذ الأحمال الحرارية ومتطلبات الطاقة والخدمات من الشركة المصنِّعة ونتفق على المسارات مع فريق التصميم.' },
         { t: 'تخطيط كل نقطة اختراق', d: 'تُحدَّد كل نقطة عبور للغلاف المدرّع وتُفصَّل وتُحكَم على المخططات أولًا.' },
@@ -251,9 +391,29 @@ export const SERVICES = {
       ],
       explainTitle: 'الاتصال بلا فواصل هو الهدف',
       explain: [
-        'الفواصل والشقوق والمواد المسامية تمنح التلوث مكانًا يختبئ فيه. السطح الصلب غير مسامي، وتُلصق وصلاته وتُصنفر حتى تتسوى، فتبدو المنضدات والحواف والمغاسل قطعة واحدة يمكن مسحها من طرفها إلى طرفها.',
-        'ولأننا نصنع القطع بأنفسنا فإنها تؤخذ مقاساتها من الغرفة نفسها وتُصنَّع بدقة وتُركَّب بالفريق ذاته، فلا فجوة بين مخطط المورد والجدار.',
+        'الأسطح المقاومة للعدوى هي المنضدات ومحطات التمريض والأحواض والخزائن وتشطيبات الجدران التي تُلمس وتُنظَّف طوال اليوم في الحيّز السريري. وما يجعل السطح مناسبًا هو أن يكون غير مسامي فلا تتغلغل فيه الملوثات، ومتصلًا بلا فواصل فلا تجد مكانًا تختبئ فيه. والأسطح الصلبة مثل الكوريان تحقق الأمرين: تُلصق الوصلات وتُصقل لتصبح مستوية تمامًا، فتبدو المنضدات والحواف والأحواض المدمجة قطعة واحدة يمكن مسحها من طرفها إلى طرفها. وتصنع EGC هذه القطع في مصنع الخشب والكوريان التابع لها في جدة: نأخذ مقاسات الغرفة بعد اكتمالها، ونقص الأجزاء ونشكّلها حراريًا في الورشة، ثم نركّبها ونصل وصلاتها ونصقلها في الموقع بالفريق نفسه. والتصنيع داخل مصنعنا يعني ألا فجوة بين مخطط المورّد والجدار، وأن الأسطح تُصنع لتناسب الغرفة كما بُنيت فعلًا.',
+        'ولأن [مصنعنا للخشب والكوريان](manufacturing) يصنع كل قطعة، تُؤخذ مقاسات المنضدات والخزائن من الغرفة نفسها وتُصنَّع بدقة وتُركَّب بالفريق نفسه.',
       ],
+      compare: {
+        title: 'ما الذي يجعل السطح مناسبًا للتنظيف السريري',
+        head: ['الخاصية', 'لماذا تهم', 'كيف يحققها السطح الصلب'],
+        rows: [
+          ['غير مسامي', 'لا تتغلغل الملوثات في المادة', 'السطح الصلب غير مسامي في كامل سماكته'],
+          ['وصلات متصلة', 'الوصلات والشقوق تمنح الملوثات مكانًا للاختباء', 'تُلصق الوصلات وتُصقل لتستوي، فيبدو السطح قطعة واحدة'],
+          ['أحواض وحواف مدمجة', 'حواف وتقاطعات أقل يجب التنظيف حولها', 'تُشكَّل الأحواض والحواف الخلفية والرافعة ضمن المنضدة نفسها'],
+          ['قابل للإصلاح', 'تُستخدم الأسطح السريرية بقوة كل يوم', 'يمكن صقل التلف السطحي بدل استبدال القطعة'],
+        ],
+      },
+      roles: {
+        title: 'من يحدد ماذا، ومن ينفذ',
+        head: ['الجهة', 'دورها'],
+        rows: [
+          ['المعماري ومصمم الديكور الداخلي', 'يحددان التخطيط والمقاطع والتشطيبات.'],
+          ['فريق مكافحة العدوى في المستشفى', 'يحدد بروتوكولات التنظيف والتطهير التي يجب أن تتحملها الأسطح.'],
+          ['المقاول الرئيسي', 'يوفر البرنامج الزمني ودخول الغرفة المنجزة لأخذ المقاسات.'],
+          ['EGC', 'تأخذ مقاسات الغرفة، وتصنّع في مصنعها، ثم تركّب وتصل وتشطّب الأسطح.'],
+        ],
+      },
       process: [
         { t: 'أخذ المقاسات في الموقع', d: 'نقيس الغرفة بعد اكتمالها لتناسب كل قطعة الجدار كما نُفِّذ.' },
         { t: 'التصنيع في المصنع', d: 'قطع بتقنية CNC وتشكيل حراري ولحام وصلات في ورشة الكوريان والنجارة بجدة.' },
