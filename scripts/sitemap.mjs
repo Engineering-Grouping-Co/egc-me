@@ -10,7 +10,8 @@ import { getSeo } from '../src/content/seo.js';
 import { SERVICES } from '../src/content/services.js';
 import { HOME, ABOUT } from '../src/content/home.js';
 import { plain } from '../src/content/rich.js';
-import { HUB, MANUFACTURING, SOFTWARE, SYSTEMS } from '../src/content/sectors.js';
+import { CATALOG } from '../src/content/catalog/index.js';
+import { HUB, MANUFACTURING, SOFTWARE } from '../src/content/sectors.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(path.resolve(__dirname, '..'), 'dist');
@@ -84,12 +85,12 @@ function pageLine(key, locale) {
 }
 
 function llms() {
-  const core = ['hub', 'shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', 'systems', 'about', 'projects', 'contact'];
+  const core = ['services', 'hub', 'shielding', 'doors', 'mep', 'surfaces', ...CATALOG.filter((c) => c.group === 'specialist').map((c) => c.key), ...CATALOG.filter((c) => c.group === 'building').map((c) => c.key), ...CATALOG.filter((c) => c.group === 'interiors').map((c) => c.key), 'manufacturing', ...CATALOG.filter((c) => c.group === 'factory').map((c) => c.key), 'software', ...CATALOG.filter((c) => c.group === 'software').map((c) => c.key), 'about', 'projects', 'contact'];
   const section = (locale) => core.map((k) => pageLine(k, locale)).join('\n');
 
   return `# Engineering Grouping Co. (EGC)
 
-> Engineering Grouping Co. (EGC), also known as Engineering Group and, in Arabic, التجمع الهندسي (legal name: شركة المجموعة الهندسية), is a healthcare contractor headquartered in Jeddah, Saudi Arabia. It prepares MRI, CT, PET-CT and X-ray rooms for hospitals: radiation and magnetic shielding, lead-lined and RF-shielded medical doors, specialised MEP and infection-control surfaces. It also runs a Wood & Corian factory in Jeddah and a software engineering team (HIS, RIS, PIMS, ERP, websites). Nurse call systems, operating-room clocks and turnkey installation are planned.
+> Engineering Grouping Co. (EGC), also known as Engineering Group and, in Arabic, التجمع الهندسي (legal name: شركة المجموعة الهندسية), is a healthcare contractor headquartered in Jeddah, Saudi Arabia. It prepares MRI, CT, PET-CT and X-ray rooms for hospitals: radiation and magnetic shielding, lead-lined and RF-shielded medical doors, specialised MEP and infection-control surfaces. It also runs a Wood & Corian factory in Jeddah and a software engineering team (HIS, RIS, PIMS, ERP, websites). Its healthcare contracting also covers medical gas, HVAC, fire protection, nurse call installation, hospital fit-outs, operating-room ceilings, wall panels and hermetic doors.
 
 ## Key facts
 ${FACTS.en()}
@@ -122,18 +123,21 @@ const mdTable = (head, rows) =>
 function fullFor(locale) {
   const svc = SERVICES[locale];
   const out = [];
-  out.push(`# ${HOME[locale].hero.h1}\n\n${HOME[locale].hero.lead}\n\n## ${locale === 'ar' ? 'معلومات أساسية' : 'Key facts'}\n${FACTS[locale]()}\n`);
+  out.push(`# ${HOME[locale].hero.h1}\n\n${HOME[locale].hero.lead}\n\n## ${locale === 'ar' ? 'معلومات أساسية' : 'Key facts'}\n${FACTS[locale]()}\n- ${locale === 'ar' ? 'الهاتف' : 'Phone'}: \u200e${SITE[locale].phone}\u200e\n- ${locale === 'ar' ? 'البريد' : 'Email'}: ${SITE[locale].email}\n`);
   out.push(`# ${ABOUT[locale].h1}\n\n${ABOUT[locale].lead}\n\n${ABOUT[locale].story.p.map(plain).join('\n\n')}`);
   out.push(`# ${HUB[locale].h1}\n\n${HUB[locale].lead}\n\n## ${HUB[locale].answer.title}\n${HUB[locale].answer.p.map(plain).join('\n\n')}\n\n## ${HUB[locale].rooms.title}\n${bullets(HUB[locale].rooms.items.map((r) => `${r.t}: ${r.d}`))}`);
   for (const s of svc) {
-    out.push(`# ${s.h1}\n\n${s.lead}\n\n## ${s.explainTitle}\n${s.explain.map(plain).join('\n\n')}\n\n## ${s.full}\n${bullets(s.deliver)}\n\n## Rooms\n${bullets(s.rooms)}\n\n## ${s.compare.title}\n${mdTable(s.compare.head, s.compare.rows)}\n\n## ${s.roles.title}\n${mdTable(s.roles.head, s.roles.rows)}`);
+    out.push(`# ${s.h1}\n\n${s.lead}\n\n## ${s.explainTitle}\n${s.explain.map(plain).join('\n\n')}\n\n## ${s.full}\n${bullets(s.deliver)}\n\n## ${locale === 'ar' ? 'الغرف' : 'Rooms'}\n${bullets(s.rooms)}\n\n## ${s.compare.title}\n${mdTable(s.compare.head, s.compare.rows)}\n\n## ${s.roles.title}\n${mdTable(s.roles.head, s.roles.rows)}`);
   }
   const m = MANUFACTURING[locale];
   out.push(`# ${m.h1}\n\n${m.lead}\n\n## ${m.wood.title}\n${m.wood.p.map(plain).join('\n\n')}\n${bullets(m.wood.capabilities)}\n\n${m.work.text}\n\n## ${m.steel.title}\n${m.steel.text}`);
   const sw = SOFTWARE[locale];
   out.push(`# ${sw.h1}\n\n${sw.lead}\n\n${sw.pillars.map((p) => `## ${p.t} (${p.tag})\n${p.d}\n${bullets(p.pts)}`).join('\n\n')}`);
-  const sy = SYSTEMS[locale];
-  out.push(`# ${sy.h1}\n\n${sy.lead}\n\n${sy.items.map((i) => `## ${i.t}\n${i.d}`).join('\n\n')}`);
+  for (const c of CATALOG) {
+    const t = c[locale];
+    const table = t.table ? `\n\n## ${t.table.title}\n${mdTable(t.table.head, t.table.rows)}` : '';
+    out.push(`# ${t.h1}\nSource: ${routeUrl(locale, c.segment)}\n\n${t.lead}\n\n## ${t.answerTitle}\n${t.answer.map(plain).join('\n\n')}${table}\n\n## ${t.usesTitle}\n${bullets(t.uses)}\n\n## ${t.deliverTitle}\n${bullets(t.deliver)}`);
+  }
   return out.join('\n\n---\n\n');
 }
 

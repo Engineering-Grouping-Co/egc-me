@@ -5,7 +5,7 @@ import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { getSeo } from '../content/seo';
 import Img from '../components/Img';
 import SuiteDrawing from '../components/SuiteDrawing';
-import { CtaBand, DataTable, DisciplineRows, PageHero, Rich, SectionHead, Steps } from '../components/Parts';
+import { ChildServices, CtaBand, DataTable, DisciplineRows, PageHero, Rich, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 /** One template for the four discipline pages. `id` matches the services.js entry and the route key. */
@@ -86,6 +86,8 @@ export default function ServicePage({ id }) {
           <DataTable {...svc.roles} />
         </div>
       </section>
+
+      {id === 'mep' && <ChildServices group="building" className="sec" />}
 
       <section className="sec">
         <div className="wrap">

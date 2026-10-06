@@ -88,11 +88,12 @@ export default function Header() {
   }, []);
 
   const bare = pathname.replace(/^\/ar(?=\/|$)/, '') || '/';
+  const first = bare.split('/')[1];
   const isActive = (item) => {
     const hrefs = item.href ? [item.href] : item.menu.groups.flatMap((g) => g.links.filter((l) => !l.external).map((l) => l.href));
     return hrefs.some((h) => {
       const seg = h.split('#')[0];
-      return seg && bare.startsWith(`/${seg}`) && (seg !== 'about' || bare.startsWith('/about'));
+      return seg && (bare.startsWith(`/${seg}`) || seg.split('/')[0] === first);
     });
   };
 

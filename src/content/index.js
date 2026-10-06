@@ -6,12 +6,13 @@ import { UI } from './ui';
 import { NAV } from './nav';
 import { SERVICES } from './services';
 import { HOME, ABOUT, PROCESS } from './home';
-import { HUB, MANUFACTURING, SOFTWARE, SYSTEMS } from './sectors';
+import { HUB, MANUFACTURING, SOFTWARE } from './sectors';
 import { VALUES, CERTIFICATIONS } from './company';
 import { PROJECTS, PROJECT_FILTERS, KSA_PATH, STATUS_KEYS } from './projects';
 import { CAREERS, CAREER_FILTERS, CULTURE } from './careers';
 import { SUPPLIER_STEPS, WHAT_WE_SOURCE, REQUIREMENTS } from './suppliers';
 import { COPY } from './copy';
+import { SERVICES_INDEX } from './servicesIndex';
 
 /** Resolves every content module for the active locale in one call. */
 export function useContent() {
@@ -29,7 +30,6 @@ export function useContent() {
       HUB: HUB[locale],
       MANUFACTURING: MANUFACTURING[locale],
       SOFTWARE: SOFTWARE[locale],
-      SYSTEMS: SYSTEMS[locale],
       VALUES: VALUES[locale],
       CERTIFICATIONS: CERTIFICATIONS[locale],
       PROJECTS: PROJECTS[locale],
@@ -42,6 +42,7 @@ export function useContent() {
       SUPPLIER_STEPS: SUPPLIER_STEPS[locale],
       WHAT_WE_SOURCE: WHAT_WE_SOURCE[locale],
       REQUIREMENTS: REQUIREMENTS[locale],
+      SERVICES_INDEX: SERVICES_INDEX[locale],
       COPY: Object.fromEntries(Object.entries(COPY).map(([k, v]) => [k, v[locale]])),
     }),
     [locale],

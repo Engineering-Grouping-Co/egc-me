@@ -1,6 +1,14 @@
 /* OEM strip under the hero */
 .partners-band { padding-block: 22px; border-block-end: 1px solid var(--line); background: var(--white); }
 
+/* everything we do */
+.wwd { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: clamp(24px, 2.4vw, 36px); }
+.wwd__group h3 { font-size: 1.2rem; margin-block-end: 8px; }
+.wwd__group h3 a:hover { color: var(--blue-ink); }
+.wwd__group > p { color: var(--muted); font-size: 0.95rem; margin-block-end: 14px; }
+.wwd__links li a { display: inline-block; padding-block: 4px; font-weight: 500; color: var(--ink); }
+.wwd__links li a:hover { color: var(--blue-ink); text-decoration: underline; text-underline-offset: 3px; }
+
 /* disciplines beside the plan drawing */
 .plan { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 88px); align-items: center; }
 .plan .sec-head { margin-bottom: clamp(20px, 2.5vw, 32px); }

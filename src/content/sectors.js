@@ -1,5 +1,5 @@
 /* Copy for the healthcare-construction hub and the other businesses:
- * manufacturing, software engineering, and the upcoming systems range. */
+ * manufacturing and software engineering. */
 
 export const HUB = {
   en: {
@@ -8,7 +8,7 @@ export const HUB = {
     answer: {
       title: 'What a healthcare contractor does',
       p: [
-        'A healthcare contractor builds and fits out the spaces where patients are diagnosed and treated. What separates it from general construction is the rule set: infection control, radiation and magnetic protection, medical gases and the installation requirements of the equipment itself. Imaging rooms are the most demanding example. An MRI, CT or PET-CT room has to be shielded to a physicist’s report and the manufacturer’s site-planning guide, with doors, services and surfaces that keep that shield intact and meet clinical hygiene standards. EGC is a specialty healthcare contractor in Jeddah. We usually work alongside a hospital’s main contractor and take responsibility for the rooms that need specialist skills, from [radiation and magnetic shielding](healthcare-contractor/radiation-shielding) and [medical doors](healthcare-contractor/medical-doors) to [healthcare MEP](healthcare-contractor/healthcare-mep) and [infection-control surfaces](healthcare-contractor/infection-control-surfaces), delivering them ready for the equipment manufacturer to install.',
+        'A healthcare contractor builds and fits out the spaces where patients are diagnosed and treated. What separates it from general construction is the rule set: infection control, radiation and magnetic protection, medical gases and the installation requirements of the equipment itself. Imaging rooms are the most demanding example. An MRI, CT or PET-CT room has to be shielded to a physicist’s report and the manufacturer’s site-planning guide, with doors, services and surfaces that keep that shield intact and meet clinical hygiene standards. EGC is a specialty healthcare contractor based in Jeddah, Saudi Arabia. We usually work alongside a hospital’s main contractor and take responsibility for the rooms that need specialist skills, from [radiation and magnetic shielding](healthcare-contractor/radiation-shielding) and [medical doors](healthcare-contractor/medical-doors) to [healthcare MEP](healthcare-contractor/healthcare-mep), [infection-control surfaces](healthcare-contractor/infection-control-surfaces) and complete [hospital fit-outs](healthcare-contractor/hospital-fit-out), delivering them ready for the equipment manufacturer to install.',
         'The work is delivered by our own crews and our own [Wood & Corian factory](manufacturing), so shielding, doors, services and surfaces are coordinated by one team. [About EGC](about).',
       ],
     },
@@ -23,7 +23,7 @@ export const HUB = {
         { t: 'Radiation therapy vaults', d: 'Heavily shielded rooms with specialist doors.' },
       ],
     },
-    disciplines: { title: 'Four disciplines', lead: 'Each one is delivered by EGC’s own crews and factory.' },
+    disciplines: { title: 'Specialist disciplines', lead: 'Each one is delivered by EGC’s own crews and factory.' },
     oem: {
       title: 'Built around the equipment manufacturer',
       p: ['We build from the OEM’s site-planning guide for the exact model and coordinate with its installation team, so the room is ready on the day the equipment arrives.'],
@@ -47,7 +47,7 @@ export const HUB = {
     answer: {
       title: 'ماذا يفعل مقاول المشاريع الصحية',
       p: [
-        'يبني مقاول المشاريع الصحية ويجهّز المساحات التي يُشخَّص فيها المرضى ويُعالَجون. وما يميّزه عن البناء العام هو منظومة القواعد: مكافحة العدوى، والحماية من الإشعاع والمجال المغناطيسي، والغازات الطبية، ومتطلبات تركيب المعدات نفسها. وغرف التصوير هي أشد الأمثلة تطلبًا: فغرفة الرنين المغناطيسي أو الأشعة المقطعية أو PET-CT يجب أن تُدرَّع وفق تقرير الفيزيائي ودليل تخطيط الموقع الصادر عن الشركة المصنِّعة، بأبواب وخدمات وأسطح تحافظ على سلامة هذا الدرع وتلبي معايير النظافة السريرية. وEGC مقاول متخصص في المشاريع الصحية مقره جدة. نعمل عادةً بجانب المقاول الرئيسي للمستشفى ونتولى مسؤولية الغرف التي تحتاج مهارات خاصة، من [التدريع الإشعاعي والمغناطيسي](healthcare-contractor/radiation-shielding) و[الأبواب الطبية](healthcare-contractor/medical-doors) إلى [الأعمال الكهروميكانيكية الطبية](healthcare-contractor/healthcare-mep) و[الأسطح المقاومة للعدوى](healthcare-contractor/infection-control-surfaces)، ونسلّمها جاهزة لتركيب الشركة المصنِّعة للمعدات.',
+        'يبني مقاول المشاريع الصحية ويجهّز المساحات التي يُشخَّص فيها المرضى ويُعالَجون. وما يميّزه عن البناء العام هو منظومة القواعد: مكافحة العدوى، والحماية من الإشعاع والمجال المغناطيسي، والغازات الطبية، ومتطلبات تركيب المعدات نفسها. وغرف التصوير هي أشد الأمثلة تطلبًا: فغرفة الرنين المغناطيسي أو الأشعة المقطعية أو PET-CT يجب أن تُدرَّع وفق تقرير الفيزيائي ودليل تخطيط الموقع الصادر عن الشركة المصنِّعة، بأبواب وخدمات وأسطح تحافظ على سلامة هذا الدرع وتلبي معايير النظافة السريرية. وEGC مقاول متخصص في المشاريع الصحية مقره جدة بالمملكة العربية السعودية. نعمل عادةً بجانب المقاول الرئيسي للمستشفى ونتولى مسؤولية الغرف التي تحتاج مهارات خاصة، من [التدريع الإشعاعي والمغناطيسي](healthcare-contractor/radiation-shielding) و[الأبواب الطبية](healthcare-contractor/medical-doors) إلى [الأعمال الكهروميكانيكية الطبية](healthcare-contractor/healthcare-mep) و[الأسطح المقاومة للعدوى](healthcare-contractor/infection-control-surfaces) و[تجهيز المستشفيات](healthcare-contractor/hospital-fit-out) المتكامل، ونسلّمها جاهزة لتركيب الشركة المصنِّعة للمعدات.',
         'وتنفذ العمل كوادرنا و[مصنعنا للخشب والكوريان](manufacturing) في جدة، فينسّق فريق واحد التدريع والأبواب والخدمات والأسطح. [تعرّف على EGC](about).',
       ],
     },
@@ -62,7 +62,7 @@ export const HUB = {
         { t: 'غرف العلاج الإشعاعي', d: 'غرف عالية التدريع بأبواب متخصصة.' },
       ],
     },
-    disciplines: { title: 'أربعة تخصصات', lead: 'تنفذ كل منها كوادر EGC ومصنعها الخاص.' },
+    disciplines: { title: 'التخصصات المتخصصة', lead: 'تنفذ كل منها كوادر EGC ومصنعها الخاص.' },
     oem: {
       title: 'مبنية حول الشركة المصنِّعة للجهاز',
       p: ['نبني وفق دليل تخطيط الموقع الصادر عن الشركة المصنِّعة للطراز المحدد وننسّق مع فريق تركيبها، لتكون الغرفة جاهزة يوم وصول الجهاز.'],
@@ -209,32 +209,5 @@ export const SOFTWARE = {
       ],
     },
     cta: { title: 'لديك نظام يحتاج إلى بناء؟', text: 'نظام معلومات مستشفى أو تطبيق تخطيط موارد أو موقع إلكتروني: تحدث إلى فريقنا الهندسي.', primary: 'تحدث إلى مهندسينا' },
-  },
-};
-
-export const SYSTEMS = {
-  en: {
-    badge: 'Launching soon',
-    h1: 'Nurse call systems, OR clocks and turnkey healthcare installation',
-    lead: 'EGC is extending from preparing the room to supplying the systems that run inside it. This range is being prepared for launch; if you have a live requirement, tell us and we will confirm what we can deliver.',
-    items: [
-      { id: 'nurse', t: 'Nurse call systems', d: 'Patient-to-staff call from bedside and bathroom stations, corridor dome lights and staff handsets, integrated with the ward.', pts: ['Bedside, bathroom and emergency call points', 'Corridor and nurse-station indication', 'Staff handsets and ward integration'] },
-      { id: 'clocks', t: 'Operating-room clocks', d: 'Synchronised clock systems for operating theatres and clinical areas, with elapsed-time and countdown timers.', pts: ['Network time synchronisation', 'Procedure and elapsed-time timers', 'Installation within the room’s services plan'] },
-      { id: 'turnkey', t: 'Turnkey installation', d: 'Supply, install, test and commission, from first-fix cabling to handover documentation, by the crews that already prepare the room.', pts: ['Design coordination and cabling', 'Installation, testing and commissioning', 'Handover documentation and training'] },
-    ],
-    why: { title: 'Why from EGC', text: 'The people who build the room are best placed to install what goes in it: same site team, same programme, no gaps between the room and the system.' },
-    cta: { title: 'Register your interest', text: 'Tell us about your ward or theatre project and we will be in touch as the range launches.', primary: 'Register interest' },
-  },
-  ar: {
-    badge: 'قريبًا',
-    h1: 'أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل للمنشآت الصحية',
-    lead: 'تتوسع EGC من تجهيز الغرفة إلى توريد الأنظمة التي تعمل بداخلها. هذه المجموعة قيد التجهيز للإطلاق؛ وإن كان لديك احتياج قائم فأخبرنا وسنؤكد ما يمكننا تنفيذه.',
-    items: [
-      { id: 'nurse', t: 'أنظمة نداء الممرضات', d: 'نداء من المريض إلى الطاقم عبر محطات السرير ودورة المياه وأضواء الممرات وأجهزة الطاقم اليدوية، متكاملة مع الجناح.', pts: ['نقاط نداء عند السرير ودورة المياه والطوارئ', 'مؤشرات الممرات ومحطة التمريض', 'أجهزة يدوية للطاقم وتكامل مع الجناح'] },
-      { id: 'clocks', t: 'ساعات غرف العمليات', d: 'أنظمة ساعات متزامنة لغرف العمليات والمناطق السريرية، مع مؤقتات للوقت المنقضي والعد التنازلي.', pts: ['مزامنة الوقت عبر الشبكة', 'مؤقتات الإجراءات والوقت المنقضي', 'تركيب ضمن خطة خدمات الغرفة'] },
-      { id: 'turnkey', t: 'التركيب الشامل (تسليم مفتاح)', d: 'توريد وتركيب واختبار وتشغيل، من التمديدات الأولية إلى وثائق التسليم، بالكوادر التي تجهّز الغرفة أصلًا.', pts: ['تنسيق التصميم والتمديدات', 'التركيب والاختبار والتشغيل', 'وثائق التسليم والتدريب'] },
-    ],
-    why: { title: 'لماذا من EGC', text: 'من يبني الغرفة هو الأقدر على تركيب ما بداخلها: الفريق الميداني نفسه والبرنامج الزمني نفسه، دون فجوات بين الغرفة والنظام.' },
-    cta: { title: 'سجّل اهتمامك', text: 'أخبرنا عن مشروع جناحك أو غرف عملياتك وسنتواصل معك مع إطلاق المجموعة.', primary: 'سجّل اهتمامك' },
   },
 };

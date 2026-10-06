@@ -22,9 +22,9 @@ const SOURCES = {
   doors: [P('ServicePage'), C('services')],
   mep: [P('ServicePage'), C('services')],
   surfaces: [P('ServicePage'), C('services')],
+  services: [P('Services'), C('servicesIndex')],
   manufacturing: [P('Manufacturing'), C('sectors')],
   software: [P('SoftwareEngineering'), C('sectors')],
-  systems: [P('Systems'), C('sectors')],
   projects: [P('Projects'), C('projects'), C('copy')],
   careers: [P('Careers'), C('careers')],
   suppliers: [P('Suppliers'), C('suppliers')],
@@ -42,6 +42,14 @@ function gitDate(files) {
     return TODAY;
   }
 }
+
+const CAT = (f) => `src/content/catalog/${f}.js`;
+const PAGES = [P('DetailPage')];
+for (const k of ['mriRoom', 'ctRoom', 'petCtRoom', 'xrayRoom']) SOURCES[k] = [...PAGES, CAT('rooms')];
+for (const k of ['woodenDoors', 'corianSurfaces', 'joinery']) SOURCES[k] = [...PAGES, CAT('factory')];
+for (const k of ['medicalGas', 'hvac', 'fireProtection', 'nurseCall']) SOURCES[k] = [...PAGES, CAT('building')];
+for (const k of ['hospitalFitOut', 'orCeilings', 'wallPanels', 'hermeticDoors']) SOURCES[k] = [...PAGES, CAT('interiors')];
+for (const k of ['hisRis', 'erp', 'websites']) SOURCES[k] = [...PAGES, CAT('software')];
 
 const out = Object.fromEntries(Object.entries(SOURCES).map(([key, files]) => [key, gitDate(files)]));
 writeFileSync(path.join(ROOT, 'src/content/lastmod.json'), `${JSON.stringify(out, null, 2)}\n`);

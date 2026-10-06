@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
-import { CtaBand, DisciplineRows, PageHero, PartnerStrip, Rich, SectionHead, Steps } from '../components/Parts';
+import { findRoute } from '../content/routes';
+import { ChildServices, CtaBand, DisciplineRows, PageHero, PartnerStrip, Rich, SectionHead, Steps } from '../components/Parts';
+
+// the first four room cards have their own pages
+const ROOM_PAGES = ['mriRoom', 'ctRoom', 'petCtRoom', 'xrayRoom'];
 import './pages.css';
 
 export default function Hub() {
@@ -41,10 +45,11 @@ export default function Hub() {
         <div className="wrap">
           <SectionHead title={HUB.rooms.title} />
           <div className="grid-3 lines">
-            {HUB.rooms.items.map((r) => (
+            {HUB.rooms.items.map((r, i) => (
               <article key={r.t} className="line-block">
                 <h3>{r.t}</h3>
                 <p>{r.d}</p>
+                {ROOM_PAGES[i] && <Link className="tlink" to={lp(findRoute(ROOM_PAGES[i]).segment)}>{UI.learnMore}</Link>}
               </article>
             ))}
           </div>
@@ -57,6 +62,9 @@ export default function Hub() {
           <DisciplineRows items={SERVICES} />
         </div>
       </section>
+
+      <ChildServices group="building" className="sec sec--paper" />
+      <ChildServices group="interiors" className="sec" />
 
       <section className="sec sec--paper">
         <div className="wrap split split--5-7 split--top">

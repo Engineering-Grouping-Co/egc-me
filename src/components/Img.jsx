@@ -7,7 +7,7 @@ const DIMS = {
   'corian-surfaces': [1200, 896],
 };
 
-export default function Img({ name, alt, sizes = '(min-width: 1024px) 50vw, 100vw', eager = false, className = '', style, position }) {
+export default function Img({ name, alt, sizes = '(min-width: 1024px) 50vw, 100vw', eager = false, low = false, className = '', style, position }) {
   const [w, h] = DIMS[name];
   const base = `/images/${name}`;
   return (
@@ -20,7 +20,7 @@ export default function Img({ name, alt, sizes = '(min-width: 1024px) 50vw, 100v
       alt={alt}
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
-      fetchPriority={eager ? 'high' : undefined}
+      fetchPriority={eager ? 'high' : low ? 'low' : undefined}
       className={className}
       style={position ? { objectPosition: position, ...style } : style}
     />

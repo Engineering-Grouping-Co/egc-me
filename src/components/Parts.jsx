@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Cable, DoorOpen, Layers, Shield } from 'lucide-react';
+import { ArrowUpRight, Bell, Cable, Code, Database, DoorOpen, Fan, Flame, Globe, Hammer, Hospital, Layers, LayoutPanelTop, Magnet, PanelsTopLeft, Radiation, ScanLine, Server, Shield, Wind } from 'lucide-react';
 import { useContent } from '../content';
 import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { findRoute } from '../content/routes';
 import { getSeo } from '../content/seo';
 import { PARTNERS } from '../content/partners';
+import { GROUPS } from '../content/catalog';
+import { useServiceItems } from './useServiceItems';
 import { LINK_PATTERN } from '../content/rich';
 import './Parts.css';
 
-const ICONS = { shield: Shield, door: DoorOpen, cable: Cable, layers: Layers };
+const ICONS = {
+  shield: Shield, door: DoorOpen, cable: Cable, layers: Layers,
+  magnet: Magnet, scan: ScanLine, radiation: Radiation, hammer: Hammer,
+  bell: Bell, gas: Wind, hvac: Fan, fire: Flame, hospital: Hospital, ceiling: LayoutPanelTop, panel: PanelsTopLeft,
+  server: Server, database: Database, globe: Globe, code: Code,
+};
 export function Icon({ name, size = 22 }) {
   const C = ICONS[name] || Shield;
   return <C size={size} strokeWidth={1.6} aria-hidden="true" />;
@@ -59,6 +66,38 @@ export function SectionHead({ title, lead, as: Tag = 'h2', children }) {
       {lead && <p className="lead">{lead}</p>}
       {children}
     </div>
+  );
+}
+
+/** The catalogue pages that hang under a core page, as a linked list (Hub, Manufacturing, Software). */
+export function ChildServices({ group, className = 'sec sec--paper' }) {
+  const { SERVICES_INDEX } = useContent();
+  const keys = GROUPS.find((g) => g.id === group).keys;
+  const items = useServiceItems(keys);
+  return (
+    <section className={className}>
+      <div className="wrap">
+        <SectionHead title={SERVICES_INDEX.groups[group].childrenTitle} />
+        <DisciplineRows items={items} />
+      </div>
+    </section>
+  );
+}
+
+/** A short numbered sequence shown in the hero of pages that have no photograph. */
+export function FlowSheet({ title, steps }) {
+  return (
+    <figure className="sheet frame flow">
+      <div className="sheet__bar">{title}</div>
+      <ol className="flow__steps">
+        {steps.map((s, i) => (
+          <li key={s}>
+            <span className="flow__n" aria-hidden="true">{i + 1}</span>
+            <span>{s}</span>
+          </li>
+        ))}
+      </ol>
+    </figure>
   );
 }
 

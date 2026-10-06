@@ -3,17 +3,20 @@
  * and keep every brand variant discoverable ("EGC", "Engineering Grouping Co.",
  * "Engineering Group", "التجمع الهندسي"). */
 
+import { CATALOG } from './catalog/index.js';
+import { SERVICES_INDEX } from './servicesIndex.js';
+
 export const SEO_CONTENT = {
   home: {
     en: {
       name: 'Home',
-      title: 'Engineering Grouping Co. (EGC) | Healthcare Contractor, Jeddah',
-      description: 'Engineering Grouping Co. (EGC) is a Jeddah healthcare contractor for MRI, CT and PET-CT rooms: radiation shielding, medical doors, MEP and clinical surfaces.',
+      title: 'Healthcare Contractor Saudi Arabia | Engineering Grouping Co. (EGC)',
+      description: 'Healthcare contractor in Saudi Arabia, based in Jeddah: imaging rooms, medical gas, HVAC, fire protection, nurse call installation, fit-outs and joinery.',
     },
     ar: {
       name: 'الرئيسية',
-      title: 'التجمع الهندسي (EGC) | مقاول مشاريع صحية في جدة',
-      description: 'شركة التجمع الهندسي (EGC) مقاول مشاريع صحية في جدة لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT: تدريع إشعاعي وأبواب طبية وأعمال كهروميكانيكية وأسطح سريرية.',
+      title: 'مقاول مشاريع صحية في السعودية | التجمع الهندسي (EGC)',
+      description: 'مقاول مشاريع صحية في السعودية ومقره جدة: غرف التصوير والغازات الطبية والتكييف والحماية من الحريق وتركيب نداء الممرضات وتجهيز المستشفيات والنجارة.',
     },
   },
   about: {
@@ -31,13 +34,13 @@ export const SEO_CONTENT = {
   hub: {
     en: {
       name: 'Healthcare Contractor',
-      title: 'Healthcare Contractor Saudi Arabia: Imaging Rooms | EGC',
-      description: 'Specialty healthcare contractor for MRI, CT, PET-CT and X-ray rooms in Saudi Arabia: shielding, medical doors, healthcare MEP and clinical surfaces.',
+      title: 'Hospital & Imaging Room Contractor in Saudi Arabia | EGC',
+      description: 'Healthcare contractor for MRI, CT, PET-CT and X-ray rooms in Saudi Arabia: shielding, medical doors, MEP, fit-outs and clinical surfaces.',
     },
     ar: {
       name: 'مقاول مشاريع صحية',
-      title: 'مقاول مشاريع صحية في السعودية: غرف التصوير والتدريع | EGC',
-      description: 'مقاول مشاريع صحية متخصص لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية: تدريع إشعاعي ومغناطيسي وأبواب طبية وأعمال كهروميكانيكية وأسطح سريرية.',
+      title: 'مقاول مستشفيات وغرف تصوير طبي في السعودية | EGC',
+      description: 'مقاول مشاريع صحية لغرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية: تدريع وأبواب طبية وأعمال كهروميكانيكية وتجهيز وأسطح سريرية.',
     },
   },
   shielding: {
@@ -67,13 +70,13 @@ export const SEO_CONTENT = {
   mep: {
     en: {
       name: 'Healthcare MEP',
-      title: 'Healthcare MEP Contractor for Imaging Rooms in Saudi Arabia | EGC',
-      description: 'Medical gases, earthing, EMI-aware cable routing and controlled HVAC for MRI, CT and PET-CT rooms, coordinated with the shielding.',
+      title: 'Healthcare MEP Contractor in Saudi Arabia | EGC',
+      description: 'Healthcare MEP in Saudi Arabia: medical gas, HVAC, fire protection, nurse call installation, earthing and EMI-aware routing, coordinated with the shielding.',
     },
     ar: {
       name: 'الأعمال الكهروميكانيكية الطبية',
-      title: 'مقاول أعمال كهروميكانيكية للمنشآت الصحية وغرف التصوير في السعودية | EGC',
-      description: 'غازات طبية وتأريض وتمديد كابلات واعٍ بالتداخل الكهرومغناطيسي وتكييف متحكَّم به لغرف الرنين والأشعة المقطعية وPET-CT، بالتنسيق مع التدريع.',
+      title: 'مقاول أعمال كهروميكانيكية للمنشآت الصحية في السعودية | EGC',
+      description: 'أعمال كهروميكانيكية طبية في السعودية: غازات طبية وتكييف وحماية من الحريق وتركيب نداء الممرضات وتأريض، بالتنسيق مع التدريع.',
     },
   },
   surfaces: {
@@ -91,7 +94,7 @@ export const SEO_CONTENT = {
   manufacturing: {
     en: {
       name: 'Manufacturing',
-      title: 'Corian & Joinery Factory in Jeddah | EGC Manufacturing',
+      title: 'Wood & Corian Factory in Jeddah: Doors & Joinery | EGC',
       description: 'EGC’s Jeddah Wood & Corian factory fabricates solid-surface counters and architectural joinery for healthcare, airport and military-hospital interiors.',
     },
     ar: {
@@ -110,18 +113,6 @@ export const SEO_CONTENT = {
       name: 'هندسة البرمجيات',
       title: 'تطوير أنظمة المستشفيات والأشعة وتخطيط الموارد في السعودية | EGC',
       description: 'أنظمة معلومات المستشفيات والأشعة وإدارة المرضى وتخطيط الموارد وفق الفوترة الإلكترونية والتأمينات الاجتماعية وحماية الأجور ونظام حماية البيانات، ومواقع ثنائية اللغة.',
-    },
-  },
-  systems: {
-    en: {
-      name: 'Healthcare Systems & Turnkey',
-      title: 'Nurse Call Systems, OR Clocks & Turnkey Installation | EGC',
-      description: 'EGC is preparing to supply nurse call systems, operating-room clocks and turnkey healthcare installation in Saudi Arabia. Register your interest.',
-    },
-    ar: {
-      name: 'الأنظمة الطبية والتسليم الشامل',
-      title: 'أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل | EGC',
-      description: 'تستعد EGC لتوريد أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل للمنشآت الصحية في السعودية. سجّل اهتمامك.',
     },
   },
   projects: {
@@ -197,6 +188,18 @@ export const SEO_CONTENT = {
     ar: { name: 'الصفحة غير موجودة', title: 'الصفحة غير موجودة | EGC', description: 'هذه الصفحة غير موجودة.' },
   },
 };
+
+/* The catalogue pages and the services index carry their own SEO copy next to their content. */
+SEO_CONTENT.services = {
+  en: SERVICES_INDEX.en.seo,
+  ar: SERVICES_INDEX.ar.seo,
+};
+for (const c of CATALOG) {
+  SEO_CONTENT[c.key] = {
+    en: { name: c.en.name, title: c.en.title, description: c.en.description },
+    ar: { name: c.ar.name, title: c.ar.title, description: c.ar.description },
+  };
+}
 
 /** SEO entry for any route key. */
 export function getSeo(routeKey, locale) {

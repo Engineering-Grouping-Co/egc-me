@@ -2,14 +2,16 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import LocaleLayout from './i18n/LocaleLayout';
 import Seo from './components/Seo';
 import { ROUTES, legacyRedirects } from './content/routes';
+import { CATALOG_KEYS } from './content/catalog';
 
 import Home from './pages/Home';
 import About from './pages/About';
 import Hub from './pages/Hub';
 import ServicePage from './pages/ServicePage';
+import DetailPage from './pages/DetailPage';
+import Services from './pages/Services';
 import Manufacturing from './pages/Manufacturing';
 import SoftwareEngineering from './pages/SoftwareEngineering';
-import Systems from './pages/Systems';
 import Projects from './pages/Projects';
 import Careers from './pages/Careers';
 import Suppliers from './pages/Suppliers';
@@ -28,9 +30,9 @@ const PAGES = {
   doors: <ServicePage id="doors" />,
   mep: <ServicePage id="mep" />,
   surfaces: <ServicePage id="surfaces" />,
+  services: <Services />,
   manufacturing: <Manufacturing />,
   software: <SoftwareEngineering />,
-  systems: <Systems />,
   projects: <Projects />,
   careers: <Careers />,
   suppliers: <Suppliers />,
@@ -38,6 +40,7 @@ const PAGES = {
   legalProfile: <LegalProfile />,
   privacyPolicy: <PrivacyPolicy />,
   terms: <Terms />,
+  ...Object.fromEntries(CATALOG_KEYS.map((key) => [key, <DetailPage key={key} id={key} />])),
 };
 
 function localeRoutes() {

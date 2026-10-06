@@ -26,6 +26,9 @@
 .table tbody tr:last-child th, .table tbody tr:last-child td { border-block-end: 0; }
 .sec--paper .table-wrap { background: var(--white); }
 
+/* services overview */
+.services__sub { margin-block-start: 44px; }
+
 /* lists */
 .checks { display: grid; gap: 14px; }
 .checks li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; align-items: start; }

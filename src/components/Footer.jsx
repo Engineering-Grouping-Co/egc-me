@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useContent } from '../content';
-import { useLocalePath } from '../i18n/LocaleContext';
+import { useLocale, useLocalePath } from '../i18n/LocaleContext';
+import { findRoute } from '../content/routes';
+import { getSeo } from '../content/seo';
 import './Footer.css';
 
+// the products people look for by name; the full list is on /services/
+const FOOTER_SERVICES = ['hub', 'mriRoom', 'hospitalFitOut', 'medicalGas', 'hvac', 'fireProtection', 'nurseCall', 'woodenDoors', 'corianSurfaces', 'software'];
+
 export default function Footer() {
+  const locale = useLocale();
   const lp = useLocalePath();
   const { SITE, UI } = useContent();
 
@@ -20,17 +26,17 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h5>{UI.footerCompany}</h5>
-            <Link to={lp('about')}>{UI.footerAbout}</Link>
-            <Link to={lp('healthcare-contractor')}>{UI.footerHub}</Link>
-            <Link to={lp('manufacturing')}>{UI.footerManufacturing}</Link>
-            <Link to={lp('software-engineering')}>{UI.footerSoftware}</Link>
-            <Link to={lp('healthcare-systems')}>{UI.footerSystems}</Link>
-            <Link to={lp('projects')}>{UI.footerProjects}</Link>
+            <p className="footer-heading">{UI.footerServices}</p>
+            {FOOTER_SERVICES.map((key) => (
+              <Link key={key} to={lp(findRoute(key).segment)}>{getSeo(key, locale).name}</Link>
+            ))}
+            <Link to={lp('services')} className="footer-all">{UI.footerAllServices}</Link>
           </div>
 
           <div className="footer-col">
-            <h5>{UI.footerWork}</h5>
+            <p className="footer-heading">{UI.footerCompany}</p>
+            <Link to={lp('about')}>{UI.footerAbout}</Link>
+            <Link to={lp('projects')}>{UI.footerProjects}</Link>
             <Link to={lp('careers')}>{UI.footerCareers}</Link>
             <Link to={lp('suppliers')}>{UI.footerSuppliers}</Link>
             <Link to={lp('contact')}>{UI.footerContact}</Link>
@@ -38,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h5>{UI.footerContactHeading}</h5>
+            <p className="footer-heading">{UI.footerContactHeading}</p>
             <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} dir="ltr" className="footer-ltr">{SITE.phone}</a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
             <a href={SITE.supplierPortal} target="_blank" rel="noreferrer">{UI.footerSupplierPortal}</a>

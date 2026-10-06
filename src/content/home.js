@@ -18,8 +18,8 @@ export const PROCESS = {
 export const HOME = {
   en: {
     hero: {
-      h1: 'EGC: specialist healthcare contractor for MRI, CT and PET-CT rooms',
-      lead: 'Engineering Grouping Co. (EGC) prepares the rooms that medical imaging equipment moves into: MRI, CT, PET-CT and X-ray. Shielding, doors, MEP and clinical surfaces, delivered by our own crews and our own factory in Jeddah.',
+      h1: 'Healthcare contractor in Saudi Arabia, from imaging rooms to full fit-outs',
+      lead: 'Engineering Grouping Co. (EGC) prepares the rooms that medical imaging equipment moves into, and carries out the wider healthcare contracting around them: shielding and medical doors, medical gas, HVAC, fire protection, nurse call installation, hospital fit-outs, joinery and clinical surfaces, delivered by our own crews and our own factory in Jeddah.',
       primary: 'Explore healthcare construction',
       secondary: 'Request a proposal',
       partners: 'Working alongside the installation teams of',
@@ -44,7 +44,7 @@ export const HOME = {
       },
     },
     disciplines: {
-      title: 'Four disciplines, one accountable contractor',
+      title: 'Specialist disciplines, one accountable contractor',
       lead: 'Imaging rooms are won or lost at the interfaces between trades. EGC delivers shielding, doors, MEP and clinical surfaces under one contract and one programme, so the details that usually fall between packages are drawn once.',
       cta: 'Healthcare construction overview',
       roomsLabel: 'Typical rooms',
@@ -63,11 +63,10 @@ export const HOME = {
           text: 'Hospital and radiology information systems, patient information management and ERP built around Saudi requirements — ZATCA e-invoicing, GOSI and WPS, PDPL — plus bilingual websites.',
           cta: 'See what we build',
         },
-        systems: {
-          title: 'Healthcare systems and turnkey',
-          text: 'Nurse call systems, operating-room clocks and turnkey installation are coming next, delivered by the same crews that prepare the rooms.',
-          cta: 'Learn more',
-          badge: 'Launching soon',
+        fitout: {
+          title: 'Hospital fit-out and building services',
+          text: 'Medical gas, HVAC, fire protection, nurse call installation, operating-room ceilings, wall panels and hermetic doors, carried out by the same crews that prepare the rooms.',
+          cta: 'See fit-out and services',
         },
       },
     },
@@ -88,8 +87,8 @@ export const HOME = {
   },
   ar: {
     hero: {
-      h1: 'التجمع الهندسي: مقاول مشاريع صحية متخصص لغرف الرنين والأشعة المقطعية وPET-CT',
-      lead: 'شركة التجمع الهندسي (EGC) تُجهّز الغرف التي تنتقل إليها أجهزة التصوير الطبي: الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية. تدريع وأبواب وأعمال كهروميكانيكية وأسطح سريرية، تنفذها كوادرنا ومصنعنا الخاص في جدة.',
+      h1: 'مقاول مشاريع صحية في السعودية، من غرف التصوير إلى التجهيز الكامل',
+      lead: 'شركة التجمع الهندسي (EGC) تُجهّز الغرف التي تنتقل إليها أجهزة التصوير الطبي، وتنفذ أعمال المقاولات الصحية الأوسع حولها: التدريع والأبواب الطبية والغازات الطبية والتكييف والحماية من الحريق وتركيب أنظمة نداء الممرضات وتجهيز المستشفيات والنجارة والأسطح السريرية، تنفذها كوادرنا ومصنعنا الخاص في جدة.',
       primary: 'استعرض الإنشاءات الطبية',
       secondary: 'اطلب عرضًا',
       partners: 'نعمل بجانب فرق التركيب التابعة لـ',
@@ -114,7 +113,7 @@ export const HOME = {
       },
     },
     disciplines: {
-      title: 'أربعة تخصصات، ومقاول واحد مسؤول',
+      title: 'تخصصات متخصصة، ومقاول واحد مسؤول',
       lead: 'تُكسب غرف التصوير أو تُخسر عند التقاطعات بين الأعمال. تنفذ EGC التدريع والأبواب والأعمال الكهروميكانيكية والأسطح السريرية بعقد واحد وبرنامج زمني واحد، فتُرسم مرة واحدة التفاصيل التي تقع عادةً بين الحزم.',
       cta: 'نظرة عامة على الإنشاءات الطبية',
       roomsLabel: 'غرف نموذجية',
@@ -133,11 +132,10 @@ export const HOME = {
           text: 'أنظمة معلومات المستشفيات والأشعة وإدارة معلومات المرضى وتخطيط الموارد مبنية وفق المتطلبات السعودية — الفوترة الإلكترونية لهيئة الزكاة والضريبة والجمارك، والتأمينات الاجتماعية وحماية الأجور، ونظام حماية البيانات الشخصية — إضافة إلى مواقع إلكترونية ثنائية اللغة.',
           cta: 'اطلع على ما نبنيه',
         },
-        systems: {
-          title: 'الأنظمة الطبية والتسليم الشامل',
-          text: 'أنظمة نداء الممرضات وساعات غرف العمليات والتركيب الشامل هي خطوتنا التالية، تنفذها الكوادر نفسها التي تجهّز الغرف.',
-          cta: 'اعرف المزيد',
-          badge: 'قريبًا',
+        fitout: {
+          title: 'تجهيز المستشفيات وخدمات المبنى',
+          text: 'الغازات الطبية والتكييف والحماية من الحريق وتركيب أنظمة نداء الممرضات وأسقف غرف العمليات والألواح الجدارية والأبواب الهيرمتية، تنفذها الكوادر نفسها التي تجهّز الغرف.',
+          cta: 'اطلع على التجهيز والخدمات',
         },
       },
     },
@@ -173,7 +171,7 @@ export const ABOUT = {
     group: {
       title: 'Three businesses, one standard',
       items: [
-        { id: 'hub', t: 'Healthcare construction', d: 'Shielding, medical doors, specialised MEP and infection-control surfaces for imaging and clinical rooms.' },
+        { id: 'hub', t: 'Healthcare construction', d: 'Imaging rooms and the wider healthcare contracting around them: shielding, medical doors, MEP including medical gas, HVAC and fire protection, nurse call installation, hospital fit-outs and infection-control surfaces.' },
         { id: 'manufacturing', t: 'Manufacturing', d: 'A Wood & Corian factory in Jeddah, and a steel facility that is currently paused.' },
         { id: 'software', t: 'Software engineering', d: 'Hospital and radiology information systems, ERP and websites built for Saudi compliance.' },
       ],
@@ -215,7 +213,7 @@ export const ABOUT = {
     group: {
       title: 'ثلاثة أعمال، ومعيار واحد',
       items: [
-        { id: 'hub', t: 'الإنشاءات الطبية', d: 'تدريع وأبواب طبية وأعمال كهروميكانيكية متخصصة وأسطح مقاومة للعدوى لغرف التصوير والغرف السريرية.' },
+        { id: 'hub', t: 'الإنشاءات الطبية', d: 'غرف التصوير وأعمال المقاولات الصحية الأوسع حولها: التدريع والأبواب الطبية والأعمال الكهروميكانيكية بما فيها الغازات الطبية والتكييف والحماية من الحريق، وتركيب أنظمة نداء الممرضات وتجهيز المستشفيات والأسطح المقاومة للعدوى.' },
         { id: 'manufacturing', t: 'التصنيع', d: 'مصنع للخشب والكوريان في جدة، ومنشأة للصلب متوقف إنتاجها حاليًا.' },
         { id: 'software', t: 'هندسة البرمجيات', d: 'أنظمة معلومات المستشفيات والأشعة وتخطيط الموارد والمواقع الإلكترونية المبنية وفق الامتثال السعودي.' },
       ],

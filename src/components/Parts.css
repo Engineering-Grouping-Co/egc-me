@@ -101,3 +101,9 @@
 }
 .partners--dark > p { color: rgba(255, 255, 255, 0.65); }
 .partners--dark li { color: #fff; border-color: rgba(255, 255, 255, 0.25); }
+
+/* ── flow sheet: a sequence in the hero of pages without a photograph ── */
+.flow__steps { padding: clamp(18px, 2.4vw, 32px); display: grid; gap: 0; }
+.flow__steps li { position: relative; display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 16px; align-items: center; padding-block: 14px; font-weight: 500; color: var(--ink); }
+.flow__steps li + li::before { content: ''; position: absolute; inset-inline-start: 18px; inset-block-start: -14px; height: 28px; width: 1.5px; background: var(--blue-line); }
+.flow__n { display: grid; place-items: center; width: 38px; height: 38px; border: 1.5px solid var(--blue); border-radius: 50%; background: var(--white); color: var(--blue-ink); font-weight: 600; position: relative; z-index: 1; }

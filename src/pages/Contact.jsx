@@ -5,7 +5,7 @@ import { useContent } from '../content';
 import { PageHero } from '../components/Parts';
 import './pages.css';
 
-const TOPICS = { software: 2, systems: 3, manufacturing: 1, healthcare: 0 };
+const TOPICS = { software: 2, manufacturing: 1, healthcare: 0 };
 const EMPTY = { name: '', company: '', email: '', phone: '', sector: null, service: null, message: '' };
 
 export default function Contact() {

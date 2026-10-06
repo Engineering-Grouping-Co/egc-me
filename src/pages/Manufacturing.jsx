@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
-import { CtaBand, PageHero, Rich } from '../components/Parts';
+import { ChildServices, CtaBand, PageHero, Rich } from '../components/Parts';
 import './pages.css';
 
 export default function Manufacturing() {
@@ -45,7 +45,9 @@ export default function Manufacturing() {
         </div>
       </section>
 
-      <section className="sec sec--paper">
+      <ChildServices group="factory" />
+
+      <section className="sec">
         <div className="wrap split split--5-7 split--top">
           <h2>{M.work.title}</h2>
           <div className="stack">
@@ -55,7 +57,7 @@ export default function Manufacturing() {
         </div>
       </section>
 
-      <section className="sec">
+      <section className="sec sec--paper">
         <div className="wrap split split--5-7 split--top">
           <div>
             <span className="tag tag--paused">{M.steel.badge}</span>

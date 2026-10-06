@@ -24,15 +24,15 @@
 /* the statement */
 .hs__body { flex: 1; display: flex; align-items: center; padding-block: clamp(48px, 7vw, 96px) clamp(32px, 4vw, 56px); }
 .hs__copy { max-width: 760px; }
-.hs h1 { color: #fff; font-size: clamp(2.2rem, 1rem + 3.2vw, 3.9rem); line-height: 1.06; letter-spacing: -0.03em; max-width: 11.6em; } /* em, not ch: ch depends on the font in use and moved the text when the web font swapped in */
-[dir='rtl'] .hs h1 { line-height: 1.3; letter-spacing: 0; max-width: 12.2em; }
+.hs h1 { color: #fff; font-size: clamp(2.2rem, 1rem + 3.2vw, 3.9rem); line-height: 1.06; letter-spacing: -0.03em; max-width: 13em; } /* em, not ch: ch depends on the font in use and moved the text when the web font swapped in */
+[dir='rtl'] .hs h1 { line-height: 1.3; letter-spacing: 0; max-width: 13em; font-size: clamp(2rem, 1rem + 2.6vw, 3.3rem); }
 .hs h1, .hs .lead { text-shadow: 0 1px 18px rgba(0, 0, 0, 0.45); }
 .hs .lead { margin-block-start: 22px; color: rgba(255, 255, 255, 0.94); max-width: 33.5em; }
 .hs__actions { margin-block-start: 34px; }
 
 /* what we do: one tab per slide, each with its own progress rule */
 /* the bottom space leaves room for the floating notice, so it never sits on top of the tabs */
-.hs__nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; gap: 20px; padding-block-end: 76px; }
+.hs__nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; gap: 20px; padding-block-end: 88px; }
 .hs__tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
 .hs__tab { display: block; min-height: 44px; width: 100%; text-align: start; padding-block-end: 4px; color: rgba(255, 255, 255, 0.78); transition: color 0.2s; }
 .hs__tab:hover, .hs__tab[aria-current='true'] { color: #fff; }
@@ -74,7 +74,7 @@
   .hs h1 { font-size: 2.05rem; }
   .hs .lead { margin-block-start: 16px; font-size: 1.02rem; line-height: 1.5; }
   .hs__actions { margin-block-start: 24px; }
-  .hs__nav { padding-block-end: calc(88px + env(safe-area-inset-bottom)); }
+  .hs__nav { padding-block-end: calc(104px + env(safe-area-inset-bottom)); }
   .hs__shade,
   [dir='rtl'] .hs__shade { background: linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.86) 32%, rgba(0, 0, 0, 0.92) 100%); }
   .hs__actions .btn { width: 100%; }

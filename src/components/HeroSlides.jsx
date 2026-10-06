@@ -54,7 +54,7 @@ export default function HeroSlides({ slides, title, lead, primary, secondary, ui
             aria-roledescription="slide"
             style={{ '--pos': s.position, '--pos-m': s.positionMobile }}
           >
-            <Img name={s.image} alt={s.alt} eager={i === 0} sizes="100vw" className="hs__img" />
+            <Img name={s.image} alt={s.alt} eager={i === 0} low={i > 0} sizes="100vw" className="hs__img" />
           </figure>
         ))}
         <div className="hs__shade" />

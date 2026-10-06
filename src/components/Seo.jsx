@@ -4,6 +4,7 @@ import { LOCALES, DEFAULT_LOCALE, SITE_URL, routeUrl, findRoute } from '../conte
 import { getSeo } from '../content/seo';
 import { SITE } from '../content/site';
 import { SERVICES } from '../content/services';
+import { CATALOG_KEYS } from '../content/catalog';
 import LASTMOD from '../content/lastmod.json';
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -11,18 +12,24 @@ const siteId = (locale) => `${routeUrl(locale, '')}#website`;
 const serviceId = (locale, key) => `${routeUrl(locale, findRoute(key).segment)}#service`;
 const COUNTRY = { '@type': 'Country', name: 'Saudi Arabia' };
 
-const PAGE_TYPES = { about: 'AboutPage', contact: 'ContactPage', projects: 'CollectionPage' };
-const SERVICE_KEYS = ['hub', 'shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', 'systems'];
-// what the Organization offers: the four disciplines plus the two live businesses (not the unreleased systems range)
-const OFFER_KEYS = ['shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software'];
+const PAGE_TYPES = { about: 'AboutPage', contact: 'ContactPage', projects: 'CollectionPage', services: 'CollectionPage' };
+const SERVICE_KEYS = ['hub', 'shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', ...CATALOG_KEYS];
+// what the Organization offers: the four disciplines, the factory, the software business and the catalogue pages
+const OFFER_KEYS = ['shielding', 'doors', 'mep', 'surfaces', 'manufacturing', 'software', ...CATALOG_KEYS];
 const KNOWS_ABOUT = {
   en: [
-    'Healthcare construction', 'MRI room shielding', 'RF shielding', 'Radiation shielding', 'PET-CT room design',
-    'Lead-lined doors', 'Healthcare MEP', 'Corian fabrication', 'Hospital information systems', 'ZATCA e-invoicing',
+    'Healthcare construction', 'MRI room construction', 'CT room construction', 'PET-CT room design', 'X-ray room construction',
+    'RF shielding', 'Radiation shielding', 'Lead-lined doors', 'Hermetic doors', 'Wooden doors', 'Architectural joinery',
+    'Healthcare MEP', 'Medical gas systems', 'Hospital HVAC', 'Fire protection', 'Nurse call installation',
+    'Hospital fit-out', 'Operating-room ceilings', 'Hospital wall panels', 'Corian fabrication',
+    'Hospital information systems', 'ERP software', 'ZATCA e-invoicing', 'Website development',
   ],
   ar: [
-    'الإنشاءات الصحية', 'تدريع غرف الرنين المغناطيسي', 'التدريع ضد الترددات الراديوية', 'التدريع الإشعاعي', 'تصميم غرف PET-CT',
-    'الأبواب المبطنة بالرصاص', 'الأعمال الكهروميكانيكية الطبية', 'تصنيع الكوريان', 'أنظمة معلومات المستشفيات', 'الفوترة الإلكترونية (هيئة الزكاة والضريبة والجمارك)',
+    'الإنشاءات الصحية', 'إنشاء غرف الرنين المغناطيسي', 'إنشاء غرف الأشعة المقطعية', 'تصميم غرف PET-CT', 'إنشاء غرف الأشعة السينية',
+    'التدريع ضد الترددات الراديوية', 'التدريع الإشعاعي', 'الأبواب المبطنة بالرصاص', 'الأبواب الهيرمتية', 'الأبواب الخشبية', 'النجارة المعمارية',
+    'الأعمال الكهروميكانيكية الطبية', 'الغازات الطبية', 'تكييف المستشفيات', 'الحماية من الحريق', 'تركيب أنظمة نداء الممرضات',
+    'تجهيز المستشفيات', 'أسقف غرف العمليات', 'الألواح الجدارية للمستشفيات', 'تصنيع الكوريان',
+    'أنظمة معلومات المستشفيات', 'برمجيات تخطيط الموارد', 'الفوترة الإلكترونية (هيئة الزكاة والضريبة والجمارك)', 'تطوير المواقع الإلكترونية',
   ],
 };
 const PHONE = (site) => site.phone.replace(/\s/g, '');
@@ -44,12 +51,12 @@ function organization(locale) {
     alternateName: site.alternateNames.filter((n) => n !== site.name),
     url: `${SITE_URL}/`,
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-mark.png`, width: 256, height: 256 },
-    image: `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}/og-image${locale === 'ar' ? '-ar' : ''}.png`,
     slogan: site.tagline,
     description:
       locale === 'ar'
-        ? 'مقاول مشاريع صحية في جدة يجهّز غرف الرنين المغناطيسي والأشعة المقطعية وPET-CT: تدريع إشعاعي ومغناطيسي، أبواب طبية، أعمال كهروميكانيكية متخصصة، وأسطح مقاومة للعدوى، مع مصنع للكوريان وفريق لهندسة البرمجيات.'
-        : 'Healthcare contractor in Jeddah preparing MRI, CT, PET-CT and X-ray rooms: radiation and magnetic shielding, medical doors, specialised MEP and infection-control surfaces, with its own Wood & Corian factory and software engineering team.',
+        ? 'مقاول مشاريع صحية في السعودية مقره جدة: غرف الرنين المغناطيسي والأشعة المقطعية وPET-CT والأشعة السينية، تدريع إشعاعي ومغناطيسي، أبواب طبية وخشبية، غازات طبية وتكييف وحماية من الحريق وتركيب أنظمة نداء الممرضات، تجهيز المستشفيات، كوريان ونجارة، مع مصنع خاص وفريق لهندسة البرمجيات.'
+        : 'Healthcare contractor in Saudi Arabia, based in Jeddah: MRI, CT, PET-CT and X-ray rooms, radiation and magnetic shielding, medical and wooden doors, medical gas, HVAC, fire protection, nurse call installation, hospital fit-outs, Corian and joinery, with its own factory and software engineering team.',
     foundingDate: site.founded,
     telephone: PHONE(site),
     email: site.email,

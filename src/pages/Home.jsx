@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContent } from '../content';
-import { useLocalePath } from '../i18n/LocaleContext';
+import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import HeroSlides from '../components/HeroSlides';
 import SuiteDrawing from '../components/SuiteDrawing';
 import KsaMap from '../components/KsaMap';
 import Img from '../components/Img';
+import { findRoute } from '../content/routes';
+import { getSeo } from '../content/seo';
+import { GROUPS } from '../content/catalog';
 import { CtaBand, DisciplineRows, PartnerStrip, SectionHead, Steps } from '../components/Parts';
 import './Home.css';
 
+const DISCIPLINES = ['shielding', 'doors', 'mep', 'surfaces'];
+
 export default function Home() {
+  const locale = useLocale();
   const lp = useLocalePath();
-  const { HOME, SERVICES, PROCESS, PROJECTS, KSA_PATH, SITE } = useContent();
+  const { HOME, SERVICES, PROCESS, PROJECTS, KSA_PATH, SITE, SERVICES_INDEX: SI } = useContent();
   const [active, setActive] = useState('shielding');
 
   const pins = Object.values(
@@ -39,6 +45,32 @@ export default function Home() {
           <PartnerStrip label={HOME.hero.partners} />
         </div>
       </div>
+
+      {/* ── everything we do: the wide range, one link per product ── */}
+      <section className="sec sec--tight">
+        <div className="wrap">
+          <SectionHead title={SI.homeTitle} lead={SI.homeLead} />
+          <div className="wwd">
+            {GROUPS.map((g) => {
+              const keys = g.disciplines ? [...DISCIPLINES, ...g.keys] : g.keys;
+              return (
+                <div key={g.id} className="line-block wwd__group">
+                  <h3><Link to={lp(findRoute(g.core).segment)}>{SI.groups[g.id].title}</Link></h3>
+                  <p>{SI.groups[g.id].lead}</p>
+                  <ul className="wwd__links">
+                    {keys.map((k) => (
+                      <li key={k}><Link to={lp(findRoute(k).segment)}>{getSeo(k, locale).name}</Link></li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+          <p className="home-more">
+            <Link className="tlink" to={lp('services')}>{SI.all}</Link>
+          </p>
+        </div>
+      </section>
 
       {/* ── disciplines, tied to the plan: the one bold, interactive thing on the page ── */}
       <section className="sec">
@@ -83,12 +115,9 @@ export default function Home() {
                 <Link className="tlink" to={lp('software-engineering')}>{HOME.sectors.items.software.cta}</Link>
               </article>
               <article className="sector">
-                <h3>
-                  {HOME.sectors.items.systems.title}
-                  <span className="tag tag--soon">{HOME.sectors.items.systems.badge}</span>
-                </h3>
-                <p>{HOME.sectors.items.systems.text}</p>
-                <Link className="tlink" to={lp('healthcare-systems')}>{HOME.sectors.items.systems.cta}</Link>
+                <h3>{HOME.sectors.items.fitout.title}</h3>
+                <p>{HOME.sectors.items.fitout.text}</p>
+                <Link className="tlink" to={lp('services')}>{HOME.sectors.items.fitout.cta}</Link>
               </article>
             </div>
           </div>

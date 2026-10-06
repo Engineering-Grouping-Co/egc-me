@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import ModulesDiagram from '../components/ModulesDiagram';
-import { CtaBand, PageHero, SectionHead, Steps } from '../components/Parts';
+import { ChildServices, CtaBand, PageHero, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
 
 export default function SoftwareEngineering() {
@@ -80,6 +80,8 @@ export default function SoftwareEngineering() {
           <Steps items={S.approach.steps} />
         </div>
       </section>
+
+      <ChildServices group="software" />
 
       <CtaBand
         title={S.cta.title}

@@ -10,6 +10,8 @@
  * slash-less form — canonicals, hreflang and sitemap must match the final URL.
  */
 
+import { CATALOG } from './catalog/index.js';
+
 export const LOCALES = ['en', 'ar'];
 export const DEFAULT_LOCALE = 'en';
 export const SITE_URL = 'https://egc-me.com';
@@ -23,10 +25,11 @@ export const ROUTES = [
   { key: 'doors',         segment: 'healthcare-contractor/medical-doors',              parent: 'hub' },
   { key: 'mep',           segment: 'healthcare-contractor/healthcare-mep',             parent: 'hub' },
   { key: 'surfaces',      segment: 'healthcare-contractor/infection-control-surfaces', parent: 'hub' },
+  { key: 'services',      segment: 'services' },
   { key: 'manufacturing', segment: 'manufacturing' },
   { key: 'software',      segment: 'software-engineering' },
-  { key: 'systems',       segment: 'healthcare-systems' },
   { key: 'projects',      segment: 'projects' },
+  ...CATALOG.map((c) => ({ key: c.key, segment: c.segment, parent: c.parent, catalog: true })),
   { key: 'careers',       segment: 'careers' },
   { key: 'suppliers',     segment: 'suppliers' },
   { key: 'contact',       segment: 'contact' },
@@ -71,11 +74,16 @@ export function legacyRedirects() {
   }
   list.push({ from: '/divisions/', to: routePath('en', 'healthcare-contractor') });
   list.push({ from: '/our-work/', to: routePath('en', 'healthcare-contractor') });
+  // the old placeholder Systems page; nurse call installation is the part EGC confirmed
+  list.push({ from: '/healthcare-systems/', to: routePath('en', 'healthcare-contractor/nurse-call-installation') });
+  list.push({ from: '/en/healthcare-systems/', to: routePath('en', 'healthcare-contractor/nurse-call-installation') });
+  list.push({ from: '/ar/healthcare-systems/', to: routePath('ar', 'healthcare-contractor/nurse-call-installation') });
   list.push({ from: '/ar/divisions/', to: routePath('ar', 'healthcare-contractor') });
   list.push({ from: '/ar/our-work/', to: routePath('ar', 'healthcare-contractor') });
   list.push({ from: '/en/', to: routePath('en', '') });
   for (const r of ROUTES) {
-    if (r.segment) list.push({ from: `/en/${r.segment}/`, to: routePath('en', r.segment) });
+    // only pages that existed under the old /en/ prefix; newer pages never had one
+    if (r.segment && !r.catalog && r.key !== 'services') list.push({ from: `/en/${r.segment}/`, to: routePath('en', r.segment) });
   }
   return list;
 }
