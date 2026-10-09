@@ -4,8 +4,8 @@
  * everything else is locale-keyed. */
 
 export const CR_DATA = {
-  en: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة المجموعة الهندسية', legalType: 'Limited Liability Company (LLC)', issuingCity: 'Jeddah', region: 'Makkah', status: 'Active' },
-  ar: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة المجموعة الهندسية', legalType: 'شركة ذات مسؤولية محدودة', issuingCity: 'جدة', region: 'منطقة مكة المكرمة', status: 'سارية' },
+  en: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة التجمع الهندسي', legalType: 'Limited Liability Company (LLC)', issuingCity: 'Jeddah', region: 'Makkah', status: 'Active' },
+  ar: { number: '7040750007', entity: 'Engineering Grouping Co.', entityAr: 'شركة التجمع الهندسي', legalType: 'شركة ذات مسؤولية محدودة', issuingCity: 'جدة', region: 'منطقة مكة المكرمة', status: 'سارية' },
 };
 
 export const VAT_NUMBER = '314367391500003';
@@ -71,7 +71,7 @@ const DOCS_TEXT = {
     muqeem: { title: 'شهادة الامتثال (مقيم)', titleAr: 'Muqeem / Iqama Compliance', desc: 'تأكيد الامتثال لتوثيق إقامة الموظفين الوافدين.', authority: 'وزارة الداخلية' },
     'vat-return': { title: 'إقرار ضريبة القيمة المضافة', titleAr: 'Latest VAT Return Acknowledgement', desc: 'أحدث إقرار لإيداع ضريبة القيمة المضافة يؤكد الامتثال الضريبي.', authority: 'هيئة الزكاة والضريبة والجمارك' },
     'bank-letter': { title: 'خطاب المصرف', titleAr: 'Bank Comfort / Reference Letter', desc: 'خطاب مرجعي رسمي من المصرف يؤكد وضع حساب EGC وعلاقتها المالية.', authority: 'الشريك المصرفي لـ EGC' },
-    'hse-policy': { title: 'سياسة الصحة والسلامة والبيئة', titleAr: 'HSE Policy Statement', desc: 'بيان سياسة الصحة والسلامة والبيئة موقّع من إدارة الشركة.', authority: 'شركة المجموعة الهندسية' },
+    'hse-policy': { title: 'سياسة الصحة والسلامة والبيئة', titleAr: 'HSE Policy Statement', desc: 'بيان سياسة الصحة والسلامة والبيئة موقّع من إدارة الشركة.', authority: 'شركة التجمع الهندسي' },
   },
 };
 
@@ -140,7 +140,7 @@ export const LP_COPY = {
   ar: {
     pageOverline: 'إفصاحات الشركة',
     pageTitle: 'الملف القانوني والتجاري',
-    pageSubtitle: 'السجل التجاري الرسمي، والعنوان الوطني، وشهادة هيئة الزكاة والضريبة والجمارك، وسجلات الاعتماد لشركة المجموعة الهندسية — محفوظة للشفافية العامة والامتثال القانوني داخل المملكة العربية السعودية.',
+    pageSubtitle: 'السجل التجاري الرسمي، والعنوان الوطني، وشهادة هيئة الزكاة والضريبة والجمارك، وسجلات الاعتماد لشركة التجمع الهندسي — محفوظة للشفافية العامة والامتثال القانوني داخل المملكة العربية السعودية.',
     idCrLabel: 'رقم السجل التجاري',
     idVatLabel: 'الرقم الضريبي',
     idAddressLabel: 'العنوان الوطني',

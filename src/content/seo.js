@@ -177,7 +177,7 @@ export const SEO_CONTENT = {
   },
   privacyPolicy: {
     en: { name: 'Privacy Policy', title: 'Privacy Policy | EGC', description: 'How Engineering Grouping Co. collects, uses and protects personal data.' },
-    ar: { name: 'سياسة الخصوصية', title: 'سياسة الخصوصية | EGC', description: 'كيفية جمع شركة المجموعة الهندسية للبيانات الشخصية واستخدامها وحمايتها.' },
+    ar: { name: 'سياسة الخصوصية', title: 'سياسة الخصوصية | EGC', description: 'كيفية جمع شركة التجمع الهندسي للبيانات الشخصية واستخدامها وحمايتها عند استخدام هذا الموقع.' },
   },
   terms: {
     en: { name: 'Terms & Conditions', title: 'Terms & Conditions | EGC', description: 'Terms and conditions that apply when you use the Engineering Grouping Co. (EGC) website and its services.' },

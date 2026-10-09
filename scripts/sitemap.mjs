@@ -90,7 +90,7 @@ function llms() {
 
   return `# Engineering Grouping Co. (EGC)
 
-> Engineering Grouping Co. (EGC), also known as Engineering Group and, in Arabic, التجمع الهندسي (legal name: شركة المجموعة الهندسية), is a healthcare contractor headquartered in Jeddah, Saudi Arabia. It prepares MRI, CT, PET-CT and X-ray rooms for hospitals: radiation and magnetic shielding, lead-lined and RF-shielded medical doors, specialised MEP and infection-control surfaces. It also runs a Wood & Corian factory in Jeddah and a software engineering team (HIS, RIS, PIMS, ERP, websites). Its healthcare contracting also covers medical gas, HVAC, fire protection, nurse call installation, hospital fit-outs, operating-room ceilings, wall panels and hermetic doors.
+> Engineering Grouping Co. (EGC), also known as Engineering Group and, in Arabic, التجمع الهندسي (legal name: شركة التجمع الهندسي), is a healthcare contractor headquartered in Jeddah, Saudi Arabia. It prepares MRI, CT, PET-CT and X-ray rooms for hospitals: radiation and magnetic shielding, lead-lined and RF-shielded medical doors, specialised MEP and infection-control surfaces. It also runs a Wood & Corian factory in Jeddah and a software engineering team (HIS, RIS, PIMS, ERP, websites). Its healthcare contracting also covers medical gas, HVAC, fire protection, nurse call installation, hospital fit-outs, operating-room ceilings, wall panels and hermetic doors.
 
 ## Key facts
 ${FACTS.en()}
