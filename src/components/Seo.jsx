@@ -64,9 +64,10 @@ function organization(locale) {
     identifier: { '@type': 'PropertyValue', propertyID: 'Commercial Registration', value: site.cr },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: SITE.en.district,
+      streetAddress: `${site.buildingNumber} ${SITE.en.street}, ${SITE.en.district}`,
       addressLocality: 'Jeddah',
       addressRegion: 'Makkah Region',
+      postalCode: site.postalCode,
       addressCountry: 'SA',
     },
     areaServed: COUNTRY,

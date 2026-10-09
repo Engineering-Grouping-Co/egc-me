@@ -76,7 +76,18 @@ export default function LegalProfile() {
           <p className="small">{t.crVerify} <a className="tlink" href="https://mc.gov.sa" target="_blank" rel="noreferrer">mc.gov.sa</a> {t.crVerifySuffix}</p>
 
           <h2>{t.naTitle}</h2>
-          <Facts rows={[[t.naCodeLabel, na.code], [t.naRows[0], na.district], [t.naRows[1], na.city], [t.naRows[2], na.country]]} />
+          <Facts
+            rows={[
+              [t.naCodeLabel, na.code],
+              [t.naRows[0], na.building],
+              [t.naRows[1], na.street],
+              [t.naRows[2], na.additional],
+              [t.naRows[3], na.district],
+              [t.naRows[4], na.postal],
+              [t.naRows[5], na.city],
+              [t.naRows[6], na.country],
+            ]}
+          />
           <p className="small">{t.naVerify} <a className="tlink" href="https://splonline.com.sa" target="_blank" rel="noreferrer">splonline.com.sa</a>.</p>
 
           <h2>{t.zatcaTitle}</h2>

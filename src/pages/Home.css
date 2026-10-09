@@ -1,5 +1,5 @@
 /* OEM strip under the hero */
-.partners-band { padding-block: 22px; border-block-end: 1px solid var(--line); background: var(--white); }
+.partners-band { padding-block: 26px; border-block-end: 1px solid var(--line); background: var(--white); }
 
 /* everything we do */
 .wwd { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: clamp(24px, 2.4vw, 36px); }

@@ -154,13 +154,13 @@ export const SEO_CONTENT = {
   contact: {
     en: {
       name: 'Contact',
-      title: 'Contact EGC | Healthcare Contractor, Almanar District, Jeddah',
-      description: 'Contact Engineering Grouping Co. about an imaging-room, manufacturing or software project. Head office in Almanar District, Jeddah. Phone +966 50 434 1861.',
+      title: 'Contact EGC | Healthcare Contractor, Ad Dahiah District, Jeddah',
+      description: 'Contact Engineering Grouping Co. about an imaging-room, manufacturing or software project. Head office in Ad Dahiah District, Jeddah. Phone +966 50 434 1861.',
     },
     ar: {
       name: 'تواصل معنا',
-      title: 'تواصل مع التجمع الهندسي (EGC) | مقاول مشاريع صحية، حي المنار، جدة',
-      description: 'تواصل مع شركة التجمع الهندسي بخصوص مشروع غرف تصوير أو تصنيع أو برمجيات. المقر الرئيسي في حي المنار بجدة. هاتف ‎+966 50 434 1861‎.',
+      title: 'تواصل مع التجمع الهندسي (EGC) | مقاول مشاريع صحية، حي الضاحية، جدة',
+      description: 'تواصل مع شركة التجمع الهندسي بخصوص مشروع غرف تصوير أو تصنيع أو برمجيات. المقر الرئيسي في حي الضاحية بجدة. هاتف ‎+966 50 434 1861‎.',
     },
   },
   legalProfile: {

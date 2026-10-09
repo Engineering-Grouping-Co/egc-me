@@ -1,14 +1,10 @@
-Drop client-supplied OEM partner logo files here:
+Equipment-manufacturer logos shown in the "Working alongside the installation teams of" strip
+(Home, Healthcare contractor hub, About).
 
   siemens-healthineers.svg
   philips-healthcare.svg
   ge-healthcare.svg
 
-Then point each entry in src/content/partners.js at its file, e.g.
-
-  { id: 'siemens-healthineers', name: 'Siemens Healthineers', logo: '/images/partners/siemens-healthineers.svg' }
-
-While `logo` is null the PartnerStrip (src/components/Parts.jsx) shows the manufacturer's
-name as text, so this folder can stay empty until the files are supplied and cleared for use.
-Use a single-colour or greyscale version and a transparent background; the strip renders
-logos at 28px high.
+Each file is registered in src/content/partners.js with its width/height ratio and display height.
+To add another manufacturer, drop its SVG here and add one row to that file. The marks are the
+manufacturers' trademarks; replace these files with the official brand-kit versions if you hold them.

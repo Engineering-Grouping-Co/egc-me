@@ -76,7 +76,7 @@ export const HOME = {
     },
     reach: {
       title: 'Delivering across the Kingdom',
-      lead: 'Headquartered in Almanar District, Jeddah, with projects in the Western, Central, Eastern and Southern regions.',
+      lead: 'Headquartered in Ad Dahiah District, Jeddah, with projects in the Western, Central, Eastern and Southern regions.',
       cta: 'View the project map',
     },
     cta: {
@@ -145,7 +145,7 @@ export const HOME = {
     },
     reach: {
       title: 'نعمل في أنحاء المملكة',
-      lead: 'مقرنا الرئيسي في حي المنار بجدة، ولدينا مشاريع في المنطقة الغربية والوسطى والشرقية والجنوبية.',
+      lead: 'مقرنا الرئيسي في حي الضاحية بجدة، ولدينا مشاريع في المنطقة الغربية والوسطى والشرقية والجنوبية.',
       cta: 'اعرض خريطة المشاريع',
     },
     cta: {

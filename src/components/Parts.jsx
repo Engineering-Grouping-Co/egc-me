@@ -217,7 +217,17 @@ export function DisciplineRows({ items, active, onActive, compact = false }) {
 
 function PartnerName({ p }) {
   if (!p.logo) return <span className="partners__name">{p.name}</span>;
-  return <img className="partners__logo" src={p.logo} alt={p.name} height="28" loading="lazy" />;
+  return (
+    <img
+      className="partners__logo"
+      src={p.logo}
+      alt={p.name}
+      width={Math.round(p.h * p.ratio)}
+      height={p.h}
+      loading="lazy"
+      decoding="async"
+    />
+  );
 }
 
 export function PartnerStrip({ label, dark = false }) {

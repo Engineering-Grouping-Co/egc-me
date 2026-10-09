@@ -11,8 +11,8 @@ export const CR_DATA = {
 export const VAT_NUMBER = '314367391500003';
 
 export const NATIONAL_ADDRESS = {
-  en: { code: 'JDJA8188', district: 'Almanar District', city: 'Jeddah', country: 'Kingdom of Saudi Arabia' },
-  ar: { code: 'JDJA8188', district: 'حي المنار', city: 'جدة', country: 'المملكة العربية السعودية' },
+  en: { code: 'JMDA2171', building: '2171', street: 'Al Ahmedeh', additional: '7373', district: 'Ad Dahiah District', postal: '22529', city: 'Jeddah', country: 'Kingdom of Saudi Arabia' },
+  ar: { code: 'JMDA2171', building: '2171', street: 'الاحامده', additional: '7373', district: 'حي الضاحية', postal: '22529', city: 'جدة', country: 'المملكة العربية السعودية' },
 };
 
 export const CONTACTS = {
@@ -47,7 +47,7 @@ const DOCS_BASE = {
 const DOCS_TEXT = {
   en: {
     cr: { title: 'Commercial Registration', titleAr: 'السجل التجاري', desc: 'Official CR issued by the Ministry of Commerce. CR No. 7040750007.', authority: 'Ministry of Commerce (MC)' },
-    'national-address': { title: 'National Address Certificate', titleAr: 'شهادة العنوان الوطني', desc: 'Registered national address JDJA8188, Almanar District, Jeddah.', authority: 'Saudi Post (SPL)' },
+    'national-address': { title: 'National Address Certificate', titleAr: 'شهادة العنوان الوطني', desc: 'Registered national address JMDA2171, Ad Dahiah District, Jeddah.', authority: 'Saudi Post (SPL)' },
     zatca: { title: 'ZATCA VAT Certificate', titleAr: 'شهادة تسجيل ضريبة القيمة المضافة', desc: `VAT registration certificate. VAT No. ${VAT_NUMBER}.`, authority: 'ZATCA' },
     membership: { title: 'Membership Certificate', titleAr: 'شهادة العضوية', desc: "Chamber of Commerce membership certificate confirming EGC's active registration.", authority: 'Chamber of Commerce — Jeddah' },
     'iso-9001': { title: 'ISO 9001 — Quality Management', titleAr: 'شهادة الجودة ISO 9001', desc: 'ISO 9001 quality management system certificate covering all fabrication, site, and software delivery operations.', authority: 'Certification Body' },
@@ -61,7 +61,7 @@ const DOCS_TEXT = {
   },
   ar: {
     cr: { title: 'السجل التجاري', titleAr: 'Commercial Registration', desc: 'السجل التجاري الرسمي الصادر عن وزارة التجارة. رقم السجل 7040750007.', authority: 'وزارة التجارة' },
-    'national-address': { title: 'شهادة العنوان الوطني', titleAr: 'National Address Certificate', desc: 'العنوان الوطني المسجل JDJA8188، حي المنار، جدة.', authority: 'البريد السعودي (سبل)' },
+    'national-address': { title: 'شهادة العنوان الوطني', titleAr: 'National Address Certificate', desc: 'العنوان الوطني المسجل JMDA2171، حي الضاحية، جدة.', authority: 'البريد السعودي (سبل)' },
     zatca: { title: 'شهادة تسجيل ضريبة القيمة المضافة', titleAr: 'ZATCA VAT Certificate', desc: `شهادة تسجيل ضريبة القيمة المضافة. الرقم الضريبي ${VAT_NUMBER}.`, authority: 'هيئة الزكاة والضريبة والجمارك' },
     membership: { title: 'شهادة العضوية', titleAr: 'Membership Certificate', desc: 'شهادة عضوية الغرفة التجارية تؤكد التسجيل الفعّال لشركة EGC.', authority: 'الغرفة التجارية — جدة' },
     'iso-9001': { title: 'شهادة الجودة ISO 9001', titleAr: 'ISO 9001 — Quality Management', desc: 'شهادة نظام إدارة الجودة ISO 9001 تغطي جميع عمليات التصنيع والموقع وتسليم البرمجيات.', authority: 'جهة اعتماد' },
@@ -113,7 +113,7 @@ export const LP_COPY = {
     naBadge: 'SPL',
     naCodeLabel: 'Short Address',
     naCodeSub: 'Registered with Saudi Post (Wasel)',
-    naRows: ['District', 'City', 'Country'],
+    naRows: ['Building number', 'Street', 'Additional number', 'District', 'Postal code', 'City', 'Country'],
     naVerify: 'Verify at',
     zatcaTitle: 'Tax Registration — ZATCA',
     zatcaBadge: 'VAT',
@@ -165,7 +165,7 @@ export const LP_COPY = {
     naBadge: 'سبل',
     naCodeLabel: 'العنوان المختصر',
     naCodeSub: 'مسجل لدى البريد السعودي (واصل)',
-    naRows: ['الحي', 'المدينة', 'الدولة'],
+    naRows: ['رقم المبنى', 'الشارع', 'الرقم الفرعي', 'الحي', 'الرمز البريدي', 'المدينة', 'الدولة'],
     naVerify: 'تحقق عبر',
     zatcaTitle: 'التسجيل الضريبي — هيئة الزكاة والضريبة والجمارك',
     zatcaBadge: 'ضريبة القيمة المضافة',
