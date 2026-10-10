@@ -6,6 +6,8 @@ import { byKey } from '../content/catalog';
 import { findRoute } from '../content/routes';
 import { getSeo } from '../content/seo';
 import Img from '../components/Img';
+import { PhotoStrip } from '../components/Photos';
+import { PAGE_PHOTOS } from '../content/photos';
 import { CtaBand, DataTable, DisciplineRows, FlowSheet, PageHero, Rich, SectionHead, Steps } from '../components/Parts';
 import { useServiceItems } from '../components/useServiceItems';
 import './pages.css';
@@ -22,9 +24,10 @@ export default function DetailPage({ id }) {
   const related = useServiceItems(c.related);
   const phone = `tel:${SITE.phone.replace(/\s/g, '')}`;
 
-  const aside = c.image ? (
+  const photos = PAGE_PHOTOS[id];
+  const aside = photos?.lead ? (
     <div className="frame">
-      <Img name={c.image} alt={t.imageAlt} eager sizes="(min-width: 900px) 42vw, 100vw" position={c.imagePosition} />
+      <Img name={photos.lead} eager sizes="(min-width: 900px) 42vw, 100vw" />
     </div>
   ) : t.flow ? (
     <FlowSheet title={t.flow.title} steps={t.flow.steps} />
@@ -77,6 +80,15 @@ export default function DetailPage({ id }) {
           </ul>
         </div>
       </section>
+
+      {photos?.strip && (
+        <section className={next()}>
+          <div className="wrap">
+            <SectionHead title={UI.onSite} />
+            <PhotoStrip keys={photos.strip} />
+          </div>
+        </section>
+      )}
 
       {t.table && (
         <section className={next()}>

@@ -6,6 +6,7 @@ import HeroSlides from '../components/HeroSlides';
 import SuiteDrawing from '../components/SuiteDrawing';
 import KsaMap from '../components/KsaMap';
 import Img from '../components/Img';
+import { PhotoMosaic } from '../components/Photos';
 import { findRoute } from '../content/routes';
 import { getSeo } from '../content/seo';
 import { GROUPS } from '../content/catalog';
@@ -13,11 +14,12 @@ import { CtaBand, DisciplineRows, PartnerStrip, SectionHead, Steps } from '../co
 import './Home.css';
 
 const DISCIPLINES = ['shielding', 'doors', 'mep', 'surfaces'];
+const MOSAIC = ['reception-lobby-windows', 'lead-lined-room', 'carved-door-entrance', 'rooftop-ducts', 'vanity-dark-trough'];
 
 export default function Home() {
   const locale = useLocale();
   const lp = useLocalePath();
-  const { HOME, SERVICES, PROCESS, PROJECTS, KSA_PATH, SITE, SERVICES_INDEX: SI } = useContent();
+  const { HOME, SERVICES, PROCESS, PROJECTS, KSA_PATH, SITE, UI, SERVICES_INDEX: SI } = useContent();
   const [active, setActive] = useState('shielding');
 
   const pins = Object.values(
@@ -102,7 +104,7 @@ export default function Home() {
           <div className="sectors">
             <article className="sector sector--lead">
               <div className="frame">
-                <Img name="corian-surfaces" alt={HOME.sectors.items.manufacturing.title} sizes="(min-width: 1024px) 58vw, 100vw" />
+                <Img name="reception-counter-veined" sizes="(min-width: 1024px) 58vw, 100vw" />
               </div>
               <h3>{HOME.sectors.items.manufacturing.title}</h3>
               <p>{HOME.sectors.items.manufacturing.text}</p>
@@ -121,6 +123,17 @@ export default function Home() {
               </article>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── photographs from site ── */}
+      <section className="sec">
+        <div className="wrap">
+          <SectionHead title={UI.onSite} />
+          <PhotoMosaic keys={MOSAIC} />
+          <p className="home-more">
+            <Link className="tlink" to={`${lp('projects')}#gallery`}>{UI.morePhotos}</Link>
+          </p>
         </div>
       </section>
 

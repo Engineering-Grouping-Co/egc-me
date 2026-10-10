@@ -57,6 +57,10 @@
 .hs__pause:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; }
 .hs__pause:focus-visible { outline-color: #fff; }
 
+/* six tabs: two rows of three once they no longer fit in one */
+@media (max-width: 1180px) {
+  .hs__tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 18px; }
+}
 @media (max-width: 900px) {
   .hs { min-height: calc(100svh - var(--hdr-h)); }
   .hs__tab-text { display: none; }

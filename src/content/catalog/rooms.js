@@ -13,8 +13,6 @@ export const ROOMS = [
     parent: 'hub',
     group: 'specialist',
     icon: 'magnet',
-    image: 'hero-bg',
-    imagePosition: 'center 45%',
     related: ['shielding', 'doors', 'mep', 'ctRoom', 'hospitalFitOut'],
     en: {
       name: 'MRI Room Construction',
@@ -23,7 +21,6 @@ export const ROOMS = [
       short: 'RF shield, RF door and window, waveguides and quench pipe, ready for the scanner.',
       h1: 'MRI room construction and shielding contractor in Saudi Arabia',
       lead: 'We build MRI suites from the manufacturer’s site-planning guide: the RF shield, magnetic shielding where it is specified, the RF door and window, the services that cross the shield and the finishes, ready for the scanner installation team.',
-      imageAlt: 'EGC crew installing shielding panels in an MRI suite',
       answerTitle: 'What goes into an MRI room',
       answer: [
         'An MRI room is a controlled environment built around the scanner’s demands. The scan room is enclosed in a continuous radio-frequency shield, usually copper, aluminium or galvanised steel, so outside signals cannot create artefacts in the image. Where the manufacturer specifies it, steel plate contains the magnet’s fringe field so it does not reach areas that are sensitive to it. An RF-shielded door and window let staff work and watch the patient without breaking the shield, and every pipe, duct and cable that crosses it passes through a waveguide, honeycomb vent or filter. A quench pipe carries helium gas safely outside if the magnet quenches. EGC builds all of this from the manufacturer’s site-planning guide for the exact scanner model, coordinates with its installation team and supports the RF attenuation test before the room is released.',
@@ -66,7 +63,6 @@ export const ROOMS = [
       short: 'درع الترددات الراديوية والباب والنافذة والموجّهات وأنبوب الإخماد، جاهزة لتركيب الجهاز.',
       h1: 'مقاول إنشاء وتدريع غرف الرنين المغناطيسي في السعودية',
       lead: 'نبني غرف الرنين المغناطيسي وفق دليل تخطيط الموقع الصادر عن الشركة المصنِّعة: درع الترددات الراديوية، والتدريع المغناطيسي حيث يُشترط، والباب والنافذة المدرّعان، والخدمات التي تخترق الدرع، والتشطيبات، جاهزة لفريق تركيب الجهاز.',
-      imageAlt: 'فريق EGC أثناء تركيب ألواح التدريع في غرفة رنين مغناطيسي',
       answerTitle: 'ما الذي تتكون منه غرفة الرنين المغناطيسي',
       answer: [
         'غرفة الرنين المغناطيسي بيئة محكومة تُبنى حول متطلبات الجهاز. تُحاط غرفة الفحص بدرع متصل ضد الترددات الراديوية، عادةً من النحاس أو الألومنيوم أو الصلب المجلفن، حتى لا تُحدث الإشارات الخارجية تشويشًا في الصورة. وحيث تشترط الشركة المصنِّعة، تحتوي ألواح الصلب المجال المغناطيسي المتسرب حول المغناطيس فلا يصل إلى المناطق الحساسة له. ويتيح الباب والنافذة المدرّعان للطاقم العمل ومراقبة المريض دون كسر الدرع، ويمر كل أنبوب ومجرى وكابل يخترقه عبر موجّه موجي أو فتحة تهوية خلوية أو مرشح. وينقل أنبوب الإخماد غاز الهيليوم بأمان إلى الخارج إذا حدث إخماد للمغناطيس. وتبني EGC ذلك كله وفق دليل تخطيط الموقع للطراز المحدد من الجهاز، وتنسّق مع فريق التركيب لدى الشركة المصنِّعة، وتدعم اختبار توهين الترددات الراديوية قبل تسليم الغرفة.',
@@ -110,8 +106,6 @@ export const ROOMS = [
     parent: 'hub',
     group: 'specialist',
     icon: 'scan',
-    image: 'healthcare-xray',
-    imagePosition: 'center 40%',
     related: ['shielding', 'doors', 'petCtRoom', 'xrayRoom', 'mep'],
     en: {
       name: 'CT Room Construction',
@@ -120,7 +114,6 @@ export const ROOMS = [
       short: 'Lead lining, lead-glass window, shielded door and warning light, to the physicist’s report.',
       h1: 'CT room construction and lead lining contractor in Saudi Arabia',
       lead: 'We build CT scan rooms and their control rooms to the radiation protection physicist’s shielding report and the manufacturer’s site-planning guide, then support the radiation survey before the room goes into use.',
-      imageAlt: 'Lead-lined imaging room with shielded door and warning sign',
       answerTitle: 'What goes into a CT room',
       answer: [
         'A CT room has to contain ionising radiation. The scanner produces X-rays in a rotating gantry, and the walls, floor, ceiling, door and viewing window around it are lined with lead, or an equivalent material, to the thickness a radiation protection physicist calculates in the shielding report. The control room sits behind a lead-lined wall with a lead-glass window, so staff can see the patient without being exposed. A warning light outside the door shows when the scanner is in use, and the door is interlocked where the design calls for it. EGC builds CT rooms from that report and the manufacturer’s site-planning guide: we detail the lead lining at every junction, box and penetration so there is no gap in the shield, install it with our own crews and support the radiation survey before handover.',
@@ -164,7 +157,6 @@ export const ROOMS = [
       short: 'تبطين بالرصاص ونافذة زجاج رصاص وباب مدرّع وضوء تحذير وفق تقرير الفيزيائي.',
       h1: 'مقاول إنشاء وتبطين غرف الأشعة المقطعية بالرصاص في السعودية',
       lead: 'نبني غرف فحص الأشعة المقطعية وغرف التحكم وفق تقرير التدريع الصادر عن الفيزيائي المختص بالوقاية الإشعاعية ودليل تخطيط الموقع الصادر عن الشركة المصنِّعة، وندعم المسح الإشعاعي قبل تشغيل الغرفة.',
-      imageAlt: 'غرفة تصوير مبطنة بالرصاص مع باب مدرّع ولوحة تحذير',
       answerTitle: 'ما الذي تتكون منه غرفة الأشعة المقطعية',
       answer: [
         'يجب أن تحتوي غرفة الأشعة المقطعية الإشعاع المؤيِّن. فالجهاز يولّد الأشعة السينية في حلقة دوّارة، وتُبطَّن الجدران والأرضية والسقف والباب ونافذة المراقبة حوله بالرصاص أو مادة مكافئة بالسماكة التي يحسبها الفيزيائي المختص بالوقاية الإشعاعية في تقرير التدريع. وتقع غرفة التحكم خلف جدار مبطن بالرصاص بنافذة من زجاج الرصاص، فيرى الطاقم المريض دون تعرّض. ويبيّن ضوء تحذير خارج الباب متى يعمل الجهاز، ويُربط الباب بقفل تبادلي حيث يتطلب التصميم ذلك. وتبني EGC غرف الأشعة المقطعية وفق ذلك التقرير ودليل تخطيط الموقع الصادر عن الشركة المصنِّعة: نفصّل التبطين بالرصاص عند كل وصلة وصندوق واختراق حتى لا تبقى فجوة في الدرع، وتركّبه كوادرنا بنفسها، وندعم المسح الإشعاعي قبل التسليم.',
@@ -209,8 +201,6 @@ export const ROOMS = [
     parent: 'hub',
     group: 'specialist',
     icon: 'radiation',
-    image: 'healthcare-xray',
-    imagePosition: 'center 55%',
     related: ['shielding', 'doors', 'ctRoom', 'mep', 'hospitalFitOut'],
     en: {
       name: 'PET-CT Room Construction',
@@ -219,7 +209,6 @@ export const ROOMS = [
       short: '511 keV shielding for the scanner room, uptake rooms, hot lab and control room.',
       h1: 'PET-CT room construction and shielding contractor in Saudi Arabia',
       lead: 'We build PET-CT suites to the radiation protection physicist’s report: the scanner room, the injection and uptake rooms, the hot lab and the control room, shielded for the higher-energy photons of PET tracers.',
-      imageAlt: 'Shielded imaging room with lead-lined door',
       answerTitle: 'What makes a PET-CT room different',
       answer: [
         'PET-CT rooms are shielded for more than a CT scanner. The tracer used in PET emits 511 keV photons, which are more penetrating than diagnostic X-rays, so the lead lining is thicker and the rooms around the scanner, where patients receive the tracer and wait for it to take effect, are shielded as well. A PET-CT suite typically includes a hot lab for preparing radiopharmaceuticals, injection and uptake rooms, the scanner room, a control room and a dedicated patient toilet, laid out so that activity is contained and staff exposure is kept as low as reasonably achievable. The radiation protection physicist sets the shielding for each of these spaces. EGC builds from that report and the manufacturer’s site-planning guide, lining walls, doors, windows and penetrations, coordinating the services and finishes and supporting the radiation survey before the suite goes into use.',
@@ -263,7 +252,6 @@ export const ROOMS = [
       short: 'تدريع لفوتونات 511 كيلو إلكترون فولت لغرفة الجهاز وغرف الامتصاص والمختبر الساخن وغرفة التحكم.',
       h1: 'مقاول إنشاء وتدريع غرف PET-CT في السعودية',
       lead: 'نبني أجنحة PET-CT وفق تقرير الفيزيائي المختص بالوقاية الإشعاعية: غرفة الجهاز وغرف الحقن والامتصاص والمختبر الساخن وغرفة التحكم، مدرّعة للفوتونات الأعلى طاقة في مواد PET.',
-      imageAlt: 'غرفة تصوير مدرّعة بباب مبطن بالرصاص',
       answerTitle: 'ما الذي يميّز غرفة PET-CT',
       answer: [
         'تُدرَّع غرف PET-CT لأكثر مما يتطلبه جهاز الأشعة المقطعية. فالمادة المستخدمة في PET تُصدر فوتونات بطاقة 511 كيلو إلكترون فولت، وهي أنفذ من الأشعة السينية التشخيصية، ولذلك يكون التبطين بالرصاص أسمك، وتُدرَّع كذلك الغرف المحيطة بالجهاز حيث يتلقى المرضى المادة وينتظرون انتشارها. ويضم جناح PET-CT عادةً مختبرًا ساخنًا لتحضير المستحضرات الإشعاعية، وغرف حقن وامتصاص، وغرفة الجهاز، وغرفة تحكم، ودورة مياه مخصصة للمرضى، مرتبة بحيث يُحتوى النشاط الإشعاعي ويبقى تعرّض الطاقم عند أدنى مستوى يمكن تحقيقه. ويحدد الفيزيائي المختص بالوقاية الإشعاعية التدريع لكل من هذه المساحات. وتبني EGC وفق ذلك التقرير ودليل تخطيط الموقع الصادر عن الشركة المصنِّعة، فتبطّن الجدران والأبواب والنوافذ والاختراقات، وتنسّق الخدمات والتشطيبات، وتدعم المسح الإشعاعي قبل تشغيل الجناح.',
@@ -308,8 +296,6 @@ export const ROOMS = [
     parent: 'hub',
     group: 'specialist',
     icon: 'radiation',
-    image: 'healthcare-xray',
-    imagePosition: '85% 50%',
     related: ['shielding', 'doors', 'ctRoom', 'surfaces', 'mep'],
     en: {
       name: 'X-Ray Room Construction',
@@ -318,7 +304,6 @@ export const ROOMS = [
       short: 'Lead lining, shielded door, lead-glass window and warning signs for X-ray and fluoroscopy rooms.',
       h1: 'X-ray and fluoroscopy room construction contractor in Saudi Arabia',
       lead: 'We build general radiography and fluoroscopy rooms to the radiation protection physicist’s report and the equipment manufacturer’s guide, from the lead lining and shielded door to the warning signage and the supports the equipment needs.',
-      imageAlt: 'X-ray room with a lead-lined door and warning light',
       answerTitle: 'What goes into an X-ray room',
       answer: [
         'A general X-ray (radiography) room is the simplest shielded imaging room, but the details still matter. The X-ray tube produces a beam directed at the patient and detector, so the walls, door and viewing window around it are lead-lined to the physicist’s specification, and the operator works from a protected control area or behind a lead screen. Fluoroscopy rooms, used for live imaging during procedures, need the same protection and often more of it. The door is lead-lined, and an illuminated warning sign outside shows when X-rays are on. EGC builds X-ray and fluoroscopy rooms from the shielding report and the equipment manufacturer’s guide, with the lead lining, lead-glass window, door, warning signage and the provisions for the equipment’s ceiling and wall supports, and supports the radiation survey before the room is used.',
@@ -352,7 +337,6 @@ export const ROOMS = [
       short: 'تبطين بالرصاص وباب مدرّع ونافذة زجاج رصاص ولوحات تحذير لغرف الأشعة السينية والتنظير الفلوري.',
       h1: 'مقاول إنشاء غرف الأشعة السينية والتنظير الفلوري في السعودية',
       lead: 'نبني غرف التصوير الشعاعي العام والتنظير الفلوري وفق تقرير الفيزيائي المختص بالوقاية الإشعاعية ودليل الشركة المصنِّعة للجهاز، من التبطين بالرصاص والباب المدرّع إلى لوحات التحذير وما يحتاجه الجهاز من دعامات.',
-      imageAlt: 'غرفة أشعة سينية بباب مبطن بالرصاص وضوء تحذير',
       answerTitle: 'ما الذي تتكون منه غرفة الأشعة السينية',
       answer: [
         'غرفة الأشعة السينية العامة (التصوير الشعاعي) هي أبسط غرف التصوير المدرّعة، لكن التفاصيل فيها مهمة. فأنبوب الأشعة يُصدر حزمة موجّهة نحو المريض وكاشف الصورة، ولذلك تُبطَّن الجدران والباب ونافذة المراقبة حوله بالرصاص وفق مواصفات الفيزيائي، ويعمل المشغّل من منطقة تحكم محمية أو خلف حاجز رصاصي. وتحتاج غرف التنظير الفلوري، المستخدمة للتصوير الحي أثناء الإجراءات، إلى الحماية نفسها وغالبًا إلى أكثر منها. ويكون الباب مبطنًا بالرصاص، وتبيّن لوحة تحذير مضاءة خارج الغرفة متى تعمل الأشعة. وتبني EGC غرف الأشعة السينية والتنظير الفلوري وفق تقرير التدريع ودليل الشركة المصنِّعة، بالتبطين بالرصاص ونافذة زجاج الرصاص والباب ولوحات التحذير وتجهيزات دعامات السقف والجدار للجهاز، وتدعم المسح الإشعاعي قبل استخدام الغرفة.',

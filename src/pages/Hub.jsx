@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
+import { PhotoStrip } from '../components/Photos';
+import { PAGE_PHOTOS } from '../content/photos';
 import { findRoute } from '../content/routes';
 import { ChildServices, CtaBand, DisciplineRows, PageHero, PartnerStrip, Rich, SectionHead, Steps } from '../components/Parts';
 
@@ -27,7 +29,7 @@ export default function Hub() {
         }
         aside={
           <div className="frame">
-            <Img name="healthcare-xray" alt={HUB.h1} eager sizes="(min-width: 900px) 42vw, 100vw" />
+            <Img name={PAGE_PHOTOS.hub.lead} eager sizes="(min-width: 900px) 42vw, 100vw" />
           </div>
         }
       />
@@ -53,6 +55,10 @@ export default function Hub() {
               </article>
             ))}
           </div>
+        </div>
+        <div className="wrap pstrip-after">
+          <SectionHead title={UI.onSite} />
+          <PhotoStrip keys={PAGE_PHOTOS.hub.strip} />
         </div>
       </section>
 

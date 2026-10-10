@@ -11,8 +11,6 @@ export const INTERIORS = [
     parent: 'hub',
     group: 'interiors',
     icon: 'hospital',
-    image: 'corian-surfaces',
-    imagePosition: 'center 55%',
     related: ['orCeilings', 'wallPanels', 'hermeticDoors', 'medicalGas', 'woodenDoors'],
     en: {
       name: 'Hospital Fit-Out',
@@ -21,7 +19,6 @@ export const INTERIORS = [
       short: 'Partitions, ceilings, doors, finishes, services and specialist rooms under one contract.',
       h1: 'Hospital fit-out contractor in Saudi Arabia',
       lead: 'Fit-out of hospital departments, clinics and medical centres: partitions and ceilings, doors, finishes and joinery, the building services and the specialist rooms inside them, coordinated under one contract.',
-      imageAlt: 'Hospital nurse station and corridor fitted out with seamless surfaces',
       answerTitle: 'What a hospital fit-out involves',
       answer: [
         'A hospital fit-out turns a shell, or an existing department, into a working clinical space. It is more than finishes. The layout is driven by clinical workflow and infection control, partitions and ceilings must be sealed and cleanable, floors and walls must withstand daily cleaning, and the building services, such as medical gas, HVAC, fire protection, power and nurse call, must be installed so the spaces meet clinical requirements. Specialist rooms such as imaging suites and operating rooms add shielding, special doors and tighter environmental control. EGC carries out hospital fit-outs as a healthcare contractor with its own factory for doors, joinery and surfaces: the finishing trades, the building services and the specialist rooms are coordinated under one contract and one programme, which means fewer interfaces between packages and one team accountable for the result. Works inside live hospitals are phased, with dust and infection-control measures.',
@@ -65,7 +62,6 @@ export const INTERIORS = [
       short: 'قواطع وأسقف وأبواب وتشطيبات وخدمات وغرف متخصصة بعقد واحد.',
       h1: 'مقاول تجهيز مستشفيات في السعودية',
       lead: 'تجهيز أقسام المستشفيات والعيادات والمراكز الطبية: قواطع وأسقف وأبواب وتشطيبات ونجارة، وخدمات المبنى والغرف المتخصصة بداخلها، منسّقة بعقد واحد.',
-      imageAlt: 'محطة تمريض وممر في مستشفى مجهّزان بأسطح متصلة',
       answerTitle: 'ما الذي يتضمنه تجهيز المستشفى',
       answer: [
         'يحوّل تجهيز المستشفى الهيكل الخام أو القسم القائم إلى حيز سريري عامل. وهو أكثر من تشطيبات: فالتخطيط تحكمه مسارات العمل السريرية ومكافحة العدوى، ويجب أن تكون القواطع والأسقف محكمة وسهلة التنظيف، وأن تتحمل الأرضيات والجدران التنظيف اليومي، وأن تُركَّب خدمات المبنى، كالغازات الطبية والتكييف والحماية من الحريق والكهرباء ونداء الممرضات، بما يحقق المتطلبات السريرية. وتضيف الغرف المتخصصة، كأجنحة التصوير وغرف العمليات، التدريع والأبواب الخاصة وتحكمًا أدق بالبيئة. وتنفذ EGC تجهيز المستشفيات بصفتها مقاول مشاريع صحية لديه مصنعه الخاص للأبواب والنجارة والأسطح: تُنسَّق أعمال التشطيب وخدمات المبنى والغرف المتخصصة بعقد واحد وبرنامج زمني واحد، فتقل نقاط التماس بين الحزم ويتحمل فريق واحد مسؤولية النتيجة. وتُنفَّذ الأعمال داخل المستشفيات العاملة على مراحل مع إجراءات لعزل الغبار ومكافحة العدوى.',
@@ -110,7 +106,6 @@ export const INTERIORS = [
     parent: 'hub',
     group: 'interiors',
     icon: 'ceiling',
-    image: null,
     related: ['hospitalFitOut', 'wallPanels', 'hermeticDoors', 'hvac'],
     en: {
       name: 'Operating-Room Ceilings',
@@ -212,7 +207,6 @@ export const INTERIORS = [
     parent: 'hub',
     group: 'interiors',
     icon: 'panel',
-    image: null,
     related: ['hospitalFitOut', 'orCeilings', 'surfaces', 'hermeticDoors'],
     en: {
       name: 'Walls & Wall Panels',
@@ -306,7 +300,6 @@ export const INTERIORS = [
     parent: 'hub',
     group: 'interiors',
     icon: 'door',
-    image: null,
     related: ['doors', 'orCeilings', 'wallPanels', 'hospitalFitOut'],
     en: {
       name: 'Hermetic Doors',

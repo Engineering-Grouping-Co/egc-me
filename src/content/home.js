@@ -26,10 +26,12 @@ export const HOME = {
       carousel: { label: 'What EGC does', pause: 'Pause slideshow', play: 'Play slideshow' },
     },
     slides: [
-      { id: 'shielding', title: 'Radiation & magnetic shielding', short: 'Shielding', text: 'Lead-lined CT and PET-CT rooms and RF-shielded MRI suites.', image: 'hero-bg', position: 'center 45%', positionMobile: '70% 45%', alt: 'EGC crew installing shielding panels around an MRI suite' },
-      { id: 'doors', title: 'Medical doors & access', short: 'Doors', text: 'Lead-lined and RF-shielded doors with interlocks and signage.', image: 'healthcare-xray', position: 'center 30%', alt: 'X-ray room with a lead-lined door and warning light' },
-      { id: 'surfaces', title: 'Infection-control surfaces', short: 'Surfaces', text: 'Seamless Corian counters and nurse stations made for clinical cleaning.', image: 'corian-surfaces', position: 'center 62%', alt: 'Seamless Corian nurse station with integrated sink' },
-      { id: 'factory', title: 'Wood & Corian factory', short: 'Factory', text: 'Joinery, doors and solid surfaces made in our own Jeddah workshop.', image: 'joinery-doors', position: 'center 55%', alt: 'Walnut doors and joinery in a hospital corridor' },
+      { id: 'imaging', title: 'MRI, CT, PET-CT and X-ray rooms', short: 'Imaging rooms', text: 'Rooms prepared for the scanners the manufacturers’ teams install.', image: 'ct-suite-desert-gantry', position: 'center 50%', positionMobile: '62% 50%' },
+      { id: 'shielding', title: 'Radiation & magnetic shielding', short: 'Shielding', text: 'Lead-lined CT and PET-CT rooms and RF-shielded MRI suites.', image: 'lead-lined-room-studs', position: 'center 50%', positionMobile: '55% 50%' },
+      { id: 'doors', title: 'Medical doors & access', short: 'Doors', text: 'Lead-lined and RF-shielded doors with interlocks and signage.', image: 'radiation-door-corridor', position: 'center 58%', positionMobile: '58% 50%' },
+      { id: 'fitout', title: 'Hospital fit-out & clinical surfaces', short: 'Fit-out', text: 'Nurse stations, reception counters, ceilings and wall panels, finished for clinical cleaning.', image: 'nurse-station-curved', position: 'center 62%', positionMobile: '40% 50%' },
+      { id: 'factory', title: 'Wood & Corian factory', short: 'Factory', text: 'Joinery, doors and solid surfaces made in our own Jeddah workshop.', image: 'kitchen-walnut-island', position: 'center 55%', positionMobile: '35% 50%' },
+      { id: 'services', title: 'Building services', short: 'Services', text: 'Medical gas, HVAC, fire protection and nurse call installation.', image: 'ceiling-services-sprinklers', position: 'center 40%', positionMobile: '45% 50%' },
     ],
     drawing: {
       title: 'A shielded MRI suite, in plan',
@@ -95,10 +97,12 @@ export const HOME = {
       carousel: { label: 'ما تقوم به EGC', pause: 'إيقاف العرض', play: 'تشغيل العرض' },
     },
     slides: [
-      { id: 'shielding', title: 'التدريع الإشعاعي والمغناطيسي', short: 'التدريع', text: 'غرف أشعة مقطعية وPET-CT مبطنة بالرصاص وغرف رنين مدرّعة ضد الترددات الراديوية.', image: 'hero-bg', position: 'center 45%', positionMobile: '70% 45%', alt: 'فريق EGC أثناء تركيب ألواح التدريع حول غرفة رنين مغناطيسي' },
-      { id: 'doors', title: 'الأبواب الطبية والتحكم بالدخول', short: 'الأبواب', text: 'أبواب مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية مع قفل تبادلي ولوحات تحذير.', image: 'healthcare-xray', position: 'center 30%', alt: 'غرفة أشعة سينية بباب مبطن بالرصاص وإشارة تحذير' },
-      { id: 'surfaces', title: 'الأسطح المقاومة للعدوى', short: 'الأسطح', text: 'منضدات كوريان متصلة ومحطات تمريض مصممة للتنظيف السريري.', image: 'corian-surfaces', position: 'center 62%', alt: 'محطة تمريض من الكوريان المتصل مع حوض مدمج' },
-      { id: 'factory', title: 'مصنع الخشب والكوريان', short: 'المصنع', text: 'نجارة وأبواب وأسطح صلبة تُصنَّع في ورشتنا الخاصة بجدة.', image: 'joinery-doors', position: 'center 55%', alt: 'أبواب من خشب الجوز ونجارة في ممر مستشفى' },
+      { id: 'imaging', title: 'غرف الرنين والأشعة المقطعية وPET-CT والأشعة السينية', short: 'غرف التصوير', text: 'غرف مهيأة للأجهزة التي تركبها فرق الشركات المصنعة.', image: 'ct-suite-desert-gantry', position: 'center 50%', positionMobile: '62% 50%' },
+      { id: 'shielding', title: 'التدريع الإشعاعي والمغناطيسي', short: 'التدريع', text: 'غرف أشعة مقطعية وPET-CT مبطنة بالرصاص وغرف رنين مدرّعة ضد الترددات الراديوية.', image: 'lead-lined-room-studs', position: 'center 50%', positionMobile: '55% 50%' },
+      { id: 'doors', title: 'الأبواب الطبية والتحكم بالدخول', short: 'الأبواب', text: 'أبواب مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية مع قفل تبادلي ولوحات تحذير.', image: 'radiation-door-corridor', position: 'center 58%', positionMobile: '58% 50%' },
+      { id: 'fitout', title: 'تجهيز المستشفيات والأسطح السريرية', short: 'التجهيز', text: 'محطات تمريض ومنضدات استقبال وأسقف وألواح جدارية بتشطيب يناسب التنظيف السريري.', image: 'nurse-station-curved', position: 'center 62%', positionMobile: '40% 50%' },
+      { id: 'factory', title: 'مصنع الخشب والكوريان', short: 'المصنع', text: 'نجارة وأبواب وأسطح صلبة تُصنَّع في ورشتنا الخاصة بجدة.', image: 'kitchen-walnut-island', position: 'center 55%', positionMobile: '35% 50%' },
+      { id: 'services', title: 'خدمات المباني', short: 'الخدمات', text: 'الغازات الطبية والتكييف والحماية من الحريق وتركيب أنظمة نداء الممرضات.', image: 'ceiling-services-sprinklers', position: 'center 40%', positionMobile: '45% 50%' },
     ],
     drawing: {
       title: 'مسقط أفقي لغرفة رنين مغناطيسي مدرّعة',

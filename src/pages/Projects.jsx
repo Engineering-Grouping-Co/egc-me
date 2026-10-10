@@ -3,7 +3,8 @@ import { Cable, DoorOpen, Factory, Layers, Shield, X } from 'lucide-react';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import KsaMap from '../components/KsaMap';
-import { CtaBand, PageHero } from '../components/Parts';
+import { CtaBand, PageHero, SectionHead } from '../components/Parts';
+import { Gallery } from '../components/Photos';
 import './Projects.css';
 
 const SVC_ICON = { shielding: Shield, doors: DoorOpen, mep: Cable, surfaces: Layers, manufacturing: Factory };
@@ -50,7 +51,14 @@ export default function Projects() {
     <>
       <PageHero routeKey="projects" title={t.h1} lead={t.lead} />
 
-      <section className="sec sec--tight">
+      <section className="sec" id="gallery">
+        <div className="wrap">
+          <SectionHead title={t.galleryTitle} lead={t.galleryLead} />
+          <Gallery />
+        </div>
+      </section>
+
+      <section className="sec sec--paper sec--tight">
         <div className="wrap">
           <p className="notice-inline">{t.notice}</p>
 

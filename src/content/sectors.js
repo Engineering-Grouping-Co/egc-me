@@ -100,7 +100,6 @@ export const MANUFACTURING = {
         'Reception counters, casework and built-in furniture',
         'Templating, workshop fabrication and site installation',
       ],
-      imageAlt: 'Seamless Corian nurse station fabricated by EGC',
     },
     work: {
       title: 'Selected work',
@@ -131,7 +130,6 @@ export const MANUFACTURING = {
         'مكاتب استقبال وأثاث مدمج وخزائن',
         'أخذ المقاسات والتصنيع بالورشة والتركيب الميداني',
       ],
-      imageAlt: 'محطة تمريض من الكوريان بوصلات غير مرئية صنعتها EGC',
     },
     work: {
       title: 'من أبرز الأعمال',

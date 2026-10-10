@@ -11,7 +11,6 @@ export const BUILDING = [
     parent: 'mep',
     group: 'building',
     icon: 'gas',
-    image: null,
     related: ['hvac', 'fireProtection', 'nurseCall', 'hospitalFitOut'],
     en: {
       name: 'Medical Gas Systems',
@@ -115,7 +114,6 @@ export const BUILDING = [
     parent: 'mep',
     group: 'building',
     icon: 'hvac',
-    image: null,
     related: ['medicalGas', 'fireProtection', 'orCeilings', 'mriRoom'],
     en: {
       name: 'Healthcare HVAC',
@@ -209,7 +207,6 @@ export const BUILDING = [
     parent: 'mep',
     group: 'building',
     icon: 'fire',
-    image: null,
     related: ['hvac', 'medicalGas', 'hospitalFitOut', 'shielding'],
     en: {
       name: 'Fire Protection',
@@ -303,7 +300,6 @@ export const BUILDING = [
     parent: 'mep',
     group: 'building',
     icon: 'bell',
-    image: null,
     related: ['medicalGas', 'hospitalFitOut', 'hvac', 'wallPanels'],
     en: {
       name: 'Nurse Call Installation',

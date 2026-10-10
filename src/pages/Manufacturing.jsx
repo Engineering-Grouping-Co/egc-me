@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../content';
 import { useLocalePath } from '../i18n/LocaleContext';
 import Img from '../components/Img';
+import { PhotoStrip } from '../components/Photos';
+import { PAGE_PHOTOS } from '../content/photos';
 import { ChildServices, CtaBand, PageHero, Rich } from '../components/Parts';
 import './pages.css';
 
@@ -19,7 +21,7 @@ export default function Manufacturing() {
         actions={<Link className="btn btn--primary btn--lg" to={lp('contact')}>{M.cta.primary}</Link>}
         aside={
           <div className="frame">
-            <Img name="corian-surfaces" alt={M.wood.imageAlt} eager sizes="(min-width: 900px) 42vw, 100vw" />
+            <Img name={PAGE_PHOTOS.manufacturing.lead} eager sizes="(min-width: 900px) 42vw, 100vw" />
           </div>
         }
       />
@@ -40,8 +42,11 @@ export default function Manufacturing() {
             </ul>
           </div>
           <div className="frame mfg-photo">
-            <Img name="joinery-doors" alt={M.wood.title} sizes="(min-width: 900px) 42vw, 100vw" />
+            <Img name={PAGE_PHOTOS.manufacturing.lead2} sizes="(min-width: 900px) 42vw, 100vw" />
           </div>
+        </div>
+        <div className="wrap pstrip-after">
+          <PhotoStrip keys={PAGE_PHOTOS.manufacturing.strip} />
         </div>
       </section>
 

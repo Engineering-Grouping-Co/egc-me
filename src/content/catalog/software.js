@@ -6,7 +6,6 @@ export const SOFTWARE_PAGES = [
     parent: 'software',
     group: 'software',
     icon: 'server',
-    image: null,
     related: ['erp', 'websites', 'mriRoom'],
     en: {
       name: 'Hospital & Radiology Information Systems',
@@ -98,7 +97,6 @@ export const SOFTWARE_PAGES = [
     parent: 'software',
     group: 'software',
     icon: 'database',
-    image: null,
     related: ['hisRis', 'websites'],
     en: {
       name: 'ERP & Management Software',
@@ -192,7 +190,6 @@ export const SOFTWARE_PAGES = [
     parent: 'software',
     group: 'software',
     icon: 'globe',
-    image: null,
     related: ['erp', 'hisRis'],
     en: {
       name: 'Website Development',

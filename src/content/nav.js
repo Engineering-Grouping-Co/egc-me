@@ -18,7 +18,7 @@ export const NAV = {
             ],
           },
         ],
-        feature: { image: 'hero-bg', alt: 'EGC crew installing MRI room shielding', title: 'Built by our own crews', href: 'about' },
+        feature: { image: 'ceiling-panel-fitting', title: 'Built by our own crews', href: 'about' },
       },
     },
     {
@@ -110,7 +110,7 @@ export const NAV = {
             ],
           },
         ],
-        feature: { image: 'hero-bg', alt: 'فريق EGC أثناء تركيب تدريع غرفة رنين مغناطيسي', title: 'تنفذها كوادرنا بنفسها', href: 'about' },
+        feature: { image: 'ceiling-panel-fitting', title: 'تنفذها كوادرنا بنفسها', href: 'about' },
       },
     },
     {

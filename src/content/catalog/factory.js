@@ -9,8 +9,6 @@ export const FACTORY = [
     parent: 'manufacturing',
     group: 'factory',
     icon: 'door',
-    image: 'joinery-doors',
-    imagePosition: '80% 50%',
     related: ['joinery', 'corianSurfaces', 'doors', 'hermeticDoors', 'hospitalFitOut'],
     en: {
       name: 'Wooden Doors',
@@ -19,7 +17,6 @@ export const FACTORY = [
       short: 'Custom wooden doors, frames and door sets, made in our Jeddah factory.',
       h1: 'Wooden doors manufacturer in Jeddah, Saudi Arabia',
       lead: 'Our Wood & Corian factory makes custom wooden doors, frames and panelling for healthcare, hospitality and commercial projects: cut on CNC machinery, finished in the workshop and fitted by our own crews.',
-      imageAlt: 'Walnut doors and joinery in a hospital corridor',
       answerTitle: 'Custom wooden doors, made to the project',
       answer: [
         'A custom wooden door is made to the project, not picked from a catalogue. Dimensions, leaf thickness, core, face veneer or laminate, finish, glazing, ironmongery and frame profile are all set by the architect’s door schedule, and the door is fabricated to suit. Our Jeddah factory cuts the components on CNC machinery, assembles and finishes the leaves and frames in the workshop and fits them on site with the same team, so door, frame and wall are coordinated. For hospitals, the same factory makes the doors for patient rooms, offices, corridors and public areas, matched in finish to the specialist lead-lined and RF-shielded doors our shielding team installs in the imaging rooms. We work from your door schedule and shop drawings, sample the finish for approval and hand over doors that are adjusted and tested.',
@@ -62,7 +59,6 @@ export const FACTORY = [
       short: 'أبواب وإطارات خشبية مصنّعة حسب الطلب في مصنعنا بجدة.',
       h1: 'مصنع أبواب خشبية في جدة، السعودية',
       lead: 'يصنع مصنع الخشب والكوريان لدينا أبوابًا وإطارات وألواحًا خشبية حسب الطلب لمشاريع الرعاية الصحية والضيافة والمباني التجارية: تُقطَّع بماكينات CNC وتُشطَّب في الورشة وتُركَّب بكوادرنا.',
-      imageAlt: 'أبواب من خشب الجوز ونجارة في ممر مستشفى',
       answerTitle: 'أبواب خشبية مصنّعة حسب المشروع',
       answer: [
         'الباب الخشبي المخصص يُصنع للمشروع ولا يُختار من كتالوج. فالأبعاد وسماكة الضلفة والقلب وقشرة الوجه أو الصفائح والتشطيب والزجاج والإكسسوارات ومقطع الإطار كلها تحددها جداول الأبواب لدى المعماري، ويُصنع الباب وفقها. يقطع مصنعنا في جدة المكونات بماكينات CNC، ويجمّع الضلف والإطارات ويشطّبها في الورشة، ثم يركّبها في الموقع بالفريق نفسه، فينسجم الباب والإطار والجدار. وفي المستشفيات يصنع المصنع نفسه أبواب غرف المرضى والمكاتب والممرات والمناطق العامة، متطابقة في التشطيب مع الأبواب المتخصصة المبطنة بالرصاص والمدرّعة ضد الترددات الراديوية التي يركّبها فريق التدريع لدينا في غرف التصوير. نعمل وفق جدول الأبواب والمخططات التنفيذية لديك، ونعرض عينات التشطيب للاعتماد، ونسلّم أبوابًا مضبوطة ومختبَرة.',
@@ -106,8 +102,6 @@ export const FACTORY = [
     parent: 'manufacturing',
     group: 'factory',
     icon: 'layers',
-    image: 'corian-surfaces',
-    imagePosition: 'center 62%',
     related: ['surfaces', 'joinery', 'woodenDoors', 'hospitalFitOut'],
     en: {
       name: 'Corian & Solid Surface',
@@ -116,7 +110,6 @@ export const FACTORY = [
       short: 'Seamless Corian counters, nurse stations, reception desks and vanities.',
       h1: 'Corian and solid-surface fabrication in Jeddah, Saudi Arabia',
       lead: 'Seamless Corian counters, nurse stations, reception desks, vanities and wall cladding, templated on site, fabricated in our own Jeddah factory and installed by our crews.',
-      imageAlt: 'Seamless Corian nurse station with integrated sink',
       answerTitle: 'Why solid surface, and how we make it',
       answer: [
         'Corian is a solid-surface material: the same material runs all the way through, so edges can be profiled, sinks can be formed into the counter and joints can be bonded and sanded flush. That is why it is used wherever surfaces are cleaned constantly, in hospitals, laboratories, kitchens and hotels, as well as where designers want sculpted reception desks and curved counters. In our factory we template the room, cut the sheet on CNC machinery, thermoform curves and edges, bond the seams and finish the surface to the specified sheen. The pieces are then installed on site by the team that made them, with sinks and upstands integrated. Because fabrication is in-house, fit and lead times are under our control, and the same factory supplies the matching joinery and doors.',
@@ -159,7 +152,6 @@ export const FACTORY = [
       short: 'منضدات ومحطات تمريض ومكاتب استقبال وأحواض من الكوريان بلا فواصل.',
       h1: 'تصنيع الكوريان والأسطح الصلبة في جدة، السعودية',
       lead: 'منضدات ومحطات تمريض ومكاتب استقبال وأحواض وكسوات جدارية من الكوريان بلا فواصل، تُؤخذ مقاساتها في الموقع وتُصنَّع في مصنعنا بجدة وتُركَّب بكوادرنا.',
-      imageAlt: 'محطة تمريض من الكوريان المتصل مع حوض مدمج',
       answerTitle: 'لماذا الأسطح الصلبة وكيف نصنعها',
       answer: [
         'الكوريان مادة سطح صلب: المادة نفسها تمتد في كامل سماكتها، فيمكن تشكيل الحواف ودمج الأحواض في المنضدة ولصق الوصلات وصقلها حتى تستوي. ولذلك تُستخدم حيثما تُنظَّف الأسطح باستمرار، في المستشفيات والمختبرات والمطابخ والفنادق، وحيثما يريد المصممون مكاتب استقبال منحوتة ومنضدات منحنية. وفي مصنعنا نأخذ مقاسات الغرفة، ونقص اللوح بماكينات CNC، ونشكّل المنحنيات والحواف حراريًا، ونلصق الوصلات، ونشطّب السطح بدرجة اللمعان المطلوبة. ثم يركّب الفريق نفسه القطع في الموقع مع دمج الأحواض والحواف الخلفية. وبما أن التصنيع داخل المصنع فإن دقة المقاسات ومدد التوريد تحت سيطرتنا، ويورّد المصنع نفسه النجارة والأبواب المتطابقة.',
@@ -203,8 +195,6 @@ export const FACTORY = [
     parent: 'manufacturing',
     group: 'factory',
     icon: 'hammer',
-    image: 'joinery-doors',
-    imagePosition: '20% 50%',
     related: ['woodenDoors', 'corianSurfaces', 'surfaces', 'wallPanels', 'hospitalFitOut'],
     en: {
       name: 'Architectural Joinery & Millwork',
@@ -213,7 +203,6 @@ export const FACTORY = [
       short: 'Wall panelling, reception counters, casework and built-in furniture.',
       h1: 'Architectural joinery and millwork factory in Jeddah, Saudi Arabia',
       lead: 'CNC-cut timber components finished into doors, wall panelling, reception counters, casework and built-in furniture, from one workshop and one quality programme.',
-      imageAlt: 'Timber joinery and wall panelling in a corridor',
       answerTitle: 'Joinery made to fit the building',
       answer: [
         'Joinery is the fixed and fitted woodwork of a building: doors and frames, wall panelling, reception counters, cabinetry, wardrobes and built-in furniture. Good joinery starts with measured drawings, accurate components and a controlled workshop, because the finished pieces have to fit walls that are never perfectly straight. Our Jeddah factory works from the architect’s drawings, cuts components on CNC machinery, assembles and finishes them under one roof and installs them with the team that made them. The same workshop makes the clinical cabinetry and infection-control joinery for our healthcare rooms and the interior packages for hotels, offices and public buildings, so the finishes, profiles and tolerances stay consistent across a whole project.',
@@ -247,7 +236,6 @@ export const FACTORY = [
       short: 'ألواح جدارية ومكاتب استقبال وخزائن وأثاث مدمج.',
       h1: 'مصنع نجارة معمارية وأعمال خشبية في جدة، السعودية',
       lead: 'مكونات خشبية مقطوعة بتقنية CNC تتحول إلى أبواب وألواح جدارية ومكاتب استقبال وخزائن وأثاث مدمج، من ورشة واحدة وبرنامج جودة واحد.',
-      imageAlt: 'نجارة خشبية وألواح جدارية في ممر',
       answerTitle: 'نجارة تُصنع لتناسب المبنى',
       answer: [
         'النجارة هي الأعمال الخشبية الثابتة والمركّبة في المبنى: الأبواب والإطارات والألواح الجدارية ومكاتب الاستقبال والخزائن والدواليب والأثاث المدمج. وتبدأ النجارة الجيدة بمخططات مقاسة ومكونات دقيقة وورشة مضبوطة، لأن القطع النهائية يجب أن تناسب جدرانًا لا تكون مستقيمة تمامًا. يعمل مصنعنا في جدة وفق مخططات المعماري، ويقطع المكونات بماكينات CNC، ويجمّعها ويشطّبها تحت سقف واحد، ثم يركّبها الفريق الذي صنعها. وتصنع الورشة نفسها الخزائن السريرية والنجارة المقاومة للعدوى لغرفنا الطبية وحزم التصميم الداخلي للفنادق والمكاتب والمباني العامة، فتبقى التشطيبات والمقاطع والتفاوتات متسقة في المشروع كله.',

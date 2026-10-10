@@ -4,6 +4,8 @@ import { useContent } from '../content';
 import { useLocale, useLocalePath } from '../i18n/LocaleContext';
 import { getSeo } from '../content/seo';
 import Img from '../components/Img';
+import { PhotoStrip } from '../components/Photos';
+import { PAGE_PHOTOS } from '../content/photos';
 import SuiteDrawing from '../components/SuiteDrawing';
 import { ChildServices, CtaBand, DataTable, DisciplineRows, PageHero, Rich, SectionHead, Steps } from '../components/Parts';
 import './pages.css';
@@ -16,9 +18,10 @@ export default function ServicePage({ id }) {
   const svc = SERVICES.find((s) => s.id === id);
   const others = SERVICES.filter((s) => s.id !== id);
 
-  const aside = svc.image ? (
+  const photos = PAGE_PHOTOS[id];
+  const aside = photos?.lead ? (
     <div className="frame">
-      <Img name={svc.image} alt={svc.imageAlt} eager sizes="(min-width: 900px) 42vw, 100vw" position={svc.imagePosition} />
+      <Img name={photos.lead} eager sizes="(min-width: 900px) 42vw, 100vw" />
     </div>
   ) : (
     <figure className="sheet frame">
@@ -71,6 +74,12 @@ export default function ServicePage({ id }) {
             ))}
           </ul>
         </div>
+        {photos?.strip && (
+          <div className="wrap pstrip-after">
+            <SectionHead title={UI.onSite} />
+            <PhotoStrip keys={photos.strip} />
+          </div>
+        )}
       </section>
 
       <section className="sec">

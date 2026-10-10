@@ -12,8 +12,6 @@ export const SERVICES = {
       summary: 'Lead lining for CT, PET-CT and X-ray rooms; RF and magnetic shielding for MRI suites — built to the OEM and physicist specification.',
       h1: 'Radiation and magnetic shielding contractor in Saudi Arabia',
       lead: 'We build the protective envelope around diagnostic and therapy rooms: lead lining for ionising radiation, and RF (Faraday cage) and magnetic shielding for MRI. Every layer is built to the OEM site-planning guide and the radiation protection physicist’s report.',
-      image: 'hero-bg',
-      imageAlt: 'EGC crew installing shielding panels in an MRI suite',
       rooms: ['MRI suites', 'CT rooms', 'PET-CT suites', 'X-ray and fluoroscopy rooms', 'Nuclear medicine rooms', 'Radiation therapy vaults'],
       deliver: [
         'MRI suites with RF (Faraday cage) and magnetic shielding',
@@ -65,9 +63,6 @@ export const SERVICES = {
       summary: 'Lead-lined and RF-shielded doors, hermetic sliding doors and access control — fabricated and fitted to seal controlled clinical areas.',
       h1: 'Lead-lined and RF-shielded medical doors in Saudi Arabia',
       lead: 'A shielded room is only as good as its doors. We fabricate and install lead-lined doors for CT, PET-CT and X-ray rooms, RF-shielded doors for MRI, and hermetic sliding doors for controlled areas — with interlocks and access control where the room calls for them.',
-      image: 'healthcare-xray',
-      imageAlt: 'Lead-lined X-ray room door with warning sign, installed by EGC',
-      imagePosition: '85% 50%',
       rooms: ['MRI suites', 'CT and PET-CT rooms', 'X-ray and fluoroscopy rooms', 'Radiation therapy rooms', 'Controlled clinical areas'],
       deliver: [
         'Lead-lined radiation-shielded doors, manual and motorised',
@@ -117,7 +112,6 @@ export const SERVICES = {
       summary: 'Mechanical, electrical and plumbing works engineered for imaging equipment — medical gases, earthing, EMI-aware routing and controlled-environment HVAC.',
       h1: 'Healthcare MEP contractor for imaging and clinical rooms',
       lead: 'Imaging equipment has MEP demands that a standard scope does not cover: dedicated earthing, EMI-aware cable routes, medical gases, and HVAC that holds tight temperature and humidity limits. We deliver them in step with the shielding, so every penetration is planned once.',
-      image: null,
       rooms: ['MRI suites', 'CT and PET-CT rooms', 'X-ray rooms', 'Controlled clinical environments'],
       deliver: [
         'Medical gas pipeline systems: oxygen, medical air and vacuum',
@@ -169,8 +163,6 @@ export const SERVICES = {
       summary: 'Seamless, non-porous Corian solid surfaces and medical-grade joinery from our own factory, made for clinical cleaning protocols.',
       h1: 'Infection-control surfaces and Corian joinery for hospitals',
       lead: 'Everything that is touched, cleaned and disinfected in a clinical space comes out of our own Corian and joinery factory in Jeddah: seamless solid-surface counters, nurse stations, scrub sinks and medical-grade cabinetry.',
-      image: 'corian-surfaces',
-      imageAlt: 'Seamless Corian nurse station with integrated sink',
       rooms: ['Nurse stations and reception counters', 'Scrub and hand-wash sinks', 'Laboratory benches', 'Clinical cabinetry and storage', 'Wall cladding and panelling'],
       deliver: [
         'Corian and solid-surface clinical counters and vanities',
@@ -223,8 +215,6 @@ export const SERVICES = {
       summary: 'تبطين بالرصاص لغرف الأشعة المقطعية وPET-CT والأشعة السينية، وتدريع ضد الترددات الراديوية والمجال المغناطيسي لغرف الرنين — وفق مواصفات الشركة المصنِّعة والفيزيائي الإشعاعي.',
       h1: 'مقاول تدريع إشعاعي ومغناطيسي لغرف الرنين والأشعة في السعودية',
       lead: 'نبني الغلاف الواقي لغرف التشخيص والعلاج: تبطين بالرصاص ضد الإشعاع المؤيِّن، وتدريع ضد الترددات الراديوية (قفص فاراداي) والمجال المغناطيسي لغرف الرنين. كل طبقة تُنفَّذ وفق دليل تخطيط الموقع الصادر عن الشركة المصنِّعة وتقرير الفيزيائي المختص بالوقاية الإشعاعية.',
-      image: 'hero-bg',
-      imageAlt: 'فريق EGC أثناء تركيب ألواح التدريع في غرفة رنين مغناطيسي',
       rooms: ['غرف الرنين المغناطيسي', 'غرف الأشعة المقطعية', 'غرف PET-CT', 'غرف الأشعة السينية والتنظير الفلوري', 'غرف الطب النووي', 'غرف العلاج الإشعاعي'],
       deliver: [
         'غرف رنين مغناطيسي بتدريع ضد الترددات الراديوية (قفص فاراداي) والمجال المغناطيسي',
@@ -276,9 +266,6 @@ export const SERVICES = {
       summary: 'أبواب مبطنة بالرصاص وأخرى مدرّعة ضد الترددات الراديوية، وأبواب انزلاقية محكمة الغلق، وأنظمة تحكم بالدخول — تُصنَّع وتُركَّب لعزل المناطق السريرية المتحكَّم بها.',
       h1: 'أبواب طبية مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية في السعودية',
       lead: 'فعالية الغرفة المدرّعة تتوقف على أبوابها. نصنّع ونركّب أبوابًا مبطنة بالرصاص لغرف الأشعة المقطعية وPET-CT والأشعة السينية، وأبوابًا مدرّعة ضد الترددات الراديوية لغرف الرنين المغناطيسي، وأبوابًا انزلاقية محكمة الغلق للمناطق المتحكَّم بها — مع أنظمة قفل تبادلي وتحكم بالدخول عند الحاجة.',
-      image: 'healthcare-xray',
-      imageAlt: 'باب غرفة أشعة مبطن بالرصاص مع لوحة تحذير، من تنفيذ EGC',
-      imagePosition: '85% 50%',
       rooms: ['غرف الرنين المغناطيسي', 'غرف الأشعة المقطعية وPET-CT', 'غرف الأشعة السينية والتنظير الفلوري', 'غرف العلاج الإشعاعي', 'المناطق السريرية المتحكَّم بها'],
       deliver: [
         'أبواب مبطنة بالرصاص للتدريع الإشعاعي، يدوية ومؤتمتة',
@@ -328,7 +315,6 @@ export const SERVICES = {
       summary: 'أعمال ميكانيكية وكهربائية وسباكة مصممة لمعدات التصوير — غازات طبية وتأريض وتمديدات واعية بالتداخل الكهرومغناطيسي وتكييف للبيئات المتحكَّم بها.',
       h1: 'مقاول أعمال كهروميكانيكية للمنشآت الصحية وغرف التصوير',
       lead: 'لمعدات التصوير متطلبات كهروميكانيكية لا يغطيها النطاق المعتاد: تأريض مخصص، ومسارات كابلات واعية بالتداخل الكهرومغناطيسي، وغازات طبية، وتكييف يحافظ على حدود دقيقة للحرارة والرطوبة. ننفذها بالتوازي مع التدريع، فتُخطَّط كل نقطة اختراق مرة واحدة.',
-      image: null,
       rooms: ['غرف الرنين المغناطيسي', 'غرف الأشعة المقطعية وPET-CT', 'غرف الأشعة السينية', 'البيئات السريرية المتحكَّم بها'],
       deliver: [
         'أنظمة خطوط الغازات الطبية: الأكسجين والهواء الطبي والشفط',
@@ -380,8 +366,6 @@ export const SERVICES = {
       summary: 'أسطح كوريان صلبة متصلة وغير مسامية ونجارة طبية من مصنعنا، مصممة وفق بروتوكولات التنظيف السريري.',
       h1: 'أسطح كوريان ونجارة طبية مقاومة للعدوى للمستشفيات في السعودية',
       lead: 'كل ما يُلمس ويُنظَّف ويُعقَّم في المساحات السريرية يخرج من مصنع الكوريان والنجارة الخاص بنا في جدة: منضدات أسطح صلبة متصلة، ومحطات تمريض، ومغاسل جراحية، وخزائن طبية.',
-      image: 'corian-surfaces',
-      imageAlt: 'محطة تمريض من الكوريان بوصلات غير مرئية ومغسلة مدمجة',
       rooms: ['محطات التمريض ومكاتب الاستقبال', 'مغاسل الجراحة وغسل اليدين', 'طاولات المختبرات', 'الخزائن والتخزين السريري', 'كسوة الجدران والألواح'],
       deliver: [
         'منضدات ومغاسل سريرية من الكوريان والأسطح الصلبة',

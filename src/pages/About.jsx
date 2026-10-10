@@ -18,7 +18,7 @@ export default function About() {
         lead={ABOUT.lead}
         aside={
           <div className="frame">
-            <Img name="hero-bg" alt={ABOUT.story.title} eager sizes="(min-width: 900px) 42vw, 100vw" />
+            <Img name="ceiling-panel-fitting" eager sizes="(min-width: 900px) 42vw, 100vw" />
           </div>
         }
       />
@@ -30,7 +30,7 @@ export default function About() {
             {ABOUT.story.p.map((t) => <p key={t}><Rich>{t}</Rich></p>)}
           </div>
           <div className="frame about-photo">
-            <Img name="joinery-doors" alt={ABOUT.story.title} sizes="(min-width: 900px) 40vw, 100vw" />
+            <Img name="nurse-station-corridor" sizes="(min-width: 900px) 40vw, 100vw" />
           </div>
         </div>
       </section>
