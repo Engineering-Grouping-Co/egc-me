@@ -1,6 +1,6 @@
 import { useState, useSyncExternalStore } from 'react';
 import { Link } from 'react-router-dom';
-import { Pause, Play } from 'lucide-react';
+import { ArrowUpRight, Pause, Play } from 'lucide-react';
 import Img from './Img';
 import './HeroSlides.css';
 
@@ -14,14 +14,16 @@ const subscribeMotion = (notify) => {
 const prefersReducedMotion = () => Boolean(window.__PRERENDER__) || window.matchMedia(REDUCED).matches;
 
 /**
- * Home hero: a slideshow of what EGC does, with the page's h1 and calls to action over it.
- * The progress bar of the current slide is a CSS animation; when it ends the next slide
- * shows, so pausing the animation pauses the show. Nothing advances for visitors who
- * prefer reduced motion, and the show pauses while the pointer or keyboard focus is inside.
+ * Home hero: a slideshow of what EGC does. The page's h1 is one steady line naming the business;
+ * every slide brings its own headline, one sentence and a link to the page it describes.
+ * The progress rule of the current tab is a CSS animation; when it ends the next slide shows,
+ * so pausing the animation pauses the show. Nothing advances for visitors who prefer reduced
+ * motion, and the show pauses while the pointer or keyboard focus is inside.
+ * All slides stay in the document (hidden slides are inert) so their text is readable by search engines.
  *
- * slides: [{ id, title, short, text, image, alt, position }]
+ * slides: [{ id, tab, short, title, text, cta, to, image, position, positionMobile }]
  */
-export default function HeroSlides({ slides, title, lead, primary, secondary, ui }) {
+export default function HeroSlides({ slides, title, primary, ui }) {
   const [index, setIndex] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [held, setHeld] = useState(false);
@@ -54,19 +56,29 @@ export default function HeroSlides({ slides, title, lead, primary, secondary, ui
             aria-roledescription="slide"
             style={{ '--pos': s.position, '--pos-m': s.positionMobile }}
           >
-            <Img name={s.image} alt={s.alt} eager={i === 0} low={i > 0} sizes="100vw" className="hs__img" />
+            <Img name={s.image} eager={i === 0} low={i > 0} sizes="100vw" className="hs__img" />
           </figure>
         ))}
         <div className="hs__shade" />
       </div>
 
       <div className="hs__body wrap">
-        <div className="hs__copy">
-          <h1>{title}</h1>
-          <p className="lead">{lead}</p>
-          <div className="row hs__actions">
-            <Link className="btn btn--light btn--lg" to={primary.to}>{primary.label}</Link>
-            <Link className="btn btn--ghost-light btn--lg" to={secondary.to}>{secondary.label}</Link>
+        <div className="hs__text">
+          <h1 className="hs__id">{title}</h1>
+          <div className="hs__copies">
+            {slides.map((s, i) => (
+              <div key={s.id} className="hs__copy" data-active={i === index} aria-hidden={i !== index} inert={i !== index}>
+                <h2 className="hs__head">{s.title}</h2>
+                <p className="hs__sub">{s.text}</p>
+                <div className="row hs__actions">
+                  <Link className="btn btn--light btn--lg" to={primary.to}>{primary.label}</Link>
+                  <Link className="hs__link" to={s.to}>
+                    {s.cta}
+                    <ArrowUpRight size={18} className="i-dir" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -85,10 +97,9 @@ export default function HeroSlides({ slides, title, lead, primary, secondary, ui
                   <span className="hs__fill" onAnimationEnd={i === index ? advance : undefined} />
                 </span>
                 <span className="hs__tab-title">
-                  <span className="hs__long">{s.title}</span>
+                  <span className="hs__long">{s.tab}</span>
                   <span className="hs__short">{s.short}</span>
                 </span>
-                <span className="hs__tab-text">{s.text}</span>
               </button>
             </li>
           ))}

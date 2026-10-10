@@ -34,11 +34,9 @@ export default function Home() {
     <>
       {/* ── hero: what we do, as a slideshow ── */}
       <HeroSlides
-        slides={HOME.slides}
+        slides={HOME.slides.map((s) => ({ ...s, to: lp(findRoute(s.route).segment) }))}
         title={HOME.hero.h1}
-        lead={HOME.hero.lead}
         primary={{ label: HOME.hero.secondary, to: lp('contact') }}
-        secondary={{ label: HOME.hero.primary, to: lp('healthcare-contractor') }}
         ui={HOME.hero.carousel}
       />
 
@@ -51,7 +49,7 @@ export default function Home() {
       {/* ── everything we do: the wide range, one link per product ── */}
       <section className="sec sec--tight">
         <div className="wrap">
-          <SectionHead title={SI.homeTitle} lead={SI.homeLead} />
+          <SectionHead title={SI.homeTitle} lead={HOME.hero.lead} />
           <div className="wwd">
             {GROUPS.map((g) => {
               const keys = g.disciplines ? [...DISCIPLINES, ...g.keys] : g.keys;

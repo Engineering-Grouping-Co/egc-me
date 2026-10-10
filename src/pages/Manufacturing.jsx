@@ -60,6 +60,9 @@ export default function Manufacturing() {
             <p className="small">{M.work.note}</p>
           </div>
         </div>
+        <div className="wrap pstrip-after">
+          <PhotoStrip keys={PAGE_PHOTOS.manufacturing.work} />
+        </div>
       </section>
 
       <section className="sec sec--paper">

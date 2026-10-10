@@ -18,7 +18,7 @@ export const PROCESS = {
 export const HOME = {
   en: {
     hero: {
-      h1: 'Healthcare contractor in Saudi Arabia, from imaging rooms to full fit-outs',
+      h1: 'Healthcare contractor in Saudi Arabia',
       lead: 'Engineering Grouping Co. (EGC) prepares the rooms that medical imaging equipment moves into, and carries out the wider healthcare contracting around them: shielding and medical doors, medical gas, HVAC, fire protection, nurse call installation, hospital fit-outs, joinery and clinical surfaces, delivered by our own crews and our own factory in Jeddah.',
       primary: 'Explore healthcare construction',
       secondary: 'Request a proposal',
@@ -26,12 +26,11 @@ export const HOME = {
       carousel: { label: 'What EGC does', pause: 'Pause slideshow', play: 'Play slideshow' },
     },
     slides: [
-      { id: 'imaging', title: 'MRI, CT, PET-CT and X-ray rooms', short: 'Imaging rooms', text: 'Rooms prepared for the scanners the manufacturers’ teams install.', image: 'ct-suite-desert-gantry', position: 'center 50%', positionMobile: '62% 50%' },
-      { id: 'shielding', title: 'Radiation & magnetic shielding', short: 'Shielding', text: 'Lead-lined CT and PET-CT rooms and RF-shielded MRI suites.', image: 'lead-lined-room-studs', position: 'center 50%', positionMobile: '55% 50%' },
-      { id: 'doors', title: 'Medical doors & access', short: 'Doors', text: 'Lead-lined and RF-shielded doors with interlocks and signage.', image: 'radiation-door-corridor', position: 'center 58%', positionMobile: '58% 50%' },
-      { id: 'fitout', title: 'Hospital fit-out & clinical surfaces', short: 'Fit-out', text: 'Nurse stations, reception counters, ceilings and wall panels, finished for clinical cleaning.', image: 'nurse-station-curved', position: 'center 62%', positionMobile: '40% 50%' },
-      { id: 'factory', title: 'Wood & Corian factory', short: 'Factory', text: 'Joinery, doors and solid surfaces made in our own Jeddah workshop.', image: 'kitchen-walnut-island', position: 'center 55%', positionMobile: '35% 50%' },
-      { id: 'services', title: 'Building services', short: 'Services', text: 'Medical gas, HVAC, fire protection and nurse call installation.', image: 'ceiling-services-sprinklers', position: 'center 40%', positionMobile: '45% 50%' },
+      { id: 'imaging', route: 'hub', tab: 'Imaging rooms', short: 'Imaging', title: 'Rooms ready for the scanner', text: 'MRI, CT, PET-CT and X-ray rooms, built to the manufacturer’s siting guide.', cta: 'Imaging room construction', image: 'ct-suite-desert-gantry', position: 'center 50%', positionMobile: '62% 50%' },
+      { id: 'shielding', route: 'shielding', tab: 'Shielding & doors', short: 'Shielding', title: 'Shielded rooms, sealed doors', text: 'Lead-lined and RF-shielded rooms, with the medical doors that keep them sealed.', cta: 'Radiation shielding', image: 'lead-lined-room-studs', position: 'center 50%', positionMobile: '55% 50%' },
+      { id: 'fitout', route: 'hospitalFitOut', tab: 'Hospital fit-out', short: 'Fit-out', title: 'Hospital departments, fully fitted out', text: 'Nurse stations, reception counters, ceilings and wall panels, finished for clinical cleaning.', cta: 'Hospital fit-out', image: 'nurse-station-curved', position: 'center 62%', positionMobile: '40% 50%' },
+      { id: 'factory', route: 'manufacturing', tab: 'Wood & Corian factory', short: 'Factory', title: 'Doors, joinery and Corian, made in Jeddah', text: 'Our own factory makes the wooden doors, solid-surface counters and joinery that go into our rooms.', cta: 'Visit the factory', image: 'kitchen-walnut-island', position: 'center 55%', positionMobile: '35% 50%' },
+      { id: 'services', route: 'mep', tab: 'Building services', short: 'Services', title: 'Medical gas, HVAC and fire protection', text: 'Building services carried out by the same crews that prepare the rooms, with nurse call installation.', cta: 'Building services', image: 'ceiling-services-sprinklers', position: 'center 40%', positionMobile: '45% 50%' },
     ],
     drawing: {
       title: 'A shielded MRI suite, in plan',
@@ -89,7 +88,7 @@ export const HOME = {
   },
   ar: {
     hero: {
-      h1: 'مقاول مشاريع صحية في السعودية، من غرف التصوير إلى التجهيز الكامل',
+      h1: 'مقاول مشاريع صحية في السعودية',
       lead: 'شركة التجمع الهندسي (EGC) تُجهّز الغرف التي تنتقل إليها أجهزة التصوير الطبي، وتنفذ أعمال المقاولات الصحية الأوسع حولها: التدريع والأبواب الطبية والغازات الطبية والتكييف والحماية من الحريق وتركيب أنظمة نداء الممرضات وتجهيز المستشفيات والنجارة والأسطح السريرية، تنفذها كوادرنا ومصنعنا الخاص في جدة.',
       primary: 'استعرض الإنشاءات الطبية',
       secondary: 'اطلب عرضًا',
@@ -97,12 +96,11 @@ export const HOME = {
       carousel: { label: 'ما تقوم به EGC', pause: 'إيقاف العرض', play: 'تشغيل العرض' },
     },
     slides: [
-      { id: 'imaging', title: 'غرف الرنين والأشعة المقطعية وPET-CT والأشعة السينية', short: 'غرف التصوير', text: 'غرف مهيأة للأجهزة التي تركبها فرق الشركات المصنعة.', image: 'ct-suite-desert-gantry', position: 'center 50%', positionMobile: '62% 50%' },
-      { id: 'shielding', title: 'التدريع الإشعاعي والمغناطيسي', short: 'التدريع', text: 'غرف أشعة مقطعية وPET-CT مبطنة بالرصاص وغرف رنين مدرّعة ضد الترددات الراديوية.', image: 'lead-lined-room-studs', position: 'center 50%', positionMobile: '55% 50%' },
-      { id: 'doors', title: 'الأبواب الطبية والتحكم بالدخول', short: 'الأبواب', text: 'أبواب مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية مع قفل تبادلي ولوحات تحذير.', image: 'radiation-door-corridor', position: 'center 58%', positionMobile: '58% 50%' },
-      { id: 'fitout', title: 'تجهيز المستشفيات والأسطح السريرية', short: 'التجهيز', text: 'محطات تمريض ومنضدات استقبال وأسقف وألواح جدارية بتشطيب يناسب التنظيف السريري.', image: 'nurse-station-curved', position: 'center 62%', positionMobile: '40% 50%' },
-      { id: 'factory', title: 'مصنع الخشب والكوريان', short: 'المصنع', text: 'نجارة وأبواب وأسطح صلبة تُصنَّع في ورشتنا الخاصة بجدة.', image: 'kitchen-walnut-island', position: 'center 55%', positionMobile: '35% 50%' },
-      { id: 'services', title: 'خدمات المباني', short: 'الخدمات', text: 'الغازات الطبية والتكييف والحماية من الحريق وتركيب أنظمة نداء الممرضات.', image: 'ceiling-services-sprinklers', position: 'center 40%', positionMobile: '45% 50%' },
+      { id: 'imaging', route: 'hub', tab: 'غرف التصوير', short: 'التصوير', title: 'غرف جاهزة لاستقبال الجهاز', text: 'غرف رنين وأشعة مقطعية وPET-CT وأشعة سينية، منفذة وفق دليل تخطيط الموقع للشركة المصنِّعة.', cta: 'إنشاء غرف التصوير الطبي', image: 'ct-suite-desert-gantry', position: 'center 50%', positionMobile: '62% 50%' },
+      { id: 'shielding', route: 'shielding', tab: 'التدريع والأبواب', short: 'التدريع', title: 'غرف مدرّعة وأبواب محكمة الإغلاق', text: 'غرف مبطنة بالرصاص ومدرّعة ضد الترددات الراديوية، مع الأبواب الطبية التي تحافظ على إحكامها.', cta: 'التدريع الإشعاعي', image: 'lead-lined-room-studs', position: 'center 50%', positionMobile: '55% 50%' },
+      { id: 'fitout', route: 'hospitalFitOut', tab: 'تجهيز المستشفيات', short: 'التجهيز', title: 'أقسام مستشفيات مجهّزة بالكامل', text: 'محطات تمريض ومنضدات استقبال وأسقف وألواح جدارية بتشطيب يناسب التنظيف السريري.', cta: 'تجهيز المستشفيات', image: 'nurse-station-curved', position: 'center 62%', positionMobile: '40% 50%' },
+      { id: 'factory', route: 'manufacturing', tab: 'مصنع الخشب والكوريان', short: 'المصنع', title: 'أبواب ونجارة وكوريان، صُنعت في جدة', text: 'مصنعنا الخاص يصنع الأبواب الخشبية ومنضدات الأسطح الصلبة والنجارة التي تدخل في غرفنا.', cta: 'زيارة المصنع', image: 'kitchen-walnut-island', position: 'center 55%', positionMobile: '35% 50%' },
+      { id: 'services', route: 'mep', tab: 'خدمات المباني', short: 'الخدمات', title: 'الغازات الطبية والتكييف والحماية من الحريق', text: 'أعمال خدمات المباني تنفذها الكوادر نفسها التي تجهّز الغرف، مع تركيب أنظمة نداء الممرضات.', cta: 'خدمات المباني', image: 'ceiling-services-sprinklers', position: 'center 40%', positionMobile: '45% 50%' },
     ],
     drawing: {
       title: 'مسقط أفقي لغرفة رنين مغناطيسي مدرّعة',

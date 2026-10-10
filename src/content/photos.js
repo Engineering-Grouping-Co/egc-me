@@ -67,6 +67,9 @@ export const PHOTOS = {
   'registration-desk-lattice': p('reception', 'Registration desk beside a timber lattice screen', 'مكتب تسجيل بجانب حاجز خشبي شبكي'),
   'reception-curved-corner': p('reception', 'Curved reception counter with a timber-grain base and a veined top', 'منضدة استقبال منحنية بقاعدة بنقش الخشب وسطح معرّق'),
   'reception-timber-slat': p('reception', 'Reception counter faced in timber slats with white panels', 'منضدة استقبال مكسوة بشرائح خشبية مع ألواح بيضاء'),
+  'imc-nurse-station': p('reception', 'Nurse station near completion, with a curved cream solid-surface top and the IMC logo on the wall behind', 'محطة تمريض قريبة من الإنجاز بسطح كريمي منحنٍ من السطح الصلب وشعار المركز الطبي الدولي (IMC) على الجدار خلفها'),
+  'imc-nurse-station-wide': p('reception', 'Wide view of the same nurse station and department corridor, before furniture is brought in', 'منظر واسع للمحطة نفسها وممر القسم قبل إدخال الأثاث'),
+  'radiology-reception': p('reception', 'Radiology department reception with a nurse counter, a sliding door and warning signage', 'استقبال قسم الأشعة بمنضدة تمريض وباب منزلق ولوحات تحذير', 'center 55%'),
   'nurse-station-corridor': p('reception', 'Nurse station at a ward corridor, with curved solid-surface wings and timber-clad walls', 'محطة تمريض عند ممر جناح بأجنحة منحنية من السطح الصلب وجدران مكسوة بالخشب'),
 
   // ── Corian and washbasins ──
@@ -90,9 +93,12 @@ export const PHOTOS = {
   'pantry-wall-unit': p('joinery', 'Pantry wall unit with glazed upper cabinets and white base cabinets', 'وحدة جدارية للمخزن بخزائن علوية زجاجية وخزائن سفلية بيضاء'),
   'dressing-room-glass': p('joinery', 'Dressing room with glass-fronted wardrobes lit in warm light', 'غرفة ملابس بخزائن بواجهات زجاجية وإضاءة دافئة'),
   'wall-panel-curved': p('joinery', 'Curved wood-grain wall panelling in a new hospital area', 'تكسية جدارية منحنية بنقش الخشب في منطقة جديدة بالمستشفى'),
+  'mod-emblem-wall': p('joinery', 'Timber feature wall carrying the Ministry of Defense emblem, in a hospital corridor', 'جدار خشبي مميز يحمل شعار وزارة الدفاع في ممر مستشفى', 'center 45%'),
   'timber-wall-cladding': p('joinery', 'Timber slat wall cladding in a room, before finishing', 'تكسية جدارية بشرائح خشبية في غرفة قبل التشطيب'),
 
   // ── interiors and dining ──
+  'jed2fly-kiosk': p('interiors', 'Take-away food kiosk with an illuminated JED2FLY sign and a timber-clad counter', 'كشك وجبات سريعة بلافتة JED2FLY مضاءة ومنضدة مكسوة بالخشب'),
+  'cafe-kiosk-seating': p('interiors', 'Café kiosk with a lit sign, a glass display counter and table seating', 'كشك مقهى بلافتة مضاءة ومنضدة عرض زجاجية ومقاعد طعام'),
   'timber-slat-corridor': p('interiors', 'Hospital corridor lined with timber slats and wall panels', 'ممر مستشفى مكسو بشرائح خشبية وألواح جدارية'),
   'dining-nook-bench': p('interiors', 'Dining nook with built-in bench seating and panelled walls', 'ركن طعام بمقاعد مدمجة وجدران مكسوة بالألواح'),
   'staff-pantry-counter': p('interiors', 'Staff pantry with a long white counter and timber-faced base', 'مطبخ للموظفين بمنضدة بيضاء طويلة وقاعدة مكسوة بالخشب'),
@@ -117,11 +123,11 @@ export const PHOTOS = {
 /* The order the gallery shows its photographs in: the strongest first. */
 export const GALLERY_ORDER = [
   'ct-suite-desert-ceiling', 'ct-suite-desert-gantry', 'nurse-station-curved', 'lead-lined-room', 'radiation-door-corridor', 'kitchen-walnut-island', 'vanity-dark-trough',
-  'ceiling-services-sprinklers', 'staff-dining-hall', 'ct-suite-desert-wide', 'reception-counter-veined', 'lead-lined-room-studs', 'sliding-door-hall',
+  'ceiling-services-sprinklers', 'staff-dining-hall', 'imc-nurse-station', 'ct-suite-desert-wide', 'mod-emblem-wall', 'reception-counter-veined', 'jed2fly-kiosk', 'lead-lined-room-studs', 'sliding-door-hall',
   'carved-door-entrance', 'basin-white-double', 'rooftop-ducts', 'timber-slat-corridor', 'scanner-room-palm-ceiling', 'nurse-station-corridor',
   'flush-sliding-door-banded', 'diamond-carved-doors', 'vanity-stone-led-mirror', 'panel-wiring', 'dining-hall-pillars', 'xray-room-warm',
   'scanner-room-gantry', 'reception-lobby-windows', 'lead-lined-frame', 'radiation-sign-door', 'timber-pivot-door', 'lab-bench-sinks',
-  'ceiling-services-trays', 'staff-pantry-counter', 'imaging-room-sliding-door', 'registration-desks-panel', 'door-kickplate', 'glazed-timber-sliding-doors',
+  'ceiling-services-trays', 'staff-pantry-counter', 'imaging-room-sliding-door', 'registration-desks-panel', 'imc-nurse-station-wide', 'cafe-kiosk-seating', 'radiology-reception', 'door-kickplate', 'glazed-timber-sliding-doors',
   'blue-top-cabinet', 'steel-hangers', 'kitchen-light-mosaic', 'dining-nook-bench', 'scanner-room-wood-doors', 'registration-desk-lattice',
   'xray-room-wide', 'interventional-xray-room', 'ct-sky-ceiling', 'nurse-station-wing', 'carved-door-stone', 'kitchen-dark-wood',
   'wall-panel-curved', 'lift-lobby-cladding', 'pantry-wall-unit', 'cafe-service-counter', 'dressing-room-glass', 'reception-curved-corner',
@@ -148,7 +154,7 @@ export const PAGE_PHOTOS = {
   orCeilings: { lead: 'ceiling-panel-fitting', strip: ['ct-suite-desert-ceiling', 'ct-sky-ceiling', 'scanner-room-palm-ceiling'] },
   wallPanels: { lead: 'wall-panel-curved', strip: ['lift-lobby-cladding', 'timber-wall-cladding', 'reception-timber-slat'] },
   hermeticDoors: { lead: 'flush-sliding-door-banded', strip: ['radiation-door-corridor', 'sliding-door-hall', 'radiation-sign-door'] },
-  manufacturing: { lead: 'reception-curved-corner', lead2: 'kitchen-walnut-island', strip: ['carved-door-entrance', 'vanity-dark-trough', 'kitchen-light-mosaic'] },
+  manufacturing: { lead: 'reception-curved-corner', lead2: 'kitchen-walnut-island', work: ['jed2fly-kiosk', 'cafe-kiosk-seating', 'mod-emblem-wall'], strip: ['carved-door-entrance', 'vanity-dark-trough', 'kitchen-light-mosaic'] },
   woodenDoors: { lead: 'carved-door-entrance', strip: ['diamond-carved-doors', 'timber-pivot-door', 'glazed-timber-sliding-doors'] },
   corianSurfaces: { lead: 'vanity-dark-trough', strip: ['basin-white-double', 'vanity-stone-led-mirror', 'lab-bench-sinks'] },
   joinery: { lead: 'kitchen-walnut-island', strip: ['pantry-wall-unit', 'dressing-room-glass', 'wall-panel-curved'] },
