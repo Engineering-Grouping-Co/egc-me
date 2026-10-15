@@ -80,12 +80,12 @@ export const NAV = {
       id: 'work',
       label: 'Work With Us',
       menu: {
-        intro: { title: 'Join or supply EGC', text: 'Build your career with us, or become an approved vendor.', href: 'careers', cta: 'Open positions' },
+        intro: { title: 'Join or supply EGC', text: 'Build your career with us, or become an approved vendor.', href: 'careers', cta: 'Open position' },
         groups: [
           {
             title: 'Opportunities',
             links: [
-              { label: 'Careers', desc: 'Roles across projects, factory and software', href: 'careers' },
+              { label: 'Careers', desc: 'Join our Wood & Corian factory team', href: 'careers' },
               { label: 'Suppliers', desc: 'Prequalification and vendor registration', href: 'suppliers' },
               { label: 'Supplier portal', desc: 'Sign in to the EGC ERP portal', href: 'https://erp.egc-me.com', external: true },
             ],
@@ -172,12 +172,12 @@ export const NAV = {
       id: 'work',
       label: 'اعمل معنا',
       menu: {
-        intro: { title: 'انضم إلينا أو ورّد لنا', text: 'ابنِ مسيرتك المهنية معنا، أو كن موردًا معتمدًا.', href: 'careers', cta: 'الوظائف الشاغرة' },
+        intro: { title: 'انضم إلينا أو ورّد لنا', text: 'ابنِ مسيرتك المهنية معنا، أو كن موردًا معتمدًا.', href: 'careers', cta: 'الوظيفة الشاغرة' },
         groups: [
           {
             title: 'الفرص',
             links: [
-              { label: 'الوظائف', desc: 'وظائف في المشاريع والمصنع والبرمجيات', href: 'careers' },
+              { label: 'الوظائف', desc: 'انضم إلى فريق مصنع الخشب والكوريان', href: 'careers' },
               { label: 'الموردون', desc: 'التأهيل المسبق وتسجيل الموردين', href: 'suppliers' },
               { label: 'بوابة الموردين', desc: 'سجّل الدخول إلى بوابة EGC ERP', href: 'https://erp.egc-me.com', external: true },
             ],

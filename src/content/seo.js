@@ -130,13 +130,13 @@ export const SEO_CONTENT = {
   careers: {
     en: {
       name: 'Careers',
-      title: 'Careers at EGC | Healthcare Construction & Software Jobs in Jeddah',
-      description: 'Open roles across healthcare projects, the Wood & Corian factory, software engineering and corporate functions at EGC in Jeddah.',
+      title: 'Careers at EGC | Corian Fabricator & CNC Operator Job in Jeddah',
+      description: 'Join the Wood & Corian factory at EGC in Jeddah: we are hiring a Corian Surface Fabricator and CNC Machine Operator. Apply by email.',
     },
     ar: {
       name: 'الوظائف',
-      title: 'الوظائف في EGC | وظائف إنشاءات طبية وبرمجيات في جدة',
-      description: 'وظائف شاغرة في المشاريع الطبية ومصنع الخشب والكوريان وهندسة البرمجيات والوظائف الإدارية في EGC بجدة.',
+      title: 'الوظائف في EGC | وظيفة فني كوريان ومشغّل CNC في جدة',
+      description: 'انضم إلى مصنع الخشب والكوريان في EGC بجدة: نبحث عن فني تصنيع أسطح كوريان ومشغّل آلات CNC. قدّم عبر البريد الإلكتروني.',
     },
   },
   suppliers: {

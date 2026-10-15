@@ -69,7 +69,6 @@
 .prose section + section { margin-block-start: 0; }
 
 /* careers */
-.jobs-filters { margin-block-end: 28px; }
 .jobs { border-block-start: 1px solid var(--line-2); }
 .job { display: grid; grid-template-columns: minmax(0, 1fr) 200px auto; align-items: center; gap: 28px; padding-block: 24px; border-block-end: 1px solid var(--line-2); }
 .job h3 { font-size: 1.15rem; margin-block-end: 4px; }
