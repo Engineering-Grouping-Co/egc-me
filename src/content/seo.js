@@ -130,13 +130,13 @@ export const SEO_CONTENT = {
   careers: {
     en: {
       name: 'Careers',
-      title: 'Careers at EGC | Corian Fabricator & CNC Operator Job in Jeddah',
-      description: 'Join the Wood & Corian factory at EGC in Jeddah: we are hiring a Corian Surface Fabricator and CNC Machine Operator. Apply by email.',
+      title: 'Careers at EGC | Engineering Grouping Co., Jeddah',
+      description: 'There are no open positions at Engineering Grouping Co. (EGC) in Jeddah at the moment.',
     },
     ar: {
       name: 'الوظائف',
-      title: 'الوظائف في EGC | وظيفة فني كوريان ومشغّل CNC في جدة',
-      description: 'انضم إلى مصنع الخشب والكوريان في EGC بجدة: نبحث عن فني تصنيع أسطح كوريان ومشغّل آلات CNC. قدّم عبر البريد الإلكتروني.',
+      title: 'الوظائف في EGC | شركة التجمع الهندسي، جدة',
+      description: 'لا توجد وظائف شاغرة لدى شركة التجمع الهندسي (EGC) في جدة في الوقت الحالي.',
     },
   },
   suppliers: {

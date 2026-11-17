@@ -9,7 +9,7 @@ import { HOME, ABOUT, PROCESS } from './home';
 import { HUB, MANUFACTURING, SOFTWARE } from './sectors';
 import { VALUES, CERTIFICATIONS } from './company';
 import { PROJECTS, PROJECT_FILTERS, KSA_PATH, STATUS_KEYS } from './projects';
-import { CAREERS, CULTURE } from './careers';
+import { CULTURE } from './careers';
 import { SUPPLIER_STEPS, WHAT_WE_SOURCE, REQUIREMENTS } from './suppliers';
 import { COPY } from './copy';
 import { SERVICES_INDEX } from './servicesIndex';
@@ -36,7 +36,6 @@ export function useContent() {
       PROJECT_FILTERS: PROJECT_FILTERS[locale],
       KSA_PATH,
       STATUS_KEYS,
-      CAREERS: CAREERS[locale],
       CULTURE: CULTURE[locale],
       SUPPLIER_STEPS: SUPPLIER_STEPS[locale],
       WHAT_WE_SOURCE: WHAT_WE_SOURCE[locale],
